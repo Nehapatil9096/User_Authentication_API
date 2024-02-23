@@ -1,0 +1,89 @@
+/* BoardPage.module.css */
+
+.boardPage {
+    width: 100%; /* Set width to 84% */
+    height: 100vh; /* Set height to 100vh */
+    margin-left: 0px; /* Remove left margin */
+    overflow-x: auto; /* Enable horizontal scrolling */
+
+}
+  
+  .topLeftText {
+    margin-bottom: 20px;
+  }
+  
+  .welcome {
+    font-size: 1.5rem;
+    color: #333;
+  }
+  
+  .boardText {
+    font-size: 2rem;
+    color: #555;
+    padding-top: 20px; /* Adjust the value as needed */
+
+  }
+  
+  .topRight {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 20px;
+  }
+  
+  .currentDate {
+    font-size: 1rem;
+    color: #ffffff;
+  }
+  
+  .filterDropdown {
+    margin-left: 10px;
+    background-color: #ffffff;
+    position: relative; /* Set position to relative */
+
+
+  }
+  
+  .filterDropdown select {
+    padding: 8px;
+    font-size: 0.9rem;
+    background-color: #ffffff;
+
+  }
+  .filterDropdown select:focus {
+    outline: none; /* Remove default focus outline */
+  }
+  .filterDropdown .dropdownContent {
+    position: absolute;
+    top: 100%; /* Position the dropdown below the button */
+    left: 0;
+    background-color: #ffffff;
+    border: 1px solid #ccc; /* Add border for dropdown */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Add shadow for dropdown */
+    z-index: 1; /* Ensure dropdown appears above other content */
+  }
+  
+  .boardSections {
+    margin-top: 20px;
+    justify-content: space-between;
+    display: flex;
+    width: 80%;
+
+    overflow-y: auto; /* Enable horizontal scrolling for sections */
+  }
+  
+  .boardSection {
+    flex: 0 0 300px; /* Fixed width for each section */
+    background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  padding: 10px;
+  margin: 10px;
+  width: 20%
+  }
+  .boardSectionsContainer {
+    background-color: #f0f0f0; /* Grey background color */
+    padding: 20px; /* Add padding for spacing */
+  }
+  
+  

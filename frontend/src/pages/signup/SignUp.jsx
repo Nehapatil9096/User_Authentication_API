@@ -1,170 +1,107 @@
 import { Link } from "react-router-dom";
-import GenderCheckbox from "./GenderCheckbox";
 import { useState } from "react";
 import useSignup from "../../hooks/useSignup";
+import userIcon from "/src/photo/icon.png";
+import lockIcon from "/src/photo/lock.png";
+import "./signup.css"; // Importing the CSS file
+
 
 const SignUp = () => {
-	const [inputs, setInputs] = useState({
-		fullName: "",
-		username: "",
-		password: "",
-		confirmPassword: "",
-		gender: "",
-	});
+  const [inputs, setInputs] = useState({
+    username: "",
+    email: "",
+    password: "",
+    confirmPassword: "",
+   
+  });
 
-	const { loading, signup } = useSignup();
+  const { loading, signup } = useSignup();
 
-	const handleCheckboxChange = (gender) => {
-		setInputs({ ...inputs, gender });
-	};
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    await signup(inputs);
+  };
 
-	const handleSubmit = async (e) => {
-		e.preventDefault();
-		await signup(inputs);
-	};
-
-	return (
-		<div className='flex flex-col items-center justify-center min-w-96 mx-auto'>
-			<div className='w-full p-6 rounded-lg shadow-md bg-gray-400 bg-clip-padding backdrop-filter backdrop-blur-lg bg-opacity-0'>
-				<h1 className='text-3xl font-semibold text-center text-gray-300'>
-					Sign Up <span className='text-blue-500'> ChatApp</span>
-				</h1>
-
-				<form onSubmit={handleSubmit}>
-					<div>
-						<label className='label p-2'>
-							<span className='text-base label-text'>Full Name</span>
-						</label>
-						<input
-							type='text'
-							placeholder='John Doe'
-							className='w-full input input-bordered  h-10'
-							value={inputs.fullName}
-							onChange={(e) => setInputs({ ...inputs, fullName: e.target.value })}
-						/>
-					</div>
-
-					<div>
-						<label className='label p-2 '>
-							<span className='text-base label-text'>Username</span>
-						</label>
-						<input
-							type='text'
-							placeholder='johndoe'
-							className='w-full input input-bordered h-10'
-							value={inputs.username}
-							onChange={(e) => setInputs({ ...inputs, username: e.target.value })}
-						/>
-					</div>
-
-					<div>
-						<label className='label'>
-							<span className='text-base label-text'>Password</span>
-						</label>
-						<input
-							type='password'
-							placeholder='Enter Password'
-							className='w-full input input-bordered h-10'
-							value={inputs.password}
-							onChange={(e) => setInputs({ ...inputs, password: e.target.value })}
-						/>
-					</div>
-
-					<div>
-						<label className='label'>
-							<span className='text-base label-text'>Confirm Password</span>
-						</label>
-						<input
-							type='password'
-							placeholder='Confirm Password'
-							className='w-full input input-bordered h-10'
-							value={inputs.confirmPassword}
-							onChange={(e) => setInputs({ ...inputs, confirmPassword: e.target.value })}
-						/>
-					</div>
-
-					<GenderCheckbox onCheckboxChange={handleCheckboxChange} selectedGender={inputs.gender} />
-
-					<Link
-						to={"/login"}
-						className='text-sm hover:underline hover:text-blue-600 mt-2 inline-block'
-						href='#'
-					>
-						Already have an account?
-					</Link>
-
-					<div>
-						<button className='btn btn-block btn-sm mt-2 border border-slate-700' disabled={loading}>
-							{loading ? <span className='loading loading-spinner'></span> : "Sign Up"}
-						</button>
-					</div>
-				</form>
-			</div>
-		</div>
-	);
+  return (
+    <div className='main-container'>
+      <div className='image-container'>
+        <div className='image'>
+          <div className="centered-photo">
+            <img src="/src/photo/Back.png" alt="Background" className="centered-back-image" />
+            <img src="/src/photo/Art (1).png" alt="Centered Photo" />
+            <div className="text-container">
+              <h2 className="welcome-text">Welcome aboard my friend</h2>
+              <p className="instructions">Just a couple of clicks and we start</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div className='groups'>
+        <div className='image-2' />
+        <form onSubmit={handleSubmit} className='form'>
+          <h1 className='heading'>Register</h1>
+          <div className='input-container'>
+            <label className='label'>
+            </label>
+            <input
+              type='text'
+              placeholder='John Doe'
+              className='w-full input input-bordered h-10'
+              value={inputs.username}
+              onChange={(e) => setInputs({ ...inputs, username: e.target.value })}
+            />
+            <span className="icon" style={{ backgroundImage: `url(${userIcon})` }}></span>
+          </div>
+          <div className='input-container'>
+            <label className='label'>
+            </label>
+            <input
+              type='email'
+              placeholder='johndoe@g.com'
+              className='w-full input input-bordered h-10'
+              value={inputs.email}
+              onChange={(e) => setInputs({ ...inputs, email: e.target.value })}
+            />
+            <span className="icon" style={{ backgroundImage: `url(${userIcon})` }}></span>
+          </div>
+          <div className='input-container'>
+            <label className='label'>
+            </label>
+            <input
+              type='password'
+              placeholder='Enter Password'
+              className='w-full input input-bordered h-10'
+              value={inputs.password}
+              onChange={(e) => setInputs({ ...inputs, password: e.target.value })}
+            />
+            <span className="icon" style={{ backgroundImage: `url(${lockIcon})` }}></span>
+          </div>
+          <div className='input-container'>
+            <label className='label'>
+            </label>
+            <input
+              type='password'
+              placeholder='Confirm Password'
+              className='w-full input input-bordered h-10'
+              value={inputs.confirmPassword}
+              onChange={(e) => setInputs({ ...inputs, confirmPassword: e.target.value })}
+            />
+            <span className="icon" style={{ backgroundImage: `url(${lockIcon})` }}></span>
+          </div>
+          <div className='button-stack'>
+            <button className='btn-block' disabled={loading}>
+              {loading ? <span className='loading loading-spinner'></span> : "Register"}
+            </button>
+            <p className="no-account-text">Already have an account?</p>
+            <div className='register-link'>
+			<button className='login-button' disabled={loading}>
+    {loading ? <span className='loading loading-spinner'></span> : "Login"}
+</button>            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  );
 };
+
 export default SignUp;
-
-// STARTER CODE FOR THE SIGNUP COMPONENT
-// import GenderCheckbox from "./GenderCheckbox";
-
-// const SignUp = () => {
-// 	return (
-// 		<div className='flex flex-col items-center justify-center min-w-96 mx-auto'>
-// 			<div className='w-full p-6 rounded-lg shadow-md bg-gray-400 bg-clip-padding backdrop-filter backdrop-blur-lg bg-opacity-0'>
-// 				<h1 className='text-3xl font-semibold text-center text-gray-300'>
-// 					Sign Up <span className='text-blue-500'> ChatApp</span>
-// 				</h1>
-
-// 				<form>
-// 					<div>
-// 						<label className='label p-2'>
-// 							<span className='text-base label-text'>Full Name</span>
-// 						</label>
-// 						<input type='text' placeholder='John Doe' className='w-full input input-bordered  h-10' />
-// 					</div>
-
-// 					<div>
-// 						<label className='label p-2 '>
-// 							<span className='text-base label-text'>Username</span>
-// 						</label>
-// 						<input type='text' placeholder='johndoe' className='w-full input input-bordered h-10' />
-// 					</div>
-
-// 					<div>
-// 						<label className='label'>
-// 							<span className='text-base label-text'>Password</span>
-// 						</label>
-// 						<input
-// 							type='password'
-// 							placeholder='Enter Password'
-// 							className='w-full input input-bordered h-10'
-// 						/>
-// 					</div>
-
-// 					<div>
-// 						<label className='label'>
-// 							<span className='text-base label-text'>Confirm Password</span>
-// 						</label>
-// 						<input
-// 							type='password'
-// 							placeholder='Confirm Password'
-// 							className='w-full input input-bordered h-10'
-// 						/>
-// 					</div>
-
-// 					<GenderCheckbox />
-
-// 					<a className='text-sm hover:underline hover:text-blue-600 mt-2 inline-block' href='#'>
-// 						Already have an account?
-// 					</a>
-
-// 					<div>
-// 						<button className='btn btn-block btn-sm mt-2 border border-slate-700'>Sign Up</button>
-// 					</div>
-// 				</form>
-// 			</div>
-// 		</div>
-// 	);
-// };
-// export default SignUp;

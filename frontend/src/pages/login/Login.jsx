@@ -1,106 +1,82 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import useLogin from "../../hooks/useLogin";
+import "./login.css"; // Importing the CSS file
+import userIcon from "/src/photo/icon.png";
+import lockIcon from "/src/photo/lock.png";
 
 const Login = () => {
-	const [username, setUsername] = useState("");
-	const [password, setPassword] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const { loading, login } = useLogin();
 
-	const { loading, login } = useLogin();
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    console.log("Email:", email);
+    console.log("Password:", password);
+    await login(email, password);
+  };
 
-	const handleSubmit = async (e) => {
-		e.preventDefault();
-		await login(username, password);
-	};
-
-	return (
-		<div className='flex flex-col items-center justify-center min-w-96 mx-auto'>
-			<div className='w-full p-6 rounded-lg shadow-md bg-gray-400 bg-clip-padding backdrop-filter backdrop-blur-lg bg-opacity-0'>
-				<h1 className='text-3xl font-semibold text-center text-gray-300'>
-					Login
-					<span className='text-blue-500'> ChatApp</span>
-				</h1>
-
-				<form onSubmit={handleSubmit}>
-					<div>
-						<label className='label p-2'>
-							<span className='text-base label-text'>Username</span>
-						</label>
-						<input
-							type='text'
-							placeholder='Enter username'
-							className='w-full input input-bordered h-10'
-							value={username}
-							onChange={(e) => setUsername(e.target.value)}
-						/>
-					</div>
-
-					<div>
-						<label className='label'>
-							<span className='text-base label-text'>Password</span>
-						</label>
-						<input
-							type='password'
-							placeholder='Enter Password'
-							className='w-full input input-bordered h-10'
-							value={password}
-							onChange={(e) => setPassword(e.target.value)}
-						/>
-					</div>
-					<Link to='/signup' className='text-sm  hover:underline hover:text-blue-600 mt-2 inline-block'>
-						{"Don't"} have an account?
-					</Link>
-
-					<div>
-						<button className='btn btn-block btn-sm mt-2' disabled={loading}>
-							{loading ? <span className='loading loading-spinner '></span> : "Login"}
-						</button>
-					</div>
-				</form>
-			</div>
-		</div>
-	);
+  return (
+    <div className='main-container'>
+      <div className='image-container'>
+        <div className='image'>
+          <div className="centered-photo">
+            <img src="/src/photo/Back.png" alt="Background" className="centered-back-image" />
+            <img src="/src/photo/Art (1).png" alt="Centered Photo" />
+            <div className="text-container">
+              <h2 className="welcome-text">Welcome aboard my friend</h2>
+              <p className="instructions">Just a couple of clicks and we start</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div className='groups'>
+        <div className='image-2' />
+        <form onSubmit={handleSubmit} className='form'>
+          <h1 className='heading'>Login</h1>
+          <div className='input-container'>
+            <label className='label'>
+              <span className='text-base label-text'></span>
+            </label>
+            <input
+              type='text'
+              placeholder='Enter email'
+              className='w-full input input-bordered h-10'
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+            />
+            <span className="icon" style={{ backgroundImage: `url(${userIcon})` }}></span>
+          </div>
+          <div className='input-container'>
+            <label className='label'>
+              <span className='text-base label-text'></span>
+            </label>
+            <img src={lockIcon} alt="Lock Icon" className="icon" />
+            <input
+              type='password'
+              placeholder='Enter Password'
+              className='w-full input input-bordered h-10'
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+            />
+            <img src="/src/photo/view.png" alt="Password View Icon" className="icon password" />
+          </div>
+          <div className='button-stack'>
+            <button className='btn-block' disabled={loading}>
+              {loading ? <span className='loading loading-spinner'></span> : "Login"}
+            </button>
+            <p className="no-account-text">Don't have an account yet?</p>
+            <div className='register-link'>
+              <Link to='/signup' className='text-sm hover:underline hover:text-blue-600'>
+                <button className="register-button">Register</button>
+              </Link>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  );
 };
+
 export default Login;
-
-// STARTER CODE FOR THIS FILE
-// const Login = () => {
-// 	return (
-// 		<div className='flex flex-col items-center justify-center min-w-96 mx-auto'>
-// 			<div className='w-full p-6 rounded-lg shadow-md bg-gray-400 bg-clip-padding backdrop-filter backdrop-blur-lg bg-opacity-0'>
-// 				<h1 className='text-3xl font-semibold text-center text-gray-300'>
-// 					Login
-// 					<span className='text-blue-500'> ChatApp</span>
-// 				</h1>
-
-// 				<form>
-// 					<div>
-// 						<label className='label p-2'>
-// 							<span className='text-base label-text'>Username</span>
-// 						</label>
-// 						<input type='text' placeholder='Enter username' className='w-full input input-bordered h-10' />
-// 					</div>
-
-// 					<div>
-// 						<label className='label'>
-// 							<span className='text-base label-text'>Password</span>
-// 						</label>
-// 						<input
-// 							type='password'
-// 							placeholder='Enter Password'
-// 							className='w-full input input-bordered h-10'
-// 						/>
-// 					</div>
-// 					<a href='#' className='text-sm  hover:underline hover:text-blue-600 mt-2 inline-block'>
-// 						{"Don't"} have an account?
-// 					</a>
-
-// 					<div>
-// 						<button className='btn btn-block btn-sm mt-2'>Login</button>
-// 					</div>
-// 				</form>
-// 			</div>
-// 		</div>
-// 	);
-// };
-// export default Login;

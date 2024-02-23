@@ -1,0 +1,256 @@
+/* signup.css */
+
+/* Variables */
+:root {
+    --default-font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Ubuntu, "Helvetica Neue", Helvetica, Arial, "PingFang SC", "Hiragino Sans GB", "Microsoft Yahei UI", "Microsoft Yahei", "Source Han Sans CN", sans-serif;
+}
+
+/* Main Container */
+.main-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    background-color: #f3f4f6; /* Update with your desired background color */
+    overflow: hidden; /* Add this to remove scroll bars */
+}
+
+/* Image */
+.image-container {
+    position: absolute;
+    width: 60%; /* 60% of the page width */
+    height: 100vh; /* Same height as the viewport */
+    top: 0;
+    left: 0;
+    background-color: #17a2b8; /* Background color for left side */
+    overflow: hidden; /* Hide overflow to prevent background color from shifting */
+}
+
+.image {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 50%;
+    background-size: cover;
+}
+
+/* Back Image */
+.centered-back-image {
+    position: absolute;
+    z-index: -1; /* Behind other content */
+    max-width: 35%; /* Adjust according to your image's width */
+    max-height: 45%; /* Adjust according to your image's height */
+    left: 290px;
+    right: 30px;
+    bottom: 0;
+    top: 120px;
+}
+
+/* Centered Photo */
+.centered-photo {
+    max-width: 55%; /* Adjust according to your photo's width */
+    max-height: 50%; /* Adjust according to your photo's height */
+    margin: 0 auto;
+    z-index: 1; /* On top of the background image */
+}
+
+/* Text Container */
+.text-container {
+    position: absolute;
+    bottom: 10px; /* Adjust as needed to position the text */
+    left: 50%;
+    transform: translateX(-50%);
+    text-align: center;
+    color: white; /* Text color */
+}
+
+/* Welcome Text */
+.welcome-text {
+    font-size: 2rem;
+    font-weight: bold;
+    margin-bottom: 5px; /* Adjust the spacing between the heading and paragraph */
+}
+
+/* Instructions Text */
+.instructions {
+    font-size: 18px; /* Adjust the font size as needed */
+    margin-bottom: 105px; /* Adjust the spacing between the heading and paragraph */
+}
+
+/* Groups Container */
+.groups {
+    position: absolute;
+    width: 40%; /* 60% of the page width */
+    height: 100vh; /* Same height as the viewport */
+    top: 0;
+    left: 60%; /* Adjusted left position */
+    padding: 0px 0px 0px 20px; /* Padding */
+    gap: 44.1px; /* Gap between elements */
+    overflow: hidden; /* Remove scroll bars */
+    background-color: #FFFFFF; /* Background color for right side */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    display: flex;
+}
+
+/* Form */
+form {
+    width: 100%; /* Full width of the container */
+    max-width: 400px; /* Maximum width of the form */
+    padding: 20px; /* Padding */
+    box-sizing: border-box; /* Include padding in width calculation */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 150px;
+}
+
+/* Form Inputs */
+form input[type="text"],
+form input[type="password"] {
+    width: 400.39px; /* Same width as the buttons */
+    height: 50px;
+    margin-bottom: 10px; /* Gap between inputs */
+    padding: 2px;
+    border: 1.38px solid #D0D0D0; /* Add border with specified color and width */
+}
+
+/* Heading "Register" */
+.heading {
+    /* Font */
+    font-size: 2rem;
+    font-weight: bold;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+/* Button Stack */
+.button-stack {
+    display: flex;
+    flex-direction: column;
+    gap: 22.05px;
+    width: 100%; /* Full width */
+    max-width: 400px; /* Maximum width of the buttons */
+    margin-top: 20px; /* Margin between inputs and buttons */
+}
+
+/* Buttons */
+.btn-block,
+.register-button {
+    width: 100%; /* Full width */
+    max-width: 400px; /* Maximum width of the buttons */
+    height: 45.38px;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-size: 16px;
+    background-color: #3498db;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    text-align: center;
+    border-radius: 222px; /* Adjust the value to make the corners more or less circular */
+}
+
+.btn-block:hover,
+.register-button:hover {
+    background-color: #0f738a; /* Change hover color here if needed */
+    color: #fff;
+}
+
+/* Register Link */
+.register-link {
+    font-size: 14px;
+    margin-top: 10px;
+}
+
+/* No Account Text */
+.no-account-text {
+    text-align: center;
+    margin-top: 10px;
+}
+
+/* Icon */
+.icon {
+    position: absolute;
+    left: 10px; /* Adjust as needed */
+    top: 50%;
+    transform: translateY(-50%);
+    width: 24px; /* Adjust as needed */
+    height: 24px; /* Adjust as needed */
+    background-size: cover;
+}
+
+/* Input Container */
+.input-container {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+    position: relative;}
+
+/* Label */
+.label {
+    position: absolute;
+  left: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 1rem;
+  font-weight: bold;
+  background-color: #fff;
+  padding: 0 5px;
+}
+
+/* Password Input Container */
+.input-container.password {
+    position: relative;
+}
+
+.input-container.password .input {
+    padding-right: 40px; /* Adjust the padding as needed */
+}
+
+/* Password Icon */
+.icon.password {
+    position: absolute;
+    left: calc(100% - 40px); /* Adjust as needed */
+    top: 50%;
+    transform: translateY(-50%);
+    width: 24px; /* Adjust as needed */
+    height: 24px; /* Adjust as needed */
+    background-size: cover;
+}
+
+/* View Icon */
+.icon.password-view {
+    position: absolute;
+    right: 10px; /* Adjust as needed */
+    top: 50%;
+    transform: translateY(-50%);
+    width: 24px; /* Adjust as needed */
+    height: 24px; /* Adjust as needed */
+    background-size: cover;
+}
+/* login.css */
+
+/* Login Button */
+.login-button {
+    width: 100%; /* Full width */
+    max-width: 400px; /* Maximum width of the button */
+    height: 45.38px;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-size: 16px;
+    background-color: #3498db; /* Same color as the register button */
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    text-align: center;
+    border-radius: 222px; /* Adjust the value to make the corners more or less circular */
+}
+
+.login-button:hover {
+    background-color: #0f738a; /* Change hover color here if needed */
+    color: #fff;
+}
