@@ -125,12 +125,6 @@ const ToDoCard = ({ onClose, onSave }) => {
       selected={dueDate}
       onChange={(date) => setDueDate(date)}
       placeholderText="Select Due Date"
-
-      className={styles.button} // Add the class name here
-      TextColor="red" // Add the placeholderTextColor prop here
-                                                
-
-
     />
     <div className={styles.actionButtons}>
       <button onClick={onClose}>Cancel</button>
