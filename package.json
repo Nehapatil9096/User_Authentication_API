@@ -20,8 +20,7 @@
 		"jsonwebtoken": "^9.0.2",
 		"mongodb": "^6.3.0",
 		"mongoose": "^8.1.1",
-		"react-toastify": "^10.0.4",
-		"socket.io": "^4.7.4"
+		"react-toastify": "^10.0.4"
 	},
 	"devDependencies": {
 		"nodemon": "^3.0.3"
