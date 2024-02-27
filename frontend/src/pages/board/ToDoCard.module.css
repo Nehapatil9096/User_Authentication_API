@@ -2,278 +2,138 @@
 
 /* Styles for the backdrop */
 .backdrop {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(230, 222, 222, 0.5); /* Semi-transparent black */
-    z-index: 1000; /* Ensure it's above other elements */
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-  
-  .toDoCard {
-    background: white;
-    border-radius: 20px;
-    padding-top: 20px; /* Adjusted padding top */
-    padding-bottom: 60px; /* Adjusted padding bottom */
-    padding-left: 25px; /* Adjusted padding left */
-    padding-right: 15px; /* Adjusted padding right */
-    min-width: 200px; /* Reduced minimum width */
-    min-height: 500px; /* Reduced minimum height */
-    z-index: 1001; /* Ensure it's above the backdrop */
-    position: relative;
-}
-
-  
-  .cardHeader,
-  .cardContent,
-  .cardFooter {
-    /* Add styles for different sections of the card */
-    margin-bottom: 20px;
-    font: Inter;
-  }
-  .cardHeader input {
-    height: 40px; /* Increase the height of the input field */
-    width: 100%;
-    padding: 5px;
-    margin-bottom: 10px;
-    border: 1px solid #ccc;
-    background-color: #FFFFFF;
-    border-radius: 10px;
-  }
-  label {
-    display: block;
-    margin-bottom: 5px;
-  }
-  
-  label::after {
-    content: " *";
-    color: red;
-  }
-   /* ************* Title ************** */
-  input {
-    width: 100%;
-    padding: 5px;
-    margin-bottom: 10px;
-    border: 1px solid #ccc; /* Add border for better separation */
-     background-color: #FFFFFF;
-     border-radius: 10px;
-
-  }
-   /* ************* Priority************** */
-  /* 2. Priority button should get selected once hovered and clicked */
-  .priorityOptions {
-    display: flex;
-    align-items: center;
-    margin-bottom: 10px; /* Add margin to separate from the checklist */
-    gap: 10px;
-  }
-  
-  .priorityOptions label {
-    margin-right: 10px;
-  }
-  
-  .priorityOptions button {
-    background-color: #FFFFFF;
-
-    color:#767575;
-     width: 150px;
-    border: none;
-    padding: 5px;
-    cursor: pointer;
-    border: 1px solid #E2E2E2;
-    border-radius:10px ; 
-  }
-  
-  .priorityOptions button:hover,
-  .priorityOptions button:active {
-    background-color: #EEECEC; /* Darker shade on hover or click */
-  }
-  
-   /* ************* task ************** */
-   .checklist {
-    display: flex;
-    margin-bottom: 16px;
-  }
-  
-  .checklist label {
-    font-weight: bold;
-    margin-right: 8px;
-  }
-  
-  .addNewTask {
-    margin-top: 10px;
-    display: flex;
-    flex-direction: column; /* Reverse the order of new tasks */
-    margin-left: 0px;
-
-
-  }
-
-
-.task {
-    display: flex;
-    align-items: center;
-    margin-top: 0px;
-    border: 1px solid #ccc; /* Add border for better separation */
-    padding: 15x; /* Add padding for better spacing */
-  }
-  
-  .task input[type="text"] {
-    flex-grow: 1;
-  padding: 4px;
-  border: none;
-  font-size: 16px;
-  }
-  .task input[type="checkbox"] {
-    margin-right: 5px;
-  }
-  .addNewTask input[type="text"] {
-    flex-grow: 1;
-    padding: 8px; /* Increase the padding to increase the size of the textbox */
-    border: none;
-    font-size: 16px;
-    margin-left: -250px;
-    padding-left: 30px;
-  }
-  
-  .task button {
-    background-color: #dc3545; /* Bootstrap red color */
-    color: white;
-    border: none;
-    padding: 5px 10px;
-    cursor: pointer;
-  }
-  
-  .cardFooter {
-    /* Add styles for the card footer */
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    padding: 10px; /* Adjust padding as needed */
-  }
-  
-  .closeButton {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    cursor: pointer;
-    
-  }
-  /* ToDoCard.module.css */
-
-/* ToDoCard.module.css */
-
-/* ToDoCard.module.css */
-/* ToDoCard.module.css */
-
-.priority {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(230, 222, 222, 0.5); /* Semi-transparent black */
+  z-index: 1000; /* Ensure it's above other elements */
   display: flex;
   align-items: center;
+  justify-content: center;
 }
 
-.circle {
-  width: 10px;
-  height: 10px;
-  border-radius: 50%;
-  margin-right: 5px;
+.toDoCard {
+  background: white;
+  border-radius: 20px;
+  padding-top: 20px; /* Adjusted padding top */
+  padding-bottom: 60px; /* Adjusted padding bottom */
+  padding-left: 25px; /* Adjusted padding left */
+  padding-right: 15px; /* Adjusted padding right */
+  min-width: 200px; /* Reduced minimum width */
+  min-height: 500px; /* Reduced minimum height */
+  z-index: 1001; /* Ensure it's above the backdrop */
+  position: relative;
 }
 
-.priorityButton {
-  font-family: Poppins;
-  font-size: 14px;
-  font-weight: 500;
-  line-height: 21px;
-  letter-spacing: 0em;
-  text-align: right; /* Align text to the right */
-  display: flex;
-  align-items: center; /* Center align items vertically */}
-/* ToDoCard.module.css */
 
+.cardHeader,
+.cardContent,
 .cardFooter {
-  /* Add styles for the card footer */
-  margin-top: auto; /* Ensure it sticks to the bottom */
-  
+  /* Add styles for different sections of the card */
+  margin-bottom: 20px;
+  font: Inter;
+}
+.cardHeader input {
+  height: 40px; /* Increase the height of the input field */
+  width: 100%;
+  padding: 5px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  background-color: #FFFFFF;
+  border-radius: 10px;
+}
+label {
+  display: block;
+  margin-bottom: 5px;
 }
 
-.bottomButtons {
-  /* Styles for the bottom buttons */
+label::after {
+  content: " *";
+  color: red;
+}
+ /* ************* Title ************** */
+input {
+  width: 100%;
+  padding: 5px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc; /* Add border for better separation */
+   background-color: #FFFFFF;
+   border-radius: 10px;
+
+}
+ /* ************* Priority************** */
+/* 2. Priority button should get selected once hovered and clicked */
+.priorityOptions {
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  margin-bottom: 10px; /* Add margin to separate from the checklist */
+  gap: 10px;
 }
 
-
-.plusbutton{
-  align-items: left;
+.priorityOptions label {
+  margin-right: 10px;
 }
 
-/* ToDoCard.module.css */
-
-.actionButtons button {
+.priorityOptions button {
   background-color: #FFFFFF;
-  color: #CF3636;
-  border: 1px solid #CF3636; /* Add border in red color */
-  padding: 10px 20px; /* Adjust padding */
+
+  color:#767575;
+   width: 150px;
+  border: none;
+  padding: 5px;
   cursor: pointer;
-  margin-left: 10px; /* Add margin between buttons */
-  border-radius: 5px; /* Add border radius */
-  width: 150px; /* Set fixed width for both buttons */
-  border-radius: 10px;
-  transition: background-color 0.3s; /* Smooth transition for background color */
+  border: 1px solid #E2E2E2;
+  border-radius:10px ; 
 }
 
-.actionButtons button:hover {
-  background-color: #17A2B8; /* Change background color to blue when hovered */
-  color: white; /* Change text color to white when hovered */
-  border-color: white; /* Change border color to white when hovered */
+.priorityOptions button:hover,
+.priorityOptions button:active {
+  background-color: #EEECEC; /* Darker shade on hover or click */
+}
+
+ /* ************* task ************** */
+ .checklist {
+  display: flex;
+  margin-bottom: 16px;
+}
+
+.checklist label {
+  font-weight: bold;
+  margin-right: 8px;
+}
+
+.addNewTask {
+  margin-top: 10px;
+  display: flex;
+  flex-direction: column; /* Reverse the order of new tasks */
+  margin-left: 0px;
+
+
 }
 
 
-.actionButtons button:last-child:hover {
-  background-color: #17A2B8; /* Change background color to blue when hovered */
-  color: white; /* Change text color to white when hovered */
-  border-color: white; /* Change border color to white when hovered */
-}
-.button {
-  background-color: #FFFFFF;
-  color: #CF3636;
-  border: 1px solid #CF3636; /* Add border in red color */
-  padding: 10px 20px; /* Adjust padding */
-  cursor: pointer;
-  margin-left: 10px; /* Add margin between buttons */
-  border-radius: 5px; /* Add border radius */
-  width: 150px; /* Set fixed width for both buttons */
-  border-radius: 10px;
-  transition: background-color 0.3s; 
-}
-.button.hover {
-  background-color: #17A2B8; /* Change background color to blue when hovered */
-  color: white; /* Change text color to white when hovered */
-  border-color: white; /* Change border color to white when hovered */
-
-}
 .task {
   display: flex;
   align-items: center;
-  margin-bottom: 8px;
-  border-radius: 10px;
-}
-
-.task input[type="checkbox"] {
-  margin-right: 16px;
-  margin-left: -230px;
-  margin-top: 0;
-  
+  margin-top: 0px;
+  border: 1px solid #ccc; /* Add border for better separation */
+  padding: 15x; /* Add padding for better spacing */
 }
 
 .task input[type="text"] {
   flex-grow: 1;
-  padding: 4px;
+padding: 4px;
+border: none;
+font-size: 16px;
+}
+.task input[type="checkbox"] {
+  margin-right: 5px;
+}
+.addNewTask input[type="text"] {
+  flex-grow: 1;
+  padding: 8px; /* Increase the padding to increase the size of the textbox */
   border: none;
   font-size: 16px;
   margin-left: -250px;
@@ -281,21 +141,167 @@
 }
 
 .task button {
-  margin-left: 10px;
-  padding: 4px;
-  background: none;
+  background-color: #dc3545; /* Bootstrap red color */
+  color: white;
   border: none;
-  font-size: 16px;
+  padding: 5px 10px;
   cursor: pointer;
-  color: #f00;
+}
+
+.cardFooter {
+  /* Add styles for the card footer */
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  padding: 10px; /* Adjust padding as needed */
+}
+
+.closeButton {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  cursor: pointer;
+  
+}
+/* ToDoCard.module.css */
+
+/* ToDoCard.module.css */
+
+/* ToDoCard.module.css */
+/* ToDoCard.module.css */
+
+.priority {
+display: flex;
+align-items: center;
+}
+
+.circle {
+width: 10px;
+height: 10px;
+border-radius: 50%;
+margin-right: 5px;
+}
+
+.priorityButton {
+font-family: Poppins;
+font-size: 14px;
+font-weight: 500;
+line-height: 21px;
+letter-spacing: 0em;
+text-align: right; /* Align text to the right */
+display: flex;
+align-items: center; /* Center align items vertically */}
+/* ToDoCard.module.css */
+
+.cardFooter {
+/* Add styles for the card footer */
+margin-top: auto; /* Ensure it sticks to the bottom */
+
+}
+
+.bottomButtons {
+/* Styles for the bottom buttons */
+display: flex;
+align-items: center;
+justify-content: space-between;
+}
+
+
+.plusbutton{
+align-items: left;
+}
+
+/* ToDoCard.module.css */
+
+.actionButtons button {
+background-color: #FFFFFF;
+color: #CF3636;
+border: 1px solid #CF3636; /* Add border in red color */
+padding: 10px 20px; /* Adjust padding */
+cursor: pointer;
+margin-left: 10px; /* Add margin between buttons */
+border-radius: 5px; /* Add border radius */
+width: 150px; /* Set fixed width for both buttons */
+border-radius: 10px;
+transition: background-color 0.3s; /* Smooth transition for background color */
+}
+
+.actionButtons button:hover {
+background-color: #17A2B8; /* Change background color to blue when hovered */
+color: white; /* Change text color to white when hovered */
+border-color: white; /* Change border color to white when hovered */
+}
+
+
+.actionButtons button:last-child:hover {
+background-color: #17A2B8; /* Change background color to blue when hovered */
+color: white; /* Change text color to white when hovered */
+border-color: white; /* Change border color to white when hovered */
+}
+.button {
+background-color: #FFFFFF;
+color: #CF3636;
+border: 1px solid #CF3636; /* Add border in red color */
+padding: 10px 20px; /* Adjust padding */
+cursor: pointer;
+margin-left: 10px; /* Add margin between buttons */
+border-radius: 5px; /* Add border radius */
+width: 150px; /* Set fixed width for both buttons */
+border-radius: 10px;
+transition: background-color 0.3s; 
+}
+.button.hover {
+background-color: #17A2B8; /* Change background color to blue when hovered */
+color: white; /* Change text color to white when hovered */
+border-color: white; /* Change border color to white when hovered */
+
+}
+.task {
+display: flex;
+align-items: center;
+margin-bottom: 8px;
+border-radius: 10px;
+}
+
+.task input[type="checkbox"] {
+margin-right: 16px;
+margin-left: -230px;
+margin-top: 0;
+
+}
+.task input[type="text"]:focus {
+  outline: none; /* Remove the default focus outline */
+  border-color: #ccc; /* Set the border color to desired color */
+}
+.task input[type="text"] {
+flex-grow: 1;
+padding: 4px;
+border: none;
+font-size: 16px;
+margin-left: -250px;
+padding-left: 30px;
+}
+
+.task button {
+margin-left: 10px;
+padding: 4px;
+background: none;
+border: none;
+font-size: 16px;
+cursor: pointer;
+color: #f00;
 
 }
 .react-datepicker {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+position: absolute;
+top: 50%;
+left: 50%;
+transform: translate(-50%, -50%);
 }
 .react-datepicker {
-  z-index: 1000;
+z-index: 1000;
+}
+.selectedPriority {
+background-color: #EEECEC;
 }

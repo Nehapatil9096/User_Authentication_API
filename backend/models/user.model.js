@@ -67,7 +67,7 @@ const userSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
-  cards: [cardSchema],
+  cards: [cardSchema], // Using the cardSchema to define the structure of cards
 });
 
 const User = mongoose.model('User', userSchema);

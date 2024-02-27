@@ -5,9 +5,14 @@
     height: 100vh; /* Set height to 100vh */
     margin-left: 0px; /* Remove left margin */
     overflow-x: auto; /* Enable horizontal scrolling */
+    background-color:  #EEF2F5;
+    
 
 }
-  
+.whiteBackground {
+  background-color: white;
+}
+
   .topLeftText {
     margin-bottom: 20px;
   }
@@ -20,70 +25,179 @@
   .boardText {
     font-size: 2rem;
     color: #555;
-    padding-top: 20px; /* Adjust the value as needed */
-
   }
   
   .topRight {
     display: flex;
-    align-items: center;
-    justify-content: space-between;
-    margin-bottom: 20px;
+    justify-content: space-between; /* Aligns items to the start and end of the container */
+    align-items: center; /* Aligns items vertically */
   }
   
   .currentDate {
     font-size: 1rem;
-    color: #ffffff;
+    color: #777;
+    
   }
   
   .filterDropdown {
     margin-left: 10px;
-    background-color: #ffffff;
-    position: relative; /* Set position to relative */
-
-
+    display: flex;
+    justify-content: space-between; /* Aligns items to the start and end of the container */
+    align-items: center; 
   }
   
   .filterDropdown select {
     padding: 8px;
     font-size: 0.9rem;
-    background-color: #ffffff;
-
-  }
-  .filterDropdown select:focus {
-    outline: none; /* Remove default focus outline */
-  }
-  .filterDropdown .dropdownContent {
-    position: absolute;
-    top: 100%; /* Position the dropdown below the button */
-    left: 0;
-    background-color: #ffffff;
-    border: 1px solid #ccc; /* Add border for dropdown */
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Add shadow for dropdown */
-    z-index: 1; /* Ensure dropdown appears above other content */
   }
   
   .boardSections {
     margin-top: 20px;
-    justify-content: space-between;
     display: flex;
-    width: 80%;
-
     overflow-y: auto; /* Enable horizontal scrolling for sections */
+    
   }
   
   .boardSection {
     flex: 0 0 300px; /* Fixed width for each section */
-    background-color: #fff;
-  border: 1px solid #ddd;
+    
+    margin-right: 20px; /* Adjust as needed */
+    /* Add additional styling for each board section if necessary */
+  }
+ 
+/* Add styles for the scrollable todo section */
+.scrollableTodoSection {
+  max-height: 500px; /* Set the maximum height according to your design */
+  overflow-y: auto;
+}
+/* Styles for the cards similar to ToDo card styling */
+/* Styles for the cards similar to ToDo card styling */
+.card {
+  background-color: #fff; /* Set background color */
+  border-radius: 20px; /* Add border-radius for rounded corners */
+  padding: 15px; /* Add padding for better spacing */
+  margin-bottom: 20px; /* Add margin to separate cards */
+  position: relative; /* Relative positioning for absolute elements inside the card */
+}
+.cardButtons{
+  padding: 5px 10px;
+  margin-right: 5px; /* Adjust spacing between buttons */
   border-radius: 5px;
+  cursor: pointer;
+}
+/* Add these styles in BoardPage.module.css or any other appropriate CSS file */
+
+/* Style for individual buttons */
+/* Add these styles in BoardPage.module.css or any other appropriate CSS file */
+
+/* Style for individual buttons */
+/* Add these styles in BoardPage.module.css or any other appropriate CSS file */
+
+/* Style for individual buttons */
+.backlogButton,
+.inProgressButton,
+.doneButton,
+.toDoButton {
+  padding: 5px 10px;
+  margin-right: 5px; /* Adjust spacing between buttons */
+  border: 1px solid #CCCCCC; /* Example border */
+  border-radius: 5px;
+  cursor: pointer;
+  margin-left: 10px;
+}
+
+/* Common styles for all buttons */
+.cardButton {
+  cursor: pointer;
+  background-color: #767575; /* Dark gray */
+  padding: 5px 10px;
+  margin-right: 5px; /* Adjust spacing between buttons */
+  border: 1px solid #CCCCCC; /* Example border */
+  border-radius: 5px;
+  margin-left: 10px;
+
+}
+
+.cardButton:hover {
+  opacity: 0.8; /* Reduce opacity on hover */
+}
+.dueDate {
+  background-color:  #CF3636;
+  ; /* Dark gray */
+  padding: 5px 10px;
+  margin-right: 5px; /* Adjust spacing between buttons */
+  border: 1px solid #CCCCCC; /* Example border */
+  border-radius: 5px;
+  cursor: pointer;
+  margin-left: 10px;
+  color: #FFFFFF;
+}
+.checklist button {
+  background: none;
+  border:5px ;
+  cursor: pointer;
+}
+
+.checklist button::after {
+  content: '\25BC'; /* Unicode character for down arrow */
+  margin-left: 5px;
+  transition: transform 0.3s ease; /* Add a smooth transition for the arrow */
+}
+
+.checklist.collapsed button::after {
+  transform: rotate(-90deg); /* Rotate arrow when collapsed */
+}
+
+.card h2,
+.card p {
+  margin-bottom: 10px;
+}
+
+.card ul {
+  list-style: none;
+  padding: 0;
+}
+
+.card li {
+  margin-bottom: 5px;
+}
+
+.cardFooter {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
   padding: 10px;
-  margin: 10px;
-  width: 20%
-  }
-  .boardSectionsContainer {
-    background-color: #f0f0f0; /* Grey background color */
-    padding: 20px; /* Add padding for spacing */
-  }
-  
-  
+}
+
+.closeButton {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  cursor: pointer;
+}
+.menuContainer {
+  position: relative;
+}
+
+.menuButton {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  cursor: pointer;
+}
+
+.menuPopup {
+  position: absolute;
+  top: 30px;
+  right: 10px;
+  background-color: rgb(245, 239, 239);
+  border: 1px solid #080808;
+  box-shadow: 0 0 5px rgba(160, 159, 159, 0.1);
+  z-index: 1000;
+}
+
+
+.menuPopup button:hover {
+  background-color: #eee;
+}

@@ -8,25 +8,15 @@ import AnalyticsPage from "./pages/analytics/AnalyticsPage";
 import SettingsPage from "./pages/settings/SettingsPage"; 
 import { Toaster } from "react-hot-toast";
 import { useAuthContext } from "./context/AuthContext";
-import React, { useEffect } from 'react';
 
 function App() {
-  const { authUser, setAuthUser } = useAuthContext();
+  const { authUser } = useAuthContext();
 
-  // Function to initialize authentication state from local storage
-  const initializeAuth = () => {
-    const storedUser = localStorage.getItem("authUser");
-    if (storedUser) {
-      setAuthUser(JSON.parse(storedUser));
-    }
-  };
-
-  useEffect(() => {
-    initializeAuth(); // Call the initialization function when the component mounts
-  }, []); // Empty
   return (
     <div className="app">
+
       <div className="main-content">
+
         <Routes>
           <Route
             path="/"

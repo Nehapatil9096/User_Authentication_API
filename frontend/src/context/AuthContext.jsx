@@ -6,7 +6,6 @@ export const AuthContext = createContext();
 export const useAuthContext = () => {
   return useContext(AuthContext);
 };
-
 export const AuthContextProvider = ({ children }) => {
   const [authUser, setAuthUser] = useState(JSON.parse(localStorage.getItem("chat-user")) || null);
 
@@ -15,11 +14,31 @@ export const AuthContextProvider = ({ children }) => {
     authUser,
     setAuthUser,
     setAuthUserData: (userData) => {
+      console.log("Incoming userData:", userData);
+
+      // Merge existing cards with new cards based on unique identifier (_id)
+      const mergedCards = authUser.cards ? [...authUser.cards] : [];
+
+      userData.cards.forEach((newCard) => {
+        const existingCardIndex = mergedCards.findIndex((card) => card._id === newCard._id);
+
+        if (existingCardIndex !== -1) {
+          // Replace existing card with new card
+          mergedCards[existingCardIndex] = newCard;
+        } else {
+          // Add new card to the array
+          mergedCards.push(newCard);
+        }
+      });
+
       // Update authUser state and localStorage
-      setAuthUser(userData);
-      localStorage.setItem("chat-user", JSON.stringify(userData));
+      const updatedUser = { ...authUser, cards: mergedCards };
+      setAuthUser(updatedUser);
+      localStorage.setItem("chat-user", JSON.stringify(updatedUser));
+      console.log("Updated authUser:", updatedUser);
     },
   };
 
   return <AuthContext.Provider value={contextValue}>{children}</AuthContext.Provider>;
 };
+

@@ -41,11 +41,10 @@ const SignUp = () => {
         <form onSubmit={handleSubmit} className='form'>
           <h1 className='heading'>Register</h1>
           <div className='input-container'>
-            <label className='label'>
-            </label>
+            
             <input
               type='text'
-              placeholder='John Doe'
+              placeholder='Name'
               className='w-full input input-bordered h-10'
               value={inputs.username}
               onChange={(e) => setInputs({ ...inputs, username: e.target.value })}
@@ -53,11 +52,10 @@ const SignUp = () => {
             <span className="icon" style={{ backgroundImage: `url(${userIcon})` }}></span>
           </div>
           <div className='input-container'>
-            <label className='label'>
-            </label>
+            
             <input
               type='email'
-              placeholder='johndoe@g.com'
+              placeholder='Email'
               className='w-full input input-bordered h-10'
               value={inputs.email}
               onChange={(e) => setInputs({ ...inputs, email: e.target.value })}
@@ -65,28 +63,30 @@ const SignUp = () => {
             <span className="icon" style={{ backgroundImage: `url(${userIcon})` }}></span>
           </div>
           <div className='input-container'>
-            <label className='label'>
-            </label>
+            
             <input
               type='password'
-              placeholder='Enter Password'
+              placeholder='Confirm Password'
               className='w-full input input-bordered h-10'
               value={inputs.password}
               onChange={(e) => setInputs({ ...inputs, password: e.target.value })}
             />
             <span className="icon" style={{ backgroundImage: `url(${lockIcon})` }}></span>
+            <img src="/src/photo/view.png" alt="Password View Icon" className="icon password" />
+
           </div>
           <div className='input-container'>
-            <label className='label'>
-            </label>
+            
             <input
               type='password'
-              placeholder='Confirm Password'
+              placeholder='Password'
               className='w-full input input-bordered h-10'
               value={inputs.confirmPassword}
               onChange={(e) => setInputs({ ...inputs, confirmPassword: e.target.value })}
             />
             <span className="icon" style={{ backgroundImage: `url(${lockIcon})` }}></span>
+            <img src="/src/photo/view.png" alt="Password View Icon" className="icon password" />
+
           </div>
           <div className='button-stack'>
             <button className='btn-block' disabled={loading}>
@@ -94,9 +94,12 @@ const SignUp = () => {
             </button>
             <p className="no-account-text">Already have an account?</p>
             <div className='register-link'>
-			<button className='login-button' disabled={loading}>
-    {loading ? <span className='loading loading-spinner'></span> : "Login"}
-</button>            </div>
+            <Link to="/login">
+          <button className='btn-block' disabled={loading}>
+            {loading ? <span className='loading loading-spinner'></span> : "Login"}
+          </button>
+        </Link>          
+        </div>
           </div>
         </form>
       </div>

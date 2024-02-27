@@ -1,139 +1,139 @@
 /* Dashboard.module.css */
 
 .dashboard {
-    display: flex;
-    background-color: #FFFFFF;
+  display: flex;
+  background-color: #FFFFFF;
 }
 
 .sidebar {
-    flex: 1; /* Set flex property to 1 */
-    height: 100vh;
-    background-color: #FFFFFF; /* Sidebar background color */
-    color: #1c1a1a; /* Sidebar text color */
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    padding: 20px;
-    z-index: 1000; /* Adjust as needed */
-    border-right: 1px solid #EDF5FE;
+  flex: 1; /* Set flex property to 1 */
+  height: 100vh;
+  background-color: #FFFFFF; /* Sidebar background color */
+  color: #1c1a1a; /* Sidebar text color */
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 20px;
+  z-index: 1000; /* Adjust as needed */
+  border-right: 1px solid #EDF5FE;
 }
 .content {
-    flex: 6; /* Set flex property to 4 */
-    height: 100vh;
-    overflow-y: hideen; /* Add scrollbar if content overflows */
-    padding: 20px;
-    margin: 0; /* Remove margin */
+  flex: 6; /* Set flex property to 4 */
+  height: 100vh;
+  overflow-y: hideen; /* Add scrollbar if content overflows */
+  padding: 20px;
+  margin: 0; /* Remove margin */
 
 }
 
 .brand {
-    font-size: 1.0rem;
-    margin-bottom: 10px; /* Adjust as needed */
-    font: Poppins;
-    color: #000000;
-    
+  font-size: 1.0rem;
+  margin-bottom: 10px; /* Adjust as needed */
+  font: Poppins;
+  color: #000000;
+  
 
 }
 
 .brandText {
-    font-size: 0.2rem;
-    margin-top: 50px;
-    margin-bottom: 10px;
-    font-weight: 100;
+  font-size: 0.2rem;
+  margin-top: 50px;
+  margin-bottom: 10px;
+  font-weight: 100;
 }
 
 /* Add this style to ensure vertical stacking */
 nav {
-    display: flex;
-    flex-direction: column;
+  display: flex;
+  flex-direction: column;
 }
 
 .sidebarButton1 {
-   margin-top:25px ;
-    padding: 10px;
-    display: flex;
-  align-items: center; /* Align items vertically */
+ margin-top:25px ;
+  padding: 10px;
+  display: flex;
+align-items: center; /* Align items vertically */
 
-    margin-bottom: 10px;
-    text-decoration: none;
-    color: #0a0909; /* Sidebar button text color */
-    transition: background-color 0.3s;
+  margin-bottom: 10px;
+  text-decoration: none;
+  color: #0a0909; /* Sidebar button text color */
+  transition: background-color 0.3s;
 }
 .sidebarButton2 {
-  margin-top:10px ;
-   padding: 10px;
-   display: flex;
-  align-items: center; /* Align items vertically */
+margin-top:10px ;
+ padding: 10px;
+ display: flex;
+align-items: center; /* Align items vertically */
 
-   margin-bottom: 10px;
-   text-decoration: none;
-   color: #0a0909; /* Sidebar button text color */
-   transition: background-color 0.3s;
+ margin-bottom: 10px;
+ text-decoration: none;
+ color: #0a0909; /* Sidebar button text color */
+ transition: background-color 0.3s;
 }
 .sidebarButton3 {
-  margin-top:10px ;
-   padding: 10px;
-   display: flex;
-  align-items: center; /* Align items vertically */
+margin-top:10px ;
+ padding: 10px;
+ display: flex;
+align-items: center; /* Align items vertically */
 
-   margin-bottom: 10px;
-   text-decoration: none;
-   color: #0a0909; /* Sidebar button text color */
-   transition: background-color 0.3s;
+ margin-bottom: 10px;
+ text-decoration: none;
+ color: #0a0909; /* Sidebar button text color */
+ transition: background-color 0.3s;
 }
 
 .sidebarButton1:hover {
-    background-color: #EDF5FE;
+  background-color: #EDF5FE;
 }
 .sidebarButton2:hover {
-  background-color: #EDF5FE;
+background-color: #EDF5FE;
 }
 .sidebarButton3:hover {
-  background-color: #EDF5FE;
+background-color: #EDF5FE;
 }
 .icon {
-  margin-right: 10px; /* Adjust margin between icon and text */
+margin-right: 10px; /* Adjust margin between icon and text */
 }
 .active {
-    background-color: #ddd; /* Active sidebar button background color */
+  background-color: #ddd; /* Active sidebar button background color */
 }
 
 .logoContainer {
-    display: flex;
-    align-items: center;
-  }
-  
-  .logo {
-    width: 40px; /* Adjust the width as needed */
-    height: auto; /* Maintain aspect ratio */
-    margin-right: 10px; /* Add margin between the logo and text */
-  }
-  
-  .brand {
-    font-size: 1.2rem; /* Adjust font size as needed */
-  }
+  display: flex;
+  align-items: center;
+}
+
+.logo {
+  width: 29px; /* Adjust the width as needed */
+  height: auto; /* Maintain aspect ratio */
+  margin-right: 10px; /* Add margin between the logo and text */
+}
+
+.brand {
+  font-size: 1.2rem; /* Adjust font size as needed */
+}
 .logoutConfirmation {
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  background-color: white;
-  padding: 20px;
-  border-radius: 5px;
-  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-  z-index: 1000;
+position: fixed;
+top: 50%;
+left: 50%;
+transform: translate(-50%, -50%);
+background-color: white;
+padding: 20px;
+border-radius: 5px;
+box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+z-index: 1000;
 }
 
 .logoutConfirmation p {
-  margin-bottom: 10px;
+margin-bottom: 10px;
 }
 
 .logoutConfirmation button {
-  padding: 10px 20px;
-  margin-right: 10px;
-  cursor: pointer;
+padding: 10px 20px;
+margin-right: 10px;
+cursor: pointer;
 }
 
 .logoutConfirmation button:last-child {
-  margin-right: 0;
+margin-right: 0;
 }

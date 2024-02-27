@@ -1,215 +1,175 @@
 /* index.css */
 
-/* Variables */
-:root {
-    --default-font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Ubuntu, "Helvetica Neue", Helvetica, Arial, "PingFang SC", "Hiragino Sans GB", "Microsoft Yahei UI", "Microsoft Yahei", "Source Han Sans CN", sans-serif;
-  }
-  
-  /* Main Container */
-  .main-container {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    min-height: 100vh;
-    background-color: #f3f4f6; /* Update with your desired background color */
-    overflow: hidden; /* Add this to remove scroll bars */
-  }
-  
-  /* Image */
-  .image-container {
-    position: relative;
-    width: 60%; /* 60% of the page width */
-    height: 100vh; /* Same height as the viewport */
-    top: 0;
-    left: 0;
-    background-color: #17a2b8; /* Background color for left side */
-    overflow: hidden; /* Hide overflow to prevent background color from shifting */
+/* Main Container */
+.main-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  background-color: #f3f4f6;
+  overflow: hidden;
 }
-  .image {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    height: 50%;
-    background-size: cover;
-  }
-  /* Back Image */
+
+/* Image Container */
+/* index.css */
+
+/* Image Container */
+.image-container {
+  position: relative;
+  width: 50%; /* Adjusted width for smaller screens */
+  height: 100vh;
+  top: 0;
+  left: 0;
+  background-color: #17a2b8;
+  overflow: hidden;
+}
+
+.image {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%; /* Adjusted height to cover the entire container */
+  background-size: cover;
+  background-position: center; /* Center the background image */
+}
+
 .centered-back-image {
-    position: fixed;
-    z-index: -1; /* Behind other content */
-    max-width: 35%; /* Adjust according to your image's width */
-    max-height: 45%; /* Adjust according to your image's height */
-    left: 5%; 
-    right: 5%; /* Example percentage value */
-    top: 10%; /* Example percentage value */
-    bottom: 10%; 
+  position: fixed;
+  z-index: -1;
+  width: 100%; /* Adjusted width to cover the entire viewport */
+  height: 100%; /* Adjusted height to cover the entire viewport */
+  top: 0;
+  left: 0;
 }
 
-  
-  /* Centered Photo */
-  .centered-photo {
-    max-width: 55%; /* Adjust according to your photo's width */
-    max-height: 50%; /* Adjust according to your photo's height */
-    margin: 0 auto;
-    z-index: 1; /* On top of the background image */
+/* Centered Photo */
+.centered-photo {
+  max-width: 100%; /* Adjusted width to ensure it fits within the container */
+  max-height: 100%; /* Adjusted height to ensure it fits within the container */
+  margin: 0 auto;
+  z-index: 1;
+}
 
-
-  }
-  /* index.css */
-
-/* index.css */
-
-/* Text Container */
-/* index.css */
 
 /* Text Container */
 .text-container {
   position: absolute;
-  bottom: 10px; /* Adjust as needed to position the text */
+  bottom: 10px;
   left: 50%;
   transform: translateX(-50%);
   text-align: center;
-  color: white; /* Text color */
+  color: white;
 }
 
-/* Welcome Text */
 .welcome-text {
-  font-size: 24px; /* Adjust the font size as needed */
+  font-size: 24px;
   font-weight: bold;
-  margin-bottom: 5px; /* Adjust the spacing between the heading and paragraph */
+  margin-bottom: 5px;
 }
 
-/* Instructions Text */
 .instructions {
-  font-size: 18px; /* Adjust the font size as needed */
-  margin-bottom: 105px; /* Adjust the spacing between the heading and paragraph */
-
+  font-size: 18px;
+  margin-bottom: 50px; /* Adjusted margin for smaller screens */
 }
 
-  
-  /* Groups Container */
-  .groups {
-    position: absolute;
-    width: 40%; /* 60% of the page width */
-    height: 100vh; /* Same height as the viewport */
-    top: 0;
-    left: 60%; /* Adjusted left position */
-    padding: 0px 0px 0px 20px; /* Padding */
-    gap: 44.1px; /* Gap between elements */
-    overflow: hidden; /* Remove scroll bars */
-    background-color: #FFFFFF; /* Background color for right side */
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    display: flex;
+/* Groups Container */
+.groups {
+  position: absolute;
+  width: 50%; /* Adjusted width for smaller screens */
+  height: 100vh;
+  top: 0;
+  left: 50%;
+  padding: 0px 0px 0px 20px;
+  gap: 22px; /* Adjusted gap for smaller screens */
+  overflow: hidden;
+  background-color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
 
-  }
 /* Form */
 form {
-    width: 100%; /* Full width of the container */
-    max-width: 400px; /* Maximum width of the form */
-    padding: 20px; /* Padding */
-    box-sizing: border-box; /* Include padding in width calculation */
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-top: 100px;
+  width: 90%; /* Adjusted width for smaller screens */
+  max-width: 400px;
+  padding: 20px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 50px; /* Adjusted margin for smaller screens */
 }
 
 /* Form Inputs */
 form input[type="text"],
 form input[type="password"] {
-    width: 400.39px; /* Same width as the buttons */
-    height: 50px;
-    margin-bottom: 10px; /* Gap between inputs */
-    padding: 2px;
-    border: 1.38px solid #D0D0D0; /* Add border with specified color and width */
-    background-color: transparent; /* Remove background color */
-
+  width: 100%;
+  height: 50px;
+  margin-bottom: 10px;
+  padding: 2px;
+  border: 1px solid #d0d0d0;
+  background-color: transparent;
 }
-
 
 /* Heading "Login" */
-    .heading {
-        /* Font */
-        font-family: "Open Sans", sans-serif;
-        font-size: 36px;
-        font-weight: 400;
-        color: #343434;
-        margin-top: -175px; /* Adjust margin to position the heading */
-        margin-left: 20px; /* Adjust margin to align with the 40% part */
-        margin-bottom: 60px;
-      }
-    /* Background color */
-  
-  
-  .button-stack {
-    display: flex;
-    flex-direction: column;
-    gap: 22.05px;
-    
-    width: 100%; /* Full width */
-    max-width: 400px; /* Maximum width of the buttons */
-    margin-top: 20px; /* Margin between inputs and buttons */
+.heading {
+  font-family: "Open Sans", sans-serif;
+  font-size: 36px;
+  font-weight: 400;
+  color: #343434;
+  margin-top: -175px;
+  margin-left: 20px;
+  margin-bottom: 40px; /* Adjusted margin for smaller screens */
 }
+
+/* Button Stack */
+.button-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+  width: 100%;
+  max-width: 400px;
+  margin-top: 20px;
+}
+
 .btn-block,
 .register-button {
-    width: 100%; /* Full width */
-    max-width: 400px; /* Maximum width of the buttons */
-    height: 45.38px;
-    padding: 10px 20px;
-    border-radius: 5px;
-    font-size: 16px;
-    background-color: #3498db;
-    color: #fff;
-    border: none;
-    cursor: pointer;
-    text-align: center;
-    border-radius: 222px; /* Adjust the value to make the corners more or less circular */
-
+  width: 100%;
+  max-width: 400px;
+  height: 45px; /* Adjusted height for smaller screens */
+  padding: 10px 20px;
+  border-radius: 5px;
+  font-size: 16px;
+  background-color: #3498db;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  text-align: center;
+  border-radius: 25px; /* Adjusted border radius for smaller screens */
 }
+
 .btn-block:hover,
 .register-button:hover {
-    background-color: #0f738a; /* Change hover color here if needed */
-    color: #fff;
+  background-color: #0f738a;
+  color: #fff;
 }
+
 /* Register Link */
 .register-link {
-    font-size: 14px;
-    margin-top: 10px;
+  font-size: 14px;
+  margin-top: 10px;
 }
-  
-  
-  
-  .btn {
-    width: 100%;
-    height: 55.13px;
-    background-color: #17A2B8; /* Change background color here */
-    color: #fff;
-    border: none;
-    cursor: pointer;
-    border-radius: 222px; /* Adjust the value to make the corners more or less circular */
 
-  }
-  
-  .btn:hover {
-    background-color: #0f738a; /* Change hover color here if needed */
-  }
-  
-  .no-account-text {
-    text-align: center;
-    margin-top: 10px;
-  }
-  /* Icon */
 /* Icon */
 .icon {
   position: absolute;
-  left: 10px; /* Adjust as needed */
+  left: 10px;
   top: 50%;
   transform: translateY(-50%);
-  width: 24px; /* Adjust as needed */
-  height: 24px; /* Adjust as needed */
+  width: 24px;
+  height: 24px;
   background-size: cover;
 }
 
@@ -217,29 +177,49 @@ form input[type="password"] {
 .input-container {
   position: relative;
 }
+
 .input-container .input {
-  padding-left: 40px; /* Adjust the padding as needed */
+  padding-left: 40px;
 }
 
-/* Label */
 .label {
   display: flex;
   align-items: center;
 }
+
 .input-container.password {
   position: relative;
 }
 
 .input-container.password .input {
-  padding-right: 40px; /* Adjust the padding as needed */
+  padding-right: 40px;
 }
 
 .icon.password {
   position: absolute;
-  left: calc(100% - 40px); /* Adjust as needed */
+  left: calc(100% - 40px);
   top: 50%;
   transform: translateY(-50%);
-  width: 24px; /* Adjust as needed */
-  height: 24px; /* Adjust as needed */
+  width: 24px;
+  height: 24px;
   background-size: cover;
+}
+
+/* Media Queries */
+@media only screen and (max-width: 768px) {
+  /* Adjust styles for tablets and smaller screens */
+  .main-container {
+    flex-direction: column;
+  }
+  
+  .image-container,
+  .groups {
+    width: 100%;
+    height: auto;
+  }
+  
+  .image,
+  .centered-photo {
+    height: auto;
+  }
 }
