@@ -1,6 +1,8 @@
 // routes/user.routes.js
 
 import express from "express";
+import { getSharedCard } from "../controllers/sharedcard.controller.js"; // Import the new controller function
+
 import protectRoute from "../middleware/protectRoute.js";
 import { getUsersForSidebar, getUserData, updateUser, getUserCards, getOneCard, deleteCard, passUpdate } from "../controllers/user.controller.js"; // Include getUserCards
 import { moveCardToSection } from "../controllers/card.controller.js";
@@ -16,5 +18,6 @@ router.post("/update", protectRoute, updateUser);//Add new card to  user's colle
 router.delete("/cards/:cardId", protectRoute, deleteCard);// Delete a card  from the users collection
 
 router.put("/settings", protectRoute, passUpdate);//Add new card to  user's collection
+router.get("/shared-card/:cardId", getSharedCard);
 
 export default router;
