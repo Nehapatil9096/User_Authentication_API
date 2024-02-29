@@ -29,7 +29,7 @@
   
   .topRight {
     display: flex;
-    justify-content: space-between; /* Aligns items to the start and end of the container */
+    justify-content: flex-end; /* Aligns items to the start and end of the container */
     align-items: center; /* Aligns items vertically */
   }
   
@@ -38,12 +38,20 @@
     color: #777;
     
   }
+  .dateAndFilter {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end; /* Align items to the right within the column */
+    margin-left: 10px; /* Add margin for spacing */
+  }
   
   .filterDropdown {
     margin-left: 10px;
     display: flex;
     justify-content: space-between; /* Aligns items to the start and end of the container */
-    align-items: center; 
+    align-items: center;
+    margin-top: 15px; /* Add margin to separate the date and filter dropdown */
+
   }
   
   .filterDropdown select {
@@ -52,15 +60,17 @@
   }
   
   .boardSections {
-    margin-top: 20px;
+    margin-top: 0px;
     display: flex;
     overflow-y: auto; /* Enable horizontal scrolling for sections */
-    
+    background: white;
+
   }
   
   .boardSection {
     flex: 0 0 300px; /* Fixed width for each section */
-    
+    background: #EEF2F5;
+border-radius: 10px;
     margin-right: 20px; /* Adjust as needed */
     /* Add additional styling for each board section if necessary */
   }
@@ -77,13 +87,20 @@
   border-radius: 20px; /* Add border-radius for rounded corners */
   padding: 15px; /* Add padding for better spacing */
   margin-bottom: 20px; /* Add margin to separate cards */
-  position: relative; /* Relative positioning for absolute elements inside the card */
+  position: centre; /* Relative positioning for absolute elements inside the card */
+  width: 250px;
+  margin-left: 20px;
+  margin-top: 4px;
 }
 .cardButtons{
   padding: 5px 10px;
   margin-right: 5px; /* Adjust spacing between buttons */
   border-radius: 5px;
   cursor: pointer;
+  font-size: 10px;
+  display: flex;
+  margin-top: 10px; /* Add margin to separate from other card details */
+
 }
 /* Add these styles in BoardPage.module.css or any other appropriate CSS file */
 
@@ -110,33 +127,71 @@
 .cardButton {
   cursor: pointer;
   background-color: #767575; /* Dark gray */
-  padding: 5px 10px;
+  padding: 5px 3px;
   margin-right: 5px; /* Adjust spacing between buttons */
   border: 1px solid #CCCCCC; /* Example border */
-  border-radius: 5px;
-  margin-left: 10px;
-
+  border-radius: 10px;
+  margin-left: 20px;
+  height: 30px;
+  
 }
 
 .cardButton:hover {
   opacity: 0.8; /* Reduce opacity on hover */
 }
 .dueDate {
-  background-color:  #CF3636;
-  ; /* Dark gray */
+  display: inline-block; /* Ensure inline alignment */
+  background-color: #CF3636; /* Dark red */
   padding: 5px 10px;
   margin-right: 5px; /* Adjust spacing between buttons */
   border: 1px solid #CCCCCC; /* Example border */
-  border-radius: 5px;
+  border-radius: 10px;
   cursor: pointer;
-  margin-left: 10px;
+  margin-left: 20px; /* Adjust to align with card buttons */
   color: #FFFFFF;
+  font-size: 10px;
+}
+
+.noDueDate {
+  display: inline-block; /* Ensure inline alignment */
+  background-color: white;
+  color: black; /* Adjust text color as needed */
+  border: none; /* Remove border */
 }
 .checklist button {
   background: none;
   border:5px ;
   cursor: pointer;
 }
+.priorityContainer {
+  display: flex;
+  align-items: center;
+  margin-top: 4px; /* Adjust as needed */
+}
+
+.circle {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  margin-right: 5px; /* Adjust as needed for spacing */
+  margin-bottom: 12px;
+}
+
+.priorityText {
+  font-size: 7px;
+  font-family: 'Poppins', sans-serif; /* Use the Poppins font */
+  color: #333;
+  margin: 0;
+  text-transform: uppercase; /* Display text in all caps */
+}
+.titleText {
+  font-size: 20px;
+  font-family: 'Poppins', sans-serif; /* Use the Poppins font */
+  color: #000000;
+  margin: 0;
+  font-weight: bold;
+}
+
 
 .checklist button::after {
   content: '\25BC'; /* Unicode character for down arrow */
@@ -182,22 +237,220 @@
 
 .menuButton {
   position: absolute;
-  top: 10px;
-  right: 10px;
+  top: 0px;
+  right: 0px;
+  left: 200px;
   cursor: pointer;
+  font-weight: bold; /* Add bold font weight */
+  font-size: 1.2em; /* Adjust font size as needed */
 }
 
+
+
+.menuPopup button:hover {
+  background-color: #f0f0f0;
+}
+/* Menu button */
+
+/* Menu popup */
 .menuPopup {
   position: absolute;
   top: 30px;
   right: 10px;
-  background-color: rgb(245, 239, 239);
-  border: 1px solid #080808;
-  box-shadow: 0 0 5px rgba(160, 159, 159, 0.1);
-  z-index: 1000;
+  z-index: 100; /* Ensure the menu is on top of other elements */
+  background-color: #fff; /* Background color of the menu */
+  border: 1px solid #ccc; /* Border */
+  border-radius: 4px; /* Rounded corners */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Box shadow for a subtle effect */
+}
+
+/* Menu options */
+.menuPopup button {
+  display: block;
+  width: 100%;
+  padding: 8px 12px;
+  border: none;
+  background-color: transparent; /* Transparent background */
+  cursor: pointer;
+  transition: background-color 0.3s ease; /* Smooth transition */
+}
+
+.menuPopup button:hover {
+  background-color: #f0f0f0; /* Light background color on hover */
+}
+
+/* Optional: Add margin or padding to menu options */
+.menuPopup button + button {
+  margin-top: px; /* Add space between menu options */
 }
 
 
-.menuPopup button:hover {
-  background-color: #eee;
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modalContent {
+  background-color: white;
+  padding: 20px;
+  border-radius: 8px;
+}
+
+.modalButtons1 {
+  display: flex;
+  flex-direction: column; /* Change the direction to column */
+  margin-top: 20px;
+
+}
+.modalButtons2{
+  display: flex;
+  flex-direction: column; /* Change the direction to column */
+  margin-top: 20px;
+
+}
+.modalButtons button {
+  margin-right: 10px; /* Adjust spacing between buttons */
+}
+
+.deletepopup-button {
+  width: 100%;
+  max-width: 400px;
+  height: 45.38px;
+  padding: 10px 20px;
+  border-radius: 10px;
+  font-size: 16px;
+  background-color: rgb(156, 33, 33); /* Set background color to white */
+  color: #000; /* Set text color to black */
+  border: 1px solid red; /* Set border color to red */
+  cursor: pointer;
+  text-align: center;
+  transition: background-color 0.3s, color 0.3s, border-color 0.3s; /* Add transition for smooth hover effect */
+}
+
+.deletepopup-button:hover {
+  background-color: #17A2B8; /* Change background color to blue when hovered */
+  color: white; /* Change text color to white when hovered */
+  border-color: white; /* Change border color to white when hovered */
+}
+.boldEllipsis {
+  font-weight: bold;
+  font-size: 1.2em; /* You can adjust the font size as needed */
+}
+/* Assuming this is your existing styles for .checklist */
+/* Assuming this is your existing styles for .addNewTask input[type="text"] */
+.addNewTaskInput {
+  flex-grow: 1;
+  padding: 8px; /* Increase the padding to increase the size of the textbox */
+  border: none;
+  font-size: 16px;
+  margin-left: -250px;
+  padding-left: 30px;
+}
+
+/* Additional styles for checklist box and items */
+/* Add the following styles at the end of your existing CSS file */
+.checklist {
+  margin-top: 10px;
+}
+
+.checklistButton {
+  background-color: #3498db;
+  color: #fff;
+  border: none;
+  padding: 5px 10px;
+  cursor: pointer;
+}
+
+.checklistBox {
+  margin-top: 5px;
+}
+
+.checklistItem {
+  display: flex;
+  align-items: center;
+  margin-bottom: 5px;
+}
+
+.checklistItem input {
+  margin-right: 5px;
+}
+
+.addNewTaskInput {
+  margin-top: 5px;
+  padding: 5px;
+  width: 100%;
+}
+
+/* You can add more styles as needed */
+/* BoardPage.module.css */
+
+.checklistItem {
+  list-style-type: none;
+  margin-bottom: 8px;
+  
+}
+
+.checklistItem label {
+  display: flex;
+  align-items: center;
+  margin-right: 8px; /* Adjust margin between checkbox and text */
+
+  
+}
+
+.checklistItem input[type="checkbox"] {
+  margin-right: 8px;
+  width: 20px;
+  height: 20px;
+  border: 1px solid #ccc;
+  background-color: white;
+  border-radius: 15px;
+  
+  
+}
+
+.checklistItem input[type="checkbox"]:checked {
+  background-color: blue;
+}
+.checked{
+  background-color: 
+  #17A2B8;
+
+}
+/* Styles for displaying the checkmark */
+.checked,
+.unchecked {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+
+}
+
+
+.unchecked:before {
+  content: '';
+}
+
+/* Styles for displaying the checkmark */
+.checked:before {
+  content: '✔';
+  color: white; /* Set the color of the tick to white */
+}
+/* Additional Styles for the new structure */
+.checklistItem {
+  border: 1px solid grey; /* Add border around each checklist item */
+  padding: 8px; /* Add padding for spacing */
+  margin-bottom: 8px; /* Add margin bottom to separate items */
+  list-style-type: none; /* Remove default list style */
+  border-radius: 10px;
+  
 }

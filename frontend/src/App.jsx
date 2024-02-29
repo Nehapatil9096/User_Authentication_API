@@ -14,9 +14,8 @@ function App() {
 
   return (
     <div className="app">
-
+      <Dashboard/>
       <div className="main-content">
-
         <Routes>
           <Route
             path="/"

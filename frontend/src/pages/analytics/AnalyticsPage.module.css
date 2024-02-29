@@ -1,87 +1,98 @@
 .analytics {
-    display: flex;
-    flex-wrap: wrap;
-    width: 100%;
-    gap: 4px;
-    padding: 20px;
-    box-sizing: border-box;
-    font-size: medium;
-    margin-top: 70px;
-    border-radius: 5px;
-  }
-  
-  .analyticsSection {
-    flex-direction: column;
-    padding: 2px;
-    width: 500px;
-    font-size: 1.2rem;
-    font-family: Open Sans;
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  gap: 4px;
+  padding: 20px;
+  box-sizing: border-box;
+  font-size: medium;
+  margin-top: 70px;
+  border-radius: 5px;
+}
 
-  }
-  
-  .analyticsTitle {
-    margin-bottom: 10px;
-  }
-  
-  .analyticsValue {
-    text-align: center;
-  }
-  .analyticsContainer1{
-    display: flex;
-    flex-direction: column; /* Stack the items vertically */
-    font-family: Open Sans;
-    flex: 0 0 80%; /* Occupy 80% of available width */
-    margin-right: 10px; /* Add margin to separate from right side */
-  }
-  /* Analytics Container 1 (left side) */
-
-
-  
-  .analyticsSection {
-    margin-bottom: 2px; /* Add spacing between sections */
-    font-family: Open Sans;
-    background-color: #F9FCFF; 
-
-
-  }
-  
-  .analyticsContainer2 {
-    display: flex;
-    flex-direction: column; /* Stack the items vertically */
-    flex: 0 0 80%; /* Occupy 80% of available width */
-  margin-right: 10px; /* Add margin to separate from right side */
-  }
-  
-  .analyticsSection {
-    margin-bottom: 2px; /* Add spacing between sections */
-    font-family: Open Sans;
-
-  }
-  .ellipseImage {
-    width: 10px; /* Adjust the width of the image as needed */
-    height: auto; /* Maintain aspect ratio */
-    margin-right: 10px; /* Add spacing between the image and text */
-  }
-   
-
-.analyticsTitle {
-  /* Styles for the title */
-  font-size: 1.5rem; /* Adjust the font size */
-  margin-bottom: 10px; /* Add margin below the title */
+.analyticsSection {
+  flex-direction: column;
+  padding: 2px;
+  width: 500px;
+  font-size: 1.2rem;
   font-family: Open Sans;
 
+}
+.ellipseImage {
+  margin-right: 5px; /* Add spacing between the image and text */
+}
+.text {
+  display: flex; /* Use flexbox for the container */
+  align-items: center; /* Align items vertically in the center */
+  font-family: Open Sans;
+  justify-content: space-between; /* Ensure space between elements */
+  
+}
+
+.analyticsValue {
+font-weight: bold;
+  font-family: Open Sans;
+}
+
+.analyticsTitle {
+  margin-bottom: 10px;
+}
+.analyticsContainer1{
+  display: flex;
+  flex-direction: column; /* Stack the items vertically */
+  font-family: Open Sans;
+  flex: 0 0 80%; /* Occupy 80% of available width */
+  margin-right: 10px; /* Add margin to separate from right side */
+  flex: 1; /* Equal width for both containers */
+  margin-right: 20px; /* Adjust margin as needed */
+    background-color: #F9FCFF; /* Set the background color to light red */
+
+}
+/* Analytics Container 1 (left side) */
+.analyticsSection {
+  font-family: Open Sans;
+}
+
+.analyticsContainer2 {
+  display: flex;
+  flex-direction: column; /* Stack the items vertically */
+  flex: 0 0 80%; /* Occupy 80% of available width */
+margin-right: 10px; /* Add margin to separate from right side */
+flex: 1; /* Equal width for both containers */
+margin-right: 20px; /* Adjust margin as needed */
+background-color: #F9FCFF; /* Set the background color to light red */
+
+}
+
+.analyticsSection {
+  margin-bottom: 2px; /* Add spacing between sections */
+  font-family: Open Sans;
+
+}
+/* Combine .ellipseImage and .text into a single rule */
+
+
+.ellipseImage {
+  width: 10px; /* Adjust the width of the image as needed */
+  height: auto; /* Maintain aspect ratio */
+  margin-right: 5px; /* Add spacing between the image and text */
+}
+.analyticsTitle {
+/* Styles for the title */
+font-size: 1.5rem; /* Adjust the font size */
+margin-bottom: 10px; /* Add margin below the title */
+font-family: Open Sans;
 
 }
 /* AnalyticsPage.module.css */
 
 .leftContainer {
-  float: left; /* Float the left container to the left */
-  width: 50%; /* Set the width to 50% for equal distribution */
+float: left; /* Float the left container to the left */
+width: 50%; /* Set the width to 50% for equal distribution */
 }
 
 .rightContainer {
-  float: right; /* Float the right container to the right */
-  width: 50%; /* Set the width to 50% for equal distribution */
+float: right; /* Float the right container to the right */
+width: 50%; /* Set the width to 50% for equal distribution */
 }
 
-/* You may need to adjust the width and other styles according to your design */

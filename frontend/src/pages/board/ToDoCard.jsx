@@ -88,7 +88,7 @@ selectedPriority === "High" ? styles.selectedPriority : ""
 }`}
 onClick={() => handlePriorityClick("High")}
 >
-<div className={styles.circle} style={{ backgroundColor: "pink" }}></div>{" "}
+<div className={styles.circle} style={{ backgroundColor: "#FF2473" }}></div>{" "}
 High Priority
 </button>
 </div>
@@ -99,7 +99,7 @@ selectedPriority === "Moderate" ? styles.selectedPriority : ""
 }`}
 onClick={() => handlePriorityClick("Moderate")}
 >
-<div className={styles.circle} style={{ backgroundColor: "blue" }}></div>{" "}
+<div className={styles.circle} style={{ backgroundColor: "#18B0FF" }}></div>{" "}
 Moderate Priority
 </button>
 </div>
@@ -110,7 +110,7 @@ selectedPriority === "Low" ? styles.selectedPriority : ""
 }`}
 onClick={() => handlePriorityClick("Low")}
 >
-<div className={styles.circle} style={{ backgroundColor: "green" }}></div>{" "}
+<div className={styles.circle} style={{ backgroundColor: "#63C05B" }}></div>{" "}
 Low Priority
 </button>
 </div>
@@ -120,6 +120,8 @@ Low Priority
 <label>Checklist ({checklist.filter((task) => task.checked).length}/{checklist.length})</label>
 </div>
 {/* Line 4: Add New Task */}
+<div className={styles.checklistContainer}>
+
 <div className={styles.addNewTask}>
 {/* Render tasks */}
 {checklist.map((task, index) => (
@@ -131,6 +133,7 @@ onChange={() => toggleTaskCompletion(index)}
 />
 <input
 type="text"
+placeholder="Add a task"
 value={task.text}
 onChange={(e) => updateTaskText(index, e.target.value)}
 />
@@ -144,14 +147,19 @@ onChange={(e) => updateTaskText(index, e.target.value)}
 </div>
 </div>
 </div>
+</div>
 <div className={styles.cardFooter}>
 {/* Bottom: Select Due Date, Cancel, Save buttons */}
 <div className={styles.bottomButtons}>
 <DatePicker
-selected={dueDate}
-onChange={(date) => setDueDate(date)}
-placeholderText="Select Due Date"
+  selected={dueDate}
+  onChange={(date) => setDueDate(date)}
+  placeholderText="Select Due Date"
+  popperPlacement="right-start"
+
+  className={styles.customDatePicker} // Add a custom class
 />
+
 <div className={styles.actionButtons}>
 <button onClick={onClose}>Cancel</button>
 <button onClick={handleSave}>Save</button>

@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useAuthContext } from "../../context/AuthContext";
+import styles from "./AnalyticsPage.module.css";
+import ellipseImage from "/src/photo/Ellipse 3.png";
 
 const AnalyticsPage = () => {
   const { authUser, setAuthUserData } = useAuthContext();
@@ -17,24 +19,24 @@ const AnalyticsPage = () => {
     dueDateTasks: 0,
   });
 
- // Fetch user cards
- const fetchUserCards = async () => {
-  try {
-    // Make an API request to fetch user cards
-    const response = await fetch("/api/users/cards");
-    if (!response.ok) {
-      throw new Error("Failed to fetch cards from the server");
+  // Fetch user cards
+  const fetchUserCards = async () => {
+    try {
+      // Make an API request to fetch user cards
+      const response = await fetch("/api/users/cards");
+      if (!response.ok) {
+        throw new Error("Failed to fetch cards from the server");
+      }
+
+      // Parse the response data
+      const data = await response.json();
+
+      // Update state with the fetched cards
+      setCards(data.cards || []);
+    } catch (error) {
+      console.error("Error fetching user cards:", error.message);
     }
-
-    // Parse the response data
-    const data = await response.json();
-
-    // Update state with the fetched cards
-    setCards(data.cards || []);
-  } catch (error) {
-    console.error("Error fetching user cards:", error.message);
-  }
-};
+  };
 
   // Calculate analytics details on component mount or when cards change
   useEffect(() => {
@@ -129,15 +131,95 @@ const AnalyticsPage = () => {
 
   return (
     <div>
-      <h2>Analytics Page</h2>
-      <p>Total Backlog Tasks: {analyticsDetails.backlogTasks}</p>
-      <p>Total ToDo Tasks: {analyticsDetails.todoTasks}</p>
-      <p>Total In Progress Tasks: {analyticsDetails.inProgressTasks}</p>
-      <p>Total High Priority Tasks: {analyticsDetails.highPriorityTasks}</p>
-      <p>Total Moderate Priority Tasks: {analyticsDetails.moderatePriorityTasks}</p>
-      <p>Total Low Priority Tasks: {analyticsDetails.lowPriorityTasks}</p>
-      <p>Total Checked Tasks: {analyticsDetails.checkedTasks}</p>
-      <p>Total Due Date Tasks: {analyticsDetails.dueDateTasks}</p>
+      <div className={styles.analyticsTitle}>Analytics</div> {/* Add the title "Analytics" */}
+
+      <div className={styles.analytics}>
+        {/* Left Side Container */}
+        <div className={styles.analyticsContainer1}>
+          <div className={styles.analyticsSection}>
+            <div className={styles.analyticsTitle}>
+              <img src={ellipseImage} alt="Ellipse" className={styles.ellipseImage} />
+              <div className={styles.text}>
+              <p> Backlog Tasks:</p>
+    <span className={styles.analyticsValue}>{analyticsDetails.backlogTasks}</span>
+              </div>
+            </div>
+            <div className={styles.analyticsValue}></div>
+          </div>
+          <div className={styles.analyticsSection}>
+            <div className={styles.analyticsTitle}>
+              <img src={ellipseImage} alt="Ellipse" className={styles.ellipseImage} />
+              <div className={styles.text}>
+              <p> ToDo Tasks:</p>
+    <span className={styles.analyticsValue}>{analyticsDetails.todoTasks}</span>
+            </div>
+            </div>
+            <div className={styles.analyticsValue}></div>
+          </div>
+          <div className={styles.analyticsSection}>
+            <div className={styles.analyticsTitle}>
+              <img src={ellipseImage} alt="Ellipse" className={styles.ellipseImage} />
+              <div className={styles.text}>
+              <p> In Progress Tasks:</p>
+    <span className={styles.analyticsValue}>{analyticsDetails.inProgressTasks}</span>
+            </div>
+            </div>
+            <div className={styles.analyticsValue}></div>
+          </div>
+          <div className={styles.analyticsSection}>
+            <div className={styles.analyticsTitle}>
+              <img src={ellipseImage} alt="Ellipse" className={styles.ellipseImage} />
+              <div className={styles.text}>
+              <p> Checked Tasks:</p>
+    <span className={styles.analyticsValue}>{analyticsDetails.checkedTasks}</span>
+            </div>
+            </div>
+            <div className={styles.analyticsValue}></div>
+          </div>
+        </div>
+        {/* Right Side Container */}
+        <div className={styles.analyticsContainer2}>
+          <div className={styles.analyticsSection}>
+            <div className={styles.analyticsTitle}>
+              <img src={ellipseImage} alt="Ellipse" className={styles.ellipseImage} />
+              <div className={styles.text}>
+              <p> Low Priority Tasks:</p>
+    <span className={styles.analyticsValue}>{analyticsDetails.lowPriorityTasks}</span>
+             </div>
+            </div>
+          </div>
+          <div className={styles.analyticsSection}>
+            <div className={styles.analyticsTitle}>
+              <img src={ellipseImage} alt="Ellipse" className={styles.ellipseImage} />
+              <div className={styles.text}>
+              <p> Moderate Priority Tasks:</p>
+    <span className={styles.analyticsValue}>{analyticsDetails.moderatePriorityTasks}</span>
+            </div>
+            </div>
+            <div className={styles.analyticsValue}></div>
+          </div>
+          <div className={styles.analyticsSection}>
+            <div className={styles.analyticsTitle}>
+              <img src={ellipseImage} alt="Ellipse" className={styles.ellipseImage} />
+              <div className={styles.text}>
+              <p> High Priority Tasks:</p>
+    <span className={styles.analyticsValue}>{analyticsDetails.highPriorityTasks}</span>
+            </div>
+            </div>
+            <div className={styles.analyticsValue}></div>
+          </div>
+          <div className={styles.analyticsSection}>
+            <div className={styles.analyticsTitle}>
+              <img src={ellipseImage} alt="Ellipse" className={styles.ellipseImage} />
+              <div className={styles.text}>
+              <p> Due Date Tasks:</p>
+    <span className={styles.analyticsValue}>{analyticsDetails.dueDateTasks}</span>
+            </div>
+            </div>
+            <div className={styles.analyticsValue}></div>
+          </div>
+        </div>
+      </div>
     </div>
   );
 };

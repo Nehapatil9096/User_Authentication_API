@@ -21,7 +21,7 @@
   padding-bottom: 60px; /* Adjusted padding bottom */
   padding-left: 25px; /* Adjusted padding left */
   padding-right: 15px; /* Adjusted padding right */
-  min-width: 200px; /* Reduced minimum width */
+  min-width: 300px; /* Reduced minimum width */
   min-height: 500px; /* Reduced minimum height */
   z-index: 1001; /* Ensure it's above the backdrop */
   position: relative;
@@ -97,6 +97,7 @@ input {
  .checklist {
   display: flex;
   margin-bottom: 16px;
+  
 }
 
 .checklist label {
@@ -112,6 +113,7 @@ input {
 
 
 }
+
 
 
 .task {
@@ -225,6 +227,7 @@ border-radius: 5px; /* Add border radius */
 width: 150px; /* Set fixed width for both buttons */
 border-radius: 10px;
 transition: background-color 0.3s; /* Smooth transition for background color */
+
 }
 
 .actionButtons button:hover {
@@ -250,6 +253,7 @@ border-radius: 5px; /* Add border radius */
 width: 150px; /* Set fixed width for both buttons */
 border-radius: 10px;
 transition: background-color 0.3s; 
+margin-right: 30px;
 }
 .button.hover {
 background-color: #17A2B8; /* Change background color to blue when hovered */
@@ -298,10 +302,30 @@ position: absolute;
 top: 50%;
 left: 50%;
 transform: translate(-50%, -50%);
+
+
+
 }
 .react-datepicker {
 z-index: 1000;
+
 }
 .selectedPriority {
 background-color: #EEECEC;
+}
+.customDatePicker {
+  background-color: #FFFFFF;
+color: #E2E2E2;
+border: 1px solid #E2E2E2; /* Add border in red color */
+padding: 10px 20px; /* Adjust padding */
+cursor: pointer;
+margin-left: 10px; /* Add margin between buttons */
+border-radius: 5px; /* Add border radius */
+width: 150px; /* Set fixed width for both buttons */
+border-radius: 10px;
+transition: background-color 0.3s; 
+}
+.checklistContainer {
+  max-height: 200px; /* Adjust height as needed */
+  overflow-y: auto;
 }

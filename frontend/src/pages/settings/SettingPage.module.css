@@ -1,0 +1,142 @@
+/* pages/settings/SettingsPage.module.css */
+
+.settingsContainer {
+    display: flex;
+    flex-direction: column;
+    width: 300px;
+    margin: 0 auto; /* Center horizontally */
+    margin-top: 20px; /* Add margin to shift down */
+    padding: 20px;
+    box-sizing: border-box;
+    background-color: #ffffff;
+    right: 0;
+    margin-left: 50px;
+    margin-top: -10px;
+  }
+  .settingsTitle{
+    font-size: 22px;
+    font-style: Open Sans;
+  margin-bottom: 25px;
+  margin-top: -10px;
+  }
+  .settingsForm {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 20px; /* Add padding */
+    box-sizing: border-box; /* Ensure padding doesn't affect width */
+    background-color: #ffffff;
+    border: none; /* remove border */
+  }
+  
+  .label {
+    font-size: 1.2rem;
+    font-weight: bold;
+  }
+  
+  .input {
+    width: 100%;
+    box-sizing: border-box;
+    border: 1px solid #ccc; /* Add a border */
+    border-radius: 5px;
+    font-size: 1rem;
+    line-height: 1.9;
+    transition: border-color 0.3s ease;
+    width: calc(100% - 30px); /* Adjust width to accommodate icon */
+    padding: 10px 30px; /* Adjust padding to move placeholder text to the right */
+  }
+  
+  .input:focus {
+    outline: none; /* Remove the default focus outline */
+    border-color: #4caf50;
+  }
+  
+  .settingsButton {
+    width: 100%;
+    padding: 10px;
+    background-color: #17A2B8;
+    color: #fff;
+    border: none;
+    border-radius: 25px;
+    font-size: 15px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    height: 35px;
+    width: 350px;
+
+  }
+  
+  .settingsButton:hover {
+    background-color: #054c57;
+  }
+  /* SettingsPage.module.css */
+  
+  /* Input Container */
+  .settingsLabel {
+    position: relative;
+  }
+  
+  /* Icon */
+  .icon {
+    position: absolute;
+    left: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    margin-top: -15px;
+    size: 10px;
+  }
+  
+  
+  .icon.password {
+    position: absolute;
+    left: calc(100% - 40px); /* Adjust as needed */
+    top: 50%;
+    transform: translateY(-50%);
+    width: 24px; /* Adjust as needed */
+    height: 24px; /* Adjust as needed */
+    background-size: cover;
+  }
+  .settingsInput,
+  .settingsInputPassword {
+    height: 35px;
+    margin-top: -10px;
+    width: 350px;
+    border-radius: 7px;
+    position: relative;
+  }
+  .view{
+  margin-left: -100px;
+  }
+
+  /* Add these styles to your existing stylesheet */
+
+/* Styles for the label container */
+.labelContainer {
+  position: relative;
+  display: inline-block;
+}
+
+
+.input {
+  width: 100%;
+  box-sizing: border-box;
+  border: 1px solid #ccc; /* Add a border */
+  border-radius: 5px;
+  font-size: 1rem;
+  line-height: 1.5;
+  transition: border-color 0.3s ease;
+  width: calc(100% - 30px); /* Adjust width to accommodate icon */
+  padding: 10px 30px; /* Adjust padding to move placeholder text to the right */
+}
+/* Input Container */
+.inputContainer {
+  position: relative;
+}
+
+/* Icon */
+.icon {
+  position: absolute;
+  left: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+}

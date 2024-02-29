@@ -2,6 +2,10 @@ import React, { useState, useEffect } from "react";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useAuthContext } from "../../context/AuthContext";
+import styles from "./SettingPage.module.css";
+import lockIcon from "../../photo/lock.png";
+import nameIcon from "../../photo/name.png";
+import viewIcon from "../../photo/view.png";
 
 const SettingsPage = () => {
   const { authUser, setAuthUserData } = useAuthContext();
@@ -63,48 +67,80 @@ const SettingsPage = () => {
     }
   };
 
-  return (
-    <div>
-      <h2>Settings Page</h2>
+// Main Settings Page code
+return (
+  <div className={styles.settingsContainer}>
+    <h2 className={styles.settingsTitle}>Settings Page</h2>
 
-      <label>
-        Name:
-        <input
-          type="text"
-          value={userSettings.name}
-          onChange={(e) => setUserSettings({ ...userSettings, name: e.target.value })}
-        />
-      </label>
+    <label className={styles.settingsLabel}>
+  
+      <input
+        className={styles.settingsInput}
+        type="text"
+        placeholder="           Name"
+        value={userSettings.name}
+        onChange={(e) => setUserSettings({ ...userSettings, name: e.target.value })}
+      />  <span className={styles.icon}>
+      <img src={nameIcon} alt="Name Icon" />
+    </span>
+    </label>
 
-      <label>
-        Old Password:
-        <input
-          type={showPassword ? "text" : "password"}
-          value={userSettings.oldPassword}
-          onChange={(e) => setUserSettings({ ...userSettings, oldPassword: e.target.value })}
-        />
-        <span onClick={() => setShowPassword(!showPassword)}>
-          {showPassword ? "👁️" : "👁️‍🗨️"}
+    <label className={styles.settingsLabel}>
+       <input
+        className={styles.settingsInputPassword}
+        type={showPassword ? "text" : "password"}
+        placeholder="            Enter Old Password"
+
+        value={userSettings.oldPassword}
+        onChange={(e) => setUserSettings({ ...userSettings, oldPassword: e.target.value })}
+      />
+            <span className={styles.icon}>
+
+     <img
+  src={viewIcon}
+  alt="View Password"
+  onClick={() => setShowPassword(!showPassword)}
+  className={styles.showPasswordIcon}
+/>
+</span>
+
+      <span className={styles.icon}>
+          <img src={lockIcon} alt="Lock Icon" />
         </span>
-      </label>
+    </label>
 
-      <label>
-        New Password:
-        <input
-          type={showPassword ? "text" : "password"}
-          value={userSettings.newPassword}
-          onChange={(e) => setUserSettings({ ...userSettings, newPassword: e.target.value })}
-        />
-        <span onClick={() => setShowPassword(!showPassword)}>
-          {showPassword ? "👁️" : "👁️‍🗨️"}
+    <label className={styles.settingsLabel}>
+    
+      <input
+        className={styles.settingsInputPassword}
+        type={showPassword ? "text" : "password"}
+        placeholder="             Enter New Password"
+
+        value={userSettings.newPassword}
+        onChange={(e) => setUserSettings({ ...userSettings, newPassword: e.target.value })}
+      />
+     
+            <span className={styles.icon}>
+
+     <img
+  src={viewIcon}
+  alt="View Password"
+  onClick={() => setShowPassword(!showPassword)}
+  className={styles.showPasswordIcon}
+/>
+</span>
+      <span className={styles.icon}>
+          <img src={lockIcon} alt="Lock Icon" />
         </span>
-      </label>
+    </label>
 
-      <button onClick={handleUpdateSettings}>Update Settings</button>
+    <button className={styles.settingsButton} onClick={handleUpdateSettings}>
+      Update Settings
+    </button>
 
-      {/* Add more settings UI elements as needed */}
-    </div>
-  );
-};
+    {/* Add more settings UI elements as needed */}
+  </div>
+);
+}
 
 export default SettingsPage;

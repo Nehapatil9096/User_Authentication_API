@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef  } from "react";
 import { useAuthContext } from "../../context/AuthContext";
 import { getFormattedDate } from "../../utils/dateUtils";
 import styles from "./BoardPage.module.css";
@@ -16,6 +16,8 @@ const BoardPage = () => {
 
   const [modalVisible, setModalVisible] = useState(false);
   const [editModalVisible, setEditModalVisible] = useState(false);
+  const [showDeleteConfirmation, setShowDeleteConfirmation] = useState(false);
+  const [cardIdToDelete, setCardIdToDelete] = useState(null);
 
   const handleToDoCardOpen = () => {
     // Reset the edited card state when opening the ToDoCard
@@ -31,7 +33,7 @@ const BoardPage = () => {
   };
 
   const renderAdjacentSectionButtons = (card, currentSection) => {
-    const sections = ['Backlog', 'In Progress', 'Done', 'ToDo'];
+    const sections = ['Backlog','Progress', 'Done', 'ToDo'];
   
     return sections
     .filter((targetSection) => targetSection !== currentSection)
@@ -166,15 +168,26 @@ const BoardPage = () => {
     setEditedCard(selectedCard);
     setEditModalVisible(true);
   };
+  
+  const openDeleteConfirmation = (cardId) => {
+    setCardIdToDelete(cardId);
+    setShowDeleteConfirmation(true);
+  };
+  
+  const closeDeleteConfirmation = () => {
+    setShowDeleteConfirmation(false);
+  };
+
 
   const handleDeleteCard = async (cardId) => {
-    // Display a confirmation dialog
-    const confirmDelete = window.confirm("Are you sure you want to delete this card?");
-
-    if (confirmDelete) {
+     // Open the delete confirmation modal
+     openDeleteConfirmation(cardId);
+    };
+    
+    const confirmDeleteAction = async () => {
       try {
         // Make an API request to delete the card
-        const response = await fetch(`/api/users/cards/${cardId}`, {
+        const response = await fetch(`/api/users/cards/${cardIdToDelete}`, {
           method: "DELETE",
           // Add any other headers as needed (e.g., authentication headers)
         });
@@ -185,13 +198,34 @@ const BoardPage = () => {
         }
 
         // Remove the deleted card from the state
-        setCards((prevCards) => prevCards.filter((card) => card._id !== cardId));
+        setCards((prevCards) => prevCards.filter((card) => card._id !== cardIdToDelete));
       } catch (error) {
         // Handle errors
         console.error("Error deleting card:", error.message);
-      }
+     
+        } finally {
+  // Close the delete confirmation modal
+  closeDeleteConfirmation();
     }
   };
+
+  const DeleteConfirmationModal = () => {
+    return (
+    <div className={styles.modal}>
+    <div className={styles.modalContent}>
+    <p>Are you sure you want to Delete?</p>
+    <div className={styles.modalButtons1}>
+    <button onClick={confirmDeleteAction} className="deletepopup-button">Yes</button>
+</div>
+    <div className={styles.modalButtons2}>
+
+    <button onClick={closeDeleteConfirmation} className="deletepopup-button">No</button>
+    </div>
+    </div>
+    </div>
+    );
+    };
+
   const handleSaveEdit = async (editedCard) => {
     try {
       // Ensure editedCard has the necessary fields based on your cardSchema
@@ -237,6 +271,34 @@ const BoardPage = () => {
     return date.toLocaleDateString('en-US', options);
   };
 
+  const handleShareCard = (cardId) => {
+    const sharedLink = `${window.location.origin}/api/users/shared-card/${cardId}`;
+    console.log('Shared Link:', sharedLink);
+  
+    // Display the shared link to the user
+    alert('Share this link with others: ' + sharedLink);
+  };
+  
+  const menuRef = useRef();
+
+  useEffect(() => {
+    const handleClickOutsideMenu = (event) => {
+      if (menuRef.current && !menuRef.current.contains(event.target)) {
+        setActiveMenuCardId(null);
+      }
+    };
+
+    document.addEventListener('click', handleClickOutsideMenu);
+
+    return () => {
+      document.removeEventListener('click', handleClickOutsideMenu);
+    };
+  }, []);
+
+  const handleMenuButtonClick = (cardId) => {
+    setActiveMenuCardId(cardId);
+  };
+  //////////////////////////////////////////////////////////////////////////////////
   return (
     <div className={styles.boardPage}>
       {/* Top Left Text */}
@@ -248,22 +310,21 @@ const BoardPage = () => {
       </div>
 
       {/* Top Right Section */}
-      <div className={`${styles.topRight} ${styles.whiteBackground}`}>
-        
-        <div className={styles.filterDropdown}>
-          {/* Your filter dropdown goes here */}
-          <select>
-            <option value="today">Today</option>
-            <option value="thisWeek" selected>
-              This Week
-            </option>
-            <option value="thisMonth">This Month</option>
-          </select>
-        </div>
-        <div>
-      <p className={styles.currentDate}>{getFormattedDate(currentDate)}</p>
+     <div className={`${styles.topRight} ${styles.whiteBackground}`}>
+  <div className={styles.dateAndFilter}>
+    <p className={styles.currentDate}>{getFormattedDate(currentDate)}</p>
+    <div className={styles.filterDropdown}>
+      {/* Your filter dropdown goes here */}
+      <select>
+        <option value="today">Today</option>
+        <option value="thisWeek" selected>
+          This Week
+        </option>
+        <option value="thisMonth">This Month</option>
+      </select>
     </div>
-      </div>
+  </div>
+</div>
 </div>
 
       {/* Board Sections */}
@@ -280,9 +341,10 @@ const BoardPage = () => {
       .map((card) => (
         <div key={card._id} className={`${styles.card} ${card.showChecklist ? '' : styles.collapsed}`}>
           {/* Menu button inside the card */}
-          <div className={styles.menuContainer}>
-            <div className={styles.menuButton} onClick={() => setActiveMenuCardId(card._id)}>
-              <span>&#8942;</span>
+          <div className={styles.menuContainer} ref={menuRef}>
+            <div className={styles.menuButton} onClick={() => handleMenuButtonClick(card._id)}>
+              
+            <span>&hellip;</span>
             </div>
 
             {/* Menu popup inside the card */}
@@ -295,35 +357,55 @@ const BoardPage = () => {
               </div>
             )}
           </div>
+          {card.priority === 'High' && (
+  <div className={styles.priorityContainer}>
+    <div className={styles.circle} style={{ backgroundColor: "#FF2473" }}></div>
+    <p className={styles.priorityText}>{card.priority} Priority</p>
+  </div>
+)}     
+      {card.priority === 'Moderate' && (
+  <div className={styles.priorityContainer}>
+    <div className={styles.circle} style={{ backgroundColor: "#18B0FF" }}></div>
+    <p className={styles.priorityText}>{card.priority} Priority</p>
+  </div>
+)}
+      {card.priority === 'Low' && (
+  <div className={styles.priorityContainer}>
+    <div className={styles.circle} style={{ backgroundColor: "#63C05B" }}></div>
+    <p className={styles.priorityText}>{card.priority} Priority</p>
+  </div>
+)}
 
-          <p>Priority: {card.priority}</p>
-          <h2>{card.title}</h2>
+<p className={styles.titleText}>{card.title} </p>
           <p>Checklist ({card.checklist.filter((task) => task.checked).length}/{card.checklist.length})</p>
-          {/* Display checklist items */}
-          <div className={styles.checklist}>
-            <button onClick={() => handleToggleChecklist(card._id)}>
-              {card.showChecklist ? 'Collapse' : 'Expand'}
-            </button>
-            {card.showChecklist && (
-              <>
-                <ul>
-                  {card.checklist.map((item, index) => (
-                    <li key={index}>
-                      {item.checked ? <span>[x]</span> : <span>[ ]</span>} {item.text}
-                    </li>
-                  ))}
-                </ul>
-              </>
-            )}
-          </div>
+{/* Display checklist items */}
+<div className={styles.checklist}>
+  <button onClick={() => handleToggleChecklist(card._id)}>
+    
+  </button>
+  {card.showChecklist && (
+    <>
+      <ul>
+        {card.checklist.map((item, index) => (
+          <li key={index} className={styles.checklistItem}>
+          {item.checked ? <span className={styles.checked}><span className={styles.checkbox}></span></span> : <span className={styles.unchecked}></span>}
+          {item.text}
+          </li>
+        ))}
+      </ul>
+    </>
+  )}
+</div>
 
-          <p className={styles.dueDate}>{card.dueDate ? formatDate(card.dueDate) : 'Not specified'}</p>
 
           {/* Add other card details as needed */}
           {/* You can customize the display of other card details based on your schema */}
 
           {/* Add buttons at the bottom of each card */}
           <div className={styles.cardButtons}>
+          <p className={`${styles.dueDate} ${!card.dueDate && styles.noDueDate}`}>
+  {card.dueDate ? formatDate(card.dueDate) : ''}
+</p>
             {renderAdjacentSectionButtons(card, card.state)}
           </div>
         </div>
@@ -347,7 +429,7 @@ const BoardPage = () => {
                 {/* Menu button inside the card */}
                 <div className={styles.menuContainer}>
                   <div className={styles.menuButton} onClick={() => setActiveMenuCardId(card._id)}>
-                    <span>&#8942;</span>
+                  <span >&hellip;</span>
                   </div>
 
                   {/* Menu popup inside the card */}
@@ -361,8 +443,25 @@ const BoardPage = () => {
                   )}
                 </div>
 
-                <p>Priority: {card.priority}</p>
-                <h2>{card.title}</h2>
+                {card.priority === 'High' && (
+  <div className={styles.priorityContainer}>
+    <div className={styles.circle} style={{ backgroundColor: "#FF2473" }}></div>
+    <p className={styles.priorityText}>{card.priority} Priority</p>
+  </div>
+)}     
+      {card.priority === 'Moderate' && (
+  <div className={styles.priorityContainer}>
+    <div className={styles.circle} style={{ backgroundColor: "#18B0FF" }}></div>
+    <p className={styles.priorityText}>{card.priority} Priority</p>
+  </div>
+)}
+      {card.priority === 'Low' && (
+  <div className={styles.priorityContainer}>
+    <div className={styles.circle} style={{ backgroundColor: "#63C05B" }}></div>
+    <p className={styles.priorityText}>{card.priority} Priority</p>
+  </div>
+)}
+    <p className={styles.titleText}>{card.title} </p>
                 <p>Checklist ({card.checklist.filter((task) => task.checked).length}/{card.checklist.length})</p>
                 {/* Display checklist items */}
                 <div className={styles.checklist}>
@@ -373,22 +472,25 @@ const BoardPage = () => {
                     <>
                       <ul>
                         {card.checklist.map((item, index) => (
-                          <li key={index}>
-                            {item.checked ? <span>[x]</span> : <span>[ ]</span>} {item.text}
-                          </li>
+                         <li key={index} className={styles.checklistItem}>
+                         {item.checked ? <span className={styles.checked}><span className={styles.checkbox}></span></span> : <span className={styles.unchecked}></span>}
+                         {item.text}
+                         </li>
                         ))}
                       </ul>
                     </>
                   )}
                 </div>
 
-                <p className={styles.dueDate}>{card.dueDate ? formatDate(card.dueDate) : 'Not specified'}</p>
                 
                 {/* Add other card details as needed */}
                 {/* You can customize the display of other card details based on your schema */}
 
                 {/* Add buttons at the bottom of each card */}
               <div className={styles.cardButtons}>
+              <p className={`${styles.dueDate} ${!card.dueDate && styles.noDueDate}`}>
+  {card.dueDate ? formatDate(card.dueDate) : ''}
+</p>
               {renderAdjacentSectionButtons(card, card.state)}
 
               </div>
@@ -396,6 +498,8 @@ const BoardPage = () => {
               </div>
             ))}
           </div>
+
+          
         </div>
 
 {/* In Progress Section */}
@@ -404,13 +508,13 @@ const BoardPage = () => {
   <h2>In Progress</h2>
   <div className={styles.scrollableTodoSection}>
     {cards
-      .filter((card) => card.state === 'In Progress')
+      .filter((card) => card.state === 'Progress')
       .map((card) => (
         <div key={card._id} className={`${styles.card} ${card.showChecklist ? '' : styles.collapsed}`}>
           {/* Menu button inside the card */}
           <div className={styles.menuContainer}>
             <div className={styles.menuButton} onClick={() => setActiveMenuCardId(card._id)}>
-              <span>&#8942;</span>
+            <span>&hellip;</span>
             </div>
 
             {/* Menu popup inside the card */}
@@ -424,8 +528,25 @@ const BoardPage = () => {
             )}
           </div>
 
-          <p>Priority: {card.priority}</p>
-          <h2>{card.title}</h2>
+          {card.priority === 'High' && (
+  <div className={styles.priorityContainer}>
+    <div className={styles.circle} style={{ backgroundColor: "#FF2473" }}></div>
+    <p className={styles.priorityText}>{card.priority} Priority</p>
+  </div>
+)}     
+      {card.priority === 'Moderate' && (
+  <div className={styles.priorityContainer}>
+    <div className={styles.circle} style={{ backgroundColor: "#18B0FF" }}></div>
+    <p className={styles.priorityText}>{card.priority} Priority</p>
+  </div>
+)}
+      {card.priority === 'Low' && (
+  <div className={styles.priorityContainer}>
+    <div className={styles.circle} style={{ backgroundColor: "#63C05B" }}></div>
+    <p className={styles.priorityText}>{card.priority} Priority</p>
+  </div>
+)}         
+    <p className={styles.titleText}>{card.title} </p>
           <p>Checklist ({card.checklist.filter((task) => task.checked).length}/{card.checklist.length})</p>
           {/* Display checklist items */}
           <div className={styles.checklist}>
@@ -436,22 +557,25 @@ const BoardPage = () => {
               <>
                 <ul>
                   {card.checklist.map((item, index) => (
-                    <li key={index}>
-                      {item.checked ? <span>[x]</span> : <span>[ ]</span>} {item.text}
-                    </li>
+                   <li key={index} className={styles.checklistItem}>
+                   {item.checked ? <span className={styles.checked}><span className={styles.checkbox}></span></span> : <span className={styles.unchecked}></span>}
+                   {item.text}
+                   </li>
                   ))}
                 </ul>
               </>
             )}
           </div>
 
-          <p className={styles.dueDate}>{card.dueDate ? formatDate(card.dueDate) : 'Not specified'}</p>
 
           {/* Add other card details as needed */}
           {/* You can customize the display of other card details based on your schema */}
 
           {/* Add buttons at the bottom of each card */}
           <div className={styles.cardButtons}>
+          <p className={`${styles.dueDate} ${!card.dueDate && styles.noDueDate}`}>
+  {card.dueDate ? formatDate(card.dueDate) : ''}
+</p>
             {renderAdjacentSectionButtons(card, card.state)}
           </div>
         </div>
@@ -470,7 +594,7 @@ const BoardPage = () => {
           {/* Menu button inside the card */}
           <div className={styles.menuContainer}>
             <div className={styles.menuButton} onClick={() => setActiveMenuCardId(card._id)}>
-              <span>&#8942;</span>
+            <span>&hellip;</span>
             </div>
 
             {/* Menu popup inside the card */}
@@ -484,8 +608,26 @@ const BoardPage = () => {
             )}
           </div>
 
-          <p>Priority: {card.priority}</p>
-          <h2>{card.title}</h2>
+          {card.priority === 'High' && (
+  <div className={styles.priorityContainer}>
+    <div className={styles.circle} style={{ backgroundColor: "#FF2473" }}></div>
+    <p className={styles.priorityText}>{card.priority} Priority</p>
+  </div>
+)}     
+      {card.priority === 'Moderate' && (
+  <div className={styles.priorityContainer}>
+    <div className={styles.circle} style={{ backgroundColor: "#18B0FF" }}></div>
+    <p className={styles.priorityText}>{card.priority} Priority</p>
+  </div>
+)}
+      {card.priority === 'Low' && (
+  <div className={styles.priorityContainer}>
+    <div className={styles.circle} style={{ backgroundColor: "#63C05B" }}></div>
+    <p className={styles.priorityText}>{card.priority} Priority</p>
+  </div>
+)}         
+    <p className={styles.titleText}>{card.title} </p>
+
           <p>Checklist ({card.checklist.filter((task) => task.checked).length}/{card.checklist.length})</p>
           {/* Display checklist items */}
           <div className={styles.checklist}>
@@ -496,22 +638,25 @@ const BoardPage = () => {
               <>
                 <ul>
                   {card.checklist.map((item, index) => (
-                    <li key={index}>
-                      {item.checked ? <span>[x]</span> : <span>[ ]</span>} {item.text}
-                    </li>
+                   <li key={index} className={styles.checklistItem}>
+                   {item.checked ? <span className={styles.checked}><span className={styles.checkbox}></span></span> : <span className={styles.unchecked}></span>}
+                   {item.text}
+                   </li>
                   ))}
                 </ul>
               </>
             )}
           </div>
 
-          <p className={styles.dueDate}>{card.dueDate ? formatDate(card.dueDate) : 'Not specified'}</p>
 
           {/* Add other card details as needed */}
           {/* You can customize the display of other card details based on your schema */}
 
           {/* Add buttons at the bottom of each card */}
           <div className={styles.cardButtons}>
+          <p className={`${styles.dueDate} ${!card.dueDate && styles.noDueDate}`}>
+  {card.dueDate ? formatDate(card.dueDate) : ''}
+</p>
             {renderAdjacentSectionButtons(card, card.state)}
           </div>
         </div>
@@ -531,6 +676,8 @@ const BoardPage = () => {
 
       {/* Additional content from your existing Dashboard.jsx goes here */}
       {/* You can merge any other specific content or components as needed */}
+      
+{showDeleteConfirmation && <DeleteConfirmationModal />}
     </div>
   );
 };
