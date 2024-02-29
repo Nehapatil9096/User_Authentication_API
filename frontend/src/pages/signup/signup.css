@@ -288,3 +288,6 @@ form input[type="email"]{
     background-color: #0f738a; /* Change hover color here if needed */
     color: #fff;
 }
+.heading {
+    margin-bottom: 70px; /* Adjust the margin as needed */
+  }

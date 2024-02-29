@@ -93,6 +93,8 @@ border-radius: 10px;
   margin-top: 4px;
 }
 .cardButtons{
+   display: flex; /* Ensure inline alignment */
+  align-items: center; /* Align items vertically */
   padding: 5px 10px;
   margin-right: 5px; /* Adjust spacing between buttons */
   border-radius: 5px;
@@ -287,58 +289,43 @@ border-radius: 10px;
 
 .modal {
   position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.5);
-  display: flex;
-  justify-content: center;
-  align-items: center;
+top: 50%;
+left: 50%;
+transform: translate(-50%, -50%);
+background-color: white;
+padding: 20px;
+border-radius: 5px;
+box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+z-index: 1000;
+
 }
 
 .modalContent {
   background-color: white;
   padding: 20px;
   border-radius: 8px;
+  
 }
 
 .modalButtons1 {
-  display: flex;
-  flex-direction: column; /* Change the direction to column */
-  margin-top: 20px;
+  padding: 10px 20px;
+margin-right: 10px;
+cursor: pointer;
+
 
 }
 .modalButtons2{
-  display: flex;
-  flex-direction: column; /* Change the direction to column */
-  margin-top: 20px;
+  padding: 10px 20px;
+margin-right: 10px;
+cursor: pointer;
+
 
 }
 .modalButtons button {
-  margin-right: 10px; /* Adjust spacing between buttons */
+  margin-bottom: 10px;
 }
 
-.deletepopup-button {
-  width: 100%;
-  max-width: 400px;
-  height: 45.38px;
-  padding: 10px 20px;
-  border-radius: 10px;
-  font-size: 16px;
-  background-color: rgb(156, 33, 33); /* Set background color to white */
-  color: #000; /* Set text color to black */
-  border: 1px solid red; /* Set border color to red */
-  cursor: pointer;
-  text-align: center;
-  transition: background-color 0.3s, color 0.3s, border-color 0.3s; /* Add transition for smooth hover effect */
-}
 
-.deletepopup-button:hover {
-  background-color: #17A2B8; /* Change background color to blue when hovered */
-  color: white; /* Change text color to white when hovered */
-  border-color: white; /* Change border color to white when hovered */
-}
 .boldEllipsis {
   font-weight: bold;
   font-size: 1.2em; /* You can adjust the font size as needed */
@@ -453,4 +440,56 @@ border-radius: 10px;
   list-style-type: none; /* Remove default list style */
   border-radius: 10px;
   
+}
+.popup {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.content {
+  background-color: white;
+  padding: 20px;
+  border-radius: 8px;
+}
+
+.popupButtons {
+  display: flex;
+  flex-direction: column;
+  margin-top: 20px;
+}
+
+.popupButtons button {
+  margin-right: 10px;
+}
+
+.deletePopupButton {
+  width: 100%;
+  max-width: 400px;
+  height: 45.38px;
+  padding: 10px 20px;
+  border-radius: 10px;
+  font-size: 16px;
+  background-color: white;
+  color: #000;
+  border: 1px solid red;
+  cursor: pointer;
+  text-align: center;
+  transition: background-color 0.3s, color 0.3s, border-color 0.3s;
+}
+
+.deletePopupButton:hover {
+  background-color: #17A2B8;
+  color: white;
+  border-color: white;
+}
+
+.popupButtons button + button {
+  margin-top: 10px;
 }

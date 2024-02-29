@@ -4,11 +4,13 @@ import useLogin from "../../hooks/useLogin";
 import "./login.css";
 import userIcon from "/src/photo/icon.png";
 import lockIcon from "/src/photo/lock.png";
+import viewIcon from "/src/photo/view.png";
 
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const { loading, login } = useLogin();
+  const [passwordVisible, setPasswordVisible] = useState(false); // State to track password visibility
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -16,7 +18,10 @@ const Login = () => {
     console.log("Password:", password);
     await login(email, password);
   };
-
+   
+  const togglePasswordVisibility = () => {
+    setPasswordVisible(!passwordVisible);
+  };
   return (
     <div className="main-container">
       <div className="image-container">
@@ -37,7 +42,7 @@ const Login = () => {
       </div>
       <div className="groups">
         <form onSubmit={handleSubmit} className="form">
-          <h1 className="heading">Login</h1>
+        <h1 className="heading mb-10">Login</h1>
           <div className="input-container">
             <span
               className="icon"
@@ -52,21 +57,19 @@ const Login = () => {
             />
           </div>
           <div className="input-container">
-            <span
-              className="icon"
-              style={{ backgroundImage: `url(${lockIcon})` }}
-            ></span>
+            <span className="icon" style={{ backgroundImage: `url(${lockIcon})` }}></span>
             <input
-              type="password"
+              type={passwordVisible ? "text" : "password"}
               placeholder="Enter Password"
               className="input input-bordered h-10"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
             />
             <img
-              src="/src/photo/view.png"
+              src={viewIcon}
               alt="Password View Icon"
               className="icon password"
+              onClick={togglePasswordVisibility}
             />
           </div>
           <div className="button-stack">

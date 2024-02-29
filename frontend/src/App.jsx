@@ -14,46 +14,19 @@ function App() {
 
   return (
     <div className="app">
-      <Dashboard/>
       <div className="main-content">
-        <Routes>
-          <Route
-            path="/"
-            element={
-              authUser ? ( <Dashboard /> ) : ( <Navigate to="/login" /> )
-            }
-          />
-          <Route
-            path="/login"
-            element={
-              authUser ? ( <Navigate to="/" /> ) : ( <Login /> )
-            }
-          />
-          <Route
-            path="/signup"
-            element={
-              authUser ? ( <Navigate to="/" /> ) : ( <SignUp /> )
-            }
-          />
-          <Route
-            path="/board"
-            element={
-              authUser ? ( <BoardPage username={authUser.username} /> ) : ( <Navigate to="/login" /> )
-            }
-          />
-          <Route
-            path="/analytics"
-            element={
-              authUser ? ( <AnalyticsPage username={authUser.username} /> ) : ( <Navigate to="/login" /> )
-            }
-          />
-          <Route
-            path="/settings"
-            element={
-              authUser ? ( <SettingsPage username={authUser.username} /> ) : ( <Navigate to="/login" /> )
-            }
-          />
-        </Routes>
+      <Routes>
+  <Route path="/" element={authUser ? (<Dashboard />) : (<Navigate to="/login" />)}>
+    {/* Nested routes within Dashboard */}
+    <Route index element={<Navigate to="/board" replace />} />
+    <Route path="board" element={authUser ? (<BoardPage username={authUser.username} />) : (<Navigate to="/login" />)} />
+    <Route path="analytics" element={authUser ? (<AnalyticsPage username={authUser.username} />) : (<Navigate to="/login" />)} />
+    <Route path="settings" element={authUser ? (<SettingsPage username={authUser.username} />) : (<Navigate to="/login" />)} />
+  </Route>
+  <Route path="/login" element={authUser ? (<Navigate to="/" />) : (<Login />)} />
+  <Route path="/signup" element={authUser ? (<Navigate to="/" />) : (<SignUp />)} />
+</Routes>
+
       </div>
       <Toaster />
     </div>

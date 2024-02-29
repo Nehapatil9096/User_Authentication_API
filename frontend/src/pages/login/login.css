@@ -1,6 +1,6 @@
 /* index.css */
 
-/* Main Container */
+@media only screen and (max-width: 768px) {
 .main-container {
   display: flex;
   align-items: center;
@@ -121,9 +121,11 @@ form input[type="password"] {
   color: #343434;
   margin-top: -175px;
   margin-left: 20px;
-  margin-bottom: 40px; /* Adjusted margin for smaller screens */
+  margin-bottom: 70px; /* Adjusted margin for smaller screens */
+  
 }
 
+/* Button Stack */
 /* Button Stack */
 .button-stack {
   display: flex;
@@ -132,7 +134,9 @@ form input[type="password"] {
   width: 100%;
   max-width: 400px;
   margin-top: 20px;
+  align-items: center; /* Add this line to center-align items horizontally */
 }
+
 
 .btn-block,
 .register-button {
@@ -222,4 +226,5 @@ form input[type="password"] {
   .centered-photo {
     height: auto;
   }
+
 }

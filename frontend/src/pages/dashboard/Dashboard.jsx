@@ -1,23 +1,53 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Outlet, Route, Routes, useNavigate, useLocation } from "react-router-dom";
 import styles from "./Dashboard.module.css";
 import LogoutButton from "../../components/LogoutButton";
 import BoardPage from "../board/BoardPage"; // Import the BoardPage component
 import AnalyticsPage from "../analytics/AnalyticsPage"; // Import the AnalyticsPage component
 import SettingsPage from "../settings/SettingsPage"; // Import the SettingsPage component
+
+const DashboardRoutes = () => (
+    <Routes>
+      {/* Default route to render BoardPage component */}
+      <Route path="/" element={<BoardPage />} />
+      <Route path="/board" element={<BoardPage />} />
+      <Route path="/analytics" element={<AnalyticsPage />} />
+      <Route path="/settings" element={<SettingsPage />} />
+      {/* Add other routes for analytics, settings, etc. */}
+    </Routes>
+  );
+
+  
 const Dashboard = () => {
 const navigate = useNavigate();
 const location = useLocation();
 // State to manage the visibility of the logout confirmation popup
 const [showLogoutConfirmation, setShowLogoutConfirmation] = useState(false);
+const [showSidebar, setShowSidebar] = useState(true);
+
+  useEffect(() => {
+    console.log("Current route (useEffect):", location.pathname);
+    console.log("Show sidebar (useEffect):", !["/login", "/signup"].includes(location.pathname));
+    // Determine whether to show the sidebar based on the current route
+    setShowSidebar(!["/login", "/signup"].includes(location.pathname));
+  }, [location.pathname]);
+
+
 const handleNavClick = (to) => {
-navigate(to); // Manually navigate to the specified route
-};
-// Check if the current route is the signup or login page
-const isLoginPage = location.pathname === "/login";
-const isSignupPage = location.pathname === "/signup";
-// Determine whether to show the sidebar based on the current route
-const showSidebar = !isLoginPage && !isSignupPage;
+    console.log("Navigating to:", to);
+
+    // Only navigate if the target route is not "/board", "/analytics", or "/settings"
+      navigate(to);
+    
+  };
+  
+  console.log("isLoginPage:", location.pathname === "/login");
+  console.log("isSignupPage:", location.pathname === "/signup");
+  console.log("showSidebar:", showSidebar);
+
+
+
+
 return (
 <div className={styles.dashboard}>
 {/* Sidebar Component */}
@@ -54,14 +84,7 @@ Settings
 {/* Content Section */}
 <div className={styles.content}>
 <Outlet />
-<Routes>
-{/* Default route to render BoardPage component */}
-<Route path="" element={<BoardPage />} />
-<Route path="/board" element={<BoardPage />} />
-<Route path="/analytics" element={<AnalyticsPage />} />
-<Route path="/settings" element={<SettingsPage />} />
-{/* Add other routes for analytics, settings, etc. */}
-</Routes>
+
 </div>
 {/* Logout Confirmation Popup */}
 {showLogoutConfirmation && (

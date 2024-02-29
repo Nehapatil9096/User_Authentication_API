@@ -3,6 +3,8 @@ import { useState } from "react";
 import useSignup from "../../hooks/useSignup";
 import userIcon from "/src/photo/icon.png";
 import lockIcon from "/src/photo/lock.png";
+import viewIcon from "/src/photo/view.png";
+
 import "./signup.css"; // Importing the CSS file
 
 
@@ -16,11 +18,21 @@ const SignUp = () => {
   });
 
   const { loading, signup } = useSignup();
+  const [confirmPasswordVisible, setConfirmPasswordVisible] = useState(false);
+  const [passwordVisible, setPasswordVisible] = useState(false); 
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     await signup(inputs);
   };
+  const toggleConfirmPasswordVisibility = () => {
+    setConfirmPasswordVisible(!confirmPasswordVisible);
+  };
+
+  const togglePasswordVisibility = () => {
+    setPasswordVisible(!passwordVisible);
+  };
+
 
   return (
     <div className='main-container'>
@@ -39,7 +51,7 @@ const SignUp = () => {
       <div className='groups'>
         <div className='image-2' />
         <form onSubmit={handleSubmit} className='form'>
-          <h1 className='heading'>Register</h1>
+        <h1 className="heading mb-10">Register</h1> {/* Added margin-bottom class */}
           <div className='input-container'>
             
             <input
@@ -62,30 +74,37 @@ const SignUp = () => {
             />
             <span className="icon" style={{ backgroundImage: `url(${userIcon})` }}></span>
           </div>
-          <div className='input-container'>
-            
+          <div className="input-container">
             <input
-              type='password'
-              placeholder='Confirm Password'
-              className='w-full input input-bordered h-10'
-              value={inputs.password}
-              onChange={(e) => setInputs({ ...inputs, password: e.target.value })}
-            />
-            <span className="icon" style={{ backgroundImage: `url(${lockIcon})` }}></span>
-            <img src="/src/photo/view.png" alt="Password View Icon" className="icon password" />
-
-          </div>
-          <div className='input-container'>
-            
-            <input
-              type='password'
-              placeholder='Password'
-              className='w-full input input-bordered h-10'
+              type={confirmPasswordVisible ? "text" : "password"}
+              placeholder="Confirm Password"
+              className="w-full input input-bordered h-10"
               value={inputs.confirmPassword}
               onChange={(e) => setInputs({ ...inputs, confirmPassword: e.target.value })}
             />
             <span className="icon" style={{ backgroundImage: `url(${lockIcon})` }}></span>
-            <img src="/src/photo/view.png" alt="Password View Icon" className="icon password" />
+            <img
+              src={viewIcon}
+              alt="Password View Icon"
+              className="icon password"
+              onClick={toggleConfirmPasswordVisibility}
+            />
+          </div>
+          <div className="input-container">
+            <input
+              type={passwordVisible ? "text" : "password"}
+              placeholder="Password"
+              className="w-full input input-bordered h-10"
+              value={inputs.password}
+              onChange={(e) => setInputs({ ...inputs, password: e.target.value })}
+            />
+            <span className="icon" style={{ backgroundImage: `url(${lockIcon})` }}></span>
+            <img
+              src={viewIcon}
+              alt="Password View Icon"
+              className="icon password"
+              onClick={togglePasswordVisibility}
+            />
 
           </div>
           <div className='button-stack'>

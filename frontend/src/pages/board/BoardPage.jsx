@@ -211,15 +211,14 @@ const BoardPage = () => {
 
   const DeleteConfirmationModal = () => {
     return (
-    <div className={styles.modal}>
-    <div className={styles.modalContent}>
+    <div className={styles.popup}>
+    <div className={styles.content}>
     <p>Are you sure you want to Delete?</p>
-    <div className={styles.modalButtons1}>
-    <button onClick={confirmDeleteAction} className="deletepopup-button">Yes</button>
-</div>
-    <div className={styles.modalButtons2}>
+    <div className={styles.popupButtons}>
+    <button onClick={confirmDeleteAction} className={styles.deletePopupButton}>Yes</button>
 
-    <button onClick={closeDeleteConfirmation} className="deletepopup-button">No</button>
+
+    <button onClick={closeDeleteConfirmation} className={styles.deletePopupButton}>No</button>
     </div>
     </div>
     </div>
@@ -470,14 +469,14 @@ const BoardPage = () => {
                   </button>
                   {card.showChecklist && (
                     <>
-                      <ul>
-                        {card.checklist.map((item, index) => (
-                         <li key={index} className={styles.checklistItem}>
-                         {item.checked ? <span className={styles.checked}><span className={styles.checkbox}></span></span> : <span className={styles.unchecked}></span>}
-                         {item.text}
-                         </li>
-                        ))}
-                      </ul>
+                   <ul>
+                  {card.checklist.map((item, index) => (
+                   <li key={index} className={styles.checklistItem}>
+                   {item.checked ? <span className={styles.checked}><span className={styles.checkbox}></span></span> : <span className={styles.unchecked}></span>}
+                   {item.text}
+                   </li>
+                  ))}
+                </ul>
                     </>
                   )}
                 </div>
@@ -555,7 +554,7 @@ const BoardPage = () => {
             </button>
             {card.showChecklist && (
               <>
-                <ul>
+               <ul>
                   {card.checklist.map((item, index) => (
                    <li key={index} className={styles.checklistItem}>
                    {item.checked ? <span className={styles.checked}><span className={styles.checkbox}></span></span> : <span className={styles.unchecked}></span>}
@@ -636,7 +635,7 @@ const BoardPage = () => {
             </button>
             {card.showChecklist && (
               <>
-                <ul>
+               <ul>
                   {card.checklist.map((item, index) => (
                    <li key={index} className={styles.checklistItem}>
                    {item.checked ? <span className={styles.checked}><span className={styles.checkbox}></span></span> : <span className={styles.unchecked}></span>}
