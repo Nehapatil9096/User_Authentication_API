@@ -39,8 +39,8 @@ const SignUp = () => {
       <div className='image-container'>
         <div className='image'>
           <div className="centered-photo">
-            <img src="/src/photo/Back.png" alt="Background" className="centered-back-image" />
-            <img src="/src/photo/Art (1).png" alt="Centered Photo" />
+            <img src="/Back.png" alt="Background" className="centered-back-image" />
+            <img src="/Art (1).png" alt="Centered Photo" />
             <div className="text-container">
               <h2 className="welcome-text">Welcome aboard my friend</h2>
               <p className="instructions">Just a couple of clicks and we start</p>
