@@ -313,6 +313,10 @@ const BoardPage = () => {
   const handleMenuButtonClick = (cardId) => {
     setActiveMenuCardId(cardId);
   };
+  // Define a function to close the menu popup
+const closeMenuPopup = () => {
+  setActiveMenuCardId(null);
+};
   //////////////////////////////////////////////////////////////////////////////////
   return (
     <div className={styles.boardPage}>
@@ -356,7 +360,7 @@ const BoardPage = () => {
       .map((card) => (
         <div key={card._id} className={`${styles.card} ${card.showChecklist ? '' : styles.collapsed}`}>
           {/* Menu button inside the card */}
-          <div className={styles.menuContainer} ref={menuRef}>
+          <div className={styles.menuContainer} >
             <div className={styles.menuButton} onClick={() => handleMenuButtonClick(card._id)}>
               
             <span>&hellip;</span>
@@ -365,10 +369,9 @@ const BoardPage = () => {
             {/* Menu popup inside the card */}
             {activeMenuCardId === card._id && (
               <div className={styles.menuPopup}>
-                <button onClick={() => handleEditCard(card._id)}>Edit</button>
-                {/* Add other menu options as needed */}
-                <button onClick={() => handleShareCard(card._id)}>Share</button>
-                <button onClick={() => handleDeleteCard(card._id)}>Delete</button>
+                <button onClick={() => { handleEditCard(card._id); closeMenuPopup(); }}>Edit</button>
+                <button onClick={() => { handleShareCard(card._id); closeMenuPopup(); }}>Share</button>
+                <button onClick={() => { handleDeleteCard(card._id); closeMenuPopup(); }}>Delete</button>
               </div>
             )}
           </div>
@@ -454,12 +457,11 @@ const BoardPage = () => {
 
                   {/* Menu popup inside the card */}
                   {activeMenuCardId === card._id && (
-                    <div className={styles.menuPopup}>
-                      <button onClick={() => handleEditCard(card._id)}>Edit</button>
-                      {/* Add other menu options as needed */}
-                      <button onClick={() => handleShareCard(card._id)}>Share</button>
-                      <button onClick={() => handleDeleteCard(card._id)}>Delete</button>
-                    </div>
+                                 <div className={styles.menuPopup}>
+                                 <button onClick={() => { handleEditCard(card._id); closeMenuPopup(); }}>Edit</button>
+                                 <button onClick={() => { handleShareCard(card._id); closeMenuPopup(); }}>Share</button>
+                                 <button onClick={() => { handleDeleteCard(card._id); closeMenuPopup(); }}>Delete</button>
+                               </div>
                   )}
                 </div>
 
@@ -539,12 +541,11 @@ const BoardPage = () => {
 
             {/* Menu popup inside the card */}
             {activeMenuCardId === card._id && (
-              <div className={styles.menuPopup}>
-                <button onClick={() => handleEditCard(card._id)}>Edit</button>
-                {/* Add other menu options as needed */}
-                <button onClick={() => handleShareCard(card._id)}>Share</button>
-                <button onClick={() => handleDeleteCard(card._id)}>Delete</button>
-              </div>
+                          <div className={styles.menuPopup}>
+                          <button onClick={() => { handleEditCard(card._id); closeMenuPopup(); }}>Edit</button>
+                          <button onClick={() => { handleShareCard(card._id); closeMenuPopup(); }}>Share</button>
+                          <button onClick={() => { handleDeleteCard(card._id); closeMenuPopup(); }}>Delete</button>
+                        </div>
             )}
           </div>
 
@@ -619,12 +620,11 @@ const BoardPage = () => {
 
             {/* Menu popup inside the card */}
             {activeMenuCardId === card._id && (
-              <div className={styles.menuPopup}>
-                <button onClick={() => handleEditCard(card._id)}>Edit</button>
-                {/* Add other menu options as needed */}
-                <button onClick={() => handleShareCard(card._id)}>Share</button>
-                <button onClick={() => handleDeleteCard(card._id)}>Delete</button>
-              </div>
+                          <div className={styles.menuPopup}>
+                          <button onClick={() => { handleEditCard(card._id); closeMenuPopup(); }}>Edit</button>
+                          <button onClick={() => { handleShareCard(card._id); closeMenuPopup(); }}>Share</button>
+                          <button onClick={() => { handleDeleteCard(card._id); closeMenuPopup(); }}>Delete</button>
+                        </div>
             )}
           </div>
 
@@ -687,7 +687,7 @@ const BoardPage = () => {
         {modalVisible && <ToDoCard onClose={handleToDoCardClose} onSave={handleSaveCard} />}
         {editedCard && editedCard._id && (
           <ToDoCard
-            onClose={() => setEditModalVisible(false)}
+            onClose={handleToDoCardClose}
             onSave={handleSaveEdit}
             initialData={editedCard}
           />
