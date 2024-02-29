@@ -3,6 +3,7 @@ import { useAuthContext } from "../../context/AuthContext";
 import { getFormattedDate } from "../../utils/dateUtils";
 import styles from "./BoardPage.module.css";
 import ToDoCard from "./ToDoCard";
+import { toast } from "react-toastify";
 
 const BoardPage = () => {
   const { authUser, setAuthUserData } = useAuthContext();
@@ -18,6 +19,7 @@ const BoardPage = () => {
   const [editModalVisible, setEditModalVisible] = useState(false);
   const [showDeleteConfirmation, setShowDeleteConfirmation] = useState(false);
   const [cardIdToDelete, setCardIdToDelete] = useState(null);
+  const [showToast, setShowToast] = useState(false); // State for managing toast visibility
 
   const handleToDoCardOpen = () => {
     // Reset the edited card state when opening the ToDoCard
@@ -273,10 +275,24 @@ const BoardPage = () => {
   const handleShareCard = (cardId) => {
     const sharedLink = `${window.location.origin}/api/users/shared-card/${cardId}`;
     console.log('Shared Link:', sharedLink);
-  
+     // Copy shared link to clipboard
+     navigator.clipboard.writeText(sharedLink).then(() => {
+      // Display toast message
+      setShowToast(true);
+    });
     // Display the shared link to the user
-    alert('Share this link with others: ' + sharedLink);
   };
+
+    // Function to close the toast message after a certain duration
+    const closeToast = () => {
+      setShowToast(false);
+    };
+  
+    useEffect(() => {
+      // Close the toast message after 2 seconds
+      const timeout = setTimeout(closeToast, 2000);
+      return () => clearTimeout(timeout);
+    }, [showToast]);
   
   const menuRef = useRef();
 
@@ -385,12 +401,17 @@ const BoardPage = () => {
   {card.showChecklist && (
     <>
       <ul>
-        {card.checklist.map((item, index) => (
-          <li key={index} className={styles.checklistItem}>
-          {item.checked ? <span className={styles.checked}><span className={styles.checkbox}></span></span> : <span className={styles.unchecked}></span>}
-          {item.text}
-          </li>
-        ))}
+      {card.checklist.map((item, index) => (
+  <li key={index} className={`${styles.checklistItem} ${styles.wrapText}`}>
+    {item.checked ? (
+      <span className={styles.checked}><span className={styles.checkbox}></span></span>
+    ) : (
+      <span className={styles.unchecked}></span>
+    )}
+    {item.text}
+  </li>
+))}
+
       </ul>
     </>
   )}
@@ -471,8 +492,8 @@ const BoardPage = () => {
                     <>
                    <ul>
                   {card.checklist.map((item, index) => (
-                   <li key={index} className={styles.checklistItem}>
-                   {item.checked ? <span className={styles.checked}><span className={styles.checkbox}></span></span> : <span className={styles.unchecked}></span>}
+  <li key={index} className={`${styles.checklistItem} ${styles.wrapText}`}>
+  {item.checked ? <span className={styles.checked}><span className={styles.checkbox}></span></span> : <span className={styles.unchecked}></span>}
                    {item.text}
                    </li>
                   ))}
@@ -556,8 +577,8 @@ const BoardPage = () => {
               <>
                <ul>
                   {card.checklist.map((item, index) => (
-                   <li key={index} className={styles.checklistItem}>
-                   {item.checked ? <span className={styles.checked}><span className={styles.checkbox}></span></span> : <span className={styles.unchecked}></span>}
+  <li key={index} className={`${styles.checklistItem} ${styles.wrapText}`}>
+  {item.checked ? <span className={styles.checked}><span className={styles.checkbox}></span></span> : <span className={styles.unchecked}></span>}
                    {item.text}
                    </li>
                   ))}
@@ -637,8 +658,8 @@ const BoardPage = () => {
               <>
                <ul>
                   {card.checklist.map((item, index) => (
-                   <li key={index} className={styles.checklistItem}>
-                   {item.checked ? <span className={styles.checked}><span className={styles.checkbox}></span></span> : <span className={styles.unchecked}></span>}
+  <li key={index} className={`${styles.checklistItem} ${styles.wrapText}`}>
+  {item.checked ? <span className={styles.checked}><span className={styles.checkbox}></span></span> : <span className={styles.unchecked}></span>}
                    {item.text}
                    </li>
                   ))}
@@ -677,6 +698,12 @@ const BoardPage = () => {
       {/* You can merge any other specific content or components as needed */}
       
 {showDeleteConfirmation && <DeleteConfirmationModal />}
+   {/* Toast Message */}
+   {showToast && (
+        <div className={styles.toastMessage}>
+          <p>Link Copied</p>
+        </div>
+      )}
     </div>
   );
 };

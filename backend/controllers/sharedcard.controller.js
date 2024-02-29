@@ -85,6 +85,7 @@ export const getSharedCard = async (req, res) => {
               border-radius: 50%;
               margin-right: 5px;
               margin-bottom: 12px;
+              margin-top: 12px;
             }
             .priorityText {
               font-size: 7px;
@@ -144,6 +145,15 @@ export const getSharedCard = async (req, res) => {
               color: #FFFFFF;
               font-size: 10px;
             }
+            .dueDateContainer {
+              display: flex;
+              align-items: center;
+            }
+            
+            .dueDateText {
+              margin-right: 5px; /* Adjust margin as needed */
+            }
+            
 
             /* Additional styles for checklist box and items */
             /* Add the following styles at the end of your existing CSS file */
@@ -166,12 +176,17 @@ export const getSharedCard = async (req, res) => {
               margin-top: 5px;
             }
             
+           
             .checklistItem {
               display: flex;
               align-items: center;
               margin-bottom: 5px;
-            }
+              white-space: normal; /* Allow text wrapping */
+              word-wrap: break-word; /* Break words that exceed the width */
+              overflow-wrap: break-word; /* Ensure word breaks within words */
+              hyphens: auto; /* Allow hyphenation for long words */
             
+            }
             .checklistItem input {
               margin-right: 5px;
             }
@@ -248,6 +263,25 @@ export const getSharedCard = async (req, res) => {
               border-radius: 10px;
               
             }
+            
+            .dueDate {
+              display: inline-block;
+              background-color: #CF3636;
+              padding: 5px 10px;
+              margin-right: 5px;
+              border: 1px solid #CCCCCC;
+              border-radius: 10px;
+              cursor: pointer;
+              margin-left: 20px;
+              color: #FFFFFF;
+              font-size: 10px;
+            }
+            /* Media queries for smaller screens */
+            @media screen and (max-width: 600px) {
+              .card {
+                width: 100%; /* Set width to full for smaller screens */
+              }
+            }
           </style>
         </head>
         <body>
@@ -271,7 +305,7 @@ export const getSharedCard = async (req, res) => {
             </div>
 
             <!-- Due date display based on card.dueDate -->
-            <p class="dueDate">${card.dueDate ? formatDate(card.dueDate) : 'Not specified'}</p>
+            ${card.dueDate ? `<div class="dueDateContainer"><p class="dueDateText">Due Date:</p><p class="dueDate">${formatDate(card.dueDate)}</p></div>` : ''}
     
             <!-- Add other card details as needed -->
             <!-- You can customize the display of other card details based on your schema -->
