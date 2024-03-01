@@ -402,7 +402,16 @@ const closeMenuPopup = () => {
 };
 
 //////////////////////////////////////////////////////////
+const handleCollapseAll = () => {
+  // Create a new array with updated showChecklist values
+  const updatedCards = cards.map(card => ({
+    ...card,
+    showChecklist: false,
+  }));
 
+  // Update the state with the new array
+  setCards(updatedCards);
+};
   //////////////////////////////////////////////////////////////////////////////////
   return (
     <div className={styles.boardPage}>
@@ -443,7 +452,11 @@ const closeMenuPopup = () => {
 <div className={styles.boardSection}>
   <div className={styles.headingContainer}>
     <h2>Backlog</h2>
-    <img src="/codicon_collapse-all.png" alt="Collapse All" className={styles.collapseIcon} />
+    <img src="/codicon_collapse-all.png"
+     alt="Collapse All" 
+     className={styles.collapseIcon}
+     onClick={handleCollapseAll}
+     />
   </div> 
   <div className={styles.scrollableTodoSection}>
     {cards
@@ -540,7 +553,8 @@ const closeMenuPopup = () => {
      <button className={styles.addButton} onClick={handleToDoCardOpen}>
             +
           </button>
-    <img src="/codicon_collapse-all.png" alt="Collapse All" className={styles.collapseIcon} />
+    <img src="/codicon_collapse-all.png" alt="Collapse All" className={styles.collapseIcon}      onClick={handleCollapseAll}
+ />
   </div>         
           {/* Display all cards in ToDo */}
           <div className={styles.scrollableTodoSection}>
@@ -639,7 +653,8 @@ const closeMenuPopup = () => {
 <div className={styles.boardSection}>
   <div className={styles.headingContainer}>
     <h2> In Progress</h2>
-    <img src="/codicon_collapse-all.png" alt="Collapse All" className={styles.collapseIcon} />
+    <img src="/codicon_collapse-all.png" alt="Collapse All" className={styles.collapseIcon}      onClick={handleCollapseAll}
+/>
   </div> 
   <div className={styles.scrollableTodoSection}>
     {cards
@@ -729,7 +744,8 @@ const closeMenuPopup = () => {
 <div className={styles.boardSection}>
   <div className={styles.headingContainer}>
     <h2>Done</h2>
-    <img src="/codicon_collapse-all.png" alt="Collapse All" className={styles.collapseIcon} />
+    <img src="/codicon_collapse-all.png" alt="Collapse All" className={styles.collapseIcon}      onClick={handleCollapseAll}
+/>
   </div> 
   <div className={styles.scrollableTodoSection}>
     {cards

@@ -1,9 +1,10 @@
 /* BoardPage.module.css */
 
 .boardPage {
-  width: 95%; /* Set width to 84% */
+  width: 100%; /* Set width to 84% */
   height: 100%; /* Set height to 100vh */
-  margin-left: 0px; /* Remove left margin */
+margin: 0px;
+
   background-color:  #EEF2F5;
   overflow-x: auto; /* Or overflow-x: scroll; */
 
