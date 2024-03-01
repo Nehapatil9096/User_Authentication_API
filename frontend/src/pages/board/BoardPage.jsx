@@ -322,29 +322,28 @@ const closeMenuPopup = () => {
     <div className={styles.boardPage}>
       {/* Top Left Text */}
       <div className={`${styles.top} ${styles.whiteBackground}`}>
-
       <div className={`${styles.topLeftText} ${styles.whiteBackground}`}>
         <h1 className={styles.welcome}>Welcome, {authUser.username}!</h1>
         <p className={styles.boardText}>Board</p>
       </div>
 
       {/* Top Right Section */}
-     <div className={`${styles.topRight} ${styles.whiteBackground}`}>
-  <div className={styles.dateAndFilter}>
-    <p className={styles.currentDate}>{getFormattedDate(currentDate)}</p>
-    <div className={styles.filterDropdown}>
-      {/* Your filter dropdown goes here */}
-      <select>
-        <option value="today">Today</option>
-        <option value="thisWeek" selected>
-          This Week
-        </option>
-        <option value="thisMonth">This Month</option>
-      </select>
+      <div className={`${styles.topRight} ${styles.whiteBackground}`}>
+        <div className={styles.dateAndFilter}>
+          <p className={styles.currentDate}>{getFormattedDate(currentDate)}</p>
+          <div className={styles.filterDropdown}>
+            {/* Your filter dropdown goes here */}
+            <select>
+              <option value="today">Today</option>
+              <option value="thisWeek" selected>
+                This Week
+              </option>
+              <option value="thisMonth">This Month</option>
+            </select>
+          </div>
+        </div>
+      </div>
     </div>
-  </div>
-</div>
-</div>
 
       {/* Board Sections */}
       <div className={styles.boardSections}>
@@ -353,7 +352,10 @@ const closeMenuPopup = () => {
       {/* Backlog Section */}
      
 <div className={styles.boardSection}>
-  <h2>Backlog</h2>
+  <div className={styles.headingContainer}>
+    <h2>Backlog</h2>
+    <img src="/codicon_collapse-all.png" alt="Collapse All" className={styles.collapseIcon} />
+  </div> 
   <div className={styles.scrollableTodoSection}>
     {cards
       .filter((card) => card.state === 'Backlog')
@@ -394,31 +396,32 @@ const closeMenuPopup = () => {
   </div>
 )}
 
-<p className={styles.titleText}>{card.title} </p>
-          <p>Checklist ({card.checklist.filter((task) => task.checked).length}/{card.checklist.length})</p>
-{/* Display checklist items */}
-<div className={styles.checklist}>
-  <button onClick={() => handleToggleChecklist(card._id)}>
-    
-  </button>
+<div className={styles.checklistContainer}>
+  <div className={styles.textContainer}>
+    <p className={styles.titleText}>{card.title}</p>
+    <p>
+      Checklist ({card.checklist.filter((task) => task.checked).length}/{card.checklist.length})
+    </p>
+  </div>
+  <div className={styles.buttonContainer}>
+    <button onClick={() => handleToggleChecklist(card._id)}>
+      {card.showChecklist ? '^' : '⌄'}
+    </button>
+  </div>
   {card.showChecklist && (
-    <>
+    <div className={styles.checklist}>
       <ul>
-      {card.checklist.map((item, index) => (
-  <li key={index} className={`${styles.checklistItem} ${styles.wrapText}`}>
-    {item.checked ? (
-      <span className={styles.checked}><span className={styles.checkbox}></span></span>
-    ) : (
-      <span className={styles.unchecked}></span>
-    )}
-    {item.text}
-  </li>
-))}
-
+        {card.checklist.map((item, index) => (
+          <li key={index} className={`${styles.checklistItem} ${styles.wrapText}`}>
+            {item.checked ? <span className={styles.checked}><span className={styles.checkbox}></span></span> : <span className={styles.unchecked}></span>}
+            {item.text}
+          </li>
+        ))}
       </ul>
-    </>
+    </div>
   )}
 </div>
+
 
 
           {/* Add other card details as needed */}
@@ -437,11 +440,15 @@ const closeMenuPopup = () => {
 </div>
 
 {/* To Do Section */}
+
 <div className={styles.boardSection}>
-          To do
-          <button className={styles.addButton} onClick={handleToDoCardOpen}>
+<div className={styles.headingContainer}>
+    <h2> To do</h2>
+     <button className={styles.addButton} onClick={handleToDoCardOpen}>
             +
           </button>
+    <img src="/codicon_collapse-all.png" alt="Collapse All" className={styles.collapseIcon} />
+  </div>         
           {/* Display all cards in ToDo */}
           <div className={styles.scrollableTodoSection}>
              {cards
@@ -483,26 +490,33 @@ const closeMenuPopup = () => {
     <p className={styles.priorityText}>{card.priority} Priority</p>
   </div>
 )}
-    <p className={styles.titleText}>{card.title} </p>
-                <p>Checklist ({card.checklist.filter((task) => task.checked).length}/{card.checklist.length})</p>
-                {/* Display checklist items */}
-                <div className={styles.checklist}>
-                  <button onClick={() => handleToggleChecklist(card._id)}>
-                    {card.showChecklist ? 'Collapse' : 'Expand'}
-                  </button>
-                  {card.showChecklist && (
-                    <>
-                   <ul>
-                  {card.checklist.map((item, index) => (
-  <li key={index} className={`${styles.checklistItem} ${styles.wrapText}`}>
-  {item.checked ? <span className={styles.checked}><span className={styles.checkbox}></span></span> : <span className={styles.unchecked}></span>}
-                   {item.text}
-                   </li>
-                  ))}
-                </ul>
-                    </>
-                  )}
-                </div>
+    <div className={styles.checklistContainer}>
+  <div className={styles.textContainer}>
+    <p className={styles.titleText}>{card.title}</p>
+    <p>
+      Checklist ({card.checklist.filter((task) => task.checked).length}/{card.checklist.length})
+    </p>
+  </div>
+  <div className={styles.buttonContainer}>
+    <button onClick={() => handleToggleChecklist(card._id)}>
+      {card.showChecklist ? '^' : '⌄'}
+    </button>
+  </div>
+  {card.showChecklist && (
+    <div className={styles.checklist}>
+      <ul>
+        {card.checklist.map((item, index) => (
+          <li key={index} className={`${styles.checklistItem} ${styles.wrapText}`}>
+            {item.checked ? <span className={styles.checked}><span className={styles.checkbox}></span></span> : <span className={styles.unchecked}></span>}
+            {item.text}
+          </li>
+        ))}
+      </ul>
+    </div>
+  )}
+</div>
+
+
 
                 
                 {/* Add other card details as needed */}
@@ -527,7 +541,10 @@ const closeMenuPopup = () => {
 {/* In Progress Section */}
 
 <div className={styles.boardSection}>
-  <h2>In Progress</h2>
+  <div className={styles.headingContainer}>
+    <h2> In Progress</h2>
+    <img src="/codicon_collapse-all.png" alt="Collapse All" className={styles.collapseIcon} />
+  </div> 
   <div className={styles.scrollableTodoSection}>
     {cards
       .filter((card) => card.state === 'Progress')
@@ -567,26 +584,32 @@ const closeMenuPopup = () => {
     <p className={styles.priorityText}>{card.priority} Priority</p>
   </div>
 )}         
-    <p className={styles.titleText}>{card.title} </p>
-          <p>Checklist ({card.checklist.filter((task) => task.checked).length}/{card.checklist.length})</p>
-          {/* Display checklist items */}
-          <div className={styles.checklist}>
-            <button onClick={() => handleToggleChecklist(card._id)}>
-              {card.showChecklist ? 'Collapse' : 'Expand'}
-            </button>
-            {card.showChecklist && (
-              <>
-               <ul>
-                  {card.checklist.map((item, index) => (
-  <li key={index} className={`${styles.checklistItem} ${styles.wrapText}`}>
-  {item.checked ? <span className={styles.checked}><span className={styles.checkbox}></span></span> : <span className={styles.unchecked}></span>}
-                   {item.text}
-                   </li>
-                  ))}
-                </ul>
-              </>
-            )}
-          </div>
+    <div className={styles.checklistContainer}>
+  <div className={styles.textContainer}>
+    <p className={styles.titleText}>{card.title}</p>
+    <p>
+      Checklist ({card.checklist.filter((task) => task.checked).length}/{card.checklist.length})
+    </p>
+  </div>
+  <div className={styles.buttonContainer}>
+    <button onClick={() => handleToggleChecklist(card._id)}>
+      {card.showChecklist ? '^' : '⌄'}
+    </button>
+  </div>
+  {card.showChecklist && (
+    <div className={styles.checklist}>
+      <ul>
+        {card.checklist.map((item, index) => (
+          <li key={index} className={`${styles.checklistItem} ${styles.wrapText}`}>
+            {item.checked ? <span className={styles.checked}><span className={styles.checkbox}></span></span> : <span className={styles.unchecked}></span>}
+            {item.text}
+          </li>
+        ))}
+      </ul>
+    </div>
+  )}
+</div>
+
 
 
           {/* Add other card details as needed */}
@@ -606,7 +629,10 @@ const closeMenuPopup = () => {
 
 {/* Done Section */}
 <div className={styles.boardSection}>
-  <h2>Done</h2>
+  <div className={styles.headingContainer}>
+    <h2>Done</h2>
+    <img src="/codicon_collapse-all.png" alt="Collapse All" className={styles.collapseIcon} />
+  </div> 
   <div className={styles.scrollableTodoSection}>
     {cards
       .filter((card) => card.state === 'Done')
@@ -646,28 +672,31 @@ const closeMenuPopup = () => {
     <p className={styles.priorityText}>{card.priority} Priority</p>
   </div>
 )}         
-    <p className={styles.titleText}>{card.title} </p>
-
-          <p>Checklist ({card.checklist.filter((task) => task.checked).length}/{card.checklist.length})</p>
-          {/* Display checklist items */}
-          <div className={styles.checklist}>
-            <button onClick={() => handleToggleChecklist(card._id)}>
-              {card.showChecklist ? 'Collapse' : 'Expand'}
-            </button>
-            {card.showChecklist && (
-              <>
-               <ul>
-                  {card.checklist.map((item, index) => (
-  <li key={index} className={`${styles.checklistItem} ${styles.wrapText}`}>
-  {item.checked ? <span className={styles.checked}><span className={styles.checkbox}></span></span> : <span className={styles.unchecked}></span>}
-                   {item.text}
-                   </li>
-                  ))}
-                </ul>
-              </>
-            )}
-          </div>
-
+    <div className={styles.checklistContainer}>
+  <div className={styles.textContainer}>
+    <p className={styles.titleText}>{card.title}</p>
+    <p>
+      Checklist ({card.checklist.filter((task) => task.checked).length}/{card.checklist.length})
+    </p>
+  </div>
+  <div className={styles.buttonContainer}>
+    <button onClick={() => handleToggleChecklist(card._id)}>
+      {card.showChecklist ? '^' : '⌄'}
+    </button>
+  </div>
+  {card.showChecklist && (
+    <div className={styles.checklist}>
+      <ul>
+        {card.checklist.map((item, index) => (
+          <li key={index} className={`${styles.checklistItem} ${styles.wrapText}`}>
+            {item.checked ? <span className={styles.checked}><span className={styles.checkbox}></span></span> : <span className={styles.unchecked}></span>}
+            {item.text}
+          </li>
+        ))}
+      </ul>
+    </div>
+  )}
+</div>
 
           {/* Add other card details as needed */}
           {/* You can customize the display of other card details based on your schema */}

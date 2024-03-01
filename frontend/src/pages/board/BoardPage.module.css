@@ -7,7 +7,54 @@
     overflow-x: auto; /* Enable horizontal scrolling */
     background-color:  #EEF2F5;
     
+    
 
+}
+.top {
+  display: flex;
+  justify-content: space-between;
+  padding: 20px;
+}
+
+.whiteBackground {
+  background-color: white;
+}
+
+.topLeftText {
+  display: flex;
+  flex-direction: column;
+}
+
+.welcome {
+  margin: 0;
+  font-size: 24px;
+}
+
+.boardText {
+  margin: 0;
+  font-size: 18px;
+  color: #666;
+}
+
+.topRight {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.dateAndFilter {
+  display: flex;
+  align-items: center;
+}
+
+.currentDate {
+  margin: 0;
+  font-size: 14px;
+  color: #666;
+}
+
+.filterDropdown {
+  margin-left: 10px;
 }
 .whiteBackground {
   background-color: white;
@@ -44,7 +91,30 @@
     align-items: flex-end; /* Align items to the right within the column */
     margin-left: 10px; /* Add margin for spacing */
   }
-  
+  .date-filter-container > * {
+  margin-top: 16px;
+}
+.collapseIcon {
+  width: 24px;
+  height: 24px;
+  cursor: pointer;
+  margin-right: 10px; /* Adjust as needed */
+}
+.addButton{
+  width: 24px;
+  height: 24px;
+  cursor: pointer;
+  margin-right: -170px; /* Adjust as needed */
+  border: none  ;
+  background-color: #EEF2F5;
+}
+
+/* Adjust the existing styles for the heading container */
+.headingContainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
   .filterDropdown {
     margin-left: 10px;
     display: flex;
@@ -62,7 +132,6 @@
   .boardSections {
     margin-top: 0px;
     display: flex;
-    overflow-y: auto; /* Enable horizontal scrolling for sections */
     background: white;
 
   }
@@ -92,17 +161,27 @@ border-radius: 10px;
   margin-left: 20px;
   margin-top: 4px;
 }
-.cardButtons{
-   display: flex; /* Ensure inline alignment */
-  align-items: center; /* Align items vertically */
-  padding: 5px 10px;
+.buttonContainer {
+  grid-column: 2; /* Button container spans the second column */
+  display: flex;
+  justify-content: center; /* Center the button horizontally */
+  border: 1px solid #CCCCCC; /* Example border */
+
+}
+
+.cardButtons {
+  display: flex; /* Ensure inline alignment */
+}
+
+.cardButtons > * {
+  width: auto; /* Reset width */
+
+  padding: 5px 20px;
   margin-right: 5px; /* Adjust spacing between buttons */
   border-radius: 5px;
   cursor: pointer;
   font-size: 10px;
-  display: flex;
   margin-top: 10px; /* Add margin to separate from other card details */
-
 }
 /* Add these styles in BoardPage.module.css or any other appropriate CSS file */
 
@@ -123,18 +202,23 @@ border-radius: 10px;
   border-radius: 5px;
   cursor: pointer;
   margin-left: 10px;
+  color:  #767575;
+  ;
 }
 
 /* Common styles for all buttons */
 .cardButton {
   cursor: pointer;
-  background-color: #767575; /* Dark gray */
+  background-color: #EEECEC; /* Dark gray */
+
   padding: 5px 3px;
   margin-right: 5px; /* Adjust spacing between buttons */
-  border: 1px solid #CCCCCC; /* Example border */
+  border: 1px solid #EEECEC; /* Example border */
   border-radius: 10px;
   margin-left: 20px;
   height: 30px;
+  color:  #767575;
+
   
 }
 
@@ -344,7 +428,12 @@ cursor: pointer;
 /* Additional styles for checklist box and items */
 /* Add the following styles at the end of your existing CSS file */
 .checklist {
-  margin-top: 10px;
+  grid-column: span 2; /* Checklist spans both columns */
+
+}
+.checklist ul {
+  padding: 0;
+  margin: 0;
 }
 
 .checklistButton {
@@ -353,6 +442,8 @@ cursor: pointer;
   border: none;
   padding: 5px 10px;
   cursor: pointer;
+  margin-right: 10px; /* Adjust spacing between button and checklist */
+
 }
 
 .checklistBox {
@@ -383,10 +474,15 @@ cursor: pointer;
 /* You can add more styles as needed */
 /* BoardPage.module.css */
 
-.checklistItem {
-  list-style-type: none;
-  margin-bottom: 8px;
-  
+.checklistContainer {
+  display: grid;
+  grid-template-columns: 1fr auto; /* Text container and button container */
+  align-items: center; /* Align items vertically */
+}
+
+
+.checklistContainer > * {
+  margin-right: 10px; /* Adjust spacing between elements */
 }
 
 .checklistItem label {

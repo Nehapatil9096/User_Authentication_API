@@ -153,26 +153,32 @@ export const deleteCard = async (req, res) => {
   }
 };
 
-// Define the route to handle user updates
+import bcrypt from 'bcrypt';
+
 export const passUpdate = async (req, res) => {
   const userId = req.user.id; // Assuming you have user information stored in the request
-  const { username, password } = req.body; // Get updated username and password from request body
+  const { oldPassword, newPassword } = req.body; // Get old and new passwords from the request body
 
   try {
-    // Construct update object based on provided data
-    const updateFields = {};
-    if (username) updateFields.username = username;
-    if (password) updateFields.password = password;
+    // Retrieve the user from the database
+    const user = await User.findById(userId);
 
-    // Update the user document based on the provided data
-    const updatedUser = await User.findByIdAndUpdate(userId, updateFields, { new: true });
+    // Check if the entered old password matches the existing one
+    const isOldPasswordValid = await bcrypt.compare(oldPassword, user.password);
 
-    res.json(updatedUser); // Send back the updated user document
+    if (!isOldPasswordValid) {
+      return res.status(401).json({ error: 'Invalid old password' });
+    }
+
+    // Hash the new password
+    const hashedPassword = await bcrypt.hash(newPassword, 10);
+
+    // Update the user document with the new password
+    await User.findByIdAndUpdate(userId, { password: hashedPassword });
+
+    res.json({ message: 'Password updated successfully' }); // Respond with a success message
   } catch (error) {
-    console.error('Error updating user:', error);
-    res.status(500).json({ error: 'Failed to update user' });
+    console.error('Error updating password:', error);
+    res.status(500).json({ error: 'Failed to update password' });
   }
 };
-
-
-

@@ -62,6 +62,7 @@ onSave(newCard);
 onClose();
 };
 const handlePriorityClick = (value) => {
+  
 setSelectedPriority(value);
 };
 return (
@@ -89,8 +90,7 @@ selectedPriority === "High" ? styles.selectedPriority : ""
 onClick={() => handlePriorityClick("High")}
 >
 <div className={styles.circle} style={{ backgroundColor: "#FF2473" }}></div>{" "}
-High Priority
-</button>
+HIGH PRIORITY</button>
 </div>
 <div className={styles.priority}>
 <button
@@ -100,8 +100,7 @@ selectedPriority === "Moderate" ? styles.selectedPriority : ""
 onClick={() => handlePriorityClick("Moderate")}
 >
 <div className={styles.circle} style={{ backgroundColor: "#18B0FF" }}></div>{" "}
-Moderate Priority
-</button>
+MODERATE PRIORITY</button>
 </div>
 <div className={styles.priority}>
 <button
@@ -111,8 +110,7 @@ selectedPriority === "Low" ? styles.selectedPriority : ""
 onClick={() => handlePriorityClick("Low")}
 >
 <div className={styles.circle} style={{ backgroundColor: "#63C05B" }}></div>{" "}
-Low Priority
-</button>
+LOW PRIORITY</button>
 </div>
 </div>
 {/* Line 3: Checklist */}
