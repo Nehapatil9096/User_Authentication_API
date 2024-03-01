@@ -45,6 +45,20 @@ const ToDoCard = ({ onClose, onSave, initialData, defaultPriority }) => {
   };
 
   const handleSave = () => {
+    // Check if title, priority, and checklist are not empty
+  if (!title.trim() || !priority || checklist.length === 0) {
+    // Display an alert for the user
+    alert("Title, priority, and at least one task in the checklist are required!");
+    return;
+  }
+
+  // Check if at least one task in the checklist is not empty
+  const hasNonEmptyTask = checklist.some((task) => task.text.trim() !== "");
+  if (!hasNonEmptyTask) {
+    // Display an alert for the user
+    alert("At least one task in the checklist should have a non-empty text!");
+    return;
+  }
     const newCard = {
       title,
       state: "ToDo",

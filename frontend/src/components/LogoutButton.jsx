@@ -27,8 +27,11 @@ const LogoutButton = () => {
         <div className='mt-auto' >
             {!loading ? (
                 <div className="flex items-center">
-                    <BiLogOut className='w-6 h-6 text-blue-500 cursor-pointer transform -scale-x-100' onClick={handleLogout} style={{ color: 'red' }} />
-                    <span className="text-red-500 ml-2" onClick={handleLogout}style={{ color: 'red' }}>Log out</span>
+ <BiLogOut
+      className='w-6 h-6 text-blue-500 cursor-pointer flip-horizontal'
+      onClick={handleLogout}
+      style={{ color: 'red' }}
+    />                   <span className="text-red-500 ml-2" onClick={handleLogout}style={{ color: 'red' }}>Log out</span>
                 </div>
             ) : (
                 <span className='loading loading-spinner'></span>
@@ -58,7 +61,10 @@ const LogoutButton = () => {
                     justify-content: center;
                     align-items: center;
                 }
-
+                .flip-horizontal {
+                    transform: scaleX(-1);
+                  }
+                  
                 .popup-content {
                     background-color: white;
                     padding: 20px;

@@ -61,6 +61,8 @@ export const getSharedCard = async (req, res) => {
               align-items: center;
               height: 100vh;
               margin: 0;
+              position: relative; /* Set position relative for the body */
+
             }
             .card {
               background-color: #fff;
@@ -74,6 +76,27 @@ export const getSharedCard = async (req, res) => {
               margin-top: 4px;
               border: 1px solid #ccc; /* Add border */
                         }
+                        h1 {
+                          position: absolute; /* Set position absolute for "Pro Manage" */
+                          top: 10px; /* Adjust top position as needed */
+                          left: 15px; /* Adjust left position as needed */
+                           margin-left:45px;
+                           margin-up:85px;
+                           font-family: 'Poppins', sans-serif; /* Use Poppins font */
+
+                           font-size:20px;
+                        }
+                        img {
+          position: absolute; /* Set position absolute for the image */
+          top: 20px; /* Adjust top position as needed */
+          left: 10px; /* Adjust left position as needed */
+          width: 30px; /* Adjust width as needed */
+          height: auto; /* Maintain aspect ratio */
+          margin-up:35px;
+          font-size:2px;
+
+
+        }
             .priorityContainer {
               display: flex;
               align-items: center;
@@ -285,6 +308,8 @@ export const getSharedCard = async (req, res) => {
           </style>
         </head>
         <body>
+<img src="/codesandbox.png" alt="Pro Manage Logo"> <!-- Add image here -->
+      <h1>Pro Manage</h1>
           <div class="card">
 
             <!-- Priority display based on card.priority -->

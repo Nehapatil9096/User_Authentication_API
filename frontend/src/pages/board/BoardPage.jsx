@@ -21,7 +21,40 @@ const BoardPage = () => {
   const [cardIdToDelete, setCardIdToDelete] = useState(null);
   const [showToast, setShowToast] = useState(false); // State for managing toast visibility
   const [selectedFilter, setSelectedFilter] = useState("thisWeek");
+  const [showFullTitle, setShowFullTitle] = useState(false);
 
+   // Function to display a clipped version of the title
+   const getClippedTitle = (title) => {
+    const characterLimit = 25; // Adjust the character limit as needed
+    if (showFullTitle) {
+      return title;
+    }
+    return title.length > characterLimit ? `${title.slice(0, characterLimit)}...` : title;
+  };
+  // Function to check if the due date is passed
+  const isDueDatePassed = (dueDate) => {
+    const currentDate = new Date();
+    const cardDueDate = new Date(dueDate);
+    return cardDueDate < currentDate;
+  };
+
+  // Function to set the due date button color based on conditions
+  const getDueDateButtonColor = (card) => {
+
+    if (!card.dueDate) {
+      return ''; // Return empty string if no due date is set
+    }
+  
+
+    if (card.state === 'Done') {
+      return 'green'; // Set to green if the task is done
+    } else if (isDueDatePassed(card.dueDate)) {
+      return 'red'; // Set to red if the due date is passed
+    } else {
+      return 'gray'; // Default color
+    }
+  };
+  
   const handleToDoCardOpen = () => {
     // Reset the edited card state when opening the ToDoCard
     setEditedCard(null);
@@ -51,13 +84,26 @@ const BoardPage = () => {
       ));
   };
   
-  
   const moveCardToSection = async (cardId, targetSection) => {
     try {
-      // Update the card's section locally
-      const updatedCards = cards.map((card) =>
-        card._id === cardId ? { ...card, state: targetSection } : card
-      );
+      // Find the index of the card in the current state
+      const cardIndex = cards.findIndex((card) => card._id === cardId);
+  
+      // Ensure the card is found
+      if (cardIndex === -1) {
+        throw new Error(`Card with ID ${cardId} not found.`);
+      }
+  
+      // Remove the card from its current position
+      const movedCard = cards.splice(cardIndex, 1)[0];
+  
+      // Update the card's section
+      movedCard.state = targetSection;
+  
+      // Add the card to the top of the section
+      const updatedCards = [movedCard, ...cards];
+  
+      // Update the local state
       setCards(updatedCards);
   
       // Make an API request to update the card's section on the server
@@ -67,7 +113,7 @@ const BoardPage = () => {
           'Content-Type': 'application/json',
           // Add any other headers as needed (e.g., authentication headers)
         },
-        body: JSON.stringify({ section: targetSection }), // Change 'state' to 'section'
+        body: JSON.stringify({ section: targetSection }),
       });
   
       // Check if the request was successful
@@ -85,6 +131,7 @@ const BoardPage = () => {
       console.error(`Error moving card to ${targetSection}:`, error.message);
     }
   };
+  
   
 
   const fetchUserCards = async () => {
@@ -199,6 +246,7 @@ if (selectedFilter === "today") {
     const selectedCard = cards.find((card) => card._id === cardId);
     console.log("Selected Card:", selectedCard);
 
+    
     // Open the ToDoCard modal with pre-filled data
     setEditedCard(selectedCard);
     setEditModalVisible(true);
@@ -268,6 +316,8 @@ if (selectedFilter === "today") {
       priority: editedCard.priority,
       checklist: editedCard.checklist,
       dueDate: editedCard.dueDate,
+      state: 'ToDo', // Set the state explicitly to 'ToDo'
+
       // Add other fields as needed
     };
        
@@ -437,8 +487,10 @@ const closeMenuPopup = () => {
 
 <div className={styles.checklistContainer}>
   <div className={styles.textContainer}>
-    <p className={styles.titleText}>{card.title}</p>
-    <p>
+  <p className={styles.titleText} title={card.title}>
+  {getClippedTitle(card.title)}
+</p>
+                      <p>
       Checklist ({card.checklist.filter((task) => task.checked).length}/{card.checklist.length})
     </p>
   </div>
@@ -468,9 +520,11 @@ const closeMenuPopup = () => {
 
           {/* Add buttons at the bottom of each card */}
           <div className={styles.cardButtons}>
-          <p className={`${styles.dueDate} ${!card.dueDate && styles.noDueDate}`}>
-  {card.dueDate ? formatDate(card.dueDate) : ''}
-</p>
+     
+<p className={`${styles.dueDate} ${!card.dueDate && styles.noDueDate}`}
+ style={{ backgroundColor: getDueDateButtonColor(card) }}>
+          {card.dueDate ? formatDate(card.dueDate) : ''}
+        </p>
             {renderAdjacentSectionButtons(card, card.state)}
           </div>
         </div>
@@ -492,7 +546,8 @@ const closeMenuPopup = () => {
           <div className={styles.scrollableTodoSection}>
              {cards
       .filter((card) => card.state === 'ToDo') // Filter cards only in the 'ToDo' state
-   
+      .reverse() // Reverse the order to show newest cards at the top
+
             .map((card) => (
               <div key={card._id} className={`${styles.card} ${card.showChecklist ? '' : styles.collapsed}`}>
                 {/* Menu button inside the card */}
@@ -531,8 +586,10 @@ const closeMenuPopup = () => {
 )}
     <div className={styles.checklistContainer}>
   <div className={styles.textContainer}>
-    <p className={styles.titleText}>{card.title}</p>
-    <p>
+  <p className={styles.titleText} title={card.title}>
+  {getClippedTitle(card.title)}
+</p>
+                      <p>
       Checklist ({card.checklist.filter((task) => task.checked).length}/{card.checklist.length})
     </p>
   </div>
@@ -563,9 +620,9 @@ const closeMenuPopup = () => {
 
                 {/* Add buttons at the bottom of each card */}
               <div className={styles.cardButtons}>
-              <p className={`${styles.dueDate} ${!card.dueDate && styles.noDueDate}`}>
-  {card.dueDate ? formatDate(card.dueDate) : ''}
-</p>
+              <p className={`${styles.dueDate} ${!card.dueDate && styles.noDueDate}`} style={{ backgroundColor: getDueDateButtonColor(card) }}>
+          {card.dueDate ? formatDate(card.dueDate) : ''}
+        </p>
               {renderAdjacentSectionButtons(card, card.state)}
 
               </div>
@@ -625,8 +682,10 @@ const closeMenuPopup = () => {
 )}         
     <div className={styles.checklistContainer}>
   <div className={styles.textContainer}>
-    <p className={styles.titleText}>{card.title}</p>
-    <p>
+  <p className={styles.titleText} title={card.title}>
+  {getClippedTitle(card.title)}
+</p>
+                      <p>
       Checklist ({card.checklist.filter((task) => task.checked).length}/{card.checklist.length})
     </p>
   </div>
@@ -656,9 +715,9 @@ const closeMenuPopup = () => {
 
           {/* Add buttons at the bottom of each card */}
           <div className={styles.cardButtons}>
-          <p className={`${styles.dueDate} ${!card.dueDate && styles.noDueDate}`}>
-  {card.dueDate ? formatDate(card.dueDate) : ''}
-</p>
+          <p className={`${styles.dueDate} ${!card.dueDate && styles.noDueDate}`} style={{ backgroundColor: getDueDateButtonColor(card) }}>
+          {card.dueDate ? formatDate(card.dueDate) : ''}
+        </p>
             {renderAdjacentSectionButtons(card, card.state)}
           </div>
         </div>
@@ -713,8 +772,10 @@ const closeMenuPopup = () => {
 )}         
     <div className={styles.checklistContainer}>
   <div className={styles.textContainer}>
-    <p className={styles.titleText}>{card.title}</p>
-    <p>
+  <p className={styles.titleText} title={card.title}>
+  {getClippedTitle(card.title)}
+</p>
+                      <p>
       Checklist ({card.checklist.filter((task) => task.checked).length}/{card.checklist.length})
     </p>
   </div>
@@ -742,9 +803,9 @@ const closeMenuPopup = () => {
 
           {/* Add buttons at the bottom of each card */}
           <div className={styles.cardButtons}>
-          <p className={`${styles.dueDate} ${!card.dueDate && styles.noDueDate}`}>
-  {card.dueDate ? formatDate(card.dueDate) : ''}
-</p>
+          <p className={`${styles.dueDate} ${!card.dueDate && styles.noDueDate}`} style={{ backgroundColor: getDueDateButtonColor(card) }}>
+          {card.dueDate ? formatDate(card.dueDate) : ''}
+        </p>
             {renderAdjacentSectionButtons(card, card.state)}
           </div>
         </div>
