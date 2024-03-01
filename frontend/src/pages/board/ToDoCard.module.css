@@ -354,3 +354,6 @@ transition: background-color 0.3s;
 .addNewTask button:focus {
   outline: none; /* Remove default focus outline */
 }
+.FaTrash {
+  color: #CF3636; /* Set the desired color for the FaTrash icon */
+}

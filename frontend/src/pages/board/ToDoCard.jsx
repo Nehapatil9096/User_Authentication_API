@@ -141,7 +141,7 @@ const ToDoCard = ({ onClose, onSave, initialData, defaultPriority }) => {
                     onChange={(e) => updateTaskText(index, e.target.value)}
                   />
                   <button onClick={() => deleteTask(index)}>
-                    <FaTrash />
+                  <FaTrash style={{ color: '#CF3636' }} /> {/* Apply red color inline */}
                   </button>
                 </div>
               ))}

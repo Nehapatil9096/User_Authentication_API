@@ -4,6 +4,8 @@ import useSignup from "../../hooks/useSignup";
 import userIcon from "/icon.png";
 import lockIcon from "/lock.png";
 import viewIcon from "/view.png";
+import nameIcon from "/name.png";
+
 
 import "./signup.css"; // Importing the CSS file
 
@@ -61,7 +63,7 @@ const SignUp = () => {
               value={inputs.username}
               onChange={(e) => setInputs({ ...inputs, username: e.target.value })}
             />
-            <span className="icon" style={{ backgroundImage: `url(${userIcon})` }}></span>
+            <span className="icon" style={{ backgroundImage: `url(${nameIcon})` }}></span>
           </div>
           <div className='input-container'>
             

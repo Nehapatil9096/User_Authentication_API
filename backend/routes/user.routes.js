@@ -11,7 +11,7 @@ const router = express.Router();
 
 router.get("/", protectRoute, getUsersForSidebar);
 router.get("/user-data", protectRoute, getUserData);
-router.get("/cards", protectRoute, getUserCards); // New route for fetching cards
+router.post("/cards", protectRoute, getUserCards); // New route for fetching cards
 router.put("/onecard/:cardId", protectRoute, getOneCard);// To update edited card data
 router.put("/cards/:cardId/move", protectRoute, moveCardToSection);// To move cards within sections
 router.post("/update", protectRoute, updateUser);//Add new card to  user's collection

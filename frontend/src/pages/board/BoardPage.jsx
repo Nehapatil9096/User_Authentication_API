@@ -20,6 +20,7 @@ const BoardPage = () => {
   const [showDeleteConfirmation, setShowDeleteConfirmation] = useState(false);
   const [cardIdToDelete, setCardIdToDelete] = useState(null);
   const [showToast, setShowToast] = useState(false); // State for managing toast visibility
+  const [selectedFilter, setSelectedFilter] = useState("thisWeek");
 
   const handleToDoCardOpen = () => {
     // Reset the edited card state when opening the ToDoCard
@@ -90,7 +91,39 @@ const BoardPage = () => {
     try {
       setLoading(true);
 
-      const response = await fetch("/api/users/cards");
+  // Calculate the start and end dates based on the selected filter
+let startDate, endDate;
+if (selectedFilter === "today") {
+  startDate = new Date();
+  startDate.setHours(0, 0, 0, 0); // Set to 12:00 am
+  endDate = new Date();
+  endDate.setDate(endDate.getDate() + 1); // Next day
+  endDate.setHours(0, 0, 0, 0); // Set to 12:00 am of the next day
+} else if (selectedFilter === "thisWeek") {
+  endDate = new Date();
+  startDate = new Date();
+  startDate.setDate(endDate.getDate() - 6); // 7 days ago
+  startDate.setHours(0, 0, 0, 0); // Set to 12:00 am
+} else if (selectedFilter === "thisMonth") {
+  endDate = new Date();
+  startDate = new Date();
+  startDate.setDate(endDate.getDate() - 29); // 30 days ago
+  startDate.setHours(0, 0, 0, 0); // Set to 12:00 am
+}
+
+// Now startDate and endDate represent the desired time range
+
+      console.log("Selected Filter:", selectedFilter);
+      console.log("Start Date:", startDate);
+      console.log("End Date:", endDate);
+      const response = await fetch("/api/users/cards", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ startDate, endDate }),
+      });
+
       if (!response.ok) {
         throw new Error("Failed to fetch cards from the server");
       }
@@ -147,11 +180,11 @@ const BoardPage = () => {
       console.error("Error updating user data:", error.message);
     }
   };
-
   useEffect(() => {
     // Fetch cards when the component mounts or when a user logs in
     fetchUserCards();
-  }, []);
+  }, [selectedFilter]); // Update cards when the filter changes
+
 
   const handleToggleChecklist = (cardId) => {
     setCards((prevCards) =>
@@ -317,6 +350,9 @@ const BoardPage = () => {
 const closeMenuPopup = () => {
   setActiveMenuCardId(null);
 };
+
+//////////////////////////////////////////////////////////
+
   //////////////////////////////////////////////////////////////////////////////////
   return (
     <div className={styles.boardPage}>
@@ -333,7 +369,10 @@ const closeMenuPopup = () => {
           <p className={styles.currentDate}>{getFormattedDate(currentDate)}</p>
           <div className={styles.filterDropdown}>
             {/* Your filter dropdown goes here */}
-            <select>
+            <select
+          onChange={(e) => setSelectedFilter(e.target.value)}
+          value={selectedFilter}
+        >
               <option value="today">Today</option>
               <option value="thisWeek" selected>
                 This Week

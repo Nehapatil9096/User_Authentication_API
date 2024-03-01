@@ -141,4 +141,5 @@ margin-right: 0;
   /* Style the container for the logout button */
   margin-top: auto; /* Push logout button to the bottom */
   padding: 10px; /* Add some padding around the button */
+  margin-bottom: 25px;
 }
