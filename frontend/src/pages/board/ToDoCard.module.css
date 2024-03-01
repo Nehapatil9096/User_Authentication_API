@@ -92,6 +92,9 @@ input {
 .priorityOptions button:active {
   background-color: #EEECEC; /* Darker shade on hover or click */
 }
+.priorityOptions button.selected {
+  background-color: #EEECEC; /* Lighter shade when selected */
+}
 
  /* ************* task ************** */
  .checklist {
@@ -327,5 +330,27 @@ transition: background-color 0.3s;
 }
 .checklistContainer {
   max-height: 200px; /* Adjust height as needed */
-  overflow-y: auto;
+  overflow-y: auto; 
+}
+/* ToDoCard.module.css */
+
+/* Add a new class for highlighting selected priority button */
+.selectedPriorityButton {
+  background-color: #EEECEC; /* Light gray background */
+  color: black; /* Black text color */
+}
+.addNewTask button {
+  background-color: #FFFFFF; /* Set background color */
+  color: #767575;
+  font-size: 17px;
+  border: none; /* Remove existing border */
+  padding: 5px 10px; /* Adjust padding */
+  cursor: pointer;
+  border-radius: 5px; /* Add border radius */
+}
+
+
+
+.addNewTask button:focus {
+  outline: none; /* Remove default focus outline */
 }

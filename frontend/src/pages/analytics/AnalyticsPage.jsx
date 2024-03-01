@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useAuthContext } from "../../context/AuthContext";
 import styles from "./AnalyticsPage.module.css";
-import ellipseImage from "/src/photo/Ellipse 3.png";
+import ellipseImage from "/Ellipse 3.png";
 
 const AnalyticsPage = () => {
   const { authUser, setAuthUserData } = useAuthContext();

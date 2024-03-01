@@ -1,9 +1,9 @@
 import { Link } from "react-router-dom";
 import { useState } from "react";
 import useSignup from "../../hooks/useSignup";
-import userIcon from "/src/photo/icon.png";
-import lockIcon from "/src/photo/lock.png";
-import viewIcon from "/src/photo/view.png";
+import userIcon from "/icon.png";
+import lockIcon from "/lock.png";
+import viewIcon from "/view.png";
 
 import "./signup.css"; // Importing the CSS file
 

@@ -157,11 +157,12 @@ import bcrypt from 'bcrypt';
 
 export const passUpdate = async (req, res) => {
   const userId = req.user.id; // Assuming you have user information stored in the request
-  const { oldPassword, newPassword } = req.body; // Get old and new passwords from the request body
+  const { oldPassword, newPassword, newUsername } = req.body; // Get old and new passwords from the request body
 
   try {
     // Retrieve the user from the database
     const user = await User.findById(userId);
+    await User.findByIdAndUpdate(userId, { username: newUsername });
 
     // Check if the entered old password matches the existing one
     const isOldPasswordValid = await bcrypt.compare(oldPassword, user.password);

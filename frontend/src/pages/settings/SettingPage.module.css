@@ -13,6 +13,7 @@
     margin-left: 50px;
     margin-top: -10px;
   }
+  
   .settingsTitle{
     font-size: 22px;
     font-style: Open Sans;
@@ -138,5 +139,11 @@
   position: absolute;
   left: 10px;
   top: 50%;
+  transform: translateY(-50%);
+}
+.icon1 {
+  position: absolute;
+  left: 320px;
+  top: 30%;
   transform: translateY(-50%);
 }

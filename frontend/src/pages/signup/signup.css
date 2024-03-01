@@ -9,7 +9,6 @@
     justify-content: center;
     min-height: 100vh;
     background-color: #f3f4f6; /* Update with your desired background color */
-    overflow: hidden; /* Add this to remove scroll bars */
 }
 
 /* Image */
@@ -20,7 +19,6 @@
     top: 0;
     left: 0;
     background-color: #17a2b8; /* Background color for left side */
-    overflow: hidden; /* Hide overflow to prevent background color from shifting */
 }
 
 .image {
@@ -33,16 +31,16 @@
 }
 
 /* Back Image */
-.centered-back-image {
-    position: absolute;
-    z-index: -1; /* Behind other content */
-    max-width: 35%; /* Adjust according to your image's width */
-    max-height: 45%; /* Adjust according to your image's height */
-    left: 290px;
-    right: 30px;
-    bottom: 0;
-    top: 120px;
-}
+    .centered-back-image {
+        max-width: 100%; /* Adjusted width to ensure it fits within the container */
+        max-height: 100%; /* Adjusted height to ensure it fits within the container */
+        margin: 0 auto;
+        z-index: -1;
+        margin-left: 95px;
+        position: fixed;
+        margin-top: 50px;
+      
+      }
 
 /* Centered Photo */
 .centered-photo {

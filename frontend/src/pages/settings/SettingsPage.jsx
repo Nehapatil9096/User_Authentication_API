@@ -3,9 +3,9 @@ import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useAuthContext } from "../../context/AuthContext";
 import styles from "./SettingPage.module.css";
-import lockIcon from "../../photo/lock.png";
-import nameIcon from "../../photo/name.png";
-import viewIcon from "../../photo/view.png";
+import lockIcon from "/lock.png";
+import nameIcon from "/name.png";
+import viewIcon from "/view.png";
 
 const SettingsPage = () => {
   const { authUser, setAuthUserData } = useAuthContext();
@@ -49,7 +49,7 @@ const handleUpdateSettings = async () => {
     }
 
     // Prepare data to send for update
-    const updateData = { username: userSettings.name, oldPassword: userSettings.oldPassword, newPassword: userSettings.newPassword };
+    const updateData = { newUsername: userSettings.name, oldPassword: userSettings.oldPassword, newPassword: userSettings.newPassword };
     console.log("Update Data:", updateData);
 
     // Example: Update user data on the server
@@ -125,7 +125,7 @@ return (
         value={userSettings.oldPassword}
         onChange={(e) => setUserSettings({ ...userSettings, oldPassword: e.target.value })}
       />
-            <span className={styles.icon}>
+            <span className={styles.icon1}>
 
      <img
   src={viewIcon}
@@ -151,7 +151,7 @@ return (
         onChange={(e) => setUserSettings({ ...userSettings, newPassword: e.target.value })}
       />
      
-            <span className={styles.icon}>
+            <span className={styles.icon1}>
 
      <img
   src={viewIcon}

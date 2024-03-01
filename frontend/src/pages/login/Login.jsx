@@ -2,9 +2,9 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import useLogin from "../../hooks/useLogin";
 import "./login.css";
-import userIcon from "/src/photo/icon.png";
-import lockIcon from "/src/photo/lock.png";
-import viewIcon from "/src/photo/view.png";
+import userIcon from "/icon.png";
+import lockIcon from "/lock.png";
+import viewIcon from "/view.png";
 
 const Login = () => {
   const [email, setEmail] = useState("");

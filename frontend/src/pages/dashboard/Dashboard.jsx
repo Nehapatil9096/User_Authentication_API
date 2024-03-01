@@ -54,32 +54,33 @@ return (
 {showSidebar && (
 <div className={styles.sidebar}>
 <div className={styles.logoContainer}>
-<img src="/src/photo/codesandbox.png" alt="logo Icon" className={styles.logo} />
+<img src="/codesandbox.png" alt="logo Icon" className={styles.logo} />
 <div className={styles.brand}>Pro Manage</div>
 </div>
 <nav>
 <div className={styles.logoContainer}>
-<img src="/src/photo/layout (1).png" alt="logo Icon" className={styles.logo} />
+<img src="/layout (1).png" alt="logo Icon" className={styles.logo} />
 <div className={styles.sidebarButton1} onClick={() => handleNavClick("/board")}>
 Board
 </div>
 </div>
 <div className={styles.logoContainer}>
-<img src="/src/photo/database.png" alt="logo Icon" className={styles.logo} />
+<img src="/database.png" alt="logo Icon" className={styles.logo} />
 <div className={styles.sidebarButton2} onClick={() => handleNavClick("/analytics")}>
 Analytics
 </div>
 </div>
 <div className={styles.logoContainer}>
-<img src="/src/photo/settings.png" alt="logo Icon" className={styles.logo} />
+<img src="/settings.png" alt="logo Icon" className={styles.logo} />
 <div className={styles.sidebarButton3} onClick={() => handleNavClick("/settings")}>
 Settings
 </div>
 </div>
 </nav>
 <div className={styles.divider}></div>
-<LogoutButton onClick={() => setShowLogoutConfirmation(true)}>logout</LogoutButton>
-</div>
+<div className={styles.logoutButtonContainer}>
+            <LogoutButton onClick={() => setShowLogoutConfirmation(true)}>Logout</LogoutButton>
+          </div></div>
 )}
 {/* Content Section */}
 <div className={styles.content}>

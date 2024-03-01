@@ -2,17 +2,20 @@
 
 @media only screen and (max-width: 768px) {
 .main-container {
-  display: flex;
+  display: fixed;
   align-items: center;
   justify-content: center;
   min-height: 100vh;
   background-color: #f3f4f6;
-  overflow: hidden;
 }
 }
 /* Image Container */
 /* index.css */
-
+body, html {
+  margin: 0;
+  padding: 0;
+  overflow: hidden; /* Prevent scrolling */
+}
 /* Image Container */
 .image-container {
   position: relative;
@@ -21,7 +24,6 @@
   top: 0;
   left: 0;
   background-color: #17a2b8;
-  overflow: hidden;
 }
 
 .image {
@@ -35,12 +37,14 @@
 }
 
 .centered-back-image {
-  position: fixed;
+  max-width: 100%; /* Adjusted width to ensure it fits within the container */
+  max-height: 100%; /* Adjusted height to ensure it fits within the container */
+  margin: 0 auto;
   z-index: -1;
-  width: 100%; /* Adjusted width to cover the entire viewport */
-  height: 100%; /* Adjusted height to cover the entire viewport */
-  top: 0;
-  left: 0;
+  margin-left: 10px;
+  position: fixed;
+  margin-top: 20px;
+
 }
 
 /* Centered Photo */
@@ -82,7 +86,6 @@
   left: 50%;
   padding: 0px 0px 0px 20px;
   gap: 22px; /* Adjusted gap for smaller screens */
-  overflow: hidden;
   background-color: #ffffff;
   display: flex;
   align-items: center;
