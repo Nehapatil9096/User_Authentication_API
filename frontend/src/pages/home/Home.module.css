@@ -1,4 +1,10 @@
 /* Home.module.css */
+.container {
+  height: 100vh; /* Set height to full viewport height */
+  overflow-y: auto; /* Enable vertical scrolling */
+}
+
+/* Other styles remain unchanged */
 
 .home {
   max-width: 1200px;
@@ -80,10 +86,46 @@
   cursor: pointer;
 }
 
+.sortingBar .dropdowns {
+  display: flex; /* Set to display flex */
+  align-items: center; /* Align items in the same line */
+}
+
 .sortingBar .dropdowns select {
   margin-right: 10px;
   padding: 5px;
   border-radius: 5px;
+  appearance: none; /* Remove default arrow */
+  background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="black" width="18px" height="18px"><path d="M7 10l5 5 5-5z" /><path d="M0 0h24v24H0z" fill="none" /></svg>'); /* Custom arrow */
+  background-repeat: no-repeat;
+  background-position: right 5px center;
+}
+
+.sortingBar .dropdowns select:focus {
+  outline: none;
+}
+
+.sortingBar .dropdowns select option {
+  background-color: #fff;
+}
+
+.sortingBar .dropdowns select:hover {
+  background-color: #f0f0f0;
+}
+
+/* Highlight the selected option */
+.sortingBar .dropdowns select option:checked {
+  background-color: #3498db; /* Highlight color */
+}
+
+/* Dropdown heading style */
+.sortingBar .dropdowns span {
+  margin-right: 10px;
+}
+
+/* Highlight the selected heading */
+.sortingBar .dropdowns span:hover {
+  color: #3498db; /* Highlight color */
 }
 
 .productList {
@@ -102,3 +144,60 @@
   padding: 20px;
   text-align: center;
 }
+
+.dropdown {
+  margin-bottom: 10px;
+}
+
+.dropdown select {
+  appearance: none;
+  border: 1px solid #ccc;
+  padding: 8px 16px;
+  border-radius: 4px;
+  background-color: #fff;
+  cursor: pointer;
+  width: 200px; /* Adjust width as needed */
+}
+
+.dropdown select::-ms-expand {
+  display: none;
+}
+
+/* Add arrow icon */
+.dropdown select {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M7 10l5 5 5-5z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 8px center;
+}
+
+/* Style selected option */
+.dropdown select option:checked {
+  color: white;
+}
+
+/* Style placeholder option */
+.dropdown select option[disabled] {
+  color: #999;
+}
+/* Add styles for images */
+.productCard {
+  position: relative; /* Position relative for absolute positioning of images */
+}
+
+.productCard .productImage {
+  position: relative;
+  overflow: hidden; /* Hide overflowing content */
+  height: 200px; /* Fixed height for image container */
+  margin-bottom: 10px; /* Margin bottom for spacing */
+}
+
+.productCard .productImage img {
+  width: 100%; /* Full width for image */
+  height: auto; /* Maintain aspect ratio */
+  position: absolute; /* Position absolute for positioning within container */
+  top: 50%; /* Align to top */
+  left: 50%; /* Align to left */
+  transform: translate(-50%, -50%); /* Center image within container */
+}
+
+/* Add other existing styles remain unchanged */

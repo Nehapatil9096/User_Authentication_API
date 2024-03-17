@@ -34,9 +34,6 @@
     display: inline-block;
 }
 
-.loadingSpinner {
-    /* Styles for your loading spinner */
-}
 
 .popup {
     position: fixed;
