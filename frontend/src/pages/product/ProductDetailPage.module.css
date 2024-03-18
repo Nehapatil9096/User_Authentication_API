@@ -1,0 +1,55 @@
+/* ProductDetailPage.module.css */
+
+.container {
+    display: flex;
+    align-items: center; /* Center items vertically */
+  }
+  
+.mainImage {
+    width: 70%; /* Adjust the width of the default image */
+    max-width: 400px; /* Limit the maximum width */
+    margin: 0 auto; /* Center the image horizontally */
+  }
+  
+  .smallImage {
+    width: 20%; /* Adjust the width of the small images */
+    max-width: 100px; /* Limit the maximum width */
+    cursor: pointer; /* Add pointer cursor to indicate clickable */
+  }
+  
+  .productDetails {
+    flex: 1;
+    padding: 20px;
+  }
+  
+  .productImages {
+    flex: 1;
+    display: flex;
+    flex-wrap: wrap;
+  }
+  
+  .productImages img {
+    width: calc(25% - 10px); /* Adjust image width and spacing */
+    margin: 5px;
+  }
+  
+  
+  .productDetails h2 {
+    margin-top: 0;
+  }
+  
+  .productDetails p {
+    margin: 5px 0;
+  }
+  
+  .buttons {
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .buttons button {
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+  }
+  

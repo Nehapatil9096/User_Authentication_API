@@ -1,9 +1,12 @@
 import React, { useState, useEffect } from "react";
 import styles from "./Home.module.css";
+import { Link } from "react-router-dom"; // Import Link from react-router-dom
+import LogoutButton from "/src/components/LogoutButton"; // Import LogoutButton component
 
 const Home = () => {
   const [products, setProducts] = useState([]);
   const [searchQuery, setSearchQuery] = useState("");
+  const [listView, setListView] = useState(false); // State to track list view
 
   useEffect(() => {
     fetchProducts();
@@ -26,8 +29,6 @@ const Home = () => {
  const handleSearchInputChange = (event) => {
   setSearchQuery(event.target.value);
 };
-  // State to manage the visibility of the logout confirmation popup
-  const [showLogoutConfirmation, setShowLogoutConfirmation] = useState(false);
 
   // State to store the selected option for each dropdown
   const [selectedOptions, setSelectedOptions] = useState({
@@ -47,32 +48,18 @@ const Home = () => {
     });
   }
 
-
+// Function to toggle between grid and list view
+const toggleListView = () => {
+  setListView(!listView);
+};
   
   return (
     <div className={styles.container}>
       <div className={styles.home}>
         {/* Logout Button */}
         <div className={styles.logoutButtonContainer}>
-          <span>Logout</span>
-        </div>
-
-        {/* Logout Confirmation Popup */}
-        {showLogoutConfirmation && (
-          <div className={styles.logoutConfirmation}>
-            <p>Are you sure you want to logout?</p>
-            <button onClick={() => setShowLogoutConfirmation(false)}>No</button>
-            <button
-              onClick={() => {
-                // Perform logout action here
-                // For now, let's just close the popup
-                setShowLogoutConfirmation(false);
-              }}
-            >
-              Yes
-            </button>
-          </div>
-        )}
+        <LogoutButton /> {/* Include LogoutButton component */}
+        </div>    
 
         {/* Navigation Bar */}
         <div className={styles.navbar}>
@@ -103,7 +90,7 @@ const Home = () => {
         </div>
            
         {/* Search Bar */}
-           <div className={styles.searchBar}>
+        <div className={styles.searchBar}>
           <input
             type="text"
             placeholder="Search..."
@@ -114,10 +101,11 @@ const Home = () => {
 
         {/* Sorting Options Bar */}
         <div className={styles.sortingBar}>
-          <div className={styles.leftSection}>
-            <span>Grid</span>
-            <span>List</span>
-          </div>
+        <div className={styles.listViewToggle}>
+          <button onClick={toggleListView}>
+            {listView ? "Grid View" : "List View"}
+          </button>
+        </div>
           <div className={styles.dropdowns}>
             <div className={styles.dropdown}>
               <select id="headphoneType" onChange={(e) => handleDropdownChange(e, "headphoneType")} value={selectedOptions.headphoneType}>
@@ -171,22 +159,28 @@ const Home = () => {
           </div>
         </div>
 
- {/* Product Listing */}
- <div className={styles.productList}>
+        {/* Product Listing */}
+        <div className={`${styles.productList} ${listView ? styles.listView : styles.gridView}`}>
           {products.map((product, index) => (
-            <div key={index} className={styles.productCard}>
-              <div className={styles.productImage}>
-                <img src={product.images[0]} alt={product.name} />
+            <Link key={index} to={`/product/ProductDetails/${product._id}`}>
+              <div className={styles.productCard}>
+                <div className={styles.productImage}>
+                  <img src={product.images[0]} alt={product.name} />
+
+                </div>
+                <img src="cart.png" className={styles.cartIcon} alt="Add to Cart" />
+
+                <div className={styles.productDetails}>
+                  <h3>{product.name}</h3>
+                  <p>Company: {product.brand}</p>
+                  <p>Price: {product.price}</p>
+                  <p>Color: {product.color}</p>
+                  <p>Type: {product.type}</p>
+                </div>
               </div>
-              <h3>{product.name}</h3>
-              <p>Company: {product.brand}</p>
-              <p>Price: {product.price}</p>
-              <p>Color: {product.color}</p>
-              <p>Type: {product.type}</p>
-            </div>
+            </Link>
           ))}
         </div>
-
         {/* Bottom Bar */}
         <div className={styles.bottomBar}>
           Musicart | All rights reserved

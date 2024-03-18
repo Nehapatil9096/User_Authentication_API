@@ -21,6 +21,8 @@
 		"jsonwebtoken": "^9.0.2",
 		"mongodb": "^6.3.0",
 		"mongoose": "^8.1.1",
+		"react-responsive-carousel": "^3.2.23",
+		"react-router-dom": "^6.22.3",
 		"react-toastify": "^10.0.4"
 	},
 	"devDependencies": {

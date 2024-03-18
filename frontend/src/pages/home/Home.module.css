@@ -201,3 +201,85 @@
 }
 
 /* Add other existing styles remain unchanged */
+.productList {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.productCard {
+  /* Your product card styles */
+  width: 100%; /* Take full width for list view */
+  margin-bottom: 20px; /* Adjust the margin between product cards */
+  border: 1px solid #ccc; /* Example border */
+  border-radius: 5px; /* Example border radius */
+  display: flex; /* Make the card a flex container */
+  align-items: center; /* Align items vertically */
+  padding: 10px; /* Add padding */
+}
+
+.productImage {
+  width: 30%; /* Adjust the width of the image */
+  border-radius: 5px; /* Example border radius for image */
+  margin-right: 10px; /* Adjust the spacing between image and details */
+}
+
+
+.listView .productImage {
+  /* Additional styles for list view */
+  width: 30%; /* Adjust the width of the image */
+  margin-right: 20px; /* Adjust the spacing between image and details */
+}
+
+.productCard:hover {
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+}
+
+.productImage img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+.productImage {
+  /* Styles for the product image */
+  width: 30%; /* Adjust the width of the image */
+  border-radius: 5px; /* Example border radius for image */
+  margin-right: 10px; /* Adjust the spacing between image and details */
+}
+.productDetails {
+  /* Styles for the product details */
+  flex: 1; /* Allow the details to grow to fill available space */
+}
+
+/* List View */
+.listView .productCard {
+  width: 100%;
+}
+
+.gridView .productCard {
+  /* Additional styles for grid view */
+  display: flex;
+  flex-direction: column;
+}
+
+@media (max-width: 768px) {
+  /* Media query styles for smaller screens */
+  .productCard {
+    /* Adjust width for smaller screens */
+    width: 100%;
+    flex-direction: column; /* Stack details below the image */
+  }
+  
+  .productImage {
+    width: 100%; /* Make the image full width on smaller screens */
+    margin-right: 0; /* Remove margin on smaller screens */
+    margin-bottom: 10px; /* Add space between image and details */
+  }
+}
+
+.productImage {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+
