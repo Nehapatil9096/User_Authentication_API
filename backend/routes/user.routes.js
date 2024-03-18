@@ -28,29 +28,82 @@ router.get("/products", async (req, res) => {
   }
 });
 
-
 // Search products
 router.get("/products/search", async (req, res) => {
-  try {
-    const query = req.query.q; // Get the search query from the request query parameters
-    const regex = new RegExp(query, "i"); // Case-insensitive regex pattern
-    
-    // Find products that match the search query
-    const products = await Product.find({
-      $or: [
-        { name: { $regex: regex } },
-       // { brand: { $regex: regex } },
-       // { color: { $regex: regex } },
-       // { type: { $regex: regex } }
-      ]
-    });
+    try {
+      const query = req.query.q; // Get the search query from the request query parameters
+      const regex = new RegExp(query, "i"); // Case-insensitive regex pattern
+  
+      // Define filtering criteria
+      const filterCriteria = {};
+  
+      // Handle filtering criteria from frontend
+      if (req.query.headphoneType) {
+        filterCriteria.type = req.query.headphoneType;
+      }
+      if (req.query.company) {
+        filterCriteria.brand = req.query.company;
+      }
+      if (req.query.color) {
+        filterCriteria.color = req.query.color;
+      }
 
-    res.json(products);
-  } catch (error) {
-    console.error("Error searching products:", error);
-    res.status(500).json({ error: "Internal Server Error" });
-  }
-});
+      //let products = await Product.find({ $or: [{ name: { $regex: regex } }] });
+      let products = await Product.find({$and: [
+        { $or: [{ name: { $regex: regex } }] },
+        filterCriteria // Apply filtering criteria
+        ]});
+      if (req.query.price) {
+        console.log("Price query:", req.query.price); // Log the value of price query
+        // Parse price range from string format (e.g., "10000-20000")
+        const priceRange = req.query.price.trim().split("-");
+        console.log("Price range:", priceRange); // Log the parsed price range array
+        if (priceRange.length === 2) {
+            const minPrice = Number(priceRange[0]);
+            const maxPrice = Number(priceRange[1]);
+         
+          console.log("Parsed minPrice:", minPrice); // Log parsed minPrice
+          console.log("Parsed maxPrice:", maxPrice); // Log parsed maxPrice
+                         // Filter products based on price range
+                         products = products.filter(product => {
+                            const productPrice = parseFloat(product.price.replace(/[^\d.]/g, ''));
+                            return productPrice >= minPrice && productPrice <= maxPrice;
+                        });
+        
+        } else {
+          // Handle invalid price range format
+          console.error("Invalid price range format:", req.query.price);
+        }
+      }
+
+     
+  
+        // Sorting logic
+        if (req.query.sortBy === "priceLowest") {
+            products = products.sort((a, b) => {
+                const priceA = parseFloat(a.price.replace(/[^\d.]/g, ''));
+                const priceB = parseFloat(b.price.replace(/[^\d.]/g, ''));
+                return priceA - priceB;
+            });
+        } else if (req.query.sortBy === "priceHighest") {
+            products = products.sort((a, b) => {
+                const priceA = parseFloat(a.price.replace(/[^\d.]/g, ''));
+                const priceB = parseFloat(b.price.replace(/[^\d.]/g, ''));
+                return priceB - priceA;
+            });
+        } else if (req.query.sortBy === "nameAZ") {
+            products = products.sort((a, b) => a.name.localeCompare(b.name));
+        } else if (req.query.sortBy === "nameZA") {
+            products = products.sort((a, b) => b.name.localeCompare(a.name));
+        }
+  
+      res.json(products);
+    } catch (error) {
+      console.error("Error searching products:", error);
+      res.status(500).json({ error: "Internal Server Error" });
+    }
+  });
+  
 // Fetch a single product by ID
 
 router.get("/products/:productId", async (req, res) => {

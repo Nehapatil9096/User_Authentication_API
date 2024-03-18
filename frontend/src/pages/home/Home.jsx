@@ -1,20 +1,27 @@
 import React, { useState, useEffect } from "react";
 import styles from "./Home.module.css";
-import { Link } from "react-router-dom"; // Import Link from react-router-dom
-import LogoutButton from "/src/components/LogoutButton"; // Import LogoutButton component
+import { Link } from "react-router-dom";
+import LogoutButton from "/src/components/LogoutButton";
 
 const Home = () => {
   const [products, setProducts] = useState([]);
   const [searchQuery, setSearchQuery] = useState("");
-  const [listView, setListView] = useState(false); // State to track list view
+  const [listView, setListView] = useState(false);
+  const [selectedOptions, setSelectedOptions] = useState({
+    headphoneType: "",
+    company: "",
+    color: "",
+    price: "",
+    sortBy: "featured" // Default sorting option
+  });
 
   useEffect(() => {
     fetchProducts();
-  }, [searchQuery]);
+  }, [searchQuery, selectedOptions]);
 
   const fetchProducts = async () => {
     try {
-      const response = await fetch(`/api/users/products/search?q=${searchQuery}`);
+      const response = await fetch(`/api/users/products/search?q=${searchQuery}&sortBy=${selectedOptions.sortBy}&headphoneType=${selectedOptions.headphoneType}&company=${selectedOptions.company}&color=${selectedOptions.color}&price=${selectedOptions.price}`);
       if (response.ok) {
         const data = await response.json();
         setProducts(data);
@@ -30,18 +37,7 @@ const Home = () => {
   setSearchQuery(event.target.value);
 };
 
-  // State to store the selected option for each dropdown
-  const [selectedOptions, setSelectedOptions] = useState({
-    headphoneType: "",
-    company: "",
-    color: "",
-    price: "",
-    sortBy: ""
-  });
-
-  // Function to handle dropdown change
   function handleDropdownChange(event, dropdownName) {
-    // Update selected option for the dropdown
     setSelectedOptions({
       ...selectedOptions,
       [dropdownName]: event.target.value
@@ -58,8 +54,8 @@ const toggleListView = () => {
       <div className={styles.home}>
         {/* Logout Button */}
         <div className={styles.logoutButtonContainer}>
-        <LogoutButton /> {/* Include LogoutButton component */}
-        </div>    
+          <LogoutButton />
+        </div>
 
         {/* Navigation Bar */}
         <div className={styles.navbar}>
@@ -80,7 +76,7 @@ const toggleListView = () => {
           </div>
           <div className={styles.rightSection}>
             <span>Cart</span>
-            <div className={styles.userCircle}>U</div> {/* Replace 'U' with user initials */}
+            <div className={styles.userCircle}>U</div>
           </div>
         </div>
 
@@ -101,46 +97,43 @@ const toggleListView = () => {
 
         {/* Sorting Options Bar */}
         <div className={styles.sortingBar}>
-        <div className={styles.listViewToggle}>
-          <button onClick={toggleListView}>
-            {listView ? "Grid View" : "List View"}
-          </button>
-        </div>
+          <div className={styles.listViewToggle}>
+            <button onClick={toggleListView}>
+              {listView ? "Grid View" : "List View"}
+            </button>
+          </div>
           <div className={styles.dropdowns}>
             <div className={styles.dropdown}>
               <select id="headphoneType" onChange={(e) => handleDropdownChange(e, "headphoneType")} value={selectedOptions.headphoneType}>
                 <option value="" disabled hidden>Headphone type</option>
-                <option value="featured">In-ear headphone</option>
-                <option value="in-ear">On-ear headphone</option>
-                <option value="on-ear">Over-ear headphone</option>
+                <option value="In-ear headphone">In-ear headphone</option>
+                <option value="On-ear headphone">On-ear headphone</option>
+                <option value="Over-ear headphone">Over-ear headphone</option>
               </select>
             </div>
             <div className={styles.dropdown}>
               <select onChange={(e) => handleDropdownChange(e, "company")} value={selectedOptions.company}>
                 <option value="" disabled hidden>Company</option>
-                <option value="featured">Featured</option>
                 <option value="JBL">JBL</option>
                 <option value="Sony">Sony</option>
-                <option value="Boat">Boat</option>
-                <option value="Zebronics">Zebronics</option>
+                <option value="boAt">Boat</option>
+                <option value="ZEBRONICS">Zebronics</option>
                 <option value="Marshall">Marshall</option>
-                <option value="Ptron">Ptron</option>
+                <option value="PTron">Ptron</option>
               </select>
             </div>
             <div className={styles.dropdown}>
               <select onChange={(e) => handleDropdownChange(e, "color")} value={selectedOptions.color}>
                 <option value="" disabled hidden>Color</option>
-                <option value="featured">Featured</option>
-                <option value="blue">Blue</option>
-                <option value="black">Black</option>
-                <option value="white">White</option>
-                <option value="brown">Brown</option>
+                <option value="Blue">Blue</option>
+                <option value="Black">Black</option>
+                <option value="White">White</option>
+                <option value="Brown">Brown</option>
               </select>
             </div>
             <div className={styles.dropdown}>
               <select onChange={(e) => handleDropdownChange(e, "price")} value={selectedOptions.price}>
                 <option value="" disabled hidden>Price</option>
-                <option value="featured">Featured</option>
                 <option value="0-1000">₹0 - ₹1,000</option>
                 <option value="1000-10000">₹1,000 - ₹10,000</option>
                 <option value="10000-20000">₹10,000 - ₹20,000</option>
@@ -148,8 +141,8 @@ const toggleListView = () => {
             </div>
           </div>
           <div className={styles.rightSection}>
-            <span>Sort by</span> {/* Heading name */}
-            <select>
+            <span>Sort by</span>
+            <select onChange={(e) => handleDropdownChange(e, "sortBy")} value={selectedOptions.sortBy}>
               <option value="featured">Featured</option>
               <option value="priceLowest">Price: Lowest</option>
               <option value="priceHighest">Price: Highest</option>
@@ -159,17 +152,14 @@ const toggleListView = () => {
           </div>
         </div>
 
-        {/* Product Listing */}
         <div className={`${styles.productList} ${listView ? styles.listView : styles.gridView}`}>
           {products.map((product, index) => (
             <Link key={index} to={`/product/ProductDetails/${product._id}`}>
               <div className={styles.productCard}>
                 <div className={styles.productImage}>
                   <img src={product.images[0]} alt={product.name} />
-
                 </div>
                 <img src="cart.png" className={styles.cartIcon} alt="Add to Cart" />
-
                 <div className={styles.productDetails}>
                   <h3>{product.name}</h3>
                   <p>Company: {product.brand}</p>
@@ -181,7 +171,6 @@ const toggleListView = () => {
             </Link>
           ))}
         </div>
-        {/* Bottom Bar */}
         <div className={styles.bottomBar}>
           Musicart | All rights reserved
         </div>
