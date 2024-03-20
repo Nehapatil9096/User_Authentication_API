@@ -1,10 +1,11 @@
 import express from "express";
 
 import protectRoute from "../middleware/protectRoute.js";
-import { getUsersForSidebar, getUserData, updateUser, getUserCards, getOneCard, deleteCard, passUpdate } from "../controllers/user.controller.js"; // Include getUserCards
+import { getUsersForSidebar, getUserData, updateUser, getUserCards, getOneCard, deleteCard, passUpdate , updateCart, myCartdetails} from "../controllers/user.controller.js"; // Include getUserCards
 
 // Import the Product model (if needed)
  import Product from "../models/product.model.js";
+import User from "../models/user.model.js";
 
 // Import Mongoose for accessing the database
 import mongoose from "mongoose";
@@ -17,6 +18,8 @@ router.post("/update", protectRoute, updateUser); // Add new card to user's coll
 router.delete("/cards/:cardId", protectRoute, deleteCard); // Delete a card from the users collection
 router.put("/settings", protectRoute, passUpdate); // Add new card to user's collection
 
+router.post("/cart/add", protectRoute, updateCart); 
+router.get("/cart", protectRoute, myCartdetails); 
 
 router.get("/products", async (req, res) => {
   try {
@@ -121,6 +124,9 @@ router.get("/products/:productId", async (req, res) => {
       res.status(500).json({ error: "Internal Server Error" });
     }
   });
+
+
+  
 
 
 export default router;

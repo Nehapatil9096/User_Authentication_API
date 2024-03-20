@@ -6,6 +6,7 @@ import SignUp from "./pages/signup/SignUp";
 import { Toaster } from "react-hot-toast";
 import { useAuthContext } from "./context/AuthContext";
 import ProductDetailPage from './pages/product/ProductDetailPage'; // Import the ProductDetailPage component
+import Mycart from "./pages/mycart/Mycart"; // Import the Checkout component
 
 function App() {
   const { authUser } = useAuthContext();
@@ -20,6 +21,7 @@ function App() {
   <Route path="/login" element={authUser ? (<Navigate to="/" />) : (<Login />)} />
   <Route path="/signup" element={authUser ? (<Navigate to="/" />) : (<SignUp />)} />
   <Route path="/product/ProductDetails/:productId" element={<ProductDetailPage />} />
+  <Route path="/mycart" element={<Mycart />} /> {/* Add route for the checkout page */}
 
 </Routes>
 

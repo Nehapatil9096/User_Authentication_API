@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from "react";
 import styles from "./Home.module.css";
 import { Link } from "react-router-dom";
-import LogoutButton from "/src/components/LogoutButton";
+import LogoutButton from "/src/components/LogoutButton"
+import offerImage from "/Rectangle 3.png";
 
 const Home = () => {
   const [products, setProducts] = useState([]);
@@ -32,10 +33,11 @@ const Home = () => {
       console.error("Error fetching products:", error);
     }
   };
- // Function to handle search input change
- const handleSearchInputChange = (event) => {
-  setSearchQuery(event.target.value);
-};
+
+  // Function to handle search input change
+  const handleSearchInputChange = (event) => {
+    setSearchQuery(event.target.value);
+  };
 
   function handleDropdownChange(event, dropdownName) {
     setSelectedOptions({
@@ -44,10 +46,15 @@ const Home = () => {
     });
   }
 
-// Function to toggle between grid and list view
-const toggleListView = () => {
-  setListView(!listView);
-};
+  // Function to switch to grid view
+  const switchToGridView = () => {
+    setListView(true);
+  };
+
+  // Function to switch to list view
+  const switchToListView = () => {
+    setListView(false);
+  };
   
   return (
     <div className={styles.container}>
@@ -63,6 +70,9 @@ const toggleListView = () => {
             <span>User Mob. Number</span>
           </div>
           <div className={styles.middleSection}>
+          <img src={offerImage} alt="Offer" style={{   flex: 1
+,width: "100vh", height: "100px" ,marginRight:"100px"}} />
+
             <span>Get 50% off on selected items | Shop Now</span>
           </div>
         </div>
@@ -98,9 +108,8 @@ const toggleListView = () => {
         {/* Sorting Options Bar */}
         <div className={styles.sortingBar}>
           <div className={styles.listViewToggle}>
-            <button onClick={toggleListView}>
-              {listView ? "Grid View" : "List View"}
-            </button>
+            <button onClick={switchToGridView}>Grid View</button>
+            <button onClick={switchToListView}>List View</button>
           </div>
           <div className={styles.dropdowns}>
             <div className={styles.dropdown}>

@@ -1,58 +1,9 @@
 // models/user.model.js
-
 import mongoose from 'mongoose';
 
-const cardSchema = new mongoose.Schema({
-  title: {
-    type: String,
-    required: true,
-  },
-  priority: {
-    type: String,
-    enum: ['High', 'Moderate', 'Low'],
-    required: true,
-  },
-  checklist: [
-    {
-      text: {
-        type: String,
-        required: true,
-      },
-      checked: {
-        type: Boolean,
-        default: false,
-      },
-    },
-  ],
-  dueDate: {
-    type: Date,
-  },
-  state: {
-    type: String,
-    enum: ['Backlog', 'ToDo', 'InProgress', 'Done'],
-    default: 'Backlog',
-  },
-  sharedWith: [
-    {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: 'User',
-    },
-  ],
-  createdAt: {
-    type: Date,
-    default: Date.now,
-  },
-  updatedAt: {
-    type: Date,
-    default: Date.now,
-  },
-  checklistTotalTasks: {
-    type: Number,
-    default: 0,
-  },
-});
+const { Schema } = mongoose;
 
-const userSchema = new mongoose.Schema({
+const userSchema = new Schema({
   username: {
     type: String,
     required: true,
@@ -67,7 +18,21 @@ const userSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
-  cards: [cardSchema], // Using the cardSchema to define the structure of cards
+  mobileNumber: {
+    type: String,
+  },
+  cart: [
+    {
+      product: {
+        type: Schema.Types.ObjectId,
+        ref: 'Product',
+      },
+      quantity: {
+        type: Number,
+        default: 1, // Default quantity is 1
+      },
+    },
+  ],
 });
 
 const User = mongoose.model('User', userSchema);

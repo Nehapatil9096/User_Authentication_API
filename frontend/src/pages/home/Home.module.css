@@ -253,13 +253,18 @@
 /* List View */
 .listView .productCard {
   width: 100%;
+  display: grid;
+
 }
 
 .gridView .productCard {
   /* Additional styles for grid view */
-  display: flex;
-  flex-direction: column;
+  display: grid;
+    grid-template-columns: repeat(5, 2fr); /* Adjusted to 4 columns */
+    grid-gap: 20px; /* Adjust the gap between products */
+
 }
+
 
 @media (max-width: 768px) {
   /* Media query styles for smaller screens */
