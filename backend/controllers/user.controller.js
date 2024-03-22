@@ -71,6 +71,155 @@ export const myCartdetails = async (req, res) => {
   }
 };
 
+export const updateFeedback = async (req, res) => {
+  try {
+    const { type, text } = req.body;
+    console.log(type + ": " + text);
+
+    // Find the user by ID
+    const userId = req.user._id;
+    const user = await User.findById(userId);
+    if (!user) {
+      return res.status(404).json({ error: "User not found" });
+    }
+
+    // Add the new feedback to the user's feedbacks array
+    user.feedbacks.push({ type, text });
+
+    // Save the updated user object with the new feedback
+    await user.save();
+
+    res.status(201).json({ message: "Feedback submitted successfully" });
+  } catch (error) {
+    console.error("Error submitting feedback:", error);
+    res.status(500).json({ error: "Internal Server Error" });
+  }
+};
+export const updateOrder = async (req, res) => {
+  try {
+    // Find the user by ID (assuming it's stored in req.user._id)
+    const userId = req.user._id;
+    console.log("User ID:", userId); // Log the userId for debugging
+    const user = await User.findById(userId);
+    if (!user) {
+      console.log("User not found");
+      return res.status(404).json({ error: 'User not found' });
+    }
+
+    const { deliveryAddress, paymentMethod, cart, totalAmount, deliveryAmount } = req.body;
+
+    // Create a new order object
+    const order = {
+      items: cart,
+      totalAmount,
+      deliveryAmount,
+      deliveryAddress,
+      paymentMethod,
+    };
+
+    console.log("Order data:", order); // Log the order data for debugging
+
+    // Push the new order to the user's orders array
+    user.orders.push(order);
+
+    // Empty the user's cart
+    user.cart = [];
+
+    // Save the user with the updated orders and empty cart
+    await user.save();
+    
+    console.log("User after saving:", user); // Log the user data after saving for debugging
+
+    // Return success response
+    res.status(200).json({ message: 'Order placed successfully' });
+  } catch (error) {
+    // Handle errors
+    console.error('Error placing order:', error);
+    res.status(500).json({ error: 'Internal server error' });
+  }
+};
+// user.controller.js
+
+export const getInvoiceDetails = async (req, res) => {
+  try {
+    const userId = req.user._id; // Assuming the user is authenticated and their ID is stored in req.user._id
+    
+    // Find the user by their ID
+    const user = await User.findById(userId);
+    if (!user) {
+      return res.status(404).json({ error: "User not found" });
+    }
+    
+    // Return all orders associated with the user
+    res.json({ orders: user.orders });
+  } catch (error) {
+    console.error("Error fetching invoice details:", error);
+    res.status(500).json({ error: "Internal Server Error" });
+  }
+};
+
+
+export const getOrderDetails = async (req, res) => {
+  try {
+    // Extract the invoiceId from request parameters
+    const { invoiceId } = req.params;
+
+    console.log(' manoj Fetching invoice details for invoiceId:', invoiceId);
+
+    // Find the user by their ID and retrieve the order (invoice) by its ID
+    const user = await User.findOne({ 'orders._id': invoiceId });
+
+    console.log('User found:', user);
+
+    // If user or invoice not found, return 404 error
+    if (!user) {
+      console.log('User not found. Returning 404 error.');
+      return res.status(404).json({ error: 'Invoice not found' });
+    }
+
+    // Find the specific invoice within the user's orders array
+    const invoice = user.orders.find(order => order._id.equals(invoiceId));
+
+    console.log('Invoice found:', invoice);
+
+    // If invoice not found, return 404 error
+    if (!invoice) {
+      console.log('Invoice not found. Returning 404 error.');
+      return res.status(404).json({ error: 'Invoice not found' });
+    }
+
+    // If invoice found, return it in the response
+    console.log('Invoice details fetched successfully:', invoice);
+    res.json(invoice);
+  } catch (error) {
+    // Handle server errors
+    console.error('Error fetching invoice details:', error);
+    res.status(500).json({ error: 'Internal Server Error' });
+  }
+};
+
+export const getUserProfile = async (req, res) => {
+  try {
+    // Get the user ID from the request object
+    const userId = req.user._id;
+
+    // Find the user by ID
+    const user = await User.findById(userId);
+
+    // If user not found, return 404 error
+    if (!user) {
+      return res.status(404).json({ error: "User not found" });
+    }
+
+    // Return the user profile details including the username
+    res.json({ username: user.username });
+  } catch (error) {
+    console.error("Error fetching user profile:", error);
+    res.status(500).json({ error: "Internal Server Error" });
+  }
+};
+
+
 // Add other controller functions below if needed
 
 ////////////////////////////////////////

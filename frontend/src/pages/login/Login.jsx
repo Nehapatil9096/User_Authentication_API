@@ -2,9 +2,7 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import useLogin from "../../hooks/useLogin";
 import "./login.css";
-import userIcon from "/icon.png";
-import lockIcon from "/lock.png";
-import viewIcon from "/view.png";
+import projectLogo from '/project_logo.png';
 
 const Login = () => {
   const [email, setEmail] = useState("");
@@ -24,69 +22,54 @@ const Login = () => {
   };
   return (
     <div className="main-container">
-      <div className="image-container">
-        <div className="image">
-          <div className="centered-photo">
-            <img
-              src="/Back.png"
-              alt="Background"
-              className="centered-back-image"
-            />
-            <img src="/Art (1).png" alt="Centered Photo" />
-            <div className="text-container">
-              <h2 className="welcome-text">Welcome aboard my friend</h2>
-              <p className="instructions">Just a couple of clicks and we start</p>
-            </div>
-          </div>
-        </div>
+     <div className="logo-container">
+        <img src={projectLogo} alt="Project Logo" />
       </div>
       <div className="groups">
         <form onSubmit={handleSubmit} className="form">
-        <h1 className="heading mb-10">Login</h1>
+        <h1 className="heading mb-10">Sign in </h1>
+        <p className="input-label">Enter your email or mobile number</p>
+
           <div className="input-container">
-            <span
-              className="icon"
-              style={{ backgroundImage: `url(${userIcon})` }}
-            ></span>
+
             <input
               type="text"
-              placeholder="Enter email"
               className="input input-bordered h-10"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
             />
           </div>
+          <p className="input-label">Password</p>
+
           <div className="input-container">
-            <span className="icon" style={{ backgroundImage: `url(${lockIcon})` }}></span>
             <input
               type={passwordVisible ? "text" : "password"}
-              placeholder="Enter Password"
               className="input input-bordered h-10"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
             />
-            <img
-              src={viewIcon}
-              alt="Password View Icon"
-              className="icon password"
-              onClick={togglePasswordVisibility}
-            />
+           
           </div>
           <div className="button-stack">
             <button className="btn-block" disabled={loading}>
-              {loading ? <span className="loading loading-spinner"></span> : "Login"}
+              {loading ? <span className="loading loading-spinner"></span> : "Continue"}
             </button>
-            <p className="no-account-text">Don't have an account yet?</p>
-            <div className="register-link">
+            <p className="no-account-text">By continuing, you agree to Musicart privacy notice and conditions of use.</p>
+           
+          </div>
+        </form>
+      </div>
+   <p> ━━━━━━━━━━━━━━━━━━━━━━━━━New to Musicart?         ━━━━━━━━━━━━━━━━━━━━━━━━━━</p>
+      <div className="register-link">
               <Link
                 to="/signup"
                 className="text-sm hover:underline hover:text-blue-600"
               >
-                <button className="btn-block">Register</button>
+                <button className="btn-block">Create your Musicart account</button>
               </Link>
             </div>
-          </div>
-        </form>
+            <div className='bottomBar'>
+        Musicart | All rights reserved
       </div>
     </div>
   );

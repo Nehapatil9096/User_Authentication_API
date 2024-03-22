@@ -1,0 +1,90 @@
+/* Checkout.module.css */
+
+.checkoutContainer {
+    max-width: 1200px; /* Set a maximum width for the container */
+  margin: 0 auto; /* Center the container horizontally */
+  padding: 20px; /* Add some padding for spacing */
+  background-color: #f7f7f7; /* Set a background color */
+  border-radius: 8px; /* Add rounded corners */
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Add a subtle shadow */
+  height: 80vh; /* Set a fixed height */
+  overflow-y: auto; /* Enable vertical scrolling */
+  }
+  
+  .navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    background-color: #fff; /* Set a white background */
+    border-bottom: 1px solid #ddd; /* Add a bottom border */
+  }
+  
+  .pageTitle {
+    margin-top: 20px; /* Add spacing above the title */
+    color: #333; /* Set text color */
+  }
+  
+  .checkoutHeader {
+    margin-top: 20px; /* Add spacing above the header */
+  }
+  
+  .checkoutSections {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+  }
+  
+  .leftColumn {
+    flex: 1;
+    margin-right: 20px;
+  }
+  
+  .rightColumn {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .orderSummaryBox {
+    border: 1px solid #ddd; /* Add a border */
+    border-radius: 8px; /* Add rounded corners */
+    padding: 20px; /* Add padding */
+    background-color: #fff; /* Set a white background */
+  }
+  
+  .placeOrderButton {
+    background-color: #f0c14b; /* Set a yellow background color */
+    color: #111; /* Set text color */
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    margin-bottom: 10px;
+    cursor: pointer;
+  }
+  
+  .orderSummaryHorizontal {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 20px;
+    background-color: #fff; /* Set a white background */
+    padding: 10px; /* Add padding */
+    border-radius: 8px; /* Add rounded corners */
+    border-top: 1px solid #ddd; /* Add a top border */
+  }
+  
+  .orderTotal {
+    font-weight: bold; /* Make the text bold */
+  }
+  
+  .agreeText {
+    color: #666; /* Set text color to gray */
+  }
+  
+  .cartItem img {
+    width: 90px; /* Adjust the width as needed */
+    height: 90px; /* Adjust the height as needed */
+  }
+  

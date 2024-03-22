@@ -1,9 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import { Link } from 'react-router-dom'; // Import Link from react-router-dom
+import styles from './MyCart.module.css'; // Import CSS module
 
 const MyCart = () => {
   const [cart, setCart] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [totalAmount, setTotalAmount] = useState(0); // State to store the total amount
 
   // Function to fetch cart data from the backend
   const fetchCartData = async () => {
@@ -32,17 +35,41 @@ const MyCart = () => {
     }
   };
 
+  // Function to parse the price string and extract the numerical value
+  const parsePrice = (priceString) => {
+    const numericValue = priceString.replace(/[^\d.]/g, '');
+    return parseFloat(numericValue);
+  };
+
   // Function to calculate total amount
-  const calculateTotalAmount = (cart) => {
-    return cart.reduce((total, item) => total + (item.product && item.product.price) * item.quantity, 0);
+  const calculateTotalAmount = async (cart) => {
+    const promises = cart.map(item => fetchProductDetails(item.product._id));
+    const products = await Promise.all(promises);
+    return products.reduce((total, product, index) => {
+      if (product) {
+        const productPrice = parsePrice(product.price); // Parse the price here
+        return total + (productPrice * cart[index].quantity);
+      }
+      return total;
+    }, 0);
   };
 
   useEffect(() => {
     fetchCartData();
   }, []);
 
+  useEffect(() => {
+    if (!loading) {
+      calculateTotalAmount(cart).then(total => {
+        setTotalAmount(total); // Update the total amount state
+      }).catch(error => {
+        console.error("Error calculating total amount:", error);
+      });
+    }
+  }, [cart, loading]);
+
   return (
-    <div className="mycart-container" style={{ overflowY: 'auto', maxHeight: '400px' }}>
+    <div className={styles.mycartContainer}> {/* Use the CSS module class */}
       <h2>My Cart</h2>
       {loading ? (
         <p>Loading...</p>
@@ -51,15 +78,18 @@ const MyCart = () => {
           {cart.length === 0 ? (
             <p>Your cart is empty.</p>
           ) : (
-            <div>
+            <div className={styles.cartItemsContainer}> {/* Use CSS Module class */}
               {cart.map((item, index) => (
                 <CartItem key={index} item={item} fetchProductDetails={fetchProductDetails} />
               ))}
-              <div className="total-section">
+              <div className={styles.totalSection}> {/* Use CSS Module class */}
                 <h3>Total Amount</h3>
-                <p>Total: ₹{calculateTotalAmount(cart)}</p>
+                <p>Total: ₹{totalAmount.toFixed(2)}</p> {/* Render the total amount */}
               </div>
-              <button onClick={() => console.log('Placing order...')}>Place Order</button>
+              {/* Use Link to navigate to the checkout page */}
+              <Link to="/checkout">
+                <button>Place Order</button>
+              </Link>
             </div>
           )}
         </>
@@ -69,6 +99,10 @@ const MyCart = () => {
 };
 
 const CartItem = ({ item, fetchProductDetails }) => {
+  const parsePrice = (priceString) => {
+    const numericValue = priceString.replace(/[^\d.]/g, '');
+    return parseFloat(numericValue);
+  };
   const [product, setProduct] = useState(null);
   const [loading, setLoading] = useState(true);
 
@@ -86,8 +120,11 @@ const CartItem = ({ item, fetchProductDetails }) => {
     getProductDetails();
   }, [fetchProductDetails, item.product]);
 
+  // Parse the price outside of the JSX
+  const price = product ? parsePrice(product.price) : '';
+
   return (
-    <div className="cart-item">
+    <div className={styles.cartItem}> {/* Use CSS Module class */}
       <p>Product ID: {item.product && item.product._id}</p>
       <p>Quantity: {item.quantity}</p>
       {loading ? (
@@ -95,7 +132,9 @@ const CartItem = ({ item, fetchProductDetails }) => {
       ) : (
         <>
           <p>Name: {product.name}</p>
-          <p>Price: ₹{product.price}</p>
+          <p>Price: ₹{price}</p> {/* Use the parsed price here */}
+          <img src={product.images[0]} alt={product.name} />
+
           {/* Add more product details as needed */}
         </>
       )}

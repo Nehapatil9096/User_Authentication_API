@@ -7,6 +7,10 @@ import { Toaster } from "react-hot-toast";
 import { useAuthContext } from "./context/AuthContext";
 import ProductDetailPage from './pages/product/ProductDetailPage'; // Import the ProductDetailPage component
 import Mycart from "./pages/mycart/Mycart"; // Import the Checkout component
+import Checkout from './pages/checkout/Checkout';
+import OrderConfirmation from "./pages/order/OrderConfirmation"; // Adjusted import path
+import Invoices from './pages/invoices/Invoices';
+import InvoiceDetails from './pages/invoices/InvoiceDetails';
 
 function App() {
   const { authUser } = useAuthContext();
@@ -22,6 +26,12 @@ function App() {
   <Route path="/signup" element={authUser ? (<Navigate to="/" />) : (<SignUp />)} />
   <Route path="/product/ProductDetails/:productId" element={<ProductDetailPage />} />
   <Route path="/mycart" element={<Mycart />} /> {/* Add route for the checkout page */}
+  <Route path="/checkout" element={<Checkout />} /> {/* Add route for the checkout page */}
+  <Route path="/OrderConfirmation" element={<OrderConfirmation />} />
+  <Route path="/Invoices" element={<Invoices />} /> {/* Add route for the checkout page */}
+  <Route path="/invoices/:invoiceId" element={<InvoiceDetails />} />
+  <Route path="*" element={<Navigate to="/" />} />
+
 
 </Routes>
 

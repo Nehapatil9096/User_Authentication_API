@@ -1,25 +1,22 @@
 import express from "express";
 
 import protectRoute from "../middleware/protectRoute.js";
-import { getUsersForSidebar, getUserData, updateUser, getUserCards, getOneCard, deleteCard, passUpdate , updateCart, myCartdetails} from "../controllers/user.controller.js"; // Include getUserCards
+import {  updateCart, myCartdetails,updateFeedback,updateOrder,getInvoiceDetails,getOrderDetails,getUserProfile} from "../controllers/user.controller.js"; // Include getUserCards
 
 // Import the Product model (if needed)
  import Product from "../models/product.model.js";
-import User from "../models/user.model.js";
 
-// Import Mongoose for accessing the database
-import mongoose from "mongoose";
 
 const router = express.Router();
 
-router.get("/", protectRoute, getUsersForSidebar);
-router.get("/user-data", protectRoute, getUserData);
-router.post("/update", protectRoute, updateUser); // Add new card to user's collection
-router.delete("/cards/:cardId", protectRoute, deleteCard); // Delete a card from the users collection
-router.put("/settings", protectRoute, passUpdate); // Add new card to user's collection
 
 router.post("/cart/add", protectRoute, updateCart); 
 router.get("/cart", protectRoute, myCartdetails); 
+router.post("/feedback", protectRoute, updateFeedback); 
+router.post("/order", protectRoute, updateOrder); 
+router.get("/invoices", protectRoute, getInvoiceDetails);
+router.get("/invoices/:invoiceId", protectRoute, getOrderDetails);
+router.get("/profile", protectRoute, getUserProfile);
 
 router.get("/products", async (req, res) => {
   try {
@@ -125,8 +122,7 @@ router.get("/products/:productId", async (req, res) => {
     }
   });
 
-
-  
-
+// Route for handling feedback submissions
+// Route for handling feedback submissions
 
 export default router;

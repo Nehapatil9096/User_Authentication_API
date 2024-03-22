@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from "react";
 import styles from "./Home.module.css";
 import { Link } from "react-router-dom";
-import LogoutButton from "/src/components/LogoutButton"
+import LogoutButton from "/src/components/LogoutButton";
 import offerImage from "/Rectangle 3.png";
+import feedbackIcon from "/feedback.png";
 
 const Home = () => {
   const [products, setProducts] = useState([]);
@@ -15,6 +16,10 @@ const Home = () => {
     price: "",
     sortBy: "featured" // Default sorting option
   });
+  const [feedbackType, setFeedbackType] = useState("");
+  const [feedbackText, setFeedbackText] = useState("");
+  const [showFeedbackPopup, setShowFeedbackPopup] = useState(false);
+  const [feedbackSubmitted, setFeedbackSubmitted] = useState(false);
 
   useEffect(() => {
     fetchProducts();
@@ -55,7 +60,35 @@ const Home = () => {
   const switchToListView = () => {
     setListView(false);
   };
+  const handleFeedbackSubmit = async () => {
+    try {
+      const response = await fetch("/api/users/feedback", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          type: feedbackType,
+          text: feedbackText
+        }),
+      });
   
+      if (response.ok) {
+        console.log("Feedback submitted successfully");
+        // Reset feedback fields or close the feedback popup
+        setShowFeedbackPopup(false);
+        setFeedbackType("");
+        setFeedbackText("");
+      } else {
+        console.error("Failed to submit feedback");
+      }
+    } catch (error) {
+      console.error("Error submitting feedback:", error);
+    }
+  };
+  
+
+
   return (
     <div className={styles.container}>
       <div className={styles.home}>
@@ -82,7 +115,7 @@ const Home = () => {
           <div className={styles.leftSection}>
             <span>Musicart</span>
             <span>Home</span>
-            <span>Invoice</span>
+            <Link to="/invoices" className={styles.invoiceLink}>Invoice</Link>
           </div>
           <div className={styles.rightSection}>
             <span>Cart</span>
@@ -161,6 +194,31 @@ const Home = () => {
           </div>
         </div>
 
+        <div className={styles.feedbackButton} onClick={() => setShowFeedbackPopup(true)}>
+        <img src={feedbackIcon} alt="Feedback" />
+      </div>
+
+      {/* Feedback Popup */}
+      {showFeedbackPopup && (
+        <div className={styles.feedbackPopup}>
+          <div className={styles.popupContent}>
+            <select value={feedbackType} onChange={(e) => setFeedbackType(e.target.value)} required>
+              <option value="" disabled>Select type of feedback</option>
+              <option value="Bugs">Bugs</option>
+              <option value="Feedback">Feedback</option>
+              <option value="Query">Query</option>
+            </select>
+            <textarea
+              placeholder="Enter your feedback"
+              value={feedbackText}
+              onChange={(e) => setFeedbackText(e.target.value)}
+              required
+            />
+            <button onClick={handleFeedbackSubmit}>Submit</button>
+            {feedbackSubmitted && <p>Feedback submitted successfully!</p>}
+          </div>
+        </div>
+      )}
         <div className={`${styles.productList} ${listView ? styles.listView : styles.gridView}`}>
           {products.map((product, index) => (
             <Link key={index} to={`/product/ProductDetails/${product._id}`}>
