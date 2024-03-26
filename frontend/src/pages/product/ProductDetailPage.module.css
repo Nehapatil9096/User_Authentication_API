@@ -3,7 +3,7 @@
 
 html,
 body {
-  height: 100%;
+  height: 100vh;
   margin: 0;
   padding: 0;
   overflow-y: auto; /* Enable vertical scrollbar */
@@ -32,13 +32,33 @@ body::-webkit-scrollbar-thumb:hover {
   flex-wrap: wrap;
   align-items: center;
   justify-content: space-between;
-  padding: 2rem;
   gap: 2rem;
+  min-height: 100vh; /* Ensure container takes up at least the full viewport height */
+    overflow-y: auto; /* Enable vertical scrolling */
+    background-color: #ffffff;
+    overflow-x: hidden; /* Prevent horizontal scrolling */
+  
+    flex-direction: column;
+
+}
+.contentWrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  width: 100%;
 }
 
 .imagesContainer {
   flex: 1;
-  max-width: 50%;
+  max-width: 350px;
+  min-height: 0;
+  
+}
+.mainImage {
+  border: 2px solid #ccc; /* Add border to the main image */
+}
+.imagesContainer img {
+  border: 2px solid #ccc; /* Add border to all images */
 }
 
 .carousel {
@@ -71,10 +91,34 @@ body::-webkit-scrollbar-thumb:hover {
   flex: 1;
   max-width: 50%;
   display: flex;
-  flex-direction: column;
   justify-content: space-between;
 }
+.header {
+  top: 0; /* Ensure the header stays at the top of the page */
+  width: 100%; /* Occupy the full width of the viewport */
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #2e0052;
+  color: white;
+  height: 55px;
+  padding: 0 50px;
+  margin-bottom: 20px;
+}
 
+
+.headerContent {
+  margin: 0 auto; /* Center horizontally */
+}
+.leftSection {
+  display: flex;
+  align-items: center;
+  margin-right: 20px; /* Add margin between phone call icon/number and other content */
+}
+
+.leftSection img {
+  margin-right: 5px;  /* Add some spacing between the icon and the number */
+}
 .productDetails {
   display: flex;
   flex-direction: column;
@@ -126,17 +170,193 @@ body::-webkit-scrollbar-thumb:hover {
   background-color: #e0e0e0;
   cursor: not-allowed;
 }
+/* menubar */
+
+.menubar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  color: white;
+  padding: 10px 50px;
+padding-top: -100px;
+flex-wrap: wrap;
+gap: 10px;
+
+margin-top: -10px;}
+
+.menubar .leftSection {
+  display: flex;
+  align-items: center;
+}
+/* Styles for the "Home" button */
+.homeLink {
+  color: rgb(2, 2, 30); /* Set text color to blue */
+  text-decoration: none; /* Remove underline */
+  padding: 10px 20px; /* Add padding */
+  font-size: 25px;
+  font-weight: 500;
+}
+.invoiceLink{
+  color: rgb(2, 2, 30); /* Set text color to blue */
+  text-decoration: none; /* Remove underline */
+  padding: 0px -30px; /* Add padding */
+  font-size: 25px;
+  font-weight: 500;
+  margin-right: 300px;
+
+}
+/* Styles for the "Invoice" button */
+
+.menubar .leftSection img {
+  width: 100%;
+  margin-right: 10px;
+  
+}
+
+.menubar .leftSection a {
+  margin-right: 20px;
+  color: rgb(27, 6, 6);
+  text-decoration: none;
+}
+
+.menubar .menuItem {
+  flex: 1 1 100%;
+}
+menuItem {
+  
+  display: flex;
+  align-items: center;
+  background-color: green; /* Set the background color to green */
+  padding: 10px 20px;
+  border-radius: 5px;
+}
+
+.menuItem img {
+  width: 30px;
+  margin-right: 10px;
+}
+
+.menuItem span {
+  color: white; /* Set the color of the text to green */
+  padding: 10px 20px;
+
+}
+
+.menubar .rightSection {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+}
+
+.button {
+  display: flex; /* Ensure the button behaves as a flex container */
+  align-items: center; /* Center items vertically */
+  justify-content: center; /* Center items horizontally */
+  background-color: green;
+  color: white;
+  border: none;
+  padding: 10px 20px; /* Adjust padding as needed */
+  border-radius: 35px;
+  cursor: pointer;
+  width: 100%;
+  margin-right: 90px;
+  font-weight: 600;
+  font-size: 19px;
+  margin-right: 10px;
+  margin: 0;
+
+}
+
+.button img {
+  width: 30px;
+  margin-right: -10px; /* Adjust margin for spacing between image and text */
+}
+.button span {
+  display: flex; /* Make the text appear in a column */
+  flex-direction: column; /* Align text vertically */
+  align-items: center; /* Align text horizontally */
+}
+
+.rightSection span {
+  margin-right: 20px;
+}
+
+
+/* Home.module.css */
+
+/* button*/
+.backToProducts {
+  color: #ffffff;
+  text-decoration: none;
+  padding: 10px 40px;
+  background-color: #2e0052;
+  border-radius: 15px;
+  transition: background-color 0.3s ease;
+
+  font-size: 25px;
+  margin: 90px 0;
+}
+
+.backToProducts:hover {
+  background-color: #4a0072;
+}
+
+.footer {
+  margin-top: auto; /* Push the footer to the bottom */
+  background-color: #2e0052;
+  color: white; /* Set text color to white */
+  display: flex;
+  align-items: center; /* Center vertically */
+  height: 77px; /* Adjust height as needed */
+  width: 100%; /* Ensure footer spans entire page width */
+
+}
+
+.footerContent {
+  margin: 0 auto; /* Center horizontally */
+  font-size: 23px;
+  font-weight: 500;
+}
+
+/* Add this to your existing ProductDetailPage.module.css */
 
 @media screen and (max-width: 768px) {
-  .container {
-    flex-direction: column;
+  .imagesContainer {
+    flex: 1 1 100%;
+  }
+
+  .header {
+    flex-basis: 100%;
+  }
+  .menubar .menuItem {
+    flex: 1 1 30%;
+  }
+
+  .menubar .leftSection img {
+    width: 80%;
+  }
+
+  .button {
+    width: 40%;
+  }
+
+  .backToProducts {
+    margin: 10px 0;
+  }
+  .contentWrapper {
+    flex-direction: column; /* Stack items vertically on smaller screens */
+    align-items: center; /* Center items horizontally */
   }
 
   .imagesContainer {
-    max-width: 100%;
+    max-width: 100%; /* Ensure image container takes full width */
+    margin-bottom: 20px; /* Add some spacing between image and details */
   }
 
   .productDetailsContainer {
-    max-width: 100%;
+    max-width: 100%; /* Ensure product details container takes full width */
+    padding: 0 20px; /* Add padding to the sides */
   }
 }

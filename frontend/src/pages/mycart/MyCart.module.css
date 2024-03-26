@@ -1,37 +1,106 @@
 /* MyCart.module.css */
 
 .mycartContainer {
-    max-width: 1200px; /* Set a maximum width for the container */
-    margin: 0 auto; /* Center the container horizontally */
-    padding: 20px; /* Add some padding for spacing */
-    background-color: #f7f7f7; /* Set a background color */
-    border-radius: 8px; /* Add rounded corners */
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Add a subtle shadow */
-    height: 80vh; /* Set a fixed height */
-    overflow-y: auto; /* Enable vertical scrolling */
-  }
-  
-  .cartItemsContainer {
-    border: 1px solid #ddd; /* Add a border around the cart items */
-    border-radius: 5px; /* Add border-radius for rounded corners */
-    padding: 20px; /* Add some padding */
-    margin-bottom: 20px; /* Add margin at the bottom */
-    background-color: #fff; /* Set background color to white */
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Add a subtle box shadow */
-  }
-  
-  .totalSection {
-    border-top: 1px solid #ddd; /* Add border at the top of total section */
-    padding-top: 10px; /* Add some padding at the top */
-    margin-top: 10px; /* Add margin at the top */
-  }
-  
-  .cartItem {
-    border-bottom: 1px solid #ddd; /* Add border at the bottom of each cart item */
-    padding: 10px 0; /* Add padding top and bottom */
-  }
-  
-  .cartItem p {
-    margin: 5px 0; /* Add margin to paragraphs inside cart items */
-  }
-  
+  max-width: 1200px; /* Set a maximum width for the container */
+  margin: 0 auto; /* Center the container horizontally */
+  padding: 20px; /* Add some padding for spacing */
+  background-color: #f7f7f7; /* Set a background color */
+  border-radius: 8px; /* Add rounded corners */
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Add a subtle shadow */
+  overflow-y: auto; /* Enable vertical scrolling */
+}
+
+.cartTitle {
+  text-align: center; /* Center the cart title */
+  margin-bottom: 20px; /* Add margin at the bottom */
+}
+
+.cartContent {
+  display: flex; /* Use flexbox to create two partitions */
+}
+
+.itemDetails {
+  flex: 1; /* Take up remaining space */
+  margin-right: 20px; /* Add some spacing between partitions */
+}
+
+.priceDetails {
+  flex: 0 0 300px; /* Set a fixed width */
+  background-color: #fff; /* Set background color to white */
+  border: 1px solid #ddd; /* Add a border around the price details */
+  border-radius: 5px; /* Add border-radius for rounded corners */
+  padding: 20px; /* Add some padding */
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Add a subtle box shadow */
+}
+
+.productImage {
+  width: 100px; /* Set the width of product images */
+  height: auto; /* Maintain aspect ratio */
+  margin-right: 10px; /* Add some spacing to the right */
+}
+
+.productDetails {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.productDetails img {
+  width: 100px;
+  height: auto;
+  margin-right: 10px;
+}
+
+.productDetails p {
+  margin: 0;
+}
+
+.productDetails .label {
+  font-weight: bold;
+  margin-right: 10px;
+}
+
+.cartItem {
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid #ddd; /* Add border at the bottom of each cart item */
+  padding: 10px 0; /* Add padding top and bottom */
+}
+
+.cartItemColumn {
+  flex: 1; /* Each column takes up equal space */
+  text-align: center; /* Center align content */
+}
+
+.productImage {
+  width: 50px; /* Set the width of product images */
+  height: auto; /* Maintain aspect ratio */
+  margin-right: 10px; /* Add some spacing to the right */
+}
+
+
+
+.priceDetails h3 {
+  margin-top: 0; /* Remove top margin for consistency */
+}
+
+.totalSection {
+  border-top: 1px solid #ddd; /* Add border at the top of total section */
+  padding-top: 10px; /* Add some padding at the top */
+  margin-top: 10px; /* Add margin at the top */
+}
+
+.cartItem {
+  border-bottom: 1px solid #ddd; /* Add border at the bottom of each cart item */
+  padding: 10px 0; /* Add padding top and bottom */
+}
+
+.cartItem p {
+  margin: 5px 0; /* Add margin to paragraphs inside cart items */
+}
+
+.totalItemsMRP {
+  /* Add margin to the left and right of the content */
+  margin: 0 10px; /* Adjust the value as needed */
+}
+

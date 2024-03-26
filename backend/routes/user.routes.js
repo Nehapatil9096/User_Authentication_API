@@ -1,7 +1,7 @@
 import express from "express";
 
 import protectRoute from "../middleware/protectRoute.js";
-import {  updateCart, myCartdetails,updateFeedback,updateOrder,getInvoiceDetails,getOrderDetails,getUserProfile} from "../controllers/user.controller.js"; // Include getUserCards
+import {  updateCart, myCartdetails,updateFeedback,updateOrder,getInvoiceDetails,getOrderDetails,getUserProfile,updateQty} from "../controllers/user.controller.js"; // Include getUserCards
 
 // Import the Product model (if needed)
  import Product from "../models/product.model.js";
@@ -11,6 +11,7 @@ const router = express.Router();
 
 
 router.post("/cart/add", protectRoute, updateCart); 
+router.post("/cart/qty", protectRoute, updateQty); 
 router.get("/cart", protectRoute, myCartdetails); 
 router.post("/feedback", protectRoute, updateFeedback); 
 router.post("/order", protectRoute, updateOrder); 

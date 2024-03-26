@@ -2,9 +2,13 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import LogoutButton from "/src/components/LogoutButton";
 import styles from "/src/pages/invoices/Invoice.module.css";
+import invoiceImage from "/Invoice.png"; // Import the image
+import phoneCallIcon from "/ph_phone-call-light.png";
+import projectLogo from "/project_logo.png";
 
 const Invoice = () => {
   const [invoices, setInvoices] = useState([]);
+  const [username, setUsername] = useState('');
 
   useEffect(() => {
     fetchInvoices(); // Call fetchInvoices when the component mounts
@@ -23,6 +27,8 @@ const Invoice = () => {
       // Parse JSON data
       const data = await response.json();
       setInvoices(data.orders); // Assuming the response contains an array of orders within the "orders" property of the user object
+      setUsername(data.username); // Set username received from backend
+
     } catch (error) {
       console.error("Error fetching invoices:", error);
       // You can set invoices to an empty array or display an error message
@@ -32,45 +38,81 @@ const Invoice = () => {
 
   return (
     <div className={styles.container}>
-      <div className={styles.navbar}>
-        <div className={styles.leftSection}>
-          <span>User Mob. Number</span>
+       <header className={styles.header}>
+      <div className={styles.leftSection}>
+          <img src={phoneCallIcon} alt="Phone call" />
+          <span>912121131313</span>
         </div>
-        <div className={styles.middleSection}>
-          <span>Musicart</span>
+        <div className={styles.headerContent}>
+        <span>Get 50% off on selected items&nbsp; | &nbsp; Shop Now</span>
         </div>
-        <div className={styles.rightSection}>
-          <LogoutButton />
-        </div>
-      </div>
+      </header>
+      <div className={styles.menubar}>
+      <div className={styles.leftSection}>
 
-      <div className={styles.title}>
-        <span>Musicart</span>
-        <Link to="/">
-          <span className={styles.homeButton}>Home</span>
-        </Link>
-      </div>
+          <div className={styles.menuItem}>
+            <img src={projectLogo} alt="Project Logo" />
+          </div>
+          <div className={styles.menuItem}>
+            <Link to="/home"className={styles.homeLink}>Home</Link>
+          </div>
+          <div className={styles.menuItem}>
+          <Link to="/invoices" className={styles.invoiceLink}>Invoice</Link>
+          </div>
+        </div>
+      <div className={styles.rightSection}>
+
+      <div className={styles.menuItem}>
+  <button className={styles.button}>
+    <img src="/cart_menu.png" alt="Cart_Menu" />
+    <span>View Cart</span>
+  </button>
+</div>
+          <div className={styles.menuItem}>
+            <div className={styles.userCircle}>U</div>
+            
+            <span>Profile</span>
+          </div>
+        </div>
+        </div>
+   
+
+  
 
       <div className={styles.heading}>
         <h1>My Invoices</h1>
       </div>
 
       <div className={styles.invoiceList}>
-        {invoices.map((order, index) => (
-          <div key={index} className={styles.invoiceItem}>
-            <div className={styles.left}>
-              <p>Order ID: {order._id}</p>
-              <p>Delivery Address: {order.deliveryAddress}</p>
-              {/* Display other order details as needed */}
-            </div>
-            <div className={styles.right}>
-              <Link to={`/invoices/${order._id}`}>
-                <button className={styles.invoiceButton}>View Invoice</button>
-              </Link>
-            </div>
-          </div>
-        ))}
+  {invoices
+    .sort((a, b) => new Date(b.orderDate) - new Date(a.orderDate)) // Sort invoices by orderDate in descending order
+    .map((order, index) => (
+      <div key={index} className={styles.invoiceItem}>
+        <div className={styles.left}>
+          <img src={invoiceImage} alt="Invoice Image" className={styles.invoiceImage} /> {/* Use the imported image */}
+        </div>
+        <div className={styles.right}>
+          <p>Username: {username}</p> {/* Display username */}
+          <p>Delivery Address: {order.deliveryAddress}</p>
+         
+        </div>
+         {/* Display other order details as needed */}
+         <Link to={`/invoices/${order._id}`}>
+            <button className={styles.invoiceButton}>View Invoice</button>
+          </Link>
+          
       </div>
+      
+    ))}
+    <footer className={styles.footer}>
+        <div className={styles.footerContent}>
+          <span>Musicart | All rights reserved</span>
+        </div>
+      </footer>
+</div>
+
+
+
     </div>
   );
 };

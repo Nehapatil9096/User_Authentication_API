@@ -1,16 +1,80 @@
 /* Checkout.module.css */
 
 .checkoutContainer {
-    max-width: 1200px; /* Set a maximum width for the container */
-  margin: 0 auto; /* Center the container horizontally */
-  padding: 20px; /* Add some padding for spacing */
-  background-color: #f7f7f7; /* Set a background color */
-  border-radius: 8px; /* Add rounded corners */
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Add a subtle shadow */
-  height: 80vh; /* Set a fixed height */
-  overflow-y: auto; /* Enable vertical scrolling */
+  display: flex;
+  flex-direction: column;
+  font-family: Arial, sans-serif;
+  height: 100vh;
+  box-sizing: border-box;
+}
+  .header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between; /* Align left and right sections */
+  
+    background-color: #2e0052;
+    color: white;
+    height: 55px; /* Adjust height as needed */
+    padding: 0 50px; /* Add padding to the header */
+      margin-bottom: 20px; /* Add margin bottom to match the spacing */
+  
+  }
+  .headerContent {
+    margin: 0 auto; /* Center horizontally */
+  }
+  .leftSection {
+    display: flex;
+    align-items: center;
+    margin-right: 20px; /* Add margin between phone call icon/number and other content */
   }
   
+  .leftSection img {
+    margin-right: 5px;  /* Add some spacing between the icon and the number */
+  }
+  .menubar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    color: white;
+    padding: 0px 75px;
+  padding-top: -100px;
+  margin-top: -10px;
+  }
+  
+.menubar .leftSection {
+  display: flex;
+  align-items: center;
+}
+.menubar .leftSection img {
+  width: 220px; /* Adjust as needed */
+  margin-right: 10px;
+  
+}
+
+.menubar .leftSection a {
+  margin-right: 20px;
+  color: rgb(27, 6, 6);
+  text-decoration: none;
+}
+menuItem {
+  display: flex;
+  align-items: center;
+  background-color: green; /* Set the background color to green */
+  padding: 10px 20px;
+  border-radius: 5px;
+}
+
+.menuItem img {
+  width: 30px;
+  margin-right: 10px;
+}
+
+.menuItem span {
+  color: white; /* Set the color of the text to green */
+  padding: 10px 20px;
+
+}
   .navbar {
     display: flex;
     justify-content: space-between;
@@ -27,7 +91,11 @@
   
   .checkoutHeader {
     margin-top: 20px; /* Add spacing above the header */
+    display: flex;
+    justify-content: center; /* Horizontally center the content */
+    align-items: center; /* Vertically center the content */
   }
+  
   
   .checkoutSections {
     display: flex;
@@ -87,4 +155,74 @@
     width: 90px; /* Adjust the width as needed */
     height: 90px; /* Adjust the height as needed */
   }
+  .productImages {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+  }
+  
+  .productImage {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    cursor: pointer;
+  }
+  .deliveryAddress {
+    display: flex;
+    align-items: center;
+    margin-bottom: 2rem;
+    flex-wrap: wrap;
+  }
+  .deliveryInputContainer {
+    display: flex;
+    align-items: center;
+    margin-left: 1rem;
+    background: rgba(0, 0, 0, 0.1);
+    padding: 0.2rem;
+    border-radius: 3px;
+    width: 60%;
+  }
+  .deliveryInput {
+    border: none;
+    padding: 0.3rem 1rem;
+    width: 100%;
+  }
+  
+  select {
+    border: 1px solid var(--border-color);
+    padding: 1rem;
+    font-size: 1rem;
+    margin-bottom: 2rem;
+  }
+  .productImages {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 2rem;
+  }
+  .productImage {
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    border: 1px solid var(--border-color);
+  }
+  .estimatedDelivery {
+    margin-bottom: 2rem;
+  }
+    
+  .footer {
+    background-color: #2e0052;
+    color: white; /* Set text color to white */
+    display: flex;
+    align-items: center; /* Center vertically */
+    height: 77px; /* Adjust height as needed */
+    width: 100%; /* Ensure footer spans entire viewport width */
+  
+  }
+  .footerContent {
+    margin: 0 auto; /* Center horizontally */
+    font-size: 23px;
+    font-weight: 500;
+  }
+
+
   

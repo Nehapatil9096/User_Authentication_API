@@ -1,15 +1,20 @@
 /* Home.module.css */
+
 .container {
   height: 100vh; /* Set height to full viewport height */
   overflow-y: auto; /* Enable vertical scrolling */
+  background-color: #ffffff;
+  overflow-x: hidden; /* Prevent horizontal scrolling */
+
 }
 
 /* Other styles remain unchanged */
 
 .home {
-  max-width: 1200px;
+  max-width: 100%; /* Adjust to fit the screen */
   margin: 0 auto;
-  padding: 20px;
+  padding: 70px;
+  
 }
 
 .navbar {
@@ -17,88 +22,296 @@
   justify-content: space-between;
   margin-bottom: 20px;
 }
+.menubar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  color: white;
+  padding: 0px 75px;
+padding-top: -100px;
+margin-top: -10px;
+}
+.banner {
+  background-color: #f0f0f0;
+  padding: 20px;
+  margin-bottom: 20px;
+}
+.searchBar {
+  position: relative;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between; /* Align left and right sections */
+
+  background-color: #2e0052;
+  color: white;
+  height: 55px; /* Adjust height as needed */
+  padding: 0 50px; /* Add padding to the header */
+    margin-bottom: 20px; /* Add margin bottom to match the spacing */
+
+}
+.footer {
+  background-color: #2e0052;
+  color: white; /* Set text color to white */
+  display: flex;
+  align-items: center; /* Center vertically */
+  height: 77px; /* Adjust height as needed */
+  width: 100%; /* Ensure footer spans entire viewport width */
+
+}
+
+/* Add other existing styles remain unchanged */
+.productList {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr); /* 4 columns in each row */
+  gap: 20px; /* Adjust the gap between products */
+}
+
+
+
+
+
+
+
+
 
 .navbar .leftSection,
 .navbar .middleSection {
   flex: 1;
 }
 
-.menubar {
-  display: flex;
-  justify-content: space-between;
-  margin-bottom: 20px;
-}
+
 
 .menubar .leftSection {
   display: flex;
   align-items: center;
 }
+/* Styles for the "Home" button */
+.homeLink {
+  color: rgb(2, 2, 30); /* Set text color to blue */
+  text-decoration: none; /* Remove underline */
+  padding: 10px 20px; /* Add padding */
+  font-size: 25px;
+  font-weight: 500;
+}
+.invoiceLink{
+  color: rgb(2, 2, 30); /* Set text color to blue */
+  text-decoration: none; /* Remove underline */
+  padding: 0px -30px; /* Add padding */
+  font-size: 25px;
+  font-weight: 500;
+  margin-right: 300px;
 
-.menubar .leftSection span {
-  margin-right: 20px;
-  cursor: pointer;
+}
+/* Styles for the "Invoice" button */
+
+.menubar .leftSection img {
+  width: 220px; /* Adjust as needed */
+  margin-right: 10px;
+  
 }
 
-.menubar .rightSection {
+.menubar .leftSection a {
+  margin-right: 20px;
+  color: rgb(27, 6, 6);
+  text-decoration: none;
+}
+menuItem {
+  display: flex;
+  align-items: center;
+  background-color: green; /* Set the background color to green */
+  padding: 10px 20px;
+  border-radius: 5px;
+}
+
+.menuItem img {
+  width: 30px;
+  margin-right: 10px;
+}
+
+.menuItem span {
+  color: white; /* Set the color of the text to green */
+  padding: 10px 20px;
+
+}
+
+.rightSection {
   display: flex;
   align-items: center;
 }
 
-.menubar .rightSection span {
-  margin-right: 20px;
+.button {
+  display: flex; /* Ensure the button behaves as a flex container */
+  align-items: center; /* Center items vertically */
+  justify-content: center; /* Center items horizontally */
+  background-color: green;
+  color: white;
+  border: none;
+  padding: 10px 20px; /* Adjust padding as needed */
+  border-radius: 35px;
   cursor: pointer;
+  width: 210px;
+  height: 50px;
+  margin-right: 90px;
+  font-weight: 600;
+  font-size: 19px;
+  margin-right: 10px;
 }
 
-.userCircle {
+.button img {
   width: 30px;
-  height: 30px;
-  background-color: #ccc;
+  margin-right: -10px; /* Adjust margin for spacing between image and text */
+}
+.button span {
+  display: flex; /* Make the text appear in a column */
+  flex-direction: column; /* Align text vertically */
+  align-items: center; /* Align text horizontally */
+}
+
+.rightSection span {
+  margin-right: 20px;
+}
+
+
+/* Home.module.css */
+
+.userCircle {
+  width: 70px;
+  height: 70px;
+  background-color: #ffffff;
+  border-color: #2E0052
+  ; /* Updated border color */
+  border-width: 1px; /* Optional: you can adjust the border width */
+  border-style: solid; /* Ensure a solid border */
   border-radius: 50%;
   display: flex;
   justify-content: center;
   align-items: center;
   font-weight: bold;
+  color: black;
+  margin-left: 10px;
+  margin-top: 20px;
+  cursor: pointer; /* Add cursor pointer to indicate it's clickable */
+  font-size: 30px;
 }
 
-.banner {
-  background-color: #f0f0f0;
-  padding: 20px;
-  margin-bottom: 20px;
-}
+
 
 .searchBar input[type="text"] {
   width: 100%;
   padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
+  border: 3.5px solid #ccc;
+  border-radius: 45px;
   margin-bottom: 20px;
+  padding-left: 70px; /* Adjust the left padding to make space for the icon */
+  color:  #666666;
+  font-size: 30px;
+  font-weight: 400;
+  height: 80px;
+
+
 }
 
+
+.searchIcon {
+  position: absolute;
+  left: 10px; /* Adjust the position of the icon */
+  top: 40%; /* Center vertically */
+  transform: translateY(-50%); /* Adjust for vertical centering */
+  width: 50px; /* Adjust width as needed */
+  height: auto; /* Maintain aspect ratio */
+  padding-left: 10px;
+}
 .sortingBar {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 20px;
+  margin-bottom: 70px;
+  margin-top: 30px;
+}
+/* Home.module.css */
+
+/* Styles for the grid icon */
+.gridIcon {
+  width: 47px; /* Adjust width as needed */
+  height: 47px; /* Adjust height as needed */
+  /* Add any other styles specific to the grid icon */
+  
+}
+
+/* Styles for the list icon */
+.listIcon {
+  width: 47px; /* Adjust width as needed */
+  height: 47px; /* Adjust height as needed */
+  /* Add any other styles specific to the list icon */
 }
 
 .sortingBar .leftSection span {
-  margin-right: 10px;
+  margin-right: 30px;
   cursor: pointer;
 }
 
 .sortingBar .dropdowns {
   display: flex; /* Set to display flex */
   align-items: center; /* Align items in the same line */
-}
+  margin-right: 250px;
 
+}
+.featuredSection{
+  width: 270px; /* Adjust width for the first dropdown */
+  height: 49px;
+  text-align: center;
+  font-size: 20px;  
+  border: 2px  solid #D9D9D9;
+  border-radius: 25px;
+  font-weight: 620;
+
+}
 .sortingBar .dropdowns select {
-  margin-right: 10px;
+  margin-right: 13px;
   padding: 5px;
-  border-radius: 5px;
+  border-radius: 25px;
   appearance: none; /* Remove default arrow */
   background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="black" width="18px" height="18px"><path d="M7 10l5 5 5-5z" /><path d="M0 0h24v24H0z" fill="none" /></svg>'); /* Custom arrow */
   background-repeat: no-repeat;
   background-position: right 5px center;
+  background-color: #D9D9D9;
+  font-weight: 620;
+  width: auto;
+  height: auto;
+  font-size: 20px;
+}
+/* Home.module.css */
+
+/* Adjust width for each dropdown button separately */
+.dropdowns .dropdown:nth-child(1) select {
+  width: 220px; /* Adjust width for the first dropdown */
+  height: 49px;
+  text-align: center;
+}
+
+.dropdowns .dropdown:nth-child(2) select {
+  width: 160px; /* Adjust width for the second dropdown */
+  height: 45px;
+  text-align: center;
+
+}
+
+.dropdowns .dropdown:nth-child(3) select {
+  width: 115px; /* Adjust width for the fourth dropdown */
+  height: 45px;
+  text-align: center;
+
+}
+
+.dropdowns .dropdown:nth-child(4) select {
+  width: 115px; /* Adjust width for the fourth dropdown */
+  height: 45px;
+  text-align: center;
+
 }
 
 .sortingBar .dropdowns select:focus {
@@ -135,7 +348,6 @@
 }
 
 .productCard {
-  border: 1px solid #ccc;
   padding: 10px;
 }
 
@@ -161,6 +373,7 @@
 
 .dropdown select::-ms-expand {
   display: none;
+  
 }
 
 /* Add arrow icon */
@@ -168,6 +381,7 @@
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M7 10l5 5 5-5z'/%3E%3C/svg%3E");
   background-repeat: no-repeat;
   background-position: right 8px center;
+  
 }
 
 /* Style selected option */
@@ -201,37 +415,55 @@
 
 }
 
-/* Add other existing styles remain unchanged */
-.productList {
-  display: flex;
-  flex-wrap: wrap;
-}
+
 
 .productCard {
   /* Your product card styles */
   width: 100%; /* Take full width for list view */
   margin-bottom: 20px; /* Adjust the margin between product cards */
-  border: 1px solid #ccc; /* Example border */
-  border-radius: 5px; /* Example border radius */
   display: flex; /* Make the card a flex container */
   align-items: center; /* Align items vertically */
   padding: 10px; /* Add padding */
-}
+  flex-direction: column; /* Arrange details below the image */
 
+}
+.productImage img {
+  width: 100%; /* Make the image fill the container */
+  height: auto; /* Maintain aspect ratio */
+}
 .productImage {
   width: 30%; /* Adjust the width of the image */
-  border-radius: 5px; /* Example border radius for image */
   margin-right: 10px; /* Adjust the spacing between image and details */
-  border: 27px solid #bec0f5; /* You can adjust the border style as needed */
+  border: 35px solid #D4E5FF;
+   /* You can adjust the border style as needed */
 
 }
+.cartIcon {
+  position: absolute;
+  bottom: 60px; /* Adjust as needed */
+  right: 10px; /* Adjust as needed */
+  width: 57px; /* Adjust width as needed */
+  height: auto; /* Maintain aspect ratio */
+}
+.productImageContainer {
+  position: relative; /* Position relative for absolute positioning of images */
+  overflow: hidden; /* Hide overflowing content */
+  width: 100%; /* Full width for image container */
+  height: 350px; /* Fixed height for image container */
+  margin-bottom: -39px; /* Margin bottom for spacing */
+}
+/* Home.module.css */
 
+.productCard .productImage img {
+  width: 100%; /* Make the image fill the container */
+  height: 200px; /* Make the image fill the container */
+}
 
 .listView .productImage {
   /* Additional styles for list view */
-  width: 100%; /* Adjust the width of the image */
+  width: 660px; /* Adjust the width of the image */
   margin-right: 20px; /* Adjust the spacing between image and details */
-  height: 200px;
+  height: 300px;
 }
 
 .productCard:hover {
@@ -240,18 +472,22 @@
 
 .productImage img {
   width: 100%;
-  height: auto;
+  height: 100px;
   display: block;
 }
 .productImage {
   /* Styles for the product image */
   width: 30%; /* Adjust the width of the image */
-  border-radius: 5px; /* Example border radius for image */
   margin-right: 10px; /* Adjust the spacing between image and details */
 }
 .productDetails {
   /* Styles for the product details */
   flex: 1; /* Allow the details to grow to fill available space */
+  margin-top: 0px; /* Add margin between image and details */
+font-size: 25px;
+font-weight: 500;
+font-style: Roboto
+;
 }
 
 /* List View */
@@ -279,6 +515,11 @@
   bottom: 20px;
   right: 20px;
   cursor: pointer;
+  z-index: 1;
+}
+.feedbackButton img {
+  width: 170px; /* Adjust the width of the image */
+  height: 170px; /* Adjust the height of the image */
 }
 
 .feedbackPopup {
@@ -320,6 +561,115 @@
 }
 
 
+
+.headerContent {
+  margin: 0 auto; /* Center horizontally */
+}
+.leftSection {
+  display: flex;
+  align-items: center;
+  margin-right: 20px; /* Add margin between phone call icon/number and other content */
+}
+
+.leftSection img {
+  margin-right: 5px;  /* Add some spacing between the icon and the number */
+}
+.navbar {
+  display: flex;
+  flex-direction: column; /* Align items vertically */
+  align-items: center; /* Center items horizontally */
+  margin-bottom: 20px;
+  width: 103%;
+  height: auto; /* Change height to auto */
+}
+
+.navbar .leftSection img {
+  width: 100%; /* Adjust width to fill the container */
+  height: auto; /* Maintain aspect ratio */
+}
+
+.navbar .leftSection span {
+  text-align: center; /* Center the text */
+  margin-top: 10px; /* Add margin on top */
+}
+.offerContainer {
+  top: 20px;
+  left: 10px;
+  z-index: 999;
+}
+
+  /* Home.module.css */
+.offerText {
+  /* Styles for the offer text */
+  position: absolute; /* Position the text absolutely */
+
+  top: 49%; /* Adjust top position to vertically center */
+  left: 27%; /* Align to the left side of the container */
+  transform: translate(-50%, -50%); /* Center the text horizontally and vertically */
+  width: calc(65% - 300px); /* Set width to fill remaining space beside the offer image */
+  font-size: 61px; /* Adjust text size as needed */
+  color: #2E0052; /* Adjust text color as needed */
+  font-weight: 640;
+  font-family: "Roboto", sans-serif; /* Use font-family property */
+
+}
+
+
+.offerContainer{
+  position: relative; /* Position the container relative */
+  text-align: right; /* Align image to the right */
+  padding-right: 20px; /* Adjust as needed */
+  
+}
+.offerImageContainer {
+  top: 0;
+  right: 0;
+  transform: translate(50%, -50%);
+  position: relative; /* Ensure relative positioning */
+
+}
+
+.offerImage {
+  /* Styles for the offer image */
+  width: 180%; /* Adjust width as needed */
+  height: 270px; /* Maintain aspect ratio */
+  margin-bottom: 55px;
+  margin-top: -87px;
+}
+.image {
+  position: absolute; /* Position absolutely relative to the container */
+
+  /* Styles for Image1 */
+  top: -370px; /* Adjust top position as needed */
+  right: 650px; /* Align to the right side of the container */
+  width: 460px; /* Adjust width as needed */
+  height: auto; /* Maintain aspect ratio */
+}
+
+/* Home.module.css */
+.navbar.image {
+  overflow-y: auto; /* Enable vertical scrolling if the content exceeds the maximum height */
+
+  width: 900px; /* Adjust the width as needed */
+  height: auto; /* Maintain aspect ratio */
+  margin-top: 700px;
+margin-left: -300px;
+}
+
+
+
+
+
+.footerContent {
+  margin: 0 auto; /* Center horizontally */
+  font-size: 23px;
+  font-weight: 500;
+}
+/* Prevent horizontal scrolling */
+body {
+  overflow-x: hidden;
+}
+
 @media (max-width: 768px) {
   /* Media query styles for smaller screens */
   .productCard {
@@ -333,6 +683,9 @@
     margin-right: 0; /* Remove margin on smaller screens */
     margin-bottom: 10px; /* Add space between image and details */
   }
+
+
+
 }
 
 .productImage {
@@ -340,9 +693,3 @@
   height: auto;
   display: block;
 }
-.invoiceLink {
-  text-decoration: none; /* Remove underline */
-  color: inherit; /* Inherit text color */
-}
-
-

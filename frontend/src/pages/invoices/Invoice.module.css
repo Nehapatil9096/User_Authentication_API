@@ -1,10 +1,30 @@
 /* Invoice.module.css */
+body {
+  background-color: #fff; /* Set the background color of the entire page to white */
+}
 
 .container {
-    max-width: 800px;
-    margin: 0 auto;
+  height: 100vh; /* Set height to full viewport height */
+  overflow-y: auto; /* Enable vertical scrolling */
+  background-color: #ffffff;
+  overflow-x: hidden; /* Prevent horizontal scrolling */
+
   }
+  .header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between; /* Align left and right sections */
   
+    background-color: #2e0052;
+    color: white;
+    height: 55px; /* Adjust height as needed */
+    padding: 0 50px; /* Add padding to the header */
+      margin-bottom: 20px; /* Add margin bottom to match the spacing */
+  
+  }
+  .headerContent {
+    margin: 0 auto; /* Center horizontally */
+  }
   .navbar {
     display: flex;
     justify-content: space-between;
@@ -61,5 +81,89 @@
     padding: 5px 10px;
     border-radius: 5px;
     cursor: pointer;
+  }
+  .invoiceItem {
+    display: flex;
+    align-items: center; /* Align items vertically in the center */
+    
+  }
+  
+  .left {
+    flex: 0 0 auto; /* Make the left section non-flexible */
+  }
+  
+  .invoiceImage {
+    width: 70px; /* Adjust the width as needed */
+    height: auto; /* Maintain aspect ratio */
+  }
+  
+  .right {
+    flex: 1; /* Fill remaining space */
+    margin-left: 20px;
+  }
+  .menubar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    color: white;
+    padding: 0px 75px;
+  padding-top: -100px;
+  margin-top: -10px;
+  }
+  
+.menubar .leftSection {
+  display: flex;
+  align-items: center;
+}
+
+.menubar .leftSection img {
+  width: 220px; /* Adjust as needed */
+  margin-right: 10px;
+  
+}
+
+.menubar .leftSection a {
+  margin-right: 20px;
+  color: rgb(27, 6, 6);
+  text-decoration: none;
+}
+menuItem {
+  display: flex;
+  align-items: center;
+  background-color: green; /* Set the background color to green */
+  padding: 10px 20px;
+  border-radius: 5px;
+}
+
+.menuItem img {
+  width: 30px;
+  margin-right: 10px;
+}
+
+.menuItem span {
+  color: white; /* Set the color of the text to green */
+  padding: 10px 20px;
+
+}
+
+.rightSection {
+  display: flex;
+  align-items: center;
+}
+
+  .footerContent {
+    margin: 0 auto; /* Center horizontally */
+    font-size: 23px;
+    font-weight: 500;
+  }
+  .footer {
+    background-color: #2e0052;
+    color: white; /* Set text color to white */
+    display: flex;
+    align-items: center; /* Center vertically */
+    height: 77px; /* Adjust height as needed */
+    width: 100%; /* Ensure footer spans entire viewport width */
+  
   }
   

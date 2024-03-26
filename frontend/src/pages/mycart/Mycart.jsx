@@ -1,14 +1,18 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import { Link } from 'react-router-dom'; // Import Link from react-router-dom
-import styles from './MyCart.module.css'; // Import CSS module
+import { Link } from 'react-router-dom';
+import styles from './MyCart.module.css';
 
 const MyCart = () => {
   const [cart, setCart] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [totalAmount, setTotalAmount] = useState(0); // State to store the total amount
+  const [totalAmount, setTotalAmount] = useState(0);
 
-  // Function to fetch cart data from the backend
+  const parsePrice = (priceString) => {
+    const numericValue = priceString.replace(/[^\d.]/g, '');
+    return parseFloat(numericValue);
+  };
+
   const fetchCartData = async () => {
     try {
       const response = await axios.get('/api/users/cart');
@@ -20,7 +24,6 @@ const MyCart = () => {
     }
   };
 
-  // Function to fetch product details based on product ID
   const fetchProductDetails = async (productId) => {
     try {
       if (!productId) {
@@ -35,19 +38,12 @@ const MyCart = () => {
     }
   };
 
-  // Function to parse the price string and extract the numerical value
-  const parsePrice = (priceString) => {
-    const numericValue = priceString.replace(/[^\d.]/g, '');
-    return parseFloat(numericValue);
-  };
-
-  // Function to calculate total amount
   const calculateTotalAmount = async (cart) => {
     const promises = cart.map(item => fetchProductDetails(item.product._id));
     const products = await Promise.all(promises);
     return products.reduce((total, product, index) => {
       if (product) {
-        const productPrice = parsePrice(product.price); // Parse the price here
+        const productPrice = parsePrice(product.price);
         return total + (productPrice * cart[index].quantity);
       }
       return total;
@@ -61,58 +57,95 @@ const MyCart = () => {
   useEffect(() => {
     if (!loading) {
       calculateTotalAmount(cart).then(total => {
-        setTotalAmount(total); // Update the total amount state
+        setTotalAmount(total);
       }).catch(error => {
         console.error("Error calculating total amount:", error);
       });
     }
   }, [cart, loading]);
 
+  const handleQuantityChange = async (productId, newQuantity) => {
+    try {
+      const response = await axios.post('/api/users/cart/qty', {
+        productId: productId,
+        quantity: newQuantity
+      });
+      if (response.status === 200) {
+        fetchCartData(); // Refresh cart data after update
+      } else {
+        console.error('Failed to update cart quantity');
+      }
+    } catch (error) {
+      console.error('Error updating cart quantity:', error);
+    }
+  };
+
   return (
-    <div className={styles.mycartContainer}> {/* Use the CSS module class */}
-      <h2>My Cart</h2>
-      {loading ? (
-        <p>Loading...</p>
-      ) : (
-        <>
-          {cart.length === 0 ? (
-            <p>Your cart is empty.</p>
+    <div className={styles.mycartContainer}>
+      <Link to="/productdetails">
+        <button className={styles.backButton}>Back to Products</button>
+      </Link>
+      <h2 className={styles.cartTitle}>My Cart</h2>
+
+      <div className={styles.cartContent}>
+        {/* Item details */}
+        <div className={styles.itemDetails}>
+          {loading ? (
+            <p>Loading...</p>
           ) : (
-            <div className={styles.cartItemsContainer}> {/* Use CSS Module class */}
-              {cart.map((item, index) => (
-                <CartItem key={index} item={item} fetchProductDetails={fetchProductDetails} />
-              ))}
-              <div className={styles.totalSection}> {/* Use CSS Module class */}
-                <h3>Total Amount</h3>
-                <p>Total: ₹{totalAmount.toFixed(2)}</p> {/* Render the total amount */}
-              </div>
-              {/* Use Link to navigate to the checkout page */}
-              <Link to="/checkout">
-                <button>Place Order</button>
-              </Link>
-            </div>
+            <>
+              {cart.length === 0 ? (
+                <p>Your cart is empty.</p>
+              ) : (
+                <div className={styles.cartItemsContainer}>
+                  {cart.map((item, index) => (
+                    <CartItem key={index} item={item} fetchProductDetails={fetchProductDetails} onQuantityChange={handleQuantityChange} />
+                  ))}
+                </div>
+              )}
+            </>
           )}
-        </>
-      )}
+        </div>
+
+        {/* Product price details */}
+        <div className={styles.priceDetails}>
+        <h3>PRICE DETAILS</h3>
+
+          <p>Total MRP: ₹{totalAmount.toFixed(2)}</p>
+          <p>Discount on MRP: ₹0</p>
+          <p>Convenience Fee: ₹45</p>
+          <h3>Total Amount: ₹{(totalAmount + 45).toFixed(2)}</h3>
+          <Link to="/checkout">
+            <button className={styles.placeOrderButton}>Place Order</button>
+          </Link>
+        </div>
+      </div>
+
+      {/* Total product items and total MRP */}
+    <div className={styles.totalItemsMRP}>
+      <p>{cart.length} Items {' '}
+      {totalAmount.toFixed(2)}</p>
+    </div>
+
     </div>
   );
 };
 
-const CartItem = ({ item, fetchProductDetails }) => {
+const CartItem = ({ item, fetchProductDetails, onQuantityChange }) => {
+  const [product, setProduct] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const [selectedQuantity, setSelectedQuantity] = useState(item.quantity);
   const parsePrice = (priceString) => {
     const numericValue = priceString.replace(/[^\d.]/g, '');
     return parseFloat(numericValue);
   };
-  const [product, setProduct] = useState(null);
-  const [loading, setLoading] = useState(true);
-
   useEffect(() => {
     const getProductDetails = async () => {
       if (!item.product) {
         console.error('Product ID is undefined');
         return;
       }
-      const productDetails = await fetchProductDetails(item.product._id); // Assuming product field is populated
+      const productDetails = await fetchProductDetails(item.product._id);
       setProduct(productDetails);
       setLoading(false);
     };
@@ -120,22 +153,45 @@ const CartItem = ({ item, fetchProductDetails }) => {
     getProductDetails();
   }, [fetchProductDetails, item.product]);
 
-  // Parse the price outside of the JSX
-  const price = product ? parsePrice(product.price) : '';
+  const handleQuantitySelect = (event) => {
+    const newQuantity = parseInt(event.target.value);
+    setSelectedQuantity(newQuantity);
+    onQuantityChange(item.product._id, newQuantity);
+  };
 
   return (
-    <div className={styles.cartItem}> {/* Use CSS Module class */}
-      <p>Product ID: {item.product && item.product._id}</p>
-      <p>Quantity: {item.quantity}</p>
+    <div className={styles.cartItem}>
       {loading ? (
         <p>Loading product details...</p>
       ) : (
         <>
-          <p>Name: {product.name}</p>
-          <p>Price: ₹{price}</p> {/* Use the parsed price here */}
-          <img src={product.images[0]} alt={product.name} />
+            <div className={styles.cartItemColumn}>
+          <img src={product.images[0]} alt={product.name} className={styles.productImage} />
+         </div>
+         <div className={styles.cartItemColumn}>
+            <p>{product.name}</p>
+            <p>Color: {product.color}</p>
+            <p>In Stock</p>
+            </div>
+            <div className={styles.cartItemColumn}>
 
-          {/* Add more product details as needed */}
+            <p>Price: </p>
+            <p>{product.price}</p>
+            </div>
+            <div className={styles.cartItemColumn}>
+
+            <p>Quantity: </p>
+             <p> <select value={selectedQuantity} onChange={handleQuantitySelect} style={{ width: '40%' }}>
+                {[...Array(8)].map((_, index) => (
+                  <option key={index + 1} value={index + 1}>{index + 1}</option>
+                ))}
+              </select>
+            </p>
+            </div>         
+            <div className={styles.cartItemColumn}>
+            <p>Total:</p>
+            <p> ₹{(parsePrice(product.price) * selectedQuantity).toFixed(2)}</p>
+          </div>
         </>
       )}
     </div>
@@ -143,3 +199,4 @@ const CartItem = ({ item, fetchProductDetails }) => {
 };
 
 export default MyCart;
+

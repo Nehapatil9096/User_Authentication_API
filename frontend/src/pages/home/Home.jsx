@@ -4,6 +4,10 @@ import { Link } from "react-router-dom";
 import LogoutButton from "/src/components/LogoutButton";
 import offerImage from "/Rectangle 3.png";
 import feedbackIcon from "/feedback.png";
+import phoneCallIcon from "/ph_phone-call-light.png";
+import projectLogo from "/project_logo.png";
+import image from "/image.png"; // Update the path accordingly
+
 
 const Home = () => {
   const [products, setProducts] = useState([]);
@@ -60,6 +64,7 @@ const Home = () => {
   const switchToListView = () => {
     setListView(false);
   };
+
   const handleFeedbackSubmit = async () => {
     try {
       const response = await fetch("/api/users/feedback", {
@@ -86,64 +91,100 @@ const Home = () => {
       console.error("Error submitting feedback:", error);
     }
   };
-  
-
 
   return (
     <div className={styles.container}>
+      {/* Header */}
+      <header className={styles.header}>
+      <div className={styles.leftSection}>
+          <img src={phoneCallIcon} alt="Phone call" />
+          <span>912121131313</span>
+        </div>
+        <div className={styles.headerContent}>
+        <span>Get 50% off on selected items&nbsp; | &nbsp; Shop Now</span>
+        </div>
+      </header>
+       {/* Menu Bar */}
+      <div className={styles.menubar}>
+      <div className={styles.leftSection}>
+
+          <div className={styles.menuItem}>
+            <img src={projectLogo} alt="Project Logo" />
+          </div>
+          <div className={styles.menuItem}>
+            <Link to="/home"className={styles.homeLink}>Home</Link>
+          </div>
+          <div className={styles.menuItem}>
+          <Link to="/invoices" className={styles.invoiceLink}>Invoice</Link>
+          </div>
+        </div>
+      <div className={styles.rightSection}>
+
+      <div className={styles.menuItem}>
+  <button className={styles.button}>
+    <img src="/cart_menu.png" alt="Cart_Menu" />
+    <span>View Cart</span>
+  </button>
+</div>
+          <div className={styles.menuItem}>
+            <div className={styles.userCircle}>U</div>
+            
+            <span>Profile</span>
+          </div>
+        </div>
+        </div>
+
+ {/* Navigation Bar */}
+ <div className={styles.navbar}></div>
+
+      {/* Main content */}
       <div className={styles.home}>
         {/* Logout Button */}
-        <div className={styles.logoutButtonContainer}>
-          <LogoutButton />
-        </div>
+       
 
-        {/* Navigation Bar */}
-        <div className={styles.navbar}>
-          <div className={styles.leftSection}>
-            <span>User Mob. Number</span>
-          </div>
-          <div className={styles.middleSection}>
-          <img src={offerImage} alt="Offer" style={{   flex: 1
-,width: "100vh", height: "100px" ,marginRight:"100px"}} />
+       
+        <div className={`${styles.offerContainer} ${styles.fixed}`}>
+  <img src={offerImage} alt="Offer" className={styles.offerImage} />
+  <div className={styles.offerImageContainer}>
+    <img src={image} alt="Image1" className={styles.image} />
+  </div>
+  <span className={styles.offerText}>
+  <img src="Grab.png" alt="Grab Offer" />
 
-            <span>Get 50% off on selected items | Shop Now</span>
-          </div>
-        </div>
+  </span>
+</div>
 
-        {/* Menu Bar */}
-        <div className={styles.menubar}>
-          <div className={styles.leftSection}>
-            <span>Musicart</span>
-            <span>Home</span>
-            <Link to="/invoices" className={styles.invoiceLink}>Invoice</Link>
-          </div>
-          <div className={styles.rightSection}>
-            <span>Cart</span>
-            <div className={styles.userCircle}>U</div>
-          </div>
-        </div>
+
+
+        
 
         {/* Banner */}
-        <div className={styles.banner}>
-          <span>Grab upto 50% off on Selected headphones</span>
-        </div>
-           
+        
+
         {/* Search Bar */}
         <div className={styles.searchBar}>
-          <input
-            type="text"
-            placeholder="Search..."
-            value={searchQuery}
-            onChange={handleSearchInputChange}
-          />
-        </div>
+  <img src="/search.png" alt="Search Icon" className={styles.searchIcon} />
+  <input
+    type="text"
+    placeholder="Search by Product Name"
+    value={searchQuery}
+    onChange={handleSearchInputChange}
+  />
+</div>
 
-        {/* Sorting Options Bar */}
-        <div className={styles.sortingBar}>
-          <div className={styles.listViewToggle}>
-            <button onClick={switchToGridView}>Grid View</button>
-            <button onClick={switchToListView}>List View</button>
-          </div>
+<div className={styles.sortingBar}>
+  <div className={styles.listViewToggle}>
+  <button onClick={switchToGridView}>
+      <img src={listView ? "/grid.png" : "/grid_view_not.png"} alt="Grid View" className={styles.gridIcon} />
+    </button>
+    <button onClick={switchToListView}>
+    {listView ? (
+      <img src="/list_not.png" alt="List View" className={styles.listIcon} />
+    ) : (
+      <img src="/list_view.png" alt="List View" className={styles.listIcon} />
+    )}
+  </button>
+  </div>
           <div className={styles.dropdowns}>
             <div className={styles.dropdown}>
               <select id="headphoneType" onChange={(e) => handleDropdownChange(e, "headphoneType")} value={selectedOptions.headphoneType}>
@@ -183,9 +224,9 @@ const Home = () => {
             </div>
           </div>
           <div className={styles.rightSection}>
-            <span>Sort by</span>
-            <select onChange={(e) => handleDropdownChange(e, "sortBy")} value={selectedOptions.sortBy}>
-              <option value="featured">Featured</option>
+            <span></span>
+            <select onChange={(e) => handleDropdownChange(e, "sortBy")} value={selectedOptions.sortBy}className={styles.featuredSection}>
+              <option value="featured">Sort by : Featured</option>
               <option value="priceLowest">Price: Lowest</option>
               <option value="priceHighest">Price: Highest</option>
               <option value="nameAZ">Name: (A-Z)</option>
@@ -195,53 +236,60 @@ const Home = () => {
         </div>
 
         <div className={styles.feedbackButton} onClick={() => setShowFeedbackPopup(true)}>
-        <img src={feedbackIcon} alt="Feedback" />
+          <img src={feedbackIcon} alt="Feedback" />
+        </div>
+
+        {/* Feedback Popup */}
+        {showFeedbackPopup && (
+          <div className={styles.feedbackPopup}>
+            <div className={styles.popupContent}>
+              <select value={feedbackType} onChange={(e) => setFeedbackType(e.target.value)} required>
+                <option value="" disabled>Select type of feedback</option>
+                <option value="Bugs">Bugs</option>
+                <option value="Feedback">Feedback</option>
+                <option value="Query">Query</option>
+              </select>
+              <textarea
+                placeholder="Enter your feedback"
+                value={feedbackText}
+                onChange={(e) => setFeedbackText(e.target.value)}
+                required
+              />
+              <button onClick={handleFeedbackSubmit}>Submit</button>
+              {feedbackSubmitted && <p>Feedback submitted successfully!</p>}
+            </div>
+          </div>
+        )}
+        <div className={`${styles.productList} ${listView ? styles.listView : styles.gridView}`}>
+      {products.map((product, index) => (
+        <Link key={index}className={styles.productRow} to={`/product/ProductDetails/${product._id}`}>
+          <div className={styles.productCard}>
+            <div className={styles.productImageContainer}>
+             
+              <img src={product.images[0]} alt={product.name} className={styles.productImage} />
+              <img src="cartp.png" className={styles.cartIcon} alt="Add to Cart" />
+
+            </div>
+            <div className={styles.productDetails}>
+              <h3>{product.name}</h3>
+              <p>Price: {product.price}</p>
+              <p>{product.color} | {product.type}</p>
+            </div>
+          </div>
+        </Link>
+      ))}
+        </div>
+        <div className={styles.logoutButtonContainer}>
+          <LogoutButton />
+        </div>
       </div>
 
-      {/* Feedback Popup */}
-      {showFeedbackPopup && (
-        <div className={styles.feedbackPopup}>
-          <div className={styles.popupContent}>
-            <select value={feedbackType} onChange={(e) => setFeedbackType(e.target.value)} required>
-              <option value="" disabled>Select type of feedback</option>
-              <option value="Bugs">Bugs</option>
-              <option value="Feedback">Feedback</option>
-              <option value="Query">Query</option>
-            </select>
-            <textarea
-              placeholder="Enter your feedback"
-              value={feedbackText}
-              onChange={(e) => setFeedbackText(e.target.value)}
-              required
-            />
-            <button onClick={handleFeedbackSubmit}>Submit</button>
-            {feedbackSubmitted && <p>Feedback submitted successfully!</p>}
-          </div>
+      {/* Footer */}
+      <footer className={styles.footer}>
+        <div className={styles.footerContent}>
+          <span>Musicart | All rights reserved</span>
         </div>
-      )}
-        <div className={`${styles.productList} ${listView ? styles.listView : styles.gridView}`}>
-          {products.map((product, index) => (
-            <Link key={index} to={`/product/ProductDetails/${product._id}`}>
-              <div className={styles.productCard}>
-                <div className={styles.productImage}>
-                  <img src={product.images[0]} alt={product.name} />
-                </div>
-                <img src="cart.png" className={styles.cartIcon} alt="Add to Cart" />
-                <div className={styles.productDetails}>
-                  <h3>{product.name}</h3>
-                  <p>Company: {product.brand}</p>
-                  <p>Price: {product.price}</p>
-                  <p>Color: {product.color}</p>
-                  <p>Type: {product.type}</p>
-                </div>
-              </div>
-            </Link>
-          ))}
-        </div>
-        <div className={styles.bottomBar}>
-          Musicart | All rights reserved
-        </div>
-      </div>
+      </footer>
     </div>
   );
 };

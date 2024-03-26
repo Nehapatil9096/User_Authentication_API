@@ -1,86 +1,101 @@
-/* InvoiceDetailsPage.module.css */
+.checkoutContainer {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #f7f7f7;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  height: 80vh;
+  overflow-y: auto;
+}
 
-.invoiceContainer {
-    max-width: 800px;
-    margin: 0 auto;
-    padding: 20px;
-    background-color: #fff;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  }
-  
-  .invoiceHeader {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding-bottom: 10px;
-    border-bottom: 1px solid #ddd;
-  }
-  
-  .logo {
-    font-size: 24px;
-    color: #333;
-  }
-  
-  .navigation {
-    display: flex;
-    align-items: center;
-  }
-  
-  .navLink {
-    margin-left: 20px;
-    color: #666;
-    text-decoration: none;
-    transition: color 0.3s ease;
-  }
-  
-  .navLink:hover {
-    color: #000;
-  }
-  
-  .content {
-    padding-top: 20px;
-  }
-  
-  .pageTitle {
-    font-size: 24px;
-    color: #333;
-    margin-bottom: 20px;
-  }
-  
-  .invoiceDetails {
-    margin-bottom: 20px;
-  }
-  
-  .itemList {
-    list-style: none;
-    padding: 0;
-  }
-  
-  .item {
-    display: flex;
-    align-items: center;
-    margin-bottom: 10px;
-  }
-  
-  .itemImage {
-    width: 80px;
-    height: 80px;
-    margin-right: 10px;
-  }
-  
-  .itemInfo {
-    flex-grow: 1;
-  }
-  
-  .orderSummary {
-    border-top: 1px solid #ddd;
-    padding-top: 20px;
-  }
-  
-  .orderTotal {
-    font-size: 18px;
-    font-weight: bold;
-    margin-top: 20px;
-  }
-  
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  background-color: #fff;
+  border-bottom: 1px solid #ddd;
+}
+
+.pageTitle {
+  margin-top: 20px;
+  color: #333;
+}
+
+.checkoutHeader {
+  margin-top: 20px;
+}
+
+.checkoutSections {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+
+.leftColumn {
+  flex: 1;
+  margin-right: 20px;
+}
+
+.rightColumn {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.orderSummaryBox {
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 20px;
+  background-color: #fff;
+}
+
+.placeOrderButton {
+  background-color: #f0c14b;
+  color: #111;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+  margin-bottom: 10px;
+  cursor: pointer;
+}
+
+.orderSummaryHorizontal {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 20px;
+  background-color: #fff;
+  padding: 10px;
+  border-radius: 8px;
+  border-top: 1px solid #ddd;
+}
+
+.orderTotal {
+  font-weight: bold;
+}
+
+.agreeText {
+  color: #666;
+}
+
+.productImage {
+
+  object-fit: cover;
+  cursor: pointer;
+}
+
+
+.hr {
+  margin: 10px 0;
+  border: 0;
+  border-top: 1px solid #ddd;
+}
+
+.itemImage {
+  width: 80px;
+  height: 80px;
+  margin-right: 10px;
+}

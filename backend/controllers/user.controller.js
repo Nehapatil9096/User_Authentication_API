@@ -48,6 +48,50 @@ export const updateCart = async (req, res) => {
 };
 
 
+export const updateQty = async (req, res) => {
+  try {
+    console.log("Received request to update cart:", req.body); // Log request body for debugging
+
+    const { productId, quantity } = req.body; // Extract productId and quantity from the request body
+
+    // Find the product by its ID
+    const product = await Product.findById(productId);
+    if (!product) {
+      return res.status(404).json({ error: "Product not found" });
+    }
+
+    console.log("User req ID:", req.user._id); // Log the userId for debugging
+
+    // Access the user's information from the request object (assuming the user is authenticated)
+    const userId = req.user._id; // Assuming the authenticated user's ID is stored in req.user._id
+    console.log("User ID:", userId); // Log the userId for debugging
+
+    // Find the user by their ID
+    const user = await User.findById(userId);
+    if (!user) {
+      return res.status(404).json({ error: "User not found" });
+    }
+
+    // Check if the product is already in the user's cart
+    const existingCartItemIndex = user.cart.findIndex(item => item.product.equals(product._id));
+    if (existingCartItemIndex !== -1) {
+      // Product is already in the cart, update the quantity to the new value
+      user.cart[existingCartItemIndex].quantity = quantity;
+    } else {
+      // Product is not in the cart, add it with the specified quantity
+      user.cart.push({ product: product._id, quantity: quantity });
+    }
+
+    // Save the updated user object with the modified cart
+    await user.save();
+
+    // Return a success response with the updated user's information
+    res.json({ message: "Cart updated successfully", user: user });
+  } catch (error) {
+    console.error("Error updating cart:", error);
+    res.status(500).json({ error: "Internal Server Error" });
+  }
+};
 
 export const myCartdetails = async (req, res) => {
   try {
@@ -150,13 +194,17 @@ export const getInvoiceDetails = async (req, res) => {
       return res.status(404).json({ error: "User not found" });
     }
     
-    // Return all orders associated with the user
-    res.json({ orders: user.orders });
+    // Return all orders associated with the user along with the username
+    res.json({ 
+      username: user.username,
+      orders: user.orders 
+    });
   } catch (error) {
     console.error("Error fetching invoice details:", error);
     res.status(500).json({ error: "Internal Server Error" });
   }
 };
+
 
 
 export const getOrderDetails = async (req, res) => {
