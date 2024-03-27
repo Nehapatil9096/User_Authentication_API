@@ -1,22 +1,45 @@
 /* MyCart.module.css */
 
 .mycartContainer {
-  max-width: 1200px; /* Set a maximum width for the container */
-  margin: 0 auto; /* Center the container horizontally */
-  padding: 20px; /* Add some padding for spacing */
-  background-color: #f7f7f7; /* Set a background color */
-  border-radius: 8px; /* Add rounded corners */
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Add a subtle shadow */
+  height: 100vh; /* Set height to full viewport height */
   overflow-y: auto; /* Enable vertical scrolling */
+  background-color: #ffffff;
+  overflow-x: hidden; /* Prevent horizontal scrolling */
+}
+.home {
+  max-width: 100%; /* Adjust to fit the screen */
+  margin: 0 auto;
+  padding: 70px;
+  
+}
+/* Add this to Checkout.module.css */
+
+/* Add this to Checkout.module.css */
+
+.cartHeader {
+  display: flex; /* Use flexbox to align items in a row */
+  align-items: center; /* Align items vertically */
+  margin-top: -35px;
+  margin-bottom: 45px;
+
+}
+
+.cartImage {
+  width: 40px; /* Adjust the width of the image */
+  height: auto; /* Maintain aspect ratio */
+  margin-right: 10px; /* Add some spacing between the image and the title */
+margin-top: -250px;
+  margin-left: 500px;
 }
 
 .cartTitle {
   text-align: center; /* Center the cart title */
-  margin-bottom: 20px; /* Add margin at the bottom */
+  margin-bottom: 270px; /* Add margin at the bottom */
 }
 
 .cartContent {
   display: flex; /* Use flexbox to create two partitions */
+  margin-top: -260px;
 }
 
 .itemDetails {
@@ -27,17 +50,13 @@
 .priceDetails {
   flex: 0 0 300px; /* Set a fixed width */
   background-color: #fff; /* Set background color to white */
-  border: 1px solid #ddd; /* Add a border around the price details */
   border-radius: 5px; /* Add border-radius for rounded corners */
   padding: 20px; /* Add some padding */
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Add a subtle box shadow */
+}
+.priceAmount{
+  margin-top: 10px;
 }
 
-.productImage {
-  width: 100px; /* Set the width of product images */
-  height: auto; /* Maintain aspect ratio */
-  margin-right: 10px; /* Add some spacing to the right */
-}
 
 .productDetails {
   display: flex;
@@ -59,13 +78,26 @@
   font-weight: bold;
   margin-right: 10px;
 }
+.totalItemsMRPContainer {
+  border-right: 1px solid #ddd; /* Add right border */
+  padding-right: 10px; /* Add some padding to the right */
+}
 
 .cartItem {
   display: flex;
   align-items: center;
-  border-bottom: 1px solid #ddd; /* Add border at the bottom of each cart item */
-  padding: 10px 0; /* Add padding top and bottom */
+  border-right: 1px solid #ddd; /* Add border to the right */
+  border-top: 1px solid #ddd; /* Add border to the top */
+  border-bottom: 1px solid #ddd; /* Add border to the bottom */
+  padding-right: 10px; /* Add padding to the right */  padding: 10px 0; /* Add padding top and bottom */
+  
 }
+.priceParagraph {
+  border-right: 1px solid #ddd; /* Add right border */
+  padding-right: 10px; /* Add padding to the right */
+  margin-right: 10px; /* Add margin to the right */
+}
+
 
 .cartItemColumn {
   flex: 1; /* Each column takes up equal space */
@@ -73,9 +105,10 @@
 }
 
 .productImage {
-  width: 50px; /* Set the width of product images */
+  width: 100px; /* Set the width of product images */
   height: auto; /* Maintain aspect ratio */
   margin-right: 10px; /* Add some spacing to the right */
+  border: 1px solid #2e0052 ;
 }
 
 
@@ -104,3 +137,163 @@
   margin: 0 10px; /* Adjust the value as needed */
 }
 
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between; /* Align left and right sections */
+
+  background-color: #2e0052;
+  color: white;
+  height: 45px; /* Adjust height as needed */
+  padding: 0 50px; /* Add padding to the header */
+    margin-bottom: 20px; /* Add margin bottom to match the spacing */
+
+}
+.headerContent {
+  margin: 0 auto; /* Center horizontally */
+}
+.leftSection {
+  display: flex;
+  
+  align-items: center;
+  margin-right: 20px; /* Add margin between phone call icon/number and other content */
+}
+
+.leftSection img {
+  margin-right: 5px;  /* Add some spacing between the icon and the number */
+}
+
+.button {
+  display: flex; /* Ensure the button behaves as a flex container */
+  align-items: center; /* Center items vertically */
+  justify-content: center; /* Center items horizontally */
+  background-color: green;
+  color: white;
+  border: none;
+  padding: 10px 10px; /* Adjust padding as needed */
+  border-radius: 35px;
+  cursor: pointer;
+  width: 150px;
+  height: 37px;
+  margin-right: 90px;
+  font-weight: 6400;
+  font-size: 16px;
+  margin-right: 100px;
+  margin-top: 50px;
+
+}
+
+.button img {
+  width: 21px;
+  margin-right: 0px; /* Adjust margin for spacing between image and text */
+}
+.button span {
+  display: flex; /* Make the text appear in a column */
+  flex-direction: column; /* Align text vertically */
+  align-items: center; /* Align text horizontally */
+}
+.homeButton {
+  display: inline-block; /* Ensure the button behaves as an inline-block element */
+  background-color: #2E0052;
+  color: white; /* Set the text color of the button */
+  padding: 10px 40px;
+  border: none; /* Remove border */
+  border-radius: 15px;
+  text-decoration: none; /* Remove default link underline */
+  font-size: 15px;
+  cursor: pointer; /* Change cursor to pointer on hover */
+  margin-bottom: 20px; /* Add margin-bottom to create space between button and heading */
+
+
+    
+}
+
+.homeButton:hover {
+  background-color: #2E0052;
+}
+
+.menubar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  color: white;
+padding-top: 10px;
+margin-top: -100px;
+}
+
+.menubar .leftSection {
+display: flex;
+align-items: center;
+}
+
+.menubar .leftSection img {
+width: 180px; /* Adjust as needed */
+margin-right: 10px;
+
+}
+
+.menubar .leftSection a {
+margin-right: 20px;
+color: rgb(27, 6, 6);
+text-decoration: none;
+}
+menuItem {
+display: flex;
+align-items: center;
+background-color: green; /* Set the background color to green */
+padding: 10px 20px;
+border-radius: 5px;
+}
+
+.menuItem img {
+width: 25px;
+margin-right: -10px;
+}
+
+.menuItem span {
+color: white; /* Set the color of the text to green */
+padding: 10px 20px;
+
+}
+
+
+
+/* Invoice.module.css */
+
+/* Other styles remain the same */
+
+.username {
+font-size: 19px; /* Set the font size of the username */
+font-family: 'Roboto', sans-serif; 
+color: #797979;
+
+}
+.placeOrderButton {
+  background-color: #f0c14b; /* Set a yellow background color */
+  color: #111; /* Set text color */
+  border: none;
+  border-radius: 10px;
+  padding: 10px 100px;
+  margin-bottom: 10px;
+  cursor: pointer;
+  font-size: 16px;
+  justify-content: center;
+}
+.footer {
+  background-color: #2e0052;
+  color: white; /* Set text color to white */
+  display: flex;
+  align-items: center; /* Center vertically */
+  height: 65px; /* Adjust height as needed */
+  width: 100%; /* Ensure footer spans entire viewport width */
+  position: fixed; /* Fixed positioning */
+  bottom: 0; /* Align to the bottom of the viewport */
+  left: 0; /* Align to the left of the viewport */
+}
+.footerContent {
+  margin: 0 auto; /* Center horizontally */
+  font-size: 23px;
+  font-weight: 500;
+}

@@ -8,7 +8,12 @@ body {
   padding: 0;
   overflow-y: auto; /* Enable vertical scrollbar */
 }
-
+.home {
+  max-width: 100%; /* Adjust to fit the screen */
+  margin: 0 auto;
+  padding: 70px;
+  
+}
 /* Customize scrollbar appearance */
 
 body::-webkit-scrollbar {
@@ -32,7 +37,6 @@ body::-webkit-scrollbar-thumb:hover {
   flex-wrap: wrap;
   align-items: center;
   justify-content: space-between;
-  gap: 2rem;
   min-height: 100vh; /* Ensure container takes up at least the full viewport height */
     overflow-y: auto; /* Enable vertical scrolling */
     background-color: #ffffff;
@@ -91,27 +95,25 @@ body::-webkit-scrollbar-thumb:hover {
   flex: 1;
   max-width: 50%;
   display: flex;
-  justify-content: space-between;
 }
 .header {
-  top: 0; /* Ensure the header stays at the top of the page */
-  width: 100%; /* Occupy the full width of the viewport */
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: space-between; /* Align left and right sections */
+width: 100%;
   background-color: #2e0052;
   color: white;
-  height: 55px;
-  padding: 0 50px;
-  margin-bottom: 20px;
+  height: 45px; /* Adjust height as needed */
+  padding: 0 50px; /* Add padding to the header */
+    margin-bottom: 20px; /* Add margin bottom to match the spacing */
+
 }
-
-
 .headerContent {
   margin: 0 auto; /* Center horizontally */
 }
 .leftSection {
   display: flex;
+  
   align-items: center;
   margin-right: 20px; /* Add margin between phone call icon/number and other content */
 }
@@ -119,10 +121,16 @@ body::-webkit-scrollbar-thumb:hover {
 .leftSection img {
   margin-right: 5px;  /* Add some spacing between the icon and the number */
 }
+
+
 .productDetails {
   display: flex;
   flex-direction: column;
-  gap: 1rem;
+  gap: 0.5rem; /* Adjust gap between paragraphs as needed */
+}
+
+.productDetails p {
+  margin: 0; /* Remove default margin for paragraphs */
 }
 
 .productDetails h2 {
@@ -130,14 +138,10 @@ body::-webkit-scrollbar-thumb:hover {
   margin-bottom: 1rem;
 }
 
-.productDetails p {
-  font-size: 1.2rem;
-}
 
 .quantity {
   display: flex;
   align-items: center;
-  gap: 1rem;
   margin-bottom: 1rem;
 }
 
@@ -172,22 +176,50 @@ body::-webkit-scrollbar-thumb:hover {
 }
 /* menubar */
 
+
 .menubar {
   display: flex;
   justify-content: space-between;
   align-items: center;
   width: 100%;
   color: white;
-  padding: 10px 50px;
-padding-top: -100px;
-flex-wrap: wrap;
-gap: 10px;
-
-margin-top: -10px;}
+padding-top: 10px;
+margin-top: -100px;
+}
 
 .menubar .leftSection {
-  display: flex;
-  align-items: center;
+display: flex;
+align-items: center;
+}
+
+.menubar .leftSection img {
+width: 180px; /* Adjust as needed */
+margin-right: 10px;
+
+}
+
+.menubar .leftSection a {
+margin-right: 20px;
+color: rgb(27, 6, 6);
+text-decoration: none;
+}
+menuItem {
+display: flex;
+align-items: center;
+background-color: green; /* Set the background color to green */
+padding: 10px 20px;
+border-radius: 5px;
+}
+
+.menuItem img {
+width: 25px;
+margin-right: -10px;
+}
+
+.menuItem span {
+color: white; /* Set the color of the text to green */
+padding: 10px 20px;
+
 }
 /* Styles for the "Home" button */
 .homeLink {
@@ -257,21 +289,22 @@ menuItem {
   background-color: green;
   color: white;
   border: none;
-  padding: 10px 20px; /* Adjust padding as needed */
+  padding: 10px 10px; /* Adjust padding as needed */
   border-radius: 35px;
   cursor: pointer;
-  width: 100%;
+  width: 150px;
+  height: 37px;
   margin-right: 90px;
-  font-weight: 600;
-  font-size: 19px;
-  margin-right: 10px;
-  margin: 0;
+  font-weight: 6400;
+  font-size: 16px;
+  margin-right: 100px;
+  margin-top: 50px;
 
 }
 
 .button img {
-  width: 30px;
-  margin-right: -10px; /* Adjust margin for spacing between image and text */
+  width: 21px;
+  margin-right: 0px; /* Adjust margin for spacing between image and text */
 }
 .button span {
   display: flex; /* Make the text appear in a column */
@@ -309,10 +342,11 @@ menuItem {
   color: white; /* Set text color to white */
   display: flex;
   align-items: center; /* Center vertically */
-  height: 77px; /* Adjust height as needed */
-  width: 100%; /* Ensure footer spans entire page width */
-
+  height: 70px; /* Adjust height as needed */
+  width: 100vw; /* Ensure footer spans entire viewport width */
+  margin-left: -90px; /* Adjust margin to counteract any potential side margins */
 }
+
 
 .footerContent {
   margin: 0 auto; /* Center horizontally */

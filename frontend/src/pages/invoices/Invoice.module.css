@@ -9,6 +9,13 @@ body {
   background-color: #ffffff;
   overflow-x: hidden; /* Prevent horizontal scrolling */
 
+
+  }
+  .home {
+    max-width: 100%; /* Adjust to fit the screen */
+    margin: 0 auto;
+    padding: 70px;
+    
   }
   .header {
     display: flex;
@@ -19,11 +26,11 @@ body {
     color: white;
     height: 55px; /* Adjust height as needed */
     padding: 0 50px; /* Add padding to the header */
-      margin-bottom: 20px; /* Add margin bottom to match the spacing */
   
   }
   .headerContent {
     margin: 0 auto; /* Center horizontally */
+    font-size: 20px;
   }
   .navbar {
     display: flex;
@@ -47,12 +54,16 @@ body {
   .heading {
     text-align: center;
     margin-bottom: 20px;
+    font-size: 17px; /* Set the font size of the username */
+  font-family: 'Roboto', sans-serif; 
+    
   }
   
   .homeButton {
     margin-left: auto;
     color: #007bff;
     cursor: pointer;
+    margin-top: 50px;
   }
   
   .invoiceList {
@@ -62,8 +73,9 @@ body {
   .invoiceItem {
     display: flex;
     justify-content: space-between;
-    padding: 10px;
+    padding: 20px;
     border-bottom: 1px solid #ccc;
+    
   }
   
   .left {
@@ -75,12 +87,13 @@ body {
   }
   
   .invoiceButton {
-    background-color: #007bff;
+    background-color: #2E0052;
     color: #fff;
     border: none;
-    padding: 5px 10px;
-    border-radius: 5px;
+    padding: 15px 70px;
+    border-radius: 15px;
     cursor: pointer;
+    font-size: 18px;
   }
   .invoiceItem {
     display: flex;
@@ -107,9 +120,8 @@ body {
     align-items: center;
     width: 100%;
     color: white;
-    padding: 0px 75px;
-  padding-top: -100px;
-  margin-top: -10px;
+  padding-top: 10px;
+  margin-top: -40px;
   }
   
 .menubar .leftSection {
@@ -147,9 +159,62 @@ menuItem {
 
 }
 
-.rightSection {
-  display: flex;
-  align-items: center;
+
+
+/* Invoice.module.css */
+
+/* Other styles remain the same */
+
+.username {
+  font-size: 19px; /* Set the font size of the username */
+  font-family: 'Roboto', sans-serif; 
+  color: #797979;
+  
+}
+.deliveryAddress{
+  font-size: 17px; /* Set the font size of the username */
+  font-family: 'Roboto', sans-serif; 
+  color: #797979;
+}
+.button {
+  display: flex; /* Ensure the button behaves as a flex container */
+  align-items: center; /* Center items vertically */
+  justify-content: center; /* Center items horizontally */
+  background-color: green;
+  color: white;
+  border: none;
+  padding: 10px 20px; /* Adjust padding as needed */
+  border-radius: 35px;
+  cursor: pointer;
+  width: 210px;
+  height: 50px;
+  margin-right: 90px;
+  font-weight: 600;
+  font-size: 19px;
+  margin-right: 10px;
+}
+/* Invoice.module.css */
+
+/* Other styles remain the same */
+
+.homeButton {
+  display: inline-block; /* Ensure the button behaves as an inline-block element */
+  background-color: #2E0052;
+  color: white; /* Set the text color of the button */
+  padding: 15px 70px;
+  border: none; /* Remove border */
+  border-radius: 15px;
+  text-decoration: none; /* Remove default link underline */
+  font-size: 18px;
+  cursor: pointer; /* Change cursor to pointer on hover */
+  margin-bottom: 20px; /* Add margin-bottom to create space between button and heading */
+
+
+    
+}
+
+.homeButton:hover {
+  background-color: #2E0052;
 }
 
   .footerContent {
@@ -158,6 +223,9 @@ menuItem {
     font-weight: 500;
   }
   .footer {
+    position: fixed; /* Fixed positioning */
+    bottom: 0; /* Align to the bottom of the viewport */
+    left: 0; /* Align to the left of the viewport */
     background-color: #2e0052;
     color: white; /* Set text color to white */
     display: flex;
@@ -166,4 +234,5 @@ menuItem {
     width: 100%; /* Ensure footer spans entire viewport width */
   
   }
+  
   

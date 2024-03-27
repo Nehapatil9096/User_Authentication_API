@@ -90,6 +90,8 @@ const ProductDetailPage = () => {
         <span>Get 50% off on selected items&nbsp; | &nbsp; Shop Now</span>
       </div>
     </header>
+    <div className={styles.home}>
+
     <div className={styles.menubar}>
       <div className={styles.leftSection}>
 
@@ -132,21 +134,22 @@ const ProductDetailPage = () => {
         <div className={styles.productDetailsContainer}>
           <div className={styles.productDetails}>
             <h2>{product.name}</h2>
-            <p>Company: {product.brand}</p>
+            <p>{renderStarRating(product.rating)} (50 Customer reviews)</p>
+
             <p>Price: {product.price}</p>
-            <p>Color: {product.color}</p>
-            <p>Type: {product.type}</p>
+            <p>Color: {product.color}    <span>|</span>     {product.type}</p>
+
             <p>About: {product.about}</p>
-            <p>Rating: {renderStarRating(product.rating)}</p>
-            <div className={styles.quantity}>
-              <label>Quantity:</label>
-              <input type="number" value={1} readOnly />
-            </div>
+            <p><strong>Available</strong> - In stock</p>
+            <p><strong>Company</strong>- {product.brand}</p>
+
+           
             <div className={styles.buttons}>
               <button onClick={handleAddToCart}>Add to Cart</button>
               <button onClick={handleBuyNow}>Buy Now</button>
             </div>
           </div>
+        </div>
         </div>
         </div>
         {/* Footer */}

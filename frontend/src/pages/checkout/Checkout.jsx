@@ -167,30 +167,52 @@ const Checkout = () => {
 
       <div className={styles.checkoutSections}>
       <div className={styles.leftColumn}>
-  <div className={styles.deliveryAddress}>
-    <div>
-      <span>Delivery Address:</span>
-      <span>{username}</span>
-    </div>
-    <div className={styles.deliveryInputContainer}>
-  <input 
-    type="text" 
-    placeholder="Add delivery address" 
-    value={deliveryAddress} 
-    onChange={handleDeliveryAddressChange} 
-    className={styles.deliveryInput} 
-  />
-</div>
-  </div>
+        <div className={styles.deliveryAddress}>
+          <div>
+            <span>Delivery Address:</span>
+            </div>
+            <div className={styles.container}>
 
-  <h4>Payment Method</h4>
+            <div className={styles.rightColumn}>
+
+            <span>{username}</span>
+
+          <div className={styles.deliveryInputContainer}>
+            <input 
+              type="text" 
+              placeholder="Add delivery address" 
+              value={deliveryAddress} 
+              onChange={handleDeliveryAddressChange} 
+              className={styles.deliveryInput} 
+            />
+          </div>
+        </div>
+        </div>
+        </div>
+
+        <div className={styles.leftColumn}>
+
+  <span>Payment Method</span>
+  </div>
+  <div className={styles.container}>
+
+  <div className={styles.rightColumn}>
+
   <select value={paymentMethod} onChange={handlePaymentMethodChange}>
     <option value="payOnDelivery">Pay on Delivery</option>
     <option value="upi">UPI</option>
     <option value="card">Card</option>
   </select>
+  </div>
+  </div>
+  <div className={styles.leftColumn}>
 
-  <h4>Review Items and Delivery</h4>
+  <span>Review Items and Delivery</span>
+  </div>
+  <div className={styles.container}>
+
+  <div className={styles.rightColumn}>
+
   <div className={styles.productImages}>
     {cart.map((item, index) => (
       <img
@@ -202,12 +224,15 @@ const Checkout = () => {
       />
     ))}
   </div>
+  </div>
+  </div>
   <p>Estimated delivery: Monday - Free Standard Delivery</p>
 </div>
         <div className={styles.rightColumn}>
           <div className={styles.orderSummaryBox}>
             <button className={styles.placeOrderButton} onClick={placeOrder}>Place Your Order</button>
-            <p>By placing your order you agree to musicart privacy notice and conditions of use</p>
+            <p className={styles.placeOrderText}>By placing your order you agree to musicart privacy</p>
+             <p className={styles.placeOrderText}>notice and conditions of use</p>
 
             <hr />
 
@@ -226,12 +251,24 @@ const Checkout = () => {
           <p>Color: {selectedProduct.color}</p>
         </div>
       )}
-
-      <div className={styles.orderSummaryHorizontal}>
-        <button className={styles.placeOrderButton} onClick={placeOrder}>Place Your Order</button>
-        <p className={styles.orderTotal}>Order Total: ₹{(totalAmount + 45).toFixed(2)}</p>
-        <p className={styles.agreeText}>By placing your order you agree to musicart privacy notice and conditions of use</p>
-      </div>
+<div className={styles.orderSummaryHorizontal}>
+  <div className={styles.rightSection}>
+    <button className={styles.placeOrderButton} onClick={placeOrder}>
+      Place Your Order
+    </button>
+    <p className={styles.orderTotal}>
+      Order Total: ₹{(totalAmount + 45).toFixed(2)}
+    </p>
+  </div>
+  <div className={styles.leftSection}>
+    <p className={styles.agreeText}>
+      By placing your order, you agree to musicart's privacy notice and conditions of use.
+    </p>
+    <p className={styles.deliveryText}>
+      Estimated delivery: <span>Monday - FREE Standard Delivery</span>
+    </p>
+  </div>
+</div>
 
       {/* Footer */}
       <footer className={styles.footer}>
