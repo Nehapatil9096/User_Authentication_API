@@ -1,6 +1,8 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import styles from "./Home.module.css";
+import { useParams, useNavigate } from 'react-router-dom';
 import { Link } from "react-router-dom";
+import axios from 'axios'; // Import axios
 import LogoutButton from "/src/components/LogoutButton";
 import offerImage from "/Rectangle 3.png";
 import feedbackIcon from "/feedback.png";
@@ -24,6 +26,21 @@ const Home = () => {
   const [feedbackText, setFeedbackText] = useState("");
   const [showFeedbackPopup, setShowFeedbackPopup] = useState(false);
   const [feedbackSubmitted, setFeedbackSubmitted] = useState(false);
+  const navigate = useNavigate();
+  const [username, setUsername] = useState('');
+
+  useEffect(() => {
+    fetchUserData();
+  }, []);
+
+  const fetchUserData = async () => {
+    try {
+      const response = await axios.get('/api/users/profile');
+      setUsername(response.data.username);
+    } catch (error) {
+      console.error('Error fetching user data:', error);
+    }
+  };
 
   useEffect(() => {
     fetchProducts();
@@ -31,7 +48,23 @@ const Home = () => {
 
   const fetchProducts = async () => {
     try {
-      const response = await fetch(`/api/users/products/search?q=${searchQuery}&sortBy=${selectedOptions.sortBy}&headphoneType=${selectedOptions.headphoneType}&company=${selectedOptions.company}&color=${selectedOptions.color}&price=${selectedOptions.price}`);
+      // Prepare filter parameters
+      const filters = {
+        q: searchQuery,
+        sortBy: selectedOptions.sortBy,
+        headphoneType: selectedOptions.headphoneType === "Featured" ? "" : selectedOptions.headphoneType,
+        company: selectedOptions.company === "Featured" ? "" : selectedOptions.company,
+        color: selectedOptions.color === "Featured" ? "" : selectedOptions.color,
+        price: selectedOptions.price === "Featured" ? "" : selectedOptions.price
+      };
+  
+      // Remove empty filter parameters
+      const queryParams = Object.entries(filters)
+        .filter(([key, value]) => value !== "")
+        .map(([key, value]) => `${key}=${encodeURIComponent(value)}`)
+        .join("&");
+  
+      const response = await fetch(`/api/users/products/search?${queryParams}`);
       if (response.ok) {
         const data = await response.json();
         setProducts(data);
@@ -42,6 +75,7 @@ const Home = () => {
       console.error("Error fetching products:", error);
     }
   };
+  
 
   // Function to handle search input change
   const handleSearchInputChange = (event) => {
@@ -49,6 +83,10 @@ const Home = () => {
   };
 
   function handleDropdownChange(event, dropdownName) {
+    const selectedValue = event.target.value;
+    // Check if the selected option is "Featured"
+    const newValue = selectedValue === "Featured" ? "" : selectedValue;
+  
     setSelectedOptions({
       ...selectedOptions,
       [dropdownName]: event.target.value
@@ -91,6 +129,35 @@ const Home = () => {
       console.error("Error submitting feedback:", error);
     }
   };
+  const handleViewCart= () => {
+      navigate('/mycart');
+  };
+  const [showPopup, setShowPopup] = useState(false);
+  const popupRef = useRef(null);
+  const feedbackPopupRef = useRef(null);
+
+  const togglePopup = () => {
+    setShowPopup(!showPopup);
+  };
+    // Function to handle click outside the popup
+    const handleClickOutsidePopup = (event) => {
+      if (popupRef.current && !popupRef.current.contains(event.target)) {
+        setShowPopup(false);
+      }
+      if (feedbackPopupRef.current && !feedbackPopupRef.current.contains(event.target)) {
+        setShowFeedbackPopup(false);
+      }
+    };
+  
+    // Add event listener when the component mounts
+    useEffect(() => {
+      document.addEventListener("mousedown", handleClickOutsidePopup);
+      return () => {
+        document.removeEventListener("mousedown", handleClickOutsidePopup);
+      };
+    }, []);
+
+
 
   return (
     <div className={styles.container}>
@@ -104,7 +171,11 @@ const Home = () => {
         <span>Get 50% off on selected items&nbsp; | &nbsp; Shop Now</span>
         </div>
       </header>
-       {/* Menu Bar */}
+
+      {/* HOME content */}
+      <div className={styles.home}>
+       
+   {/* Menu Bar */}
       <div className={styles.menubar}>
       <div className={styles.leftSection}>
 
@@ -121,28 +192,32 @@ const Home = () => {
       <div className={styles.rightSection}>
 
       <div className={styles.menuItem}>
-  <button className={styles.button}>
+  <button className={styles.button}onClick={handleViewCart}>
     <img src="/cart_menu.png" alt="Cart_Menu" />
     <span>View Cart</span>
   </button>
 </div>
           <div className={styles.menuItem}>
-            <div className={styles.userCircle}>U</div>
-            
+          <div className={styles.userCircle} onClick={togglePopup}>
+  {username ? username.split(' ').map(word => word.charAt(0).toUpperCase()).join('') : 'U'}
+</div>
+            {showPopup && (
+        <div ref={popupRef}  className={styles.popup}>
+    <div>{username ? username.split(' ').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ') : ''}</div>
+    <div className={styles.separator}></div> {/* Gray line separator */}
+          <div>
+          <LogoutButton />
+          </div>
+        </div>
+      )}
+    
             <span>Profile</span>
           </div>
         </div>
         </div>
 
- {/* Navigation Bar */}
- <div className={styles.navbar}></div>
-
-      {/* Main content */}
-      <div className={styles.home}>
-        {/* Logout Button */}
-       
-
-       
+{/* Offer Container */}
+   
         <div className={`${styles.offerContainer} ${styles.fixed}`}>
   <img src={offerImage} alt="Offer" className={styles.offerImage} />
   <div className={styles.offerImageContainer}>
@@ -156,11 +231,6 @@ const Home = () => {
 
 
 
-        
-
-        {/* Banner */}
-        
-
         {/* Search Bar */}
         <div className={styles.searchBar}>
   <img src="/search.png" alt="Search Icon" className={styles.searchIcon} />
@@ -172,7 +242,10 @@ const Home = () => {
   />
 </div>
 
+{/*Sorting bar */}
 <div className={styles.sortingBar}>
+<div className={styles.leftSection}>
+
   <div className={styles.listViewToggle}>
   <button onClick={switchToGridView}>
       <img src={listView ? "/grid.png" : "/grid_view_not.png"} alt="Grid View" className={styles.gridIcon} />
@@ -189,6 +262,7 @@ const Home = () => {
             <div className={styles.dropdown}>
               <select id="headphoneType" onChange={(e) => handleDropdownChange(e, "headphoneType")} value={selectedOptions.headphoneType}>
                 <option value="" disabled hidden>Headphone type</option>
+                <option value="Featured">Featured</option> {/* Default option */}
                 <option value="In-ear headphone">In-ear headphone</option>
                 <option value="On-ear headphone">On-ear headphone</option>
                 <option value="Over-ear headphone">Over-ear headphone</option>
@@ -197,6 +271,7 @@ const Home = () => {
             <div className={styles.dropdown}>
               <select onChange={(e) => handleDropdownChange(e, "company")} value={selectedOptions.company}>
                 <option value="" disabled hidden>Company</option>
+                <option value="Featured">Featured</option> {/* Default option */}
                 <option value="JBL">JBL</option>
                 <option value="Sony">Sony</option>
                 <option value="boAt">Boat</option>
@@ -208,6 +283,7 @@ const Home = () => {
             <div className={styles.dropdown}>
               <select onChange={(e) => handleDropdownChange(e, "color")} value={selectedOptions.color}>
                 <option value="" disabled hidden>Color</option>
+                <option value="Featured">Featured</option> {/* Default option */}
                 <option value="Blue">Blue</option>
                 <option value="Black">Black</option>
                 <option value="White">White</option>
@@ -217,11 +293,13 @@ const Home = () => {
             <div className={styles.dropdown}>
               <select onChange={(e) => handleDropdownChange(e, "price")} value={selectedOptions.price}>
                 <option value="" disabled hidden>Price</option>
+                <option value="Featured">Featured</option> {/* Default option */}
                 <option value="0-1000">₹0 - ₹1,000</option>
                 <option value="1000-10000">₹1,000 - ₹10,000</option>
                 <option value="10000-20000">₹10,000 - ₹20,000</option>
               </select>
             </div>
+          </div>
           </div>
           <div className={styles.rightSection}>
             <span></span>
@@ -235,14 +313,15 @@ const Home = () => {
           </div>
         </div>
 
+       
+
+        {/* Feedback Popup */}
         <div className={styles.feedbackButton} onClick={() => setShowFeedbackPopup(true)}>
           <img src={feedbackIcon} alt="Feedback" />
         </div>
-
-        {/* Feedback Popup */}
         {showFeedbackPopup && (
-          <div className={styles.feedbackPopup}>
-            <div className={styles.popupContent}>
+          <div  className={styles.feedbackPopup}>
+            <div ref={feedbackPopupRef} className={styles.popupContent}>
               <select value={feedbackType} onChange={(e) => setFeedbackType(e.target.value)} required>
                 <option value="" disabled>Select type of feedback</option>
                 <option value="Bugs">Bugs</option>
@@ -260,6 +339,7 @@ const Home = () => {
             </div>
           </div>
         )}
+        {/* PRODUCT view*/}
         <div className={`${styles.productList} ${listView ? styles.listView : styles.gridView}`}>
       {products.map((product, index) => (
         <Link key={index}className={styles.productRow} to={`/product/ProductDetails/${product._id}`}>

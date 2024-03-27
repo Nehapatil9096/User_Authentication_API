@@ -5,6 +5,7 @@
     align-items: center;
     justify-content: center;
     text-align: center;
+    background-color: #FFFFFF;
   }
   .centerContent {
     display: grid;
@@ -19,6 +20,7 @@
     height: 100vh;
     border: 2px solid black; /* Add a border */
     padding: 20px; /* Add padding to the container */
+    background-color: #FFFFFF;
   }
   .outer-container {
     display: flex;
