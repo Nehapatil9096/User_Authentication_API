@@ -8,7 +8,7 @@ body {
   overflow-y: auto; /* Enable vertical scrolling */
   background-color: #ffffff;
   overflow-x: hidden; /* Prevent horizontal scrolling */
-
+  width: 100vw;
 
   }
   .home {

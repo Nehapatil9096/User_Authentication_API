@@ -136,6 +136,8 @@ const Checkout = () => {
         </div>
         </div>
       </header>
+      <div className={styles.home}>
+
            {/* Menu Bar */}
            <div className={styles.menubar}>
       <div className={styles.leftSection}>
@@ -269,7 +271,7 @@ const Checkout = () => {
     </p>
   </div>
 </div>
-
+</div>
       {/* Footer */}
       <footer className={styles.footer}>
         <div className={styles.footerContent}>

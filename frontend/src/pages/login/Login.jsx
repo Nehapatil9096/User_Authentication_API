@@ -27,8 +27,11 @@ const Login = () => {
     <div className={styles.logoContainer}> {/* Use styles object */}
       <img src={projectLogo} alt="Project Logo" className={styles.logo} /> {/* Use styles object */}
     </div>
+
     <div className={styles.groups}> {/* Use styles object */}
       <form onSubmit={handleSubmit} className={styles.form}> {/* Use styles object */}
+      <div className={styles.home}> {/* Use styles object */}
+
         <h1 className={`${styles.heading} mb-10`}>Sign in</h1> {/* Use styles object */}
         <p className={styles.inputLabel}>Enter your email or mobile number</p> {/* Use styles object */}
         <div className={styles.inputContainer}> {/* Use styles object */}
@@ -56,12 +59,14 @@ const Login = () => {
           </button>
           <p className={styles.noAccountText}>By continuing, you agree to Musicart privacy notice and conditions of use.</p> {/* Use styles object */}
         </div>
+        </div>
+
       </form>
     </div>
     <div className={styles.lineContainer}>
-  <img src="/line.png" alt="Line" className={styles.lineImage} />
+  <img src="/line.png" alt="Line" className={styles.lineImage1} />
   <p className={styles.newToMusicart}>New to Musicart?</p>
-  <img src="/line.png" alt="Line" className={styles.lineImage} />
+  <img src="/line.png" alt="Line" className={styles.lineImage1} />
 </div>
     <div className={styles.registerLink}> {/* Use styles object */}
       <Link to="/signup" > {/* Use styles object */}

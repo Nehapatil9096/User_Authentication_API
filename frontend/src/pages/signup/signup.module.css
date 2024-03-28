@@ -1,95 +1,162 @@
 body {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    min-height: 100vh;
-    background-color: #fff; /* Set the background color of the entire page to white */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  background-color: #fff; /* Set the background color of the entire page to white */
+}
+
+.main-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Center content horizontally */
+  justify-content: center; /* Center content vertically */
+  background-color: white;
+  min-height: 100vh;
+  margin-top: -150px; /* Adjust the top margin */
+}
+.logo-container {
+  margin-top: -150px;
+  justify-content: center;
+  align-items: center;
+}
+.logo{
+  margin-left: 650px;
+width: 150px;
+margin-top: -150px;
+margin-bottom: 20px;
+
+}
+.group1{
+  display: flex;
+  align-items: center;
+  margin-top: 20px; /* Adjust as needed */
+  margin-left: 780px;
+
+}
+  .home {
+    padding-top: 15px;
+padding-bottom: 15px;
+padding-left: 15px;
+padding-right: 15px;
   }
-  
-  .main-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center; /* Center content horizontally */
-    justify-content: center; /* Center content vertically */
-    background-color: white;
-    min-height: 100vh;
-    margin-top: -150px; /* Adjust the top margin */
-  }
-  
-  .logo-container {
-    margin-bottom: 70px; /* Adjust the bottom margin */
-  }
-  
-  .logo {
-    width: 150px;
-    height: auto;
-  }
-  
-  .groups {
-    display: flex;
-    flex-direction: column;
-    justify-content: center; /* Center content vertically */
-    align-items: center; /* Center content horizontally */
-    width: 27%;
-    border: 1px solid #D9D9D9;
-    padding: 20px;
-    border-radius: 15px;
-    margin-top: -90px;
-    height: auto; /* Adjust the height */
-    margin-bottom: 20px; /* Adjust the bottom margin */
-  }
-  
-  .input-container {
-    width: 100%;
-    margin-bottom: 10px;
-  }
-  
-  .heading {
-    font-family: "Roboto", sans-serif;
-  }
-  
-  .input {
-    width: 100%;
-    height: 40px;
-    padding: 10px;
-    font-size: 13px;
-    border-radius: 5px;
-    border: 1px solid #ccc;
-    box-sizing: border-box;
-  }
-  
-  .lineContainer {
-    display: flex;
-    align-items: center;
-    margin-top: 20px;
-  }
-  
-  .lineImage {
-    width: 160px;
-    height: 2px;
-    margin: 0 10px;
-  }
-  
-  .newToMusicart {
-    font-size: 13px;
-    font-weight: bold;
-  }
-  
-  .footerContent {
-    font-size: 23px;
-    font-weight: 500;
-  }
-  
-  .footer {
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    background-color: #2e0052;
-    color: white;
-    display: flex;
-    align-items: center;
-    height: 57px;
-    width: 100%;
-  }
-  
+
+.registerLink {
+  display: flex;
+  justify-content: center; /* Align content to the right */
+  margin-top: 20px; /* Adjust margin-top as needed */
+  margin-left: -390px;
+  margin-bottom: -7px;
+}
+.groups {
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* Center content vertically */
+  align-items: center; /* Center content horizontally */
+  width: 25%;
+  margin-top: -10px; /* Adjust margin as needed */
+  border: 2px solid #D9D9D9; /* Add border style */
+  padding: 10px; /* Add padding for spacing inside the border */
+  border-radius: 15px;
+  margin-left: 590px;
+  height: 508px;
+  margin-bottom: -30px;
+
+}
+/* Style for the input labels */
+.inputLabel {
+margin-bottom: 5px; /* Reduce the margin between input labels */
+font-family: "Roboto", sans-serif;
+
+}
+
+/* Style for the input containers */
+.conditions{
+font-size: 12.5px;
+font-family: "Roboto", sans-serif;
+
+}
+.input-container {
+  width: 100%;
+  margin-bottom: -100px; /* Add margin bottom for spacing */
+  height: 10px;
+}
+
+.heading {
+  font-family: "Roboto", sans-serif;
+  font-size: 25px;
+  margin-top: 30px;
+
+}
+
+.input {
+  width: 100%;
+  height: 30.5px;
+  padding: 10px;
+  font-size: 10px;
+  border-radius: 5px;
+  border: 2px solid #ccc;
+  box-sizing: border-box;
+}
+
+.lineContainer {
+display: flex;
+align-items: center;
+margin-top: 20px; /* Adjust as needed */
+margin-left: 180px;
+
+}
+
+.lineImage {
+width: 160px; /* Adjust the width of the line image */
+height: 2px; /* Maintain aspect ratio */
+margin: 0 10px; /* Adjust the margin around the line image */
+}
+
+.newToMusicart {
+font-size: 13px; /* Adjust as needed */
+font-weight: bold; /* Adjust as needed */
+font-family: "Roboto", sans-serif;
+
+}
+
+.footerContent {
+margin: 0 auto; /* Center horizontally */
+font-size: 20px;
+font-weight: 500;
+font-family: "Roboto", sans-serif;
+
+}
+.footer {
+position: fixed; /* Fixed positioning */
+bottom: 0; /* Align to the bottom of the viewport */
+left: 0; /* Align to the left of the viewport */
+background-color: #2e0052;
+color: white; /* Set text color to white */
+display: flex;
+align-items: center; /* Center vertically */
+height: 50px; /* Adjust height as needed */
+width: 100%; /* Ensure footer spans entire viewport width */
+
+}
+
+
+.btnBlock {
+width: 100%; /* Adjust width as needed */
+height: 35px; /* Adjust height as needed */
+background-color: #2e0052; /* Set background color */
+color: white; /* Set text color */
+border: none; /* Remove border */
+border-radius: 5px; /* Add border radius for rounded corners */
+font-size: 16px; /* Adjust font size as needed */
+cursor: pointer; /* Change cursor to pointer on hover */
+transition: background-color 0.3s; /* Add smooth transition */
+margin-top: 20px;
+font-family: "Roboto", sans-serif;
+
+}
+
+.btnBlock:hover {
+background-color: #2e0052; /* Change background color on hover */
+}

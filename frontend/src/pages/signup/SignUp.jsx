@@ -38,6 +38,8 @@ const SignUp = () => {
       <div className={styles.groups}>
         <div className={styles.image2} />
         <form onSubmit={handleSubmit} className={styles.form}>
+        <div className={styles.home}> {/* Use styles object */}
+
           <h1 className={styles.heading}>Create Account</h1>
           <p className={styles.inputLabel}>Your name</p>
           <div className={styles.inputContainer}>
@@ -86,19 +88,21 @@ const SignUp = () => {
             <button className={styles.btnBlock} disabled={loading}>
               {loading ? <span className={`${styles.loading} ${styles.loadingSpinner}`}></span> : "Continue"}
             </button>
-            <p>By continuing, you agree to Musicart privacy notice and conditions of use.</p>
+            <p className={styles.conditions}>By continuing, you agree to Musicart privacy notice and conditions of use.</p>
+          </div>
           </div>
         </form>
       </div>
       <div className={styles.registerLink}>
         <div className={styles.group}>
           <Link to="/login">
-          <div className='register-link'>
-  <div className="group">
-    <p>Already have an account? <Link to="/login" className={styles.link}>Login</Link></p>
+          <div className={styles.registerLink}>
+  <div className={styles.registerLinkContent}>
+    <p className={styles.group1}>Already have an account? <Link to="/login" className={styles.link}>Login</Link></p>
     {loading && <span className={`${styles.loading} ${styles.loadingSpinner}`}></span>}
   </div>
 </div>
+
 
           </Link>
         </div>

@@ -107,9 +107,11 @@ margin-top: -250px;
 
 .productImage {
   width: 100px; /* Set the width of product images */
-  height: auto; /* Maintain aspect ratio */
+  height: 100px; /* Maintain aspect ratio */
   margin-right: 10px; /* Add some spacing to the right */
   border: 1px solid #2e0052 ;
+  object-fit: contain; /* Maintain aspect ratio without cutting */
+
 }
 
 
@@ -282,6 +284,18 @@ color: #797979;
   font-size: 16px;
   justify-content: center;
 }
+.emptyCartMessage {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 200px; /* Adjust height as needed */
+}
+
+.emptyCartText {
+  font-size: 24px; /* Adjust font size as needed */
+  text-align: center;
+}
+
 .footer {
   background-color: #2e0052;
   color: white; /* Set text color to white */
