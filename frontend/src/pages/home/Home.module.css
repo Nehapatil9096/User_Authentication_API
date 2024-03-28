@@ -128,7 +128,10 @@ menuItem {
 }
 .menuItem span {
   color: white; /* Set the color of the text to green */
-  padding: 10px 20px;
+  padding: 10px 10px;
+  width: 200px;
+  font-style: normal;
+  font-weight: normal;
 }
 
 .rightSection {
@@ -604,6 +607,8 @@ menuItem {
   right: 10px; /* Adjust as needed */
   width: 57px; /* Adjust width as needed */
   height: auto; /* Maintain aspect ratio */
+  z-index: 2; /* Ensure the cart icon appears above the product image */
+
 }
 .productImageContainer {
   position: relative; /* Position relative for absolute positioning of images */
@@ -666,7 +671,9 @@ font-style: Roboto;
     grid-template-columns: repeat(5, 2fr); /* Adjusted to 4 columns */
     grid-gap: 20px; /* Adjust the gap between products */
 }
-
+.cartIcon {
+  cursor: pointer;
+}
 /*PRODUCT view ends-----------------------------------------*/
 
 @media (max-width: 768px) {
@@ -683,4 +690,3 @@ font-style: Roboto;
     margin-bottom: 10px; /* Add space between image and details */
   }
 }
-

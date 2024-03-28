@@ -1,8 +1,9 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import useLogin from "../../hooks/useLogin";
-import "./login.css";
 import projectLogo from '/project_logo.png';
+import styles from "./login.module.css"; // Adjust the path as per your project structure
+
 
 const Login = () => {
   const [email, setEmail] = useState("");
@@ -21,58 +22,62 @@ const Login = () => {
     setPasswordVisible(!passwordVisible);
   };
   return (
-    <div className="main-container">
-     <div className="logo-container">
-        <img src={projectLogo} alt="Project Logo" />
-      </div>
-      <div className="groups">
-        <form onSubmit={handleSubmit} className="form">
-        <h1 className="heading mb-10">Sign in </h1>
-        <p className="input-label">Enter your email or mobile number</p>
-
-          <div className="input-container">
-
-            <input
-              type="text"
-              className="input input-bordered h-10"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-            />
-          </div>
-          <p className="input-label">Password</p>
-
-          <div className="input-container">
-            <input
-              type={passwordVisible ? "text" : "password"}
-              className="input input-bordered h-10"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-            />
-           
-          </div>
-          <div className="button-stack">
-            <button className="btn-block" disabled={loading}>
-              {loading ? <span className="loading loading-spinner"></span> : "Continue"}
-            </button>
-            <p className="no-account-text">By continuing, you agree to Musicart privacy notice and conditions of use.</p>
-           
-          </div>
-        </form>
-      </div>
-   <p> ━━━━━━━━━━━━━━━━━━━━━━━━━New to Musicart?         ━━━━━━━━━━━━━━━━━━━━━━━━━━</p>
-      <div className="register-link">
-              <Link
-                to="/signup"
-                className="text-sm hover:underline hover:text-blue-600"
-              >
-                <button className="btn-block">Create your Musicart account</button>
-              </Link>
-            </div>
-            <div className='bottomBar'>
-        Musicart | All rights reserved
-      </div>
+    <div className={styles.mainContainer}> {/* Use styles object */}
+    <div>
+    <div className={styles.logoContainer}> {/* Use styles object */}
+      <img src={projectLogo} alt="Project Logo" className={styles.logo} /> {/* Use styles object */}
     </div>
-  );
+    <div className={styles.groups}> {/* Use styles object */}
+      <form onSubmit={handleSubmit} className={styles.form}> {/* Use styles object */}
+        <h1 className={`${styles.heading} mb-10`}>Sign in</h1> {/* Use styles object */}
+        <p className={styles.inputLabel}>Enter your email or mobile number</p> {/* Use styles object */}
+        <div className={styles.inputContainer}> {/* Use styles object */}
+        <input
+  type="text"
+  className={`${styles.input} ${styles.inputBordered} h-10`} // Use styles object
+  value={email}
+  onChange={(e) => setEmail(e.target.value)}
+/>
+
+        </div>
+        <p className={styles.inputLabel}>Password</p> {/* Use styles object */}
+        <div className={styles.inputContainer}> {/* Use styles object */}
+        <input
+  type={passwordVisible ? "text" : "password"}
+  className={`${styles.input} ${styles.inputBordered} h-10`} // Use styles object
+  value={password}
+  onChange={(e) => setPassword(e.target.value)}
+/>
+
+        </div>
+        <div className={styles.buttonStack}> {/* Use styles object */}
+          <button className={styles.btnBlock} disabled={loading}> {/* Use styles object */}
+            {loading ? <span className={`${styles.loading} ${styles.loadingSpinner}`}></span> : "Continue"}
+          </button>
+          <p className={styles.noAccountText}>By continuing, you agree to Musicart privacy notice and conditions of use.</p> {/* Use styles object */}
+        </div>
+      </form>
+    </div>
+    <div className={styles.lineContainer}>
+  <img src="/line.png" alt="Line" className={styles.lineImage} />
+  <p className={styles.newToMusicart}>New to Musicart?</p>
+  <img src="/line.png" alt="Line" className={styles.lineImage} />
+</div>
+    <div className={styles.registerLink}> {/* Use styles object */}
+      <Link to="/signup" > {/* Use styles object */}
+        <button className={styles.btnBlock1}>Create your Musicart account</button> {/* Use styles object */}
+      </Link>
+    </div>
+    
+  </div>
+  {/* Footer */}
+  <footer className={styles.footer}> {/* Use styles object */}
+      <div className={styles.footerContent}> {/* Use styles object */}
+        <span>Musicart | All rights reserved</span>
+      </div>
+    </footer>
+  </div>
+);
 };
 
 export default Login;

@@ -2,10 +2,7 @@ import { Link } from "react-router-dom";
 import { useState } from "react";
 import useSignup from "../../hooks/useSignup";
 import projectLogo from '/project_logo.png';
-
-
-import "./signup.css"; // Importing the CSS file
-
+import styles from "./signup.module.css"; // Adjust the path as per your project structure
 
 const SignUp = () => {
   const [inputs, setInputs] = useState({
@@ -34,92 +31,85 @@ const SignUp = () => {
 
 
   return (
-    <div className='main-container'>
- <div className="logo-container">
-        <img src={projectLogo} alt="Project Logo" />
+   <div className={styles.mainContainer}>
+      <div className={styles.logoContainer}>
+      <img src={projectLogo} alt="Project Logo" className={styles.logo} /> {/* Use styles object */}
       </div>
-      <div className='groups'>
-        <div className='image-2' />
-        <form onSubmit={handleSubmit} className='form'>
-        <h1 className="heading mb-10">Create Account</h1> {/* Added margin-bottom class */}
-        <p className="input-label">Your name</p>
-
-          <div className='input-container'>
+      <div className={styles.groups}>
+        <div className={styles.image2} />
+        <form onSubmit={handleSubmit} className={styles.form}>
+          <h1 className={styles.heading}>Create Account</h1>
+          <p className={styles.inputLabel}>Your name</p>
+          <div className={styles.inputContainer}>
             <input
-              type='text'
-              placeholder='Name'
-              className='w-full input input-bordered h-10'
+              type="text"
+              placeholder="Name"
+              className={`${styles.input} ${styles.inputBordered} h-10`}
               value={inputs.username}
               onChange={(e) => setInputs({ ...inputs, username: e.target.value })}
             />
           </div>
-          <p className="input-label">Mobile number</p>
-
-          <div className='input-container'>
-            
+          <p className={styles.inputLabel}>Mobile number</p>
+          <div className={styles.inputContainer}>
             <input
-              type='email'
-              placeholder='Email'
-              className='w-full input input-bordered h-10'
+              type="email"
+              placeholder="Email"
+              className={`${styles.input} ${styles.inputBordered} h-10`}
               value={inputs.email}
               onChange={(e) => setInputs({ ...inputs, email: e.target.value })}
             />
           </div>
-          <p className="input-label">Email Id</p>
-
-          <div className="input-container">
+          <p className={styles.inputLabel}>Email Id</p>
+          <div className={styles.inputContainer}>
             <input
               type={confirmPasswordVisible ? "text" : "password"}
               placeholder="Confirm Password"
-              className="w-full input input-bordered h-10"
+              className={`${styles.input} ${styles.inputBordered} h-10`}
               value={inputs.confirmPassword}
               onChange={(e) => setInputs({ ...inputs, confirmPassword: e.target.value })}
             />
-            
           </div>
-          <p className="input-label">Password</p>
-
-          <div className="input-container">
+          <p className={styles.inputLabel}>Password</p>
+          <div className={styles.inputContainer}>
             <input
               type={passwordVisible ? "text" : "password"}
               placeholder="Password"
-              className="w-full input input-bordered h-10"
+              className={`${styles.input} ${styles.inputBordered} h-10`}
               value={inputs.password}
               onChange={(e) => setInputs({ ...inputs, password: e.target.value })}
             />
-           
-
           </div>
-          <div className='button-stack'>
-          <p className="no-account-text">By enrolling your mobile phone number, you consent to receive automated security notifications via text message from Musicart. Message and data rates may apply.
-</p>
-            <button className='btn-block' disabled={loading}>
-              {loading ? <span className='loading loading-spinner'></span> : "Continue"}
+          <div className={styles.buttonStack}>
+            <p className={styles.noAccountText}>
+              By enrolling your mobile phone number, you consent to receive automated security notifications via text message from Musicart. Message and data rates may apply.
+            </p>
+            <button className={styles.btnBlock} disabled={loading}>
+              {loading ? <span className={`${styles.loading} ${styles.loadingSpinner}`}></span> : "Continue"}
             </button>
-            
-          <p> By continuing, you agree to Musicart privacy notice and conditions of use.</p> 
+            <p>By continuing, you agree to Musicart privacy notice and conditions of use.</p>
           </div>
         </form>
       </div>
-      <div className='register-link'>
-        <div className="group">
-            <Link to="/login">
-              
-          <button className='btn-block' disabled={loading}>             
+      <div className={styles.registerLink}>
+        <div className={styles.group}>
+          <Link to="/login">
+          <div className='register-link'>
+  <div className="group">
+    <p>Already have an account? <Link to="/login" className={styles.link}>Login</Link></p>
+    {loading && <span className={`${styles.loading} ${styles.loadingSpinner}`}></span>}
+  </div>
+</div>
 
-            {loading ? <span className='loading loading-spinner'></span> : "Login"}
-          </button>
-          <p>Already have an account? </p>
-
-        </Link>          
+          </Link>
         </div>
-        </div>
-        <div className='bottomBar'>
-        Musicart | All rights reserved
       </div>
+      <footer className={styles.footer}> {/* Use styles object */}
+      <div className={styles.footerContent}> {/* Use styles object */}
+        <span>Musicart | All rights reserved</span>
+      </div>
+    </footer>
     </div>
   );
 };
-
 
 export default SignUp;

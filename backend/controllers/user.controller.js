@@ -115,6 +115,27 @@ export const myCartdetails = async (req, res) => {
   }
 };
 
+export const getCartItemCount = async (req, res) => {
+  try {
+    const userId = req.user._id;
+
+    // Find the user by their ID and populate the cart field to get product details
+    const user = await User.findById(userId).populate('cart.product');
+
+    // Calculate the total count of items in the cart
+    let itemCount = 0;
+    user.cart.forEach(item => {
+      itemCount += item.quantity;
+    });
+
+    // Return the count of items in the cart
+    res.json({ count: itemCount });
+  } catch (error) {
+    console.error("Error fetching cart item count:", error);
+    res.status(500).json({ error: "Internal Server Error" });
+  }
+};
+
 export const updateFeedback = async (req, res) => {
   try {
     const { type, text } = req.body;

@@ -1,0 +1,137 @@
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  background-color: #fff; /* Set the background color of the entire page to white */
+
+}
+
+.main-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Center content horizontally */
+  justify-content: center; /* Center content vertically */
+  background-color: white;
+  min-height: 100vh;
+}
+
+.logo-container {
+  margin-top: -150px;
+  justify-content: center;
+  align-items: center;
+}
+.logo{
+  margin-left: 300px;
+width: 150px;
+margin-top: -150px;
+margin-bottom: 70px;
+
+}
+.groups {
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* Center content vertically */
+  align-items: center; /* Center content horizontally */
+  width: 55%;
+  margin-top: -40px; /* Adjust margin as needed */
+  border: 1px solid #D9D9D9; /* Add border style */
+  padding: 20px; /* Add padding for spacing inside the border */
+  border-radius: 15px;
+  margin-left: 190px;
+
+}
+
+.input-container {
+  width: 100%; /* Adjust width as needed */
+  margin-bottom: -100px; /* Add margin bottom for spacing */
+}
+.heading{
+  font-family: "Roboto", sans-serif;
+
+}
+.input {
+  width: 100%; /* Adjust width as needed */
+  height: 40px; /* Adjust height as needed */
+  padding: 10px; /* Add padding for spacing inside the input */
+  font-size: 16px; /* Adjust font size as needed */
+  border-radius: 5px; /* Add border radius for rounded corners */
+  border: 1px solid #ccc; /* Add border style */
+  box-sizing: border-box; /* Ensure padding and border are included in the width */
+}
+.logo-container img {
+  width: 200px; /* Adjust width as needed */
+  height: auto; /* Maintain aspect ratio */
+}
+/* login.module.css */
+
+.btnBlock {
+  width: 100%; /* Adjust width as needed */
+  height: 40px; /* Adjust height as needed */
+  background-color: #2e0052; /* Set background color */
+  color: white; /* Set text color */
+  border: none; /* Remove border */
+  border-radius: 5px; /* Add border radius for rounded corners */
+  font-size: 16px; /* Adjust font size as needed */
+  cursor: pointer; /* Change cursor to pointer on hover */
+  transition: background-color 0.3s; /* Add smooth transition */
+  margin-top: 20px;
+}
+
+.btnBlock:hover {
+  background-color: #2e0052; /* Change background color on hover */
+}
+.btnBlock1{
+  width: 55%; /* Adjust width as needed */
+  height: 40px; /* Adjust height as needed */
+  background-color: #ffffff; /* Set background color */
+  color: white; /* Set text color */
+  border: none; /* Remove border */
+  border-radius: 5px; /* Add border radius for rounded corners */
+  font-size: 16px; /* Adjust font size as needed */
+  cursor: pointer; /* Change cursor to pointer on hover */
+  transition: background-color 0.3s; /* Add smooth transition */
+  margin-left: 220px;
+  color:black;
+margin-top: 20px;
+}
+/* login.module.css */
+
+.lineContainer {
+  display: flex;
+  align-items: center;
+  margin-top: 20px; /* Adjust as needed */
+  margin-left: 180px;
+
+}
+
+.lineImage {
+  width: 160px; /* Adjust the width of the line image */
+  height: 2px; /* Maintain aspect ratio */
+  margin: 0 10px; /* Adjust the margin around the line image */
+}
+
+.newToMusicart {
+  font-size: 13px; /* Adjust as needed */
+  font-weight: bold; /* Adjust as needed */
+}
+
+.footerContent {
+  margin: 0 auto; /* Center horizontally */
+  font-size: 23px;
+  font-weight: 500;
+}
+.footer {
+  position: fixed; /* Fixed positioning */
+  bottom: 0; /* Align to the bottom of the viewport */
+  left: 0; /* Align to the left of the viewport */
+  background-color: #2e0052;
+  color: white; /* Set text color to white */
+  display: flex;
+  align-items: center; /* Center vertically */
+  height: 77px; /* Adjust height as needed */
+  width: 100%; /* Ensure footer spans entire viewport width */
+
+}
+

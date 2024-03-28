@@ -28,9 +28,11 @@ const Home = () => {
   const [feedbackSubmitted, setFeedbackSubmitted] = useState(false);
   const navigate = useNavigate();
   const [username, setUsername] = useState('');
+  const [cartCount, setCartCount] = useState(0); // State for cart count
 
   useEffect(() => {
     fetchUserData();
+    fetchCartCount(); // Fetch initial cart count
   }, []);
 
   const fetchUserData = async () => {
@@ -157,7 +159,38 @@ const Home = () => {
       };
     }, []);
 
+     // Function to fetch cart count from the server
+const fetchCartCount = async () => {
+    try {
+      const response = await axios.get('/api/users/cart/count');
+      setCartCount(response.data.count);
+    } catch (error) {
+      console.error('Error fetching cart count:', error);
+    }
+  };
+const handleAddToCart = (event, product) => {
+      event.stopPropagation(); // Stop event propagation
 
+      if (product) {
+        fetch('/api/users/cart/add', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({ productId: product._id, quantity: 1 }), // Adding 1 quantity by default
+        })
+        .then(response => {
+          if (response.ok) {
+            console.log('Product added to cart:', product);
+            setCartCount(prevCount => prevCount + 1); // Increment cart count
+            setAddedToCart(true); // Update addedToCart state to true
+          } else {
+            console.error('Failed to add product to cart');
+          }
+        })
+        .catch(error => console.error('Error adding product to cart:', error));
+      }
+    };
 
   return (
     <div className={styles.container}>
@@ -194,7 +227,7 @@ const Home = () => {
       <div className={styles.menuItem}>
   <button className={styles.button}onClick={handleViewCart}>
     <img src="/cart_menu.png" alt="Cart_Menu" />
-    <span>View Cart</span>
+    <span>View Cart &nbsp;  {cartCount}</span>
   </button>
 </div>
           <div className={styles.menuItem}>
@@ -347,7 +380,10 @@ const Home = () => {
             <div className={styles.productImageContainer}>
              
               <img src={product.images[0]} alt={product.name} className={styles.productImage} />
-              <img src="cartp.png" className={styles.cartIcon} alt="Add to Cart" />
+              <button onClick={(e) => { e.preventDefault(); handleAddToCart(e, product); }} className={styles.cartButton}>
+    <img src="cartp.png" className={styles.cartIcon} alt="Add to Cart" />
+</button>
+
 
             </div>
             <div className={styles.productDetails}>
