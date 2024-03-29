@@ -24,16 +24,21 @@ body {
   
 }
 
-.logo-container {
-  margin-top: -150px;
-  justify-content: center;
-  align-items: center;
-}
+
 .logo{
-  margin-left: 260px;
+margin-left: 253px;
 width: 150px;
 margin-top: -150px;
 margin-bottom: 70px;
+}
+.inputLabel {
+  margin-bottom: 5px; /* Reduce the margin between input labels */
+  font-family: "Roboto", sans-serif;
+  
+  }
+.noAccountText{
+  font-size: 12.5px;
+font-family: "Roboto", sans-serif;
 
 }
 .groups {
@@ -41,12 +46,12 @@ margin-bottom: 70px;
   flex-direction: column;
   justify-content: center; /* Center content vertically */
   align-items: center; /* Center content horizontally */
-  width: 55%;
+  width: 60%;
   margin-top: -40px; /* Adjust margin as needed */
   border: 2px solid #D9D9D9; /* Add border style */
   padding: 10px; /* Add padding for spacing inside the border */
   border-radius: 15px;
-  margin-left: 180px;
+  margin-left: 140px;
 
 }
 /* Style for the container of the text */
@@ -70,19 +75,16 @@ margin-bottom: 70px;
 }
 .input {
   width: 100%; /* Adjust width as needed */
-  height: 30.5px; /* Adjust height as needed */
+  height: 35.5px; /* Adjust height as needed */
   padding: 10px; /* Add padding for spacing inside the input */
-  font-size: 10px; /* Adjust font size as needed */
+  font-size: 18px; /* Adjust font size as needed */
   border-radius: 5px; /* Add border radius for rounded corners */
   border: 2px solid #ccc; /* Add border style */
   box-sizing: border-box; /* Ensure padding and border are included in the width */
   font-family: "Roboto", sans-serif;
 
 }
-.logo-container img {
-  width: 200px; /* Adjust width as needed */
-  height: auto; /* Maintain aspect ratio */
-}
+
 /* login.module.css */
 
 .btnBlock {
@@ -102,7 +104,7 @@ margin-bottom: 70px;
   background-color: #2e0052; /* Change background color on hover */
 }
 .btnBlock1{
-  width: 55%; /* Adjust width as needed */
+  width: 65%; /* Adjust width as needed */
   height: 40px; /* Adjust height as needed */
   background-color: #ffffff; /* Set background color */
   color: white; /* Set text color */
@@ -111,7 +113,7 @@ margin-bottom: 70px;
   font-size: 16px; /* Adjust font size as needed */
   cursor: pointer; /* Change cursor to pointer on hover */
   transition: background-color 0.3s; /* Add smooth transition */
-  margin-left: 180px;
+  margin-left: 140px;
   color:black;
 margin-top: 20px;
 font-family: "Roboto", sans-serif;
@@ -124,12 +126,12 @@ font-family: "Roboto", sans-serif;
   display: flex;
   align-items: center;
   margin-top: 20px; /* Adjust as needed */
-  margin-left: 120px;
+  margin-left: 130px;
 
 }
 
 .lineImage1 {
-  width: 160px; /* Adjust the width of the line image */
+  width: 118px; /* Adjust the width of the line image */
   height: 2px; /* Maintain aspect ratio */
   margin: 0 10px; /* Adjust the margin around the line image */
 }
@@ -143,11 +145,10 @@ font-family: "Roboto", sans-serif;
 
 
 .footerContent {
-  margin: 0 auto; /* Center horizontally */
-  font-size: 20px;
+  font-size: 18px;
   font-weight: 500;
   font-family: "Roboto", sans-serif;
-
+margin-left: 635px;
 }
 .footer {
   position: fixed; /* Fixed positioning */
@@ -160,5 +161,84 @@ font-family: "Roboto", sans-serif;
   height: 50px; /* Adjust height as needed */
   width: 100%; /* Ensure footer spans entire viewport width */
 
+}
+/* For smaller screens */
+@media only screen and (max-width: 768px) {
+  /* Update body */
+  body {
+      padding: 10px;
+  }
+  
+  /* Update .main-container */
+  .main-container {
+      width: 90%;
+      margin-left: auto;
+      margin-right: auto;
+  }
+  
+  /* Update .logo */
+  .logo {
+      margin-left: 0;
+      margin-top: 0;
+      width: 60%; /* Adjust width for smaller screens */
+  }
+  
+  /* Update .inputLabel */
+  .inputLabel {
+      font-size: 14px; /* Adjust font size for smaller screens */
+  }
+  
+  /* Update .noAccountText */
+  .noAccountText {
+      font-size: 14px; /* Adjust font size for smaller screens */
+  }
+  
+  /* Update .groups */
+  .groups {
+      width: 90%;
+      margin-left: auto;
+      margin-right: auto;
+  }
+  
+  /* Update .input-container */
+  .input-container {
+      margin-bottom: 20px; /* Adjust margin bottom for smaller screens */
+  }
+  
+  /* Update .heading */
+  .heading {
+      font-size: 24px; /* Adjust font size for smaller screens */
+      margin-top: 20px; /* Adjust margin top for smaller screens */
+  }
+  
+  /* Update .input */
+  .input {
+      font-size: 16px; /* Adjust font size for smaller screens */
+      height: 30px; /* Adjust height for smaller screens */
+  }
+  
+  /* Update .btnBlock */
+  .btnBlock {
+      font-size: 16px; /* Adjust font size for smaller screens */
+      margin-top: 20px; /* Adjust margin top for smaller screens */
+  }
+  
+  /* Update .btnBlock1 */
+  .btnBlock1 {
+      width: 100%; /* Adjust width for smaller screens */
+      font-size: 16px; /* Adjust font size for smaller screens */
+      margin-top: 20px; /* Adjust margin top for smaller screens */
+  }
+  
+  /* Update .lineContainer */
+  .lineContainer {
+      margin-left: 0; /* Adjust margin left for smaller screens */
+  }
+  
+  /* Update .footerContent */
+  .footerContent {
+      font-size: 16px; /* Adjust font size for smaller screens */
+      margin-left: 0; /* Adjust margin left for smaller screens */
+  }
 }
 

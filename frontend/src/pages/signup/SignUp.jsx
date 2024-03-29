@@ -94,19 +94,12 @@ const SignUp = () => {
         </form>
       </div>
       <div className={styles.registerLink}>
-        <div className={styles.group}>
-          <Link to="/login">
-          <div className={styles.registerLink}>
   <div className={styles.registerLinkContent}>
-    <p className={styles.group1}>Already have an account? <Link to="/login" className={styles.link}>Login</Link></p>
+    <p className={styles.group1}>Already have an account? <Link to="/login" className={styles.link}>Sign in</Link></p>
     {loading && <span className={`${styles.loading} ${styles.loadingSpinner}`}></span>}
   </div>
 </div>
 
-
-          </Link>
-        </div>
-      </div>
       <footer className={styles.footer}> {/* Use styles object */}
       <div className={styles.footerContent}> {/* Use styles object */}
         <span>Musicart | All rights reserved</span>
