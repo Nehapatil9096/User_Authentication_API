@@ -168,69 +168,91 @@ const Checkout = () => {
       <h1 className={styles.checkoutHeader}>Checkout</h1>
 
       <div className={styles.checkoutSections}>
+     
+     
+  
+
+
       <div className={styles.leftColumn}>
-        <div className={styles.deliveryAddress}>
-          <div>
-            <span>Delivery Address:</span>
-            </div>
-            <div className={styles.container}>
+  {/* Row 1 */}
+  <div className={styles.row}>
+    <div className={`${styles.column} ${styles.col1}`}>
 
-            <div className={styles.rightColumn}>
-
-            <span>{username}</span>
-
-          <div className={styles.deliveryInputContainer}>
-            <input 
-              type="text" 
-              placeholder="Add delivery address" 
-              value={deliveryAddress} 
-              onChange={handleDeliveryAddressChange} 
-              className={styles.deliveryInput} 
-            />
-          </div>
-        </div>
-        </div>
-        </div>
-
-        <div className={styles.leftColumn}>
-
-  <span>Payment Method</span>
+      <span>1. Delivery Address:</span>
+    </div>
+    <div className={styles.column}>
+      <span>{username}</span>
+      <div className={styles.deliveryInputContainer}>
+      <textarea 
+          type="text" 
+          placeholder="Add delivery address" 
+          value={deliveryAddress} 
+          onChange={handleDeliveryAddressChange} 
+          className={styles.deliveryInput} 
+        />
+      </div>
+    </div>
   </div>
-  <div className={styles.container}>
+  <div className={styles.line}></div> {/* Line between rows */}
 
-  <div className={styles.rightColumn}>
-
+  {/* Row 2 */}
+  <div className={styles.row}>
+  <div className={`${styles.column} ${styles.col1}`}>
+      <span>2. Payment Method:</span>
+    </div>
+    <div className={styles.column}>
   <select value={paymentMethod} onChange={handlePaymentMethodChange}>
+  <option value="">Mode of payment</option>
     <option value="payOnDelivery">Pay on Delivery</option>
     <option value="upi">UPI</option>
     <option value="card">Card</option>
   </select>
-  </div>
-  </div>
-  <div className={styles.leftColumn}>
-
-  <span>Review Items and Delivery</span>
-  </div>
-  <div className={styles.container}>
-
-  <div className={styles.rightColumn}>
-
-  <div className={styles.productImages}>
-    {cart.map((item, index) => (
-      <img
-        key={index}
-        src={item.product.images[0]}
-        alt={item.product.name}
-        className={styles.productImage}
-        onClick={() => handleProductClick(item.product._id)}
-      />
-    ))}
-  </div>
-  </div>
-  </div>
-  <p>Estimated delivery: Monday - Free Standard Delivery</p>
 </div>
+
+  </div>
+  <div className={styles.line}></div> {/* Line between rows */}
+
+  {/* Row 3 */}
+  <div className={styles.row}>
+  <div className={`${styles.column} ${styles.col1}`}>
+      <span>3. Review Items and Delivery</span>
+    </div>
+    <div className={styles.column}>
+      <div className={styles.productImages}>
+        {cart.map((item, index) => (
+          <img
+            key={index}
+            src={item.product.images[0]}
+            alt={item.product.name}
+            className={styles.productImage}
+            onClick={() => handleProductClick(item.product._id)}
+          />
+        ))}
+      </div>
+      {selectedProduct && (
+        <div className={styles.selectedProductDetails}>
+          <h4>{selectedProduct.name}</h4>
+          <p>Color: {selectedProduct.color}</p>
+        </div>
+      )}
+    </div>
+  </div>
+  <div className={styles.line}></div> {/* Line between rows */}
+
+</div>
+
+
+
+
+
+
+
+
+
+  
+
         <div className={styles.rightColumn}>
+
           <div className={styles.orderSummaryBox}>
             <button className={styles.placeOrderButton} onClick={placeOrder}>Place Your Order</button>
             <p className={styles.placeOrderText}>By placing your order you agree to musicart privacy</p>
@@ -247,12 +269,8 @@ const Checkout = () => {
         </div>
       </div>
 
-      {selectedProduct && (
-        <div className={styles.selectedProductDetails}>
-          <h4>{selectedProduct.name}</h4>
-          <p>Color: {selectedProduct.color}</p>
-        </div>
-      )}
+      <p>Estimated delivery: Monday - Free Standard Delivery</p>
+
 <div className={styles.orderSummaryHorizontal}>
   <div className={styles.rightSection}>
     <button className={styles.placeOrderButton} onClick={placeOrder}>

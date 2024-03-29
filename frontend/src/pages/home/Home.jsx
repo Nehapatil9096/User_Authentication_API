@@ -372,29 +372,29 @@ const handleAddToCart = (event, product) => {
             </div>
           </div>
         )}
-        {/* PRODUCT view*/}
-        <div className={`${styles.productList} ${listView ? styles.listView : styles.gridView}`}>
-      {products.map((product, index) => (
-        <Link key={index}className={styles.productRow} to={`/product/ProductDetails/${product._id}`}>
-          <div className={styles.productCard}>
-            <div className={styles.productImageContainer}>
-             
-              <img src={product.images[0]} alt={product.name} className={styles.productImage} />
-              <button onClick={(e) => { e.preventDefault(); handleAddToCart(e, product); }} className={styles.cartButton}>
-    <img src="cartp.png" className={styles.cartIcon} alt="Add to Cart" />
-</button>
-
-
-            </div>
-            <div className={styles.productDetails}>
-              <h3>{product.name}</h3>
-              <p>Price: {product.price}</p>
-              <p>{product.color} | {product.type}</p>
-            </div>
-          </div>
-        </Link>
-      ))}
+    {/* PRODUCT view*/}
+<div className={`${styles.productList} ${listView ? styles.gridView : styles.listView}`}>
+  {products.map((product, index) => (
+    <Link key={index} className={styles.productRow} to={`/product/ProductDetails/${product._id}`}>
+      <div className={styles.productContainer}>
+        <div className={styles.productImageContainer}>
+          <img src={product.images[0]} alt={product.name} className={styles.productImage} />
+          <button onClick={(e) => { e.preventDefault(); handleAddToCart(e, product); }} className={styles.cartButton}>
+            <img src="cartp.png" className={styles.cartIcon} alt="Add to Cart" />
+          </button>
         </div>
+        <div className={styles.productDetails}>
+          <h3 className={styles.productName}>{product.name}</h3>
+          <p className={styles.productPrice}>Price: {product.price}</p>
+          <p className={styles.productInfo}>{product.color} | {product.type}</p>
+        </div>
+      </div>
+    </Link>
+  ))}
+</div>
+
+
+
         <div className={styles.logoutButtonContainer}>
           <LogoutButton />
         </div>

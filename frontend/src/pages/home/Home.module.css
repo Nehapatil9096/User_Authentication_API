@@ -547,146 +547,87 @@ menuItem {
 /*PRODUCT view starts-----------------------------------------*/
 .productList {
   display: grid;
-  grid-template-columns: repeat(4, 1fr); /* 4 columns in each row */
-  gap: 20px; /* Adjust the gap between products */
+  grid-template-columns: repeat(4, minmax(250px, 1fr)); /* Four containers per row */
+
+  gap: 20px; /* Gap between product containers */
 }
 
-.productList {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-  gap: 20px;
+.productRow {
+  text-decoration: none; /* Remove default link styling */
+  color: inherit; /* Inherit text color */
 }
 
-.productCard {
-  padding: 10px;
-}
-.productCard {
-  position: relative; /* Position relative for absolute positioning of images */
-}
 
-.productCard .productImage {
+.productContainer {
   position: relative;
-  overflow: hidden; /* Hide overflowing content */
-  height: 200px; /* Fixed height for image container */
-  margin-bottom: 10px; /* Margin bottom for spacing */
+  width: 100%;
+  max-width: 200px; /* Limit maximum width of the product container */
+  border-radius: 10px; /* Rounded corners for the product container */
 }
 
-.productCard .productImage img {
-  width: 100%; /* Full width for image */
-  height: auto; /* Maintain aspect ratio */
-  position: absolute; /* Position absolute for positioning within container */
-  top: 50%; /* Align to top */
-  left: 50%; /* Align to left */
-  transform: translate(-50%, -50%); /* Center image within container */
-}
-
-.productCard {
-  /* Your product card styles */
-  width: 100%; /* Take full width for list view */
-  margin-bottom: 20px; /* Adjust the margin between product cards */
-  display: flex; /* Make the card a flex container */
-  align-items: center; /* Align items vertically */
-  padding: 10px; /* Add padding */
-  flex-direction: column; /* Arrange details below the image */
-
-}
-.productImage img {
-  width: 100%; /* Make the image fill the container */
-  height: auto; /* Maintain aspect ratio */
-}
-.productImage {
-  width: 30%; /* Adjust the width of the image */
-  margin-right: 10px; /* Adjust the spacing between image and details */
-  border: 35px solid #D4E5FF;
-   /* You can adjust the border style as needed */
-
-}
-.cartIcon {
-  position: absolute;
-  bottom: 60px; /* Adjust as needed */
-  right: 10px; /* Adjust as needed */
-  width: 57px; /* Adjust width as needed */
-  height: auto; /* Maintain aspect ratio */
-  z-index: 2; /* Ensure the cart icon appears above the product image */
-
-}
 .productImageContainer {
-  position: relative; /* Position relative for absolute positioning of images */
-  overflow: hidden; /* Hide overflowing content */
-  width: 100%; /* Full width for image container */
-  height: 350px; /* Fixed height for image container */
-  margin-bottom: -39px; /* Margin bottom for spacing */
-}
-/* Home.module.css */
+  width:100%;
+  height: 100%;
+  padding: 0px; /* Padding for the image container */
+  box-sizing: border-box; /* Include padding in width calculation */
 
-.productCard .productImage img {
-  width: 100%; /* Make the image fill the container */
-  height: 200px; /* Make the image fill the container */
 }
 
-.listView .productImage {
-  /* Additional styles for list view */
-  width: 660px; /* Adjust the width of the image */
-  margin-right: 20px; /* Adjust the spacing between image and details */
-  height: 300px;
-}
-
-.productCard:hover {
-  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-}
-
-.productImage img {
-  width: 100%;
-  height: 100px;
-  display: block;
-}
-.productImage {
-  /* Styles for the product image */
-  width: 30%; /* Adjust the width of the image */
-  margin-right: 10px; /* Adjust the spacing between image and details */
-}
 .productImage {
   width: 100%;
-  height: auto;
-  display: block;
+  height: 100%; /* Maintain aspect ratio */
+  max-height: 180px; /* Limit maximum height of the image */
+  object-fit: contain; /* Maintain aspect ratio and fit the image inside */
+  border: 35px solid #D4E5FF; /* Blue border for the image */
 }
+
 .productDetails {
-  /* Styles for the product details */
-  flex: 1; /* Allow the details to grow to fill available space */
-  margin-top: 0px; /* Add margin between image and details */
-font-size: 25px;
-font-weight: 500;
-font-style: Roboto;
+  padding: 10px; /* Padding for product details */
 }
 
-/* List View */
-.gridView .productCard {
-  width: 100%;
-  display: grid;
+.productName {
+  margin: 0; /* Remove default margin */
+  font-size: 16px; /* Adjust font size as needed */
 }
 
-.gridView .productCard {
-  /* Additional styles for grid view */
-  display: grid;
-    grid-template-columns: repeat(5, 2fr); /* Adjusted to 4 columns */
-    grid-gap: 20px; /* Adjust the gap between products */
+.productPrice {
+  margin: 5px 0; /* Adjust margin as needed */
 }
-.cartIcon {
+
+.productInfo {
+  margin: 5px 0; /* Adjust margin as needed */
+}
+
+.cartButton {
+  position: absolute;
+  bottom: 5px;
+  right: 5px;
+  background: transparent;
+  border: none;
   cursor: pointer;
+  z-index: 1; /* Ensure the icon appears above the image */
 }
-/*PRODUCT view ends-----------------------------------------*/
+
+.cartIcon {
+  width: 30px; /* Adjust size of the cart icon */
+  height: auto; /* Maintain aspect ratio */
+}
+
+/* Media query for responsive layout */
+@media (max-width: 1024px) {
+  .productList {
+    grid-template-columns: repeat(3, 250px); /* Three products per row on smaller screens */
+  }
+}
 
 @media (max-width: 768px) {
-  /* Media query styles for smaller screens */
-  .productCard {
-    /* Adjust width for smaller screens */
-    width: 100%;
-    flex-direction: column; /* Stack details below the image */
-  }
-  
-  .productImage {
-    width: 100%; /* Make the image full width on smaller screens */
-    margin-right: 0; /* Remove margin on smaller screens */
-    margin-bottom: 10px; /* Add space between image and details */
+  .productList {
+    grid-template-columns: repeat(2, 250px); /* Two products per row on even smaller screens */
   }
 }
+
+
+
+/*PRODUCT view ends-----------------------------------------*/
+
+

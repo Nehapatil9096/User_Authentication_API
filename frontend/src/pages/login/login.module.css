@@ -143,7 +143,6 @@ font-family: "Roboto", sans-serif;
   padding: 0 10px; /* Add padding around the text */
 }
 
-
 .footerContent {
   font-size: 18px;
   font-weight: 500;
@@ -162,6 +161,21 @@ margin-left: 635px;
   width: 100%; /* Ensure footer spans entire viewport width */
 
 }
+
+
+/* login.module.css */
+
+/* Define styles for desktop view */
+@media (min-width: 1024px) {
+  .headingmob {
+    display: none; /* Hide the heading in desktop view */
+  }
+
+  .alreadyCustomerText {
+    display: none; /* Hide the already customer text in desktop view */
+  }
+}
+
 /* For smaller screens */
 @media only screen and (max-width: 768px) {
   /* Update body */
@@ -193,6 +207,19 @@ margin-left: 635px;
       font-size: 14px; /* Adjust font size for smaller screens */
   }
   
+  .headingmob{
+font-family: sans-serif ;
+font-size: 50px;
+margin-bottom: 50px;
+font-style: normal;
+font-weight: normal;
+color: #2e0052;
+  }
+  .alreadyCustomerText{
+    font-style: normal;
+    font-weight: normal;
+    font-size: 15px;
+  }
   /* Update .groups */
   .groups {
       width: 90%;
@@ -225,10 +252,12 @@ margin-left: 635px;
   
   /* Update .btnBlock1 */
   .btnBlock1 {
-      width: 100%; /* Adjust width for smaller screens */
+      width: 95%; /* Adjust width for smaller screens */
       font-size: 16px; /* Adjust font size for smaller screens */
       margin-top: 20px; /* Adjust margin top for smaller screens */
-  }
+      margin-left: 10px;
+
+    }
   
   /* Update .lineContainer */
   .lineContainer {
@@ -238,7 +267,7 @@ margin-left: 635px;
   /* Update .footerContent */
   .footerContent {
       font-size: 16px; /* Adjust font size for smaller screens */
-      margin-left: 0; /* Adjust margin left for smaller screens */
+      margin-left: 100px; /* Adjust margin left for smaller screens */
   }
 }
 

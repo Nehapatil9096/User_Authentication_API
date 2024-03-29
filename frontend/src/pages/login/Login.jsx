@@ -27,12 +27,13 @@ const Login = () => {
     <div className={styles.logoContainer}> {/* Use styles object */}
       <img src={projectLogo} alt="Project Logo" className={styles.logo} /> {/* Use styles object */}
     </div>
+    <h1 className={`${styles.headingmob} mb-10`}>Welcome</h1>
 
     <div className={styles.groups}> {/* Use styles object */}
       <form onSubmit={handleSubmit} className={styles.form}> {/* Use styles object */}
       <div className={styles.home}> {/* Use styles object */}
 
-        <h1 className={`${styles.heading} mb-10`}>Sign in</h1> {/* Use styles object */}
+        <h1 className={`${styles.heading} mb-10`}>Sign in <span className={styles.alreadyCustomerText}>Already a customer?</span></h1> {/* Use styles object */}
         <p className={styles.inputLabel}>Enter your email or mobile number</p> {/* Use styles object */}
         <div className={styles.inputContainer}> {/* Use styles object */}
         <input
