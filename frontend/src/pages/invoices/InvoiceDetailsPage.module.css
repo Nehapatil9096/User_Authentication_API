@@ -1,4 +1,4 @@
-/* Checkout.module.css */
+/* InivoiceDetailsPage.module.css */
 
 .checkoutContainer {
   display: flex;
@@ -215,7 +215,7 @@ menuItem {
     padding: 20px;
     row-gap: 15px;  
     column-gap: 13px;
-    margin-left: -30px;
+    margin-left: -20px;
 }
   
   .productImage {
@@ -234,6 +234,8 @@ menuItem {
     align-items: center;
     margin-bottom: 2rem;
     flex-wrap: wrap;
+    border: none;
+
     
   }
   .deliveryInputContainer {
@@ -241,14 +243,15 @@ menuItem {
     align-items: center;
     margin-left: 0rem;
     padding: 0rem;
-    border-radius: 3px;
     width: 90%;
-margin-top: 10px;
+    margin-top: 10px;
   }
   .deliveryInput {
-    border-color: #919191;
+    border: none;
     width: 900vw;
     height: 50px;
+    color:#797979 ;
+
   }
   
   select {
@@ -270,6 +273,8 @@ margin-top: 10px;
   .selectedProductDetails {
     margin-top: -50px; /* Add margin to separate from the products */
     padding: 10px; /* Add padding for better spacing */
+    margin-left: -10px;
+
   }
   
   .selectedProductDetails h4 {

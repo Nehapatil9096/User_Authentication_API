@@ -215,7 +215,7 @@ menuItem {
     padding: 20px;
     row-gap: 15px;  
     column-gap: 13px;
-    margin-left: -30px;
+    margin-left: -20px;
 }
   
   .productImage {
@@ -249,6 +249,8 @@ margin-top: 10px;
     border-color: #919191;
     width: 900vw;
     height: 50px;
+    color:#797979 ;
+
   }
   
   select {
@@ -270,6 +272,7 @@ margin-top: 10px;
   .selectedProductDetails {
     margin-top: -50px; /* Add margin to separate from the products */
     padding: 10px; /* Add padding for better spacing */
+    margin-left: -10px;
   }
   
   .selectedProductDetails h4 {

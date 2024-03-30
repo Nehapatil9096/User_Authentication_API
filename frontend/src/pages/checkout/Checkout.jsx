@@ -160,15 +160,10 @@ const Checkout = () => {
           <Link to="/invoices" className={styles.invoiceLink}>Invoice</Link>
           </div>
         </div>
-      <div className={styles.rightSection}>
-
-   
-        
-          
+      <div className={styles.rightSection}>    
         </div>
         </div>
      
-
         <div className={styles.menuItem}>
           <Link to="/mycart"><button className={styles.backToCartButton}>Back to Cart</button></Link>
     </div>
@@ -176,11 +171,6 @@ const Checkout = () => {
       <h1 className={styles.checkoutHeader}>Checkout</h1>
 
       <div className={styles.checkoutSections}>
-     
-     
-  
-
-
       <div className={styles.leftColumn}>
   {/* Row 1 */}
   <div className={styles.row}>
@@ -230,6 +220,7 @@ const Checkout = () => {
     </div>
     <div className={styles.column}>
       <div className={styles.productImages}>
+        
         {cart.map((item, index) => (
           <img
             key={index}
@@ -249,25 +240,13 @@ const Checkout = () => {
   <br /> {/* Add a line break */}
   <span>Monday - FREE Standard Delivery</span>
 </p>
-        </div>
-        
+        </div>     
       )}
-
-    </div>
-    
+    </div>   
   </div>
   <div className={styles.line}></div> {/* Line between rows */}
 
 </div>
-
-
-
-
-
-
-
-
-
 
 
         <div className={styles.rightColumn}>
