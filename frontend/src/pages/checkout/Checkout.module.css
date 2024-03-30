@@ -47,7 +47,7 @@
     color: white;
     padding: 0px 75px;
   padding-top: -100px;
-  margin-top: -10px;
+  margin-top: -70px;
   }
   
 .menubar .leftSection {
@@ -57,7 +57,7 @@
 .menubar .leftSection img {
   width: 220px; /* Adjust as needed */
   margin-right: 10px;
-  
+  margin-left: -100px;
 }
 
 .menubar .leftSection a {
@@ -83,6 +83,15 @@ menuItem {
   padding: 10px 20px;
 
 }
+.backToCartButton{
+  color: #ffffff;
+  background-color: #2E0052;
+  width:200px;
+  height: 40px;
+  border-radius: 15px;
+  font-size: 18px;
+  margin-top: 20px;
+}
   .navbar {
     display: flex;
     justify-content: space-between;
@@ -98,14 +107,15 @@ menuItem {
   }
   
   .checkoutHeader {
-    margin-top: 20px; /* Add spacing above the header */
+    margin-top: 10px; /* Add spacing above the header */
     display: flex;
     justify-content: center; /* Horizontally center the content */
     align-items: center; /* Vertically center the content */
     text-decoration: underline; /* Add underline */
     font-family: 'Roboto', sans-serif; /* Set font family to Roboto */
     font-weight: normal;
-    font-size: 24px;
+    font-size: 26px;
+    margin-bottom: 50px;
   }
   
   
@@ -132,9 +142,12 @@ menuItem {
     border-radius: 8px; /* Add rounded corners */
     padding: 20px; /* Add padding */
     background-color: #fff; /* Set a white background */
+    width: 320px;
+    margin-left: 30px;
+    height: 310px;
   }
-  
-  .placeOrderButton {
+ 
+  .placeOrderButton1{
     background-color: #f0c14b; /* Set a yellow background color */
     color: #111; /* Set text color */
     border: none;
@@ -142,8 +155,30 @@ menuItem {
     padding: 10px 20px;
     margin-bottom: 10px;
     cursor: pointer;
+    height: 40px;
+    width: 150px; 
+    margin-top: 10px;
+    margin-left: 10px;
+    font-size: 14px;
   }
-  
+  .placeOrderButton{
+    background-color: #f0c14b; /* Set a yellow background color */
+    color: #111; /* Set text color */
+    border: none;
+    border-radius: 8px;
+    padding: 10px 20px;
+    margin-bottom: 10px;
+    cursor: pointer;
+    height: 50px;
+    width: 320px; 
+    margin-top: -10px;
+    margin-left: 0px;
+    font-size: 18px;
+  }
+  .placeOrderText{
+    font-size: 14px;
+    margin-top: 0;
+  }
   .orderSummaryHorizontal {
     display: flex;
     justify-content: space-between;
@@ -153,10 +188,16 @@ menuItem {
     padding: 10px; /* Add padding */
     border-radius: 8px; /* Add rounded corners */
     border-top: 1px solid #ddd; /* Add a top border */
+    border:1px solid #ddd ;
+    width: 800px;
+    height: 35px;
   }
   
   .orderTotal {
     font-weight: bold; /* Make the text bold */
+    margin-bottom: -10px;
+    color: 
+    #B52B00;
   }
   
   .agreeText {
@@ -172,16 +213,22 @@ menuItem {
     grid-template-columns: repeat(3, 1fr); /* Display three products in a row */
     margin-bottom: 2rem;
     padding: 20px;
-row-gap: 20px;  }
+    row-gap: 15px;  
+    column-gap: 13px;
+    margin-left: -30px;
+}
   
   .productImage {
-    width: 100px; /* Set fixed width for all product images */
-    height: 100px; /* Set fixed height for all product images */
+    width: 102px; /* Set fixed width for all product images */
+    height: 102px; /* Set fixed height for all product images */
     object-fit: contain; /* Maintain aspect ratio without cutting */
     border: 1px solid #2E0052;/* Add border to each product image */
     cursor: pointer;
+    border-radius: 10px;
   }
-  
+.username{
+  color:#797979 ;
+}
   .deliveryAddress {
     display: flex;
     align-items: center;
@@ -195,23 +242,25 @@ row-gap: 20px;  }
     margin-left: 0rem;
     padding: 0rem;
     border-radius: 3px;
-    width: 87%;
+    width: 90%;
 margin-top: 10px;
   }
   .deliveryInput {
     border-color: #919191;
-    padding: 0rem 0rem; /* Add padding */
-    width: 100%;
+    width: 900vw;
     height: 50px;
   }
   
   select {
     border: 1px solid ;
-    padding: 1rem;
+    border-color: #919191;
+    padding: 0.5rem;
     font-size: 1rem;
-    margin-bottom: 2rem;
-    width: 87%;
+    color:#797979 ;
+    margin-bottom: 1rem;
+    width: 91%;
     height: 50px;
+    margin-top: 10px;
   }
 
   .estimatedDelivery {
@@ -219,18 +268,22 @@ margin-top: 10px;
   }
 
   .selectedProductDetails {
-    margin-top: 20px; /* Add margin to separate from the products */
+    margin-top: -50px; /* Add margin to separate from the products */
     padding: 10px; /* Add padding for better spacing */
   }
   
   .selectedProductDetails h4 {
-    margin-bottom: 5px; /* Add margin below the heading */
+    margin-bottom: 0px; /* Add margin below the heading */
   }
   
   .selectedProductDetails p {
     margin-bottom: 0; /* Remove default bottom margin */
   }
-
+.deliveryColor{
+  color: #797979;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
 
 .row {
   display: flex;
@@ -257,6 +310,8 @@ margin-top: 10px;
   width: 800px;
   color: #E1E1E1;
 }
+.flexContainer {
+margin-right: 0px;}
 
  
   .footer {
@@ -264,7 +319,7 @@ margin-top: 10px;
     color: white; /* Set text color to white */
     display: flex;
     align-items: center; /* Center vertically */
-    height: 77px; /* Adjust height as needed */
+    height: 190px; /* Adjust height as needed */
     width: 100%; /* Ensure footer spans entire viewport width */
   
   }

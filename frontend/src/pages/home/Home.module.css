@@ -545,73 +545,79 @@ menuItem {
 /*FEEDBACK button ends-----------------------------------------*/
 
 /*PRODUCT view starts-----------------------------------------*/
-.productList {
+/* Grid View Styles */
+ .gridView {
   display: grid;
   grid-template-columns: repeat(4, minmax(250px, 1fr)); /* Four containers per row */
-
+  margin-top: -25px;
   gap: 20px; /* Gap between product containers */
 }
 
-.productRow {
+.gridView .productRow {
   text-decoration: none; /* Remove default link styling */
   color: inherit; /* Inherit text color */
 }
 
-
-.productContainer {
+.gridView .productContainer {
   position: relative;
   width: 100%;
   max-width: 200px; /* Limit maximum width of the product container */
-  border-radius: 10px; /* Rounded corners for the product container */
 }
 
-.productImageContainer {
-  width:100%;
-  height: 100%;
+.gridView .productImageContainer {
+  width: 120%;
+  height: 120%;
   padding: 0px; /* Padding for the image container */
-  box-sizing: border-box; /* Include padding in width calculation */
-
+  margin-bottom: -40px;
 }
 
-.productImage {
+.gridView .productImage {
   width: 100%;
   height: 100%; /* Maintain aspect ratio */
-  max-height: 180px; /* Limit maximum height of the image */
+  max-height: 230px; /* Limit maximum height of the image */
   object-fit: contain; /* Maintain aspect ratio and fit the image inside */
   border: 35px solid #D4E5FF; /* Blue border for the image */
 }
 
-.productDetails {
-  padding: 10px; /* Padding for product details */
+.gridView .productDetails {
+  padding: 0px; /* Padding for product details */
+  font-family: "Roboto", sans-serif;
+  margin-bottom: 30px;
 }
 
-.productName {
+.gridView .productName {
   margin: 0; /* Remove default margin */
-  font-size: 16px; /* Adjust font size as needed */
+  font-size: 20px; /* Adjust font size as needed */
+  white-space: nowrap; /* Prevent wrapping */
+  text-overflow: ellipsis; /* Show ellipsis for overflow text */
+  font-family: "Roboto", sans-serif;
 }
 
-.productPrice {
+.gridView .productPrice {
   margin: 5px 0; /* Adjust margin as needed */
+  font-family: "Roboto", sans-serif;
 }
 
-.productInfo {
-  margin: 5px 0; /* Adjust margin as needed */
+.gridView .productInfo {
+  margin: 0px 0; /* Adjust margin as needed */
 }
 
-.cartButton {
-  position: absolute;
-  bottom: 5px;
-  right: 5px;
+.gridView .cartButton {
+  position: relative;
+  bottom: 65px;
+  right: 0px;
+  left: 240px;
   background: transparent;
   border: none;
   cursor: pointer;
-  z-index: 1; /* Ensure the icon appears above the image */
+  z-index: 2; /* Ensure the icon appears above the image */
 }
 
-.cartIcon {
-  width: 30px; /* Adjust size of the cart icon */
+.gridView .cartIcon {
+  width: 50px; /* Adjust size of the cart icon */
   height: auto; /* Maintain aspect ratio */
 }
+
 
 /* Media query for responsive layout */
 @media (max-width: 1024px) {
@@ -630,4 +636,103 @@ menuItem {
 
 /*PRODUCT view ends-----------------------------------------*/
 
+/* List View Styles */
+.listView  {
+  display: block; /* Change to block layout for list view */
+}
 
+.listView .productRow {
+  text-decoration: none; /* Remove default link styling */
+  color: inherit; /* Inherit text color */
+}
+.listView .productContainer {
+  display: flex; /* Use flexbox to arrange contents side by side */
+  width: 100%; /* Ensure each product container takes up the full width */
+  margin-bottom: 20px; /* Add spacing between each product */
+}
+
+.listView  .productImageContainer {
+  width: 20%;
+  height: 100%;
+  padding: 0px; /* Padding for the image container */
+  margin-bottom: -40px;
+}
+
+.listView .productDetails {
+  padding: 0px; /* Padding for product details */
+  font-family: "Roboto", sans-serif;
+  margin-bottom: 0px;
+  margin-left: 100px;
+  flex-grow: 1; /* Allow product details to grow and take up remaining space */
+  text-decoration: none; /* Remove default link styling */
+
+}
+
+.listView .productName {
+  margin: 0; /* Remove default margin */
+  font-size: 40px; /* Adjust font size as needed */
+  font-family: "Roboto", sans-serif;
+  text-decoration: none; /* Remove underline */
+}
+
+.listView .productPrice {
+  margin: 5px 0; /* Adjust margin as needed */
+  font-size: 25px; /* Adjust font size as needed */
+  font-weight: bold;
+
+  font-family: "Roboto", sans-serif;
+}
+
+.listView .productInfo {
+  margin: 20px 0; /* Adjust margin as needed */
+  font-size: 25px; /* Adjust font size as needed */
+  font-weight: bold;
+
+}
+.listView .shortinfo{
+  margin: 0px 0; /* Adjust margin as needed */
+  font-size: 15px; /* Adjust font size as needed */
+  font-weight: bold;
+  color: black;
+
+}
+/* Optional: Add styles for product image */
+.listView  .productImage {
+  width: 100%;
+  height: 100%; /* Maintain aspect ratio */
+  max-height: 230px; /* Limit maximum height of the image */
+  object-fit: contain; /* Maintain aspect ratio and fit the image inside */
+  border: 35px solid #D4E5FF; /* Blue border for the image */
+}
+.listView .cartButton {
+  position: relative;
+  bottom: 65px;
+  right: 0px;
+  left: 240px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  z-index: 2; /* Ensure the icon appears above the image */
+}
+
+.listView .cartIcon {
+  width: 50px; /* Adjust size of the cart icon */
+  height: auto; /* Maintain aspect ratio */
+}
+.detailsButton {
+  width: 150px;
+  height: 40px;
+  font-family: "Roboto", sans-serif;
+  font-size: 25px;
+  background-color: #2E0052;
+  color: white;
+  border-radius: 20px;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+  text-decoration: none; /* Remove default underline for anchor tag */
+}
+
+.detailsButton:hover {
+  background-color: #4a0072;
+}

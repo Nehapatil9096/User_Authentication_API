@@ -13,7 +13,7 @@ const Checkout = () => {
   const [loading, setLoading] = useState(true);
   const [totalAmount, setTotalAmount] = useState(0); 
   const [deliveryAddress, setDeliveryAddress] = useState('');
-  const [paymentMethod, setPaymentMethod] = useState('payOnDelivery');
+  const [paymentMethod, setPaymentMethod] = useState('');
   const [username, setUsername] = useState('');
   const [selectedProduct, setSelectedProduct] = useState(null); // State to track selected product
   const navigate = useNavigate();
@@ -28,6 +28,16 @@ const Checkout = () => {
   };
 
   const placeOrder = async () => {
+    if (!deliveryAddress.trim()) {
+      alert("Please enter your delivery address.");
+      return;
+    }
+  
+    if (!paymentMethod) {
+      alert("Please select a payment method.");
+      return;
+    }
+  
     try {
       const response = await axios.post('/api/users/order', {
         userId: 'userId', // pass actual user ID here
@@ -120,7 +130,7 @@ const Checkout = () => {
       handleProductClick(firstProductId);
     }
   }, [cart]);
-
+  
   return (
     <div className={styles.checkoutContainer}>
       {/* Header */}
@@ -131,9 +141,7 @@ const Checkout = () => {
         </div>
         <div className={styles.headerContent}>
         <span>Get 50% off on selected items&nbsp; | &nbsp; Shop Now</span>
-        <div className={styles.rightSection}>
-          <LogoutButton />
-        </div>
+        
         </div>
       </header>
       <div className={styles.home}>
@@ -156,14 +164,14 @@ const Checkout = () => {
 
    
         
-          <div className={styles.menuItem}>
-          <Link to="/mycart"><button className={styles.backToCartButton}>Back to Cart</button></Link>
-    </div>
+          
         </div>
         </div>
      
 
-      
+        <div className={styles.menuItem}>
+          <Link to="/mycart"><button className={styles.backToCartButton}>Back to Cart</button></Link>
+    </div>
 
       <h1 className={styles.checkoutHeader}>Checkout</h1>
 
@@ -178,10 +186,10 @@ const Checkout = () => {
   <div className={styles.row}>
     <div className={`${styles.column} ${styles.col1}`}>
 
-      <span>1. Delivery Address:</span>
+      <span>1. Delivery Address</span>
     </div>
     <div className={styles.column}>
-      <span>{username}</span>
+    <span className={styles.username}>{username}</span>
       <div className={styles.deliveryInputContainer}>
       <textarea 
           type="text" 
@@ -196,20 +204,23 @@ const Checkout = () => {
   <div className={styles.line}></div> {/* Line between rows */}
 
   {/* Row 2 */}
-  <div className={styles.row}>
+<div className={styles.row}>
   <div className={`${styles.column} ${styles.col1}`}>
-      <span>2. Payment Method:</span>
-    </div>
-    <div className={styles.column}>
-  <select value={paymentMethod} onChange={handlePaymentMethodChange}>
-  <option value="">Mode of payment</option>
-    <option value="payOnDelivery">Pay on Delivery</option>
-    <option value="upi">UPI</option>
-    <option value="card">Card</option>
-  </select>
+    <span>2. Payment Method</span>
+  </div>
+  <div className={styles.column}>
+    <select value={paymentMethod} onChange={handlePaymentMethodChange}>
+      <option value="" disabled hidden>Mode of payment</option>
+      <option value="payOnDelivery">Pay on Delivery</option>
+      <option value="upi">UPI</option>
+      <option value="card">Card</option>
+    </select>
+  </div>
 </div>
 
-  </div>
+
+
+
   <div className={styles.line}></div> {/* Line between rows */}
 
   {/* Row 3 */}
@@ -232,10 +243,18 @@ const Checkout = () => {
       {selectedProduct && (
         <div className={styles.selectedProductDetails}>
           <h4>{selectedProduct.name}</h4>
-          <p>Color: {selectedProduct.color}</p>
+          <p className={styles.deliveryColor}>Color: {selectedProduct.color}</p>
+          <p className={styles.deliveryText}>
+  Estimated delivery:
+  <br /> {/* Add a line break */}
+  <span>Monday - FREE Standard Delivery</span>
+</p>
         </div>
+        
       )}
+
     </div>
+    
   </div>
   <div className={styles.line}></div> {/* Line between rows */}
 
@@ -249,7 +268,7 @@ const Checkout = () => {
 
 
 
-  
+
 
         <div className={styles.rightColumn}>
 
@@ -260,33 +279,34 @@ const Checkout = () => {
 
             <hr />
 
-            <p>Order Summary</p>
+            <h3>Order Summary</h3>
             <p>Items Total: ₹{totalAmount.toFixed(2)}</p>
             <p>Delivery Amount: ₹45</p>
             <hr />
-            <p className={styles.orderTotal}>Order Total: ₹{(totalAmount + 45).toFixed(2)}</p>
+            <h3 className={styles.orderTotal}>Order Total: ₹{(totalAmount + 45).toFixed(2)}</h3>
           </div>
         </div>
       </div>
 
-      <p>Estimated delivery: Monday - Free Standard Delivery</p>
 
 <div className={styles.orderSummaryHorizontal}>
   <div className={styles.rightSection}>
-    <button className={styles.placeOrderButton} onClick={placeOrder}>
+    <button className={styles.placeOrderButton1} onClick={placeOrder}>
       Place Your Order
     </button>
-    <p className={styles.orderTotal}>
-      Order Total: ₹{(totalAmount + 45).toFixed(2)}
-    </p>
+    
   </div>
   <div className={styles.leftSection}>
+  <div className={styles.flexContainer}>
+
+  <p className={styles.orderTotal}>
+      Order Total: ₹{(totalAmount + 45).toFixed(2)}
+    </p>
     <p className={styles.agreeText}>
       By placing your order, you agree to musicart's privacy notice and conditions of use.
     </p>
-    <p className={styles.deliveryText}>
-      Estimated delivery: <span>Monday - FREE Standard Delivery</span>
-    </p>
+    </div>
+
   </div>
 </div>
 </div>

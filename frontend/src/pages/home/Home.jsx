@@ -14,7 +14,7 @@ import image from "/image.png"; // Update the path accordingly
 const Home = () => {
   const [products, setProducts] = useState([]);
   const [searchQuery, setSearchQuery] = useState("");
-  const [listView, setListView] = useState(false);
+  const [listView, setListView] = useState(true);
   const [selectedOptions, setSelectedOptions] = useState({
     headphoneType: "",
     company: "",
@@ -375,10 +375,20 @@ const handleAddToCart = (event, product) => {
     {/* PRODUCT view*/}
 <div className={`${styles.productList} ${listView ? styles.gridView : styles.listView}`}>
   {products.map((product, index) => (
-    <Link key={index} className={styles.productRow} to={`/product/ProductDetails/${product._id}`}>
+    <Link key={index} className={styles.productRow} >
       <div className={styles.productContainer}>
         <div className={styles.productImageContainer}>
-          <img src={product.images[0]} alt={product.name} className={styles.productImage} />
+
+
+                 {/* Remove action when clicked on image only in list view */}
+      {!listView ? (
+                    <img src={product.images[0]} alt={product.name} className={styles.productImage} />              
+                  ) : (
+                    <Link to={`/product/ProductDetails/${product._id}`}>
+                    <img src={product.images[0]} alt={product.name} className={styles.productImage} />
+                  </Link>
+                  )}
+
           <button onClick={(e) => { e.preventDefault(); handleAddToCart(e, product); }} className={styles.cartButton}>
             <img src="cartp.png" className={styles.cartIcon} alt="Add to Cart" />
           </button>
@@ -387,6 +397,12 @@ const handleAddToCart = (event, product) => {
           <h3 className={styles.productName}>{product.name}</h3>
           <p className={styles.productPrice}>Price: {product.price}</p>
           <p className={styles.productInfo}>{product.color} | {product.type}</p>
+          {!listView && (
+          <Link to={`/product/ProductDetails/${product._id}`}>
+          <p className={styles.shortinfo}>{product.shortinfo}</p>
+          <button className={styles.detailsButton}>Details</button>
+          </Link>
+          )}
         </div>
       </div>
     </Link>
