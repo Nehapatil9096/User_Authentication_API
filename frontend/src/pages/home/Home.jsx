@@ -398,11 +398,14 @@ const handleAddToCart = (event, product) => {
           <p className={styles.productPrice}>Price: {product.price}</p>
           <p className={styles.productInfo}>{product.color} | {product.type}</p>
           {!listView && (
-          <Link to={`/product/ProductDetails/${product._id}`}>
-          <p className={styles.shortinfo}>{product.shortinfo}</p>
-          <button className={styles.detailsButton}>Details</button>
-          </Link>
-          )}
+  <div>
+    <p className={styles.shortinfo}>{product.shortinfo}</p>
+    <Link to={`/product/ProductDetails/${product._id}`}>
+      <button className={styles.detailsButton}>Details</button>
+    </Link>
+  </div>
+)}
+
         </div>
       </div>
     </Link>

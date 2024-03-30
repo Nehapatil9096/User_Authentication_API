@@ -180,7 +180,7 @@ const InvoiceDetails = () => {
         <div className={styles.rightColumn}>
          
           <div className={styles.orderSummaryBox}>
-            <hr />
+            
             <h3>Order Summary</h3>
             <p>Items Total: ₹{totalAmount.toFixed(2)}</p>
             <p>Delivery Amount: ₹45</p>

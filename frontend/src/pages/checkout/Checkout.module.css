@@ -194,7 +194,7 @@ menuItem {
   }
   
   .orderTotal {
-    font-weight: bold; /* Make the text bold */
+    font-weight:500; /* Make the text bold */
     margin-bottom: -10px;
     color: 
     #B52B00;
