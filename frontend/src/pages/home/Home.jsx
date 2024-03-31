@@ -235,6 +235,14 @@ const handleAddToCart = (event, product) => {
         <div className={styles.headerContent}>
         <span>Get 50% off on selected items&nbsp; | &nbsp; Shop Now</span>
         </div>
+             {/* Show Login and Signup if the user is not logged in */}
+             {!username && (
+          <div className={styles.rightSection}>
+            <Link to="/login" className={styles.loginLink}>Login </Link>
+            <span> &nbsp; | &nbsp;</span>
+            <Link to="/signup" className={styles.signupLink}>Signup</Link>
+          </div>
+        )}
       </header>
 
       {/* HOME content */}
@@ -250,35 +258,42 @@ const handleAddToCart = (event, product) => {
           <div className={styles.menuItem}>
             <Link to="/home"className={styles.homeLink}>Home</Link>
           </div>
-          <div className={styles.menuItem}>
-          <Link to="/invoices" className={styles.invoiceLink}>Invoice</Link>
-          </div>
-        </div>
-      <div className={styles.rightSection}>
 
-      <div className={styles.menuItem}>
-  <button className={styles.button}onClick={handleViewCart}>
-    <img src="/cart_menu.png" alt="Cart_Menu" />
-    <span>View Cart &nbsp;  {cartCount}</span>
-  </button>
-</div>
-          <div className={styles.menuItem}>
-          <div className={styles.userCircle} onClick={togglePopup}>
-  {username ? username.split(' ').map(word => word.charAt(0).toUpperCase()).join('') : 'U'}
-</div>
-            {showPopup && (
-        <div ref={popupRef}  className={styles.popup}>
-    <div>{username ? username.split(' ').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ') : ''}</div>
-    <div className={styles.separator}></div> {/* Gray line separator */}
-          <div>
-          <LogoutButton />
-          </div>
+            {/* Remove Invoice link if the user is not logged in */}
+            {username && (
+              <div className={styles.menuItem}>
+                <Link to="/invoices" className={styles.invoiceLink}>Invoice</Link>
+              </div>
+            )}
         </div>
-      )}
-    
-            <span>Profile</span>
-          </div>
-        </div>
+        {username && (
+            <div className={styles.rightSection}>
+              <div className={styles.menuItem}>
+                {/* View Cart button */}
+                <button className={styles.button} onClick={handleViewCart}>
+                  <img src="/cart_menu.png" alt="Cart_Menu" />
+                  <span>View Cart &nbsp;  {cartCount}</span>
+                </button>
+              </div>
+              <div className={styles.menuItem}>
+                {/* User Circle */}
+                <div className={styles.userCircle} onClick={togglePopup}>
+                  {username ? username.split(' ').map(word => word.charAt(0).toUpperCase()).join('') : 'U'}
+                </div>
+                {/* Popup content */}
+                {showPopup && (
+             <div ref={popupRef} className={styles.popup}>
+             <div>{username ? username.split(' ').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ') : ''}</div>
+             <hr className={styles.separator} />
+             <div>
+               <LogoutButton />
+             </div>
+           </div>
+           
+                )}
+              </div>
+            </div>
+          )}
         </div>
 
 {/* Offer Container */}
@@ -381,9 +396,13 @@ const handleAddToCart = (event, product) => {
        
 
         {/* Feedback Popup */}
-        <div className={styles.feedbackButton} onClick={() => openFeedbackPopup()}>
-          <img src={feedbackIcon} alt="Feedback" />
-        </div>
+         {/* Only show the feedback button if the user is logged in */}
+         {username && (
+          <div className={styles.feedbackButton} onClick={() => openFeedbackPopup()}>
+            <img src={feedbackIcon} alt="Feedback" />
+          </div>
+        )}
+      
         {showFeedbackPopup && (
           <div  className={styles.feedbackPopup}>
            <div ref={feedbackPopupRef} className={styles.popupContent}>
@@ -430,10 +449,12 @@ const handleAddToCart = (event, product) => {
                     <img src={product.images[0]} alt={product.name} className={styles.productImage} />
                   </Link>
                   )}
-
-          <button onClick={(e) => { e.preventDefault(); handleAddToCart(e, product); }} className={styles.cartButton}>
-            <img src="cartp.png" className={styles.cartIcon} alt="Add to Cart" />
-          </button>
+   {/* Conditional rendering of cart icon */}
+   {username && (
+            <button onClick={(e) => { e.preventDefault(); handleAddToCart(e, product); }} className={styles.cartButton}>
+              <img src="cartp.png" className={styles.cartIcon} alt="Add to Cart" />
+            </button>
+          )}
         </div>
         <div className={styles.productDetails}>
           <h3 className={styles.productName}>{product.name}</h3>

@@ -1,4 +1,9 @@
 /* OrderConfirmation.module.css */
+
+body {
+  overflow-y: hidden;
+}
+
 .centerContent {
   display: flex;
   flex-direction: column;
@@ -23,7 +28,7 @@
 }
 
 .logo {
-  width: 150px; /* Adjust the width of the logo */
+  width: 170px; /* Adjust the width of the logo */
   height: auto; /* Maintain aspect ratio */
   margin-left: 200px;
 }
@@ -39,8 +44,6 @@
   align-items: center;
   width: 100vw;
   height: 100vh;
-  border: 2px solid black; /* Add a border */
-  padding: 20px; /* Add padding to the container */
   background-color: #FFFFFF;
   font-family: "Roboto", sans-serif; /* Use font-family property */
 
@@ -51,7 +54,6 @@
   display: flex;
   flex-direction: column;
   align-items: center; /* Align items to the start (left side) */
-  padding: 20px; /* Add padding for spacing */
 }
 
 .img{
@@ -65,11 +67,11 @@ align-items: center; /* Center items horizontally */
   border: 2px solid #E3E3E3; /* Add a border to the inner container */
   border-radius: 10px; /* Increase border radius */
   padding: 20px; /* Add padding to the inner container */
-  width: 600px; /* Set maximum width for the inner container */
+  width: 700px; /* Set maximum width for the inner container */
   justify-content: center;
-  height: 320px;
+  height: 350px;
   margin-left: 0px;
-  margin-top: 20px;
+  margin-top: 80px;
   display: flex; /* Use flexbox */
   flex-direction: column; /* Arrange items vertically */
   align-items: center; /* Center items horizontally */
@@ -89,33 +91,31 @@ margin-top: -800px;
 }
 
 .footer {
-position: absolute;
-bottom: 0;
-left: 0;
-width: 100%;
-background-color: #2e0052;
-color: white;
-display: flex;
-align-items: center;
-height: 60px;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background-color: #2e0052;
+  color: white;
+  display: flex;
+  align-items: center;
+  height: 60px;
 }
+
 .button {
 background-color:  #2e0052;
 ; /* Blue background color */
 color: white; /* White text color */
 border: none; /* No border */
 padding: 10px 20px; /* Add padding */
-font-size: 15px; /* Font size */
+font-size: 20px; /* Font size */
 cursor: pointer; /* Cursor style */
 border-radius: 10px; /* Rounded corners */
 margin-top: 20px; /* Add some top margin */
 width: 300px;
 }
 
-/* Style for the button on hover */
-.button:hover {
-background-color: #0056b3; /* Darker blue background color */
-}
+
 
 .footerContent {
 margin: 0 auto;

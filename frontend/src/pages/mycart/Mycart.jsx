@@ -113,7 +113,7 @@ const MyCart = () => {
               <img src={projectLogo} alt="Project Logo" />
             </div>
             <div className={styles.menuItem}>
-              <Link to="/home" className={styles.homeLink}>Home/View Cart</Link>
+              <Link to="/home" className={styles.homeLink}>Home/   View Cart</Link>
             </div>
             <div className={styles.menuItem}>
               <Link to="/invoices" className={styles.invoiceLink}></Link>
@@ -171,20 +171,20 @@ const MyCart = () => {
                   <>
                   
                   <div className={styles.priceRow}>
-            <p className={styles.priceLabel}>Total MRP:</p>
+            <p className={styles.priceLabel}>Total MRP</p>
             <p className={styles.priceValue}>₹{totalAmount.toFixed(2)}</p>
           </div>               
           <div className={styles.priceRow}>
-            <p className={styles.priceLabel}>Discount on MRP:</p>
+            <p className={styles.priceLabel}>Discount on MRP</p>
             <p className={styles.priceValue}>₹0</p>
           </div>                  
           <div className={styles.priceRow}>
-            <p className={styles.priceLabel}>Convenience Fee:</p>
+            <p className={styles.priceLabel}>Convenience Fee</p>
             <p className={styles.priceValue}>₹45</p>
           </div>            
                   <div className={styles.priceAmount}>
                   <div className={styles.priceRow1}>
-            <p className={styles.priceLabel1}><b>Total Amount:</b></p>
+            <p className={styles.priceLabel1}><b>Total Amount</b></p>
             <p className={styles.priceValue1}>₹{(totalAmount + 45).toFixed(2)}</p>
           </div>
                       <Link to="/checkout">
@@ -269,15 +269,15 @@ const CartItem = ({ item, fetchProductDetails, onQuantityChange }) => {
           </div>
           <div className={styles.cartItemColumn}>
             <p>{product.name}</p>
-            <p>Color: {product.color}</p>
+            <p>Color {product.color}</p>
             <p>In Stock</p>
           </div>
           <div className={styles.cartItemColumn}>
-            <p>Price: </p>
+            <p>Price </p>
             <p>{product.price}</p>
           </div>
           <div className={styles.cartItemColumn}>
-            <p>Quantity: </p>
+            <p>Quantity </p>
             <p>
               <select value={selectedQuantity} onChange={handleQuantitySelect} style={{ width: '40%' }}>
                 {[...Array(8)].map((_, index) => (
@@ -287,9 +287,8 @@ const CartItem = ({ item, fetchProductDetails, onQuantityChange }) => {
             </p>
           </div>
           <div className={styles.cartItemColumn}>
-            <p>Total:</p>
+            <p>Total</p>
             <div className={styles.cartItemColumn}>
-              <p>Price:</p>
               <p className={styles.priceParagraph}>₹{(parsePrice(product.price) * selectedQuantity).toFixed(2)}</p>
             </div>
           </div>

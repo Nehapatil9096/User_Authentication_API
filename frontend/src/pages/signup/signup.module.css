@@ -68,6 +68,8 @@ padding-right: 15px;
   margin-left: 550px;
   height: 509px;
   margin-bottom: -30px;
+  padding-top: 15px;
+  padding-bottom: 15px;
 
 }
 /* Style for the input labels */
@@ -128,29 +130,34 @@ font-family: "Roboto", sans-serif;
 
 }
 .noAccountText{
-  font-family: "Roboto", sans-serif;
-
+  font-size: 12.5px;
+font-family: "Roboto", sans-serif;
+font-weight: 400;
+}
+.noAccountText1{
+  font-size: 14.0px;
+font-family: "Roboto", sans-serif;
+font-weight: 400;
 }
 .footerContent {
-font-size: 18px;
-font-weight: 500;
-font-family: "Roboto", sans-serif;
-margin-right: 200px;
-margin-left: 630px;
+  margin: 0 auto; /* Center horizontally */
+  font-size: 22px;
+font-weight: 400;
+font-family: "Roboto", sans-serif; /* Use font-family property */
+
 }
 .footer {
-position: fixed; /* Fixed positioning */
-bottom: 0; /* Align to the bottom of the viewport */
-left: 0; /* Align to the left of the viewport */
-background-color: #2e0052;
-color: white; /* Set text color to white */
-display: flex;
-align-items: center; /* Center vertically */
-height: 50px; /* Adjust height as needed */
-width: 100%; /* Ensure footer spans entire viewport width */
+  position: fixed; /* Fixed positioning */
+  bottom: 0; /* Align to the bottom of the viewport */
+  left: 0; /* Align to the left of the viewport */
+  background-color: #2e0052;
+  color: white; /* Set text color to white */
+  display: flex;
+  align-items: center; /* Center vertically */
+  height: 60px; /* Adjust height as needed */
+  width: 100%; /* Ensure footer spans entire viewport width */
 
 }
-
 
 .btnBlock {
 width: 100%; /* Adjust width as needed */

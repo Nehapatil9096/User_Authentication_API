@@ -1,16 +1,17 @@
 /* Invoice.module.css */
-body {
-  background-color: #fff; /* Set the background color of the entire page to white */
-}
-
 .container {
   height: 100vh; /* Set height to full viewport height */
   overflow-y: auto; /* Enable vertical scrolling */
   background-color: #ffffff;
   overflow-x: hidden; /* Prevent horizontal scrolling */
   width: 100vw;
+  font-family: "Roboto", sans-serif; /* Use font-family property */
 
-  }
+}
+/* Prevent horizontal scrolling */
+body {
+  overflow-x: hidden;
+}
   .home {
     max-width: 100%; /* Adjust to fit the screen */
     margin: 0 auto;
@@ -21,16 +22,36 @@ body {
     display: flex;
     align-items: center;
     justify-content: space-between; /* Align left and right sections */
-  
     background-color: #2e0052;
     color: white;
-    height: 55px; /* Adjust height as needed */
+    height: 50px; /* Adjust height as needed */
     padding: 0 50px; /* Add padding to the header */
-  
+    margin-bottom: 20px; /* Add margin bottom to match the spacing */
   }
   .headerContent {
     margin: 0 auto; /* Center horizontally */
-    font-size: 20px;
+    font-family: "Roboto", sans-serif; /* Use font-family property */
+    align-items: center;
+  }
+  
+  .leftSection {
+    display: flex;
+    align-items: center;
+    margin-right: 20px; /* Add margin between phone call icon/number and other content */
+  }
+  .logoutButton {
+    margin-right: 20px; /* Adjust margin as needed */
+  
+  }
+  
+  
+  .logoutButton button {
+    background-color: transparent;
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-size: 17px;
+  
   }
   .navbar {
     display: flex;
@@ -121,7 +142,7 @@ body {
     width: 100%;
     color: white;
   padding-top: 10px;
-  margin-top: -40px;
+  margin-top: -60px;
   }
   
 .menubar .leftSection {
@@ -130,7 +151,7 @@ body {
 }
 
 .menubar .leftSection img {
-  width: 220px; /* Adjust as needed */
+  width: 190px; /* Adjust as needed */
   margin-right: 10px;
   
 }
@@ -201,7 +222,7 @@ menuItem {
   display: inline-block; /* Ensure the button behaves as an inline-block element */
   background-color: #2E0052;
   color: white; /* Set the text color of the button */
-  padding: 15px 70px;
+  padding: 12px 50px;
   border: none; /* Remove border */
   border-radius: 15px;
   text-decoration: none; /* Remove default link underline */
@@ -219,8 +240,10 @@ menuItem {
 
   .footerContent {
     margin: 0 auto; /* Center horizontally */
-    font-size: 23px;
-    font-weight: 500;
+    font-size: 22px;
+  font-weight: 400;
+  font-family: "Roboto", sans-serif; /* Use font-family property */
+
   }
   .footer {
     position: fixed; /* Fixed positioning */
@@ -230,7 +253,7 @@ menuItem {
     color: white; /* Set text color to white */
     display: flex;
     align-items: center; /* Center vertically */
-    height: 77px; /* Adjust height as needed */
+    height: 60px; /* Adjust height as needed */
     width: 100%; /* Ensure footer spans entire viewport width */
   
   }

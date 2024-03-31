@@ -130,13 +130,7 @@ margin-left: 20px;
   font-family: "Roboto", sans-serif; /* Use font-family property */
 margin-left: 10px;
 }
-.menuItem span {
-  color: white; /* Set the color of the text to green */
-  padding: 10px 10px;
-  width: 200px;
-  font-style: normal;
-  font-weight: normal;
-}
+
 
 .rightSection {
   display: flex;
@@ -201,7 +195,7 @@ margin-left: 10px;
 /*USER PROFILE ---*/
 .popup {
   position: absolute;
-  top: 187px; /* Position the popup below the button */
+  top: 160px; /* Position the popup below the button */
   right: 10px; /* Adjust the horizontal position */
   background-color: white;
   border: 1px solid #ccc;
@@ -210,25 +204,35 @@ margin-left: 10px;
   z-index: 1000;
   color: black; /* Adjust as needed */
   box-shadow: 0 8px 12px rgba(0, 0, 0, 0.1); /* Add shadow */
-  font-size: 16px; /* Make text bigger */
+  font-size: 18px; /* Make text bigger */
   font-weight: bold; /* Make text bold */
   width: 200px; /* Adjust width as needed */
   font-family: 'Roboto', sans-serif; /* Use Roboto font */
   display: flex; /* Use flexbox */
   flex-direction: column; /* Arrange content vertically */
   align-items: center; /* Center content horizontally */
-  font-family: "Roboto", sans-serif; /* Use font-family property */
+  height: 60px;
 
 }
 
 .separator {
-  width: 120%;
-  height: 1px;
-  background-color: #DDDDDD;
-  margin: 10px 0;
+  margin: 10px 0; /* Adjust margin as needed */
+  border-top: 1px solid #ccc; /* Separator line color and thickness */
+  width:237px;
+}
+.menuItem span {
+  padding: 5px 10px;
+  width: 200px;
+  font-family: "Roboto", sans-serif; /* Use font-family property */
+  font-size: 18px; /* Make text bigger */
+  font-weight: bold; /* Make text bold */
+  display: flex; /* Use flexbox */
+  flex-direction: column; /* Arrange content vertically */
+  align-items: center; /* Center content horizontally */
+
 }
 
-/*USER PROFILE ---*/
+/*USER PROFILE -ENDS--*/
 
 
 /*MENU bar ends-------------------------------------------*/
@@ -803,4 +807,21 @@ font-weight: 500;
 
 .detailsButton:hover {
   background-color: #4a0072;
+}
+
+.loginLink{
+  font-family: "Roboto", sans-serif;
+  font-size: 20px;
+font-weight: 500;
+text-decoration: none;
+color: #FFFFFF;
+}
+
+.signupLink{
+  font-family: "Roboto", sans-serif;
+  font-size: 20px;
+font-weight: 500;
+text-decoration: none;
+color: #FFFFFF;
+
 }

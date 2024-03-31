@@ -135,15 +135,18 @@ const Checkout = () => {
     <div className={styles.checkoutContainer}>
       {/* Header */}
       <header className={styles.header}>
-      <div className={styles.leftSection}>
-          <img src={phoneCallIcon} alt="Phone call" />
-          <span>912121131313</span>
-        </div>
-        <div className={styles.headerContent}>
-        <span>Get 50% off on selected items&nbsp; | &nbsp; Shop Now</span>
-        
-        </div>
-      </header>
+  <div className={styles.leftSection}>
+    <img src={phoneCallIcon} alt="Phone call" />
+    <span>912121131313</span>
+  </div>
+  <div className={styles.headerContent}>
+    <span>Get 50% off on selected items&nbsp; ⏐ &nbsp; Shop Now</span>
+  </div>
+  <div className={styles.logoutButton}>
+    <button>Logout</button>
+  </div>
+</header>
+
       <div className={styles.home}>
 
            {/* Menu Bar */}
@@ -154,10 +157,10 @@ const Checkout = () => {
             <img src={projectLogo} alt="Project Logo" />
           </div>
           <div className={styles.menuItem}>
-            <Link to="/home"className={styles.homeLink}>Home</Link>
+            <Link to="/home"className={styles.homeLink}>Home/ Checkout</Link>
           </div>
           <div className={styles.menuItem}>
-          <Link to="/invoices" className={styles.invoiceLink}>Invoice</Link>
+          <Link to="/invoices" className={styles.invoiceLink}></Link>
           </div>
         </div>
       <div className={styles.rightSection}>    
@@ -259,8 +262,11 @@ const Checkout = () => {
             <hr />
 
             <h3>Order Summary</h3>
-            <p>Items Total: ₹{totalAmount.toFixed(2)}</p>
-            <p>Delivery Amount: ₹45</p>
+            <div className={styles.totalAmount}>
+  <p className={styles.greyText}>Items Total: ₹{totalAmount.toFixed(2)}</p>
+  <p className={styles.greyText}>Delivery Amount: ₹45</p>
+</div>
+
             <hr />
             <h3 className={styles.orderTotal}>Order Total: ₹{(totalAmount + 45).toFixed(2)}</h3>
           </div>

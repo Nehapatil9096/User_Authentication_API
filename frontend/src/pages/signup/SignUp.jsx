@@ -67,7 +67,7 @@ const SignUp = () => {
             </div>
  
             <div className={styles.buttonStack}>
-            <p className={styles.noAccountText}>
+            <p className={styles.noAccountText1}>
 
 By enrolling your mobile phone number, you consent to receive automated security notifications via text message from Musicart. Message and data rates may apply.
 
@@ -75,6 +75,8 @@ By enrolling your mobile phone number, you consent to receive automated security
               <button className={styles.btnBlock} disabled={loading}>
                 {loading ? <span className={`${styles.loading} ${styles.loadingSpinner}`}></span> : "Continue"}
               </button>
+              <p className={styles.noAccountText}>By continuing, you agree to Musicart privacy notice and conditions of use.</p>
+
             </div>
           </div>
         </form>

@@ -1,12 +1,5 @@
-.container {
-    margin-top: auto;
-}
-
 .flex {
     display: flex;
-}
-
-.itemsCenter {
     align-items: center;
 }
 
@@ -16,24 +9,13 @@
     cursor: pointer;
 }
 
-.icon {
-    width: 1.5rem;
-    height: 1.5rem;
-    color: blue;
-}
-
-.flipHorizontal {
-    transform: scaleX(-1);
-}
-
 .text {
-    color: red;
+    color:#000000;
 }
 
 .loading {
     display: inline-block;
 }
-
 
 .popup {
     position: fixed;

@@ -37,15 +37,18 @@ const Invoice = () => {
 
   return (
     <div className={styles.container}>
-      <header className={styles.header}>
-        <div className={styles.leftSection}>
-          <img src={phoneCallIcon} alt="Phone call" />
-          <span>912121131313</span>
-        </div>
-        <div className={styles.headerContent}>
-          <span>Get 50% off on selected items&nbsp; | &nbsp; Shop Now</span>
-        </div>
-      </header>
+         <header className={styles.header}>
+  <div className={styles.leftSection}>
+    <img src={phoneCallIcon} alt="Phone call" />
+    <span>912121131313</span>
+  </div>
+  <div className={styles.headerContent}>
+    <span>Get 50% off on selected items&nbsp; ⏐ &nbsp; Shop Now</span>
+  </div>
+  <div className={styles.logoutButton}>
+    <button>Logout</button>
+  </div>
+</header>
       <div className={styles.home}>
 
       <div className={styles.menubar}>
@@ -54,10 +57,10 @@ const Invoice = () => {
             <img src={projectLogo} alt="Project Logo" />
           </div>
           <div className={styles.menuItem}>
-            <Link to="/home" className={styles.homeLink}>Home</Link>
+            <Link to="/home" className={styles.homeLink}>Home/ Invoice</Link>
           </div>
           <div className={styles.menuItem}>
-            <Link to="/invoices" className={styles.invoiceLink}>Invoice</Link>
+            <Link to="/invoices" className={styles.invoiceLink}></Link>
           </div>
         </div>
         <div className={styles.rightSection}>
