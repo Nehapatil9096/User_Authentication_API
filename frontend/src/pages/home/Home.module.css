@@ -4,6 +4,7 @@
   overflow-y: auto; /* Enable vertical scrolling */
   background-color: #ffffff;
   overflow-x: hidden; /* Prevent horizontal scrolling */
+  width: 100vw;
 }
 /* Prevent horizontal scrolling */
 body {
@@ -506,11 +507,10 @@ menuItem {
 
 .feedbackPopup {
   position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.5);
+  bottom: 170px; /* Adjust this value to move the popup up or down */
+  right: 20px;
+  width: 300px; /* Adjust the width of the popup as needed */
+  height: 300px; /* Adjust the height of the popup as needed */
   display: flex;
   justify-content: center;
   align-items: center;
@@ -522,26 +522,54 @@ menuItem {
   padding: 20px;
   border-radius: 5px;
   z-index: 1;
+  height: 250px;
+  box-shadow: 0px 0px 20px 0px #0000005E;
+border-radius: 15px;
+font-family: 'Inter', sans-serif;
+font-weight: 400;
+
 }
 
-.popupContent select,
-.popupContent textarea {
+.popupContent select{
   width: 100%;
-  margin-bottom: 10px;
+  margin-bottom: 15px;
+  border: 1px solid #919191;
+  font-family: 'Inter', sans-serif;
+  border-radius: 5px;
+  color: 
+  #919191;
+  height: 48px;
+font-size: 13px;
+background-color: #F3F3F3;
 }
+.popupContent textarea{
+  width: 100%;
+  height: 100px;
+  margin-bottom: 10px;
+  border: 1px solid #919191;
+  font-family: 'Inter', sans-serif;
+  font-weight: 400;
+  border-radius: 5px;
+  background-color: #F3F3F3;
 
+}
 .popupContent button {
   padding: 10px 20px;
-  background-color: #3498db;
+  background-color:  #2E0052;
   color: #fff;
   border: none;
-  border-radius: 5px;
+  border-radius: 25px;
   cursor: pointer;
+margin-left: 100px;
+margin-top: -6px;
+width: 100px;
 }
 
 .popupContent button:hover {
   background-color: #2980b9;
 }
+
+
 /*FEEDBACK button ends-----------------------------------------*/
 
 /*PRODUCT view starts-----------------------------------------*/

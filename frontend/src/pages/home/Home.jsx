@@ -354,15 +354,16 @@ const handleAddToCart = (event, product) => {
         </div>
         {showFeedbackPopup && (
           <div  className={styles.feedbackPopup}>
-            <div ref={feedbackPopupRef} className={styles.popupContent}>
-              <select value={feedbackType} onChange={(e) => setFeedbackType(e.target.value)} required>
-                <option value="" disabled>Select type of feedback</option>
+<div ref={feedbackPopupRef} className={styles.popupContent}>
+      <b>Type of feedback:</b> {/* Added text */}              <select value={feedbackType} onChange={(e) => setFeedbackType(e.target.value)} required>
+                <option value="" disabled>Choose the type</option>
                 <option value="Bugs">Bugs</option>
                 <option value="Feedback">Feedback</option>
                 <option value="Query">Query</option>
               </select>
+              <b>Feedback </b>
               <textarea
-                placeholder="Enter your feedback"
+                placeholder="Type your feedback"
                 value={feedbackText}
                 onChange={(e) => setFeedbackText(e.target.value)}
                 required

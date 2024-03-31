@@ -20,49 +20,77 @@ body {
   padding-top: 15px;
   padding-bottom: 15px;
   padding-left: 15px;
-  padding-right: 15px;
-  
+  padding-right: 15px; 
 }
 
-
 .logo{
-margin-left: 253px;
+margin-left: 165px;
 width: 150px;
-margin-top: -150px;
-margin-bottom: 70px;
+margin-top: 0px;
+margin-bottom: 100px;
+padding-top: 30px;
+}
+.lineContainer{
+  margin-top: -50px;
 }
 .inputLabel {
   margin-bottom: 5px; /* Reduce the margin between input labels */
   font-family: "Roboto", sans-serif;
+  font-weight: 500;
   
   }
 .noAccountText{
   font-size: 12.5px;
 font-family: "Roboto", sans-serif;
-
+font-weight: 400;
 }
+
+
+.groups,
+.btnBlock1 {
+  margin: 0 auto; /* Center horizontally */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
 .groups {
   display: flex;
   flex-direction: column;
   justify-content: center; /* Center content vertically */
   align-items: center; /* Center content horizontally */
-  width: 60%;
+  width: 78%;
   margin-top: -40px; /* Adjust margin as needed */
   border: 2px solid #D9D9D9; /* Add border style */
   padding: 10px; /* Add padding for spacing inside the border */
   border-radius: 15px;
-  margin-left: 140px;
+  margin-left: 40px;
+  margin-bottom: 0px;
 
 }
-/* Style for the container of the text */
-/* Style for the container of the text */
+.btnBlock1{
+  width: 82%; /* Adjust width as needed */
+  height: 40px; /* Adjust height as needed */
+  background-color: #ffffff; /* Set background color */
+  color: white; /* Set text color */
+  border: 2px solid #D9D9D9; /* Add border style */
+  border-radius: 8px; /* Add border radius for rounded corners */
+  font-size: 16px; /* Adjust font size as needed */
+  cursor: pointer; /* Change cursor to pointer on hover */
+  transition: background-color 0.3s; /* Add smooth transition */
+  margin-left: 40px;
+  color:black;
+margin-top: 20px;
+font-family: "Roboto", sans-serif;
+font-weight: 400;
+margin-bottom: 100px;
+}
 .newToMusicartContainer {
   position: relative; /* Required for absolute positioning of pseudo-elements */
   text-align: center; /* Center text horizontally */
+  
 }
-
-
-
 
 .input-container {
   width: 100%; /* Adjust width as needed */
@@ -70,8 +98,10 @@ font-family: "Roboto", sans-serif;
 }
 .heading{
   font-family: "Roboto", sans-serif;
-  font-size: 25px;
-  margin-top: 30px;
+  font-size: 35px;
+  margin-top: 10px;
+  font-weight: 400;
+
 }
 .input {
   width: 100%; /* Adjust width as needed */
@@ -103,35 +133,19 @@ font-family: "Roboto", sans-serif;
 .btnBlock:hover {
   background-color: #2e0052; /* Change background color on hover */
 }
-.btnBlock1{
-  width: 65%; /* Adjust width as needed */
-  height: 40px; /* Adjust height as needed */
-  background-color: #ffffff; /* Set background color */
-  color: white; /* Set text color */
-  border: 1px solid #ccc; /* Add border style */
-  border-radius: 5px; /* Add border radius for rounded corners */
-  font-size: 16px; /* Adjust font size as needed */
-  cursor: pointer; /* Change cursor to pointer on hover */
-  transition: background-color 0.3s; /* Add smooth transition */
-  margin-left: 140px;
-  color:black;
-margin-top: 20px;
-font-family: "Roboto", sans-serif;
-
-
-}
-/* login.module.css */
 
 .lineContainer {
   display: flex;
   align-items: center;
-  margin-top: 20px; /* Adjust as needed */
-  margin-left: 130px;
+  margin-top: 0px; /* Adjust as needed */
+  margin-left: 30px;
+  margin-bottom: 0px;
+  padding-top: 20px;
 
 }
 
 .lineImage1 {
-  width: 118px; /* Adjust the width of the line image */
+  width: 135px; /* Adjust the width of the line image */
   height: 2px; /* Maintain aspect ratio */
   margin: 0 10px; /* Adjust the margin around the line image */
 }
@@ -141,13 +155,17 @@ font-family: "Roboto", sans-serif;
   font-weight: bold; /* Adjust as needed */
   font-family: "Roboto", sans-serif;
   padding: 0 10px; /* Add padding around the text */
+  font-weight: 400;
+  font-family: "Roboto", sans-serif;
+}
+.Link1
+{  text-decoration: none;
 }
 
 .footerContent {
   font-size: 18px;
   font-weight: 500;
   font-family: "Roboto", sans-serif;
-margin-left: 635px;
 }
 .footer {
   position: fixed; /* Fixed positioning */
@@ -159,11 +177,9 @@ margin-left: 635px;
   align-items: center; /* Center vertically */
   height: 50px; /* Adjust height as needed */
   width: 100%; /* Ensure footer spans entire viewport width */
+  justify-content: center;
 
 }
-
-
-/* login.module.css */
 
 /* Define styles for desktop view */
 @media (min-width: 1024px) {
@@ -205,7 +221,9 @@ margin-left: 635px;
   /* Update .noAccountText */
   .noAccountText {
       font-size: 14px; /* Adjust font size for smaller screens */
-  }
+      font-weight: 400;
+      font-family: "Roboto", sans-serif;
+    }
   
   .headingmob{
 font-family: sans-serif ;
@@ -232,10 +250,10 @@ color: #2e0052;
       margin-bottom: 20px; /* Adjust margin bottom for smaller screens */
   }
   
-  /* Update .heading */
   .heading {
       font-size: 24px; /* Adjust font size for smaller screens */
       margin-top: 20px; /* Adjust margin top for smaller screens */
+      font-weight: 400;
   }
   
   /* Update .input */

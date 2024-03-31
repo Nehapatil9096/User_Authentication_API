@@ -20,6 +20,7 @@ const userSchema = new Schema({
   },
   mobileNumber: {
     type: String,
+    required: true,
   },
   
   cart: [

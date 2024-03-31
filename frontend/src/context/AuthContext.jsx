@@ -7,7 +7,7 @@ export const useAuthContext = () => {
   return useContext(AuthContext);
 };
 export const AuthContextProvider = ({ children }) => {
-  const [authUser, setAuthUser] = useState(JSON.parse(localStorage.getItem("chat-user")) || null);
+  const [authUser, setAuthUser] = useState(JSON.parse(localStorage.getItem("user")) || null);
 
   // Ensure setAuthUser is passed as part of the context value
   const contextValue = {
@@ -16,27 +16,10 @@ export const AuthContextProvider = ({ children }) => {
     setAuthUserData: (userData) => {
       console.log("Incoming userData:", userData);
 
-      // Merge existing cards with new cards based on unique identifier (_id)
-      const mergedCards = authUser.cards ? [...authUser.cards] : [];
-
-      if (userData.cards && Array.isArray(userData.cards)) {
-        userData.cards.forEach((newCard) => {
-          const existingCardIndex = mergedCards.findIndex((card) => card._id === newCard._id);
-
-          if (existingCardIndex !== -1) {
-            // Replace existing card with new card
-            mergedCards[existingCardIndex] = newCard;
-          } else {
-            // Add new card to the array
-            mergedCards.push(newCard);
-          }
-        });
-      }
-
       // Update authUser state and localStorage
       const updatedUser = { ...authUser, cards: mergedCards, ...userData };
       setAuthUser(updatedUser);
-      localStorage.setItem("chat-user", JSON.stringify(updatedUser));
+      localStorage.setItem("user", JSON.stringify(updatedUser));
       console.log("Updated authUser:", updatedUser);
     },
   };
