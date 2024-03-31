@@ -14,8 +14,14 @@ const ProductDetailPage = () => {
   const { productId } = useParams();
   const [product, setProduct] = useState(null);
   const [addedToCart, setAddedToCart] = useState(false); // New state to track if product is added to cart
-  const [selectedImage, setSelectedImage] = useState(null);
+  const [selectedImage, setSelectedImage] = useState(0);
+
+  const [isMainImageLarge, setIsMainImageLarge] = useState(true); // Define the state variable
+
   const navigate = useNavigate();
+  const toggleImageSize = () => {
+    setIsMainImageLarge(!isMainImageLarge); // Toggle the value of isMainImageLarge
+  };
 
   useEffect(() => {
     const fetchProductData = async () => {
@@ -114,43 +120,70 @@ const ProductDetailPage = () => {
   </button>
 </div>
 
-          
+        
         </div>
         </div>
         <div className={styles.menuItem}>
       <Link to="/home" className={styles.backToProducts}>Back to Products</Link>
     </div>
-
+{/* Add the product.shortinfo below the "Back to Products" button */}
+<div className={styles.productShortInfo}>
+  <p>{product.shortinfo}</p>
+</div>
     <div className={styles.contentWrapper}>
-        <div className={styles.imagesContainer}>
-          <Carousel showArrows={true} selectedItem={selectedImage}>
-            {product.images.map((image, index) => (
-              <div key={index} onClick={() => setSelectedImage(index)}>
-                <img src={image} alt={`Product ${index + 1}`} 
-                className={index === selectedImage ? styles.mainImage : styles.smallImage} />
-              </div>
-            ))}
-          </Carousel>
-        </div>
+       
+    <div className={styles.imagesContainer}>
+  <div className={styles.mainImage}>
+    <img
+      src={product.images[selectedImage]}
+      alt={`Product ${selectedImage + 1}`}
+      style={{ width: '100%', height: '100%' }}
+      onClick={toggleImageSize}
+    />
+  </div>
+  <div className={styles.smallImages}>
+    {product.images.map((image, index) => (
+      <img
+        key={index}
+        src={image}
+        alt={`Product ${index + 1}`}
+        className={`${styles.smallImage} ${index === selectedImage ? styles.active : ''}`}
+        onClick={() => setSelectedImage(index)}
+      />
+    ))}
+  </div>
+</div>
+
+
+
+ 
+
+
         <div className={styles.productDetailsContainer}>
-          <div className={styles.productDetails}>
-            <h2>{product.name}</h2>
-            <p>{renderStarRating(product.rating)} (50 Customer reviews)</p>
+        <div className={styles.productDetails}>
+  <h2 className={styles.name}>{product.name}</h2>
+  <p>{renderStarRating(product.rating)} (50 Customer reviews)</p>
+  <p className={styles.price}>Price: {product.price}</p>
+  <p className={styles.color}> {product.color} <span>|</span> {product.type}</p>
+  <p>About this item</p>
+  <ul className={styles.aboutList}>
+    {product.about.split('.').filter(Boolean).map((phrase, index) => (
+      <li key={index}>{phrase.trim()}</li>
+    ))}
+  </ul>
+  <p className={styles.available}><strong>Available</strong> - In stock</p>
+  <p className={styles.company}><strong>Brand</strong>- {product.brand}</p>
+  <div className={styles.buttons}>
+  <div className={styles.buttonsContainer}>
+  <button onClick={handleAddToCart} className={styles.cartButton}>Add to Cart</button>
+  <button onClick={handleBuyNow} className={styles.buyNowButton}>Buy Now</button>
+</div>
 
-            <p>Price: {product.price}</p>
-            <p>Color: {product.color}    <span>|</span>     {product.type}</p>
+  </div>
+</div>
 
-            <p>About: {product.about}</p>
-            <p><strong>Available</strong> - In stock</p>
-            <p><strong>Company</strong>- {product.brand}</p>
-
-           
-            <div className={styles.buttons}>
-              <button onClick={handleAddToCart}>Add to Cart</button>
-              <button onClick={handleBuyNow}>Buy Now</button>
-            </div>
-          </div>
         </div>
+
         </div>
         </div>
         {/* Footer */}

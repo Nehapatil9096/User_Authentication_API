@@ -113,10 +113,10 @@ const MyCart = () => {
               <img src={projectLogo} alt="Project Logo" />
             </div>
             <div className={styles.menuItem}>
-              <Link to="/home" className={styles.homeLink}>Home</Link>
+              <Link to="/home" className={styles.homeLink}>Home/View Cart</Link>
             </div>
             <div className={styles.menuItem}>
-              <Link to="/invoices" className={styles.invoiceLink}>Invoice</Link>
+              <Link to="/invoices" className={styles.invoiceLink}></Link>
             </div>
           </div>
           <div className={styles.rightSection}>
@@ -169,11 +169,24 @@ const MyCart = () => {
               <>
                 {cart.length > 0 ? (
                   <>
-                    <p>Total MRP: ₹{totalAmount.toFixed(2)}</p>
-                    <p>Discount on MRP: ₹0</p>
-                    <p>Convenience Fee: ₹45</p>
-                    <div className={styles.priceAmount}>
-                      <h3>Total Amount: ₹{(totalAmount + 45).toFixed(2)}</h3>
+                  
+                  <div className={styles.priceRow}>
+            <p className={styles.priceLabel}>Total MRP:</p>
+            <p className={styles.priceValue}>₹{totalAmount.toFixed(2)}</p>
+          </div>               
+          <div className={styles.priceRow}>
+            <p className={styles.priceLabel}>Discount on MRP:</p>
+            <p className={styles.priceValue}>₹0</p>
+          </div>                  
+          <div className={styles.priceRow}>
+            <p className={styles.priceLabel}>Convenience Fee:</p>
+            <p className={styles.priceValue}>₹45</p>
+          </div>            
+                  <div className={styles.priceAmount}>
+                  <div className={styles.priceRow1}>
+            <p className={styles.priceLabel1}><b>Total Amount:</b></p>
+            <p className={styles.priceValue1}>₹{(totalAmount + 45).toFixed(2)}</p>
+          </div>
                       <Link to="/checkout">
                         <button className={styles.placeOrderButton}>Place Order</button>
                       </Link>
@@ -181,13 +194,22 @@ const MyCart = () => {
                   </>
                 ) : (
                   <>
-                    <p>Total MRP: ₹0</p>
-                    <p>Discount on MRP: ₹0</p>
-                    <p>Convenience Fee: ₹0</p>
-                    <div className={styles.priceAmount}>
-                      <h3>Total Amount: ₹0</h3>
-                      <button onClick={handlePlaceOrder} className={styles.placeOrderButton}>Place Order</button>
-                    </div>
+                   <div className={styles.priceRow}>
+            <p className={styles.priceLabel}>Total MRP:</p>
+            <p className={styles.priceValue}>₹0</p>
+          </div>
+          <div className={styles.priceRow}>
+            <p className={styles.priceLabel}>Discount on MRP:</p>
+            <p className={styles.priceValue}>₹0</p>
+          </div>
+          <div className={styles.priceRow}>
+            <p className={styles.priceLabel}>Convenience Fee:</p>
+            <p className={styles.priceValue}>₹0</p>
+          </div>
+          <div className={styles.priceRow1}>
+            <p className={styles.priceLabel1}>Total Amount:</p>
+            <p className={styles.priceValue1}>₹{(totalAmount + 45).toFixed(2)}</p>
+          </div>
                   </>
                 )}
               </>
@@ -197,7 +219,10 @@ const MyCart = () => {
 
         {/* Total product items and total MRP */}
         <div className={styles.totalItemsMRP}>
-          <p>{cart.length} Items ₹{totalAmount.toFixed(2)}</p>
+          <p>
+            {cart.length} Items 
+            <span>₹{totalAmount.toFixed(2)}</span>
+          </p>
         </div>
       </div>
     </div>

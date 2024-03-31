@@ -9,6 +9,7 @@ import feedbackIcon from "/feedback.png";
 import phoneCallIcon from "/ph_phone-call-light.png";
 import projectLogo from "/project_logo.png";
 import image from "/image.png"; // Update the path accordingly
+import { toast } from 'react-toastify';
 
 
 const Home = () => {
@@ -25,10 +26,11 @@ const Home = () => {
   const [feedbackType, setFeedbackType] = useState("");
   const [feedbackText, setFeedbackText] = useState("");
   const [showFeedbackPopup, setShowFeedbackPopup] = useState(false);
-  const [feedbackSubmitted, setFeedbackSubmitted] = useState(false);
   const navigate = useNavigate();
   const [username, setUsername] = useState('');
   const [cartCount, setCartCount] = useState(0); // State for cart count
+  const [feedbackTypeEmpty, setFeedbackTypeEmpty] = useState(false);
+  const [feedbackTextEmpty, setFeedbackTextEmpty] = useState(false);
 
   useEffect(() => {
     fetchUserData();
@@ -106,6 +108,12 @@ const Home = () => {
   };
 
   const handleFeedbackSubmit = async () => {
+     // Check if any field is empty
+     if (!feedbackType || !feedbackText) {
+      if (!feedbackType) setFeedbackTypeEmpty(true);
+      if (!feedbackText) setFeedbackTextEmpty(true);
+      return;
+    }
     try {
       const response = await fetch("/api/users/feedback", {
         method: "POST",
@@ -127,10 +135,34 @@ const Home = () => {
       } else {
         console.error("Failed to submit feedback");
       }
+
+      setShowFeedbackPopup(false);
+      setFeedbackType("");
+      setFeedbackText("");
+      setFeedbackTypeEmpty(false); // Reset error state for type
+      setFeedbackTextEmpty(false); // Reset error state for text
+
+      // Show toast notification
+      toast.success("Feedback submitted successfully!", {
+        position: "top-right",
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      });
     } catch (error) {
       console.error("Error submitting feedback:", error);
     }
   };
+
+  const openFeedbackPopup = () => {
+    setShowFeedbackPopup(true);
+    setFeedbackTypeEmpty(false); // Reset error state for type
+    setFeedbackTextEmpty(false); // Reset error state for text
+  };
+
   const handleViewCart= () => {
       navigate('/mycart');
   };
@@ -349,27 +381,36 @@ const handleAddToCart = (event, product) => {
        
 
         {/* Feedback Popup */}
-        <div className={styles.feedbackButton} onClick={() => setShowFeedbackPopup(true)}>
+        <div className={styles.feedbackButton} onClick={() => openFeedbackPopup()}>
           <img src={feedbackIcon} alt="Feedback" />
         </div>
         {showFeedbackPopup && (
           <div  className={styles.feedbackPopup}>
-<div ref={feedbackPopupRef} className={styles.popupContent}>
-      <b>Type of feedback:</b> {/* Added text */}              <select value={feedbackType} onChange={(e) => setFeedbackType(e.target.value)} required>
+           <div ref={feedbackPopupRef} className={styles.popupContent}>
+           <b>Type of feedback</b> {/* Added text */}             
+            <select value={feedbackType} 
+            onChange={(e) => setFeedbackType(e.target.value)} 
+            required
+            className={feedbackTypeEmpty ? styles.errorBorder : ''}
+            >
                 <option value="" disabled>Choose the type</option>
                 <option value="Bugs">Bugs</option>
                 <option value="Feedback">Feedback</option>
                 <option value="Query">Query</option>
               </select>
+              {feedbackTypeEmpty && <p className={styles.errorText}>* Required Field</p>}
+
               <b>Feedback </b>
               <textarea
                 placeholder="Type your feedback"
                 value={feedbackText}
                 onChange={(e) => setFeedbackText(e.target.value)}
                 required
+                className={feedbackTextEmpty ? styles.errorBorder : ''}
               />
+              {feedbackTextEmpty && <p className={styles.errorText}>* Required Field</p>}
               <button onClick={handleFeedbackSubmit}>Submit</button>
-              {feedbackSubmitted && <p>Feedback submitted successfully!</p>}
+            
             </div>
           </div>
         )}
@@ -415,9 +456,7 @@ const handleAddToCart = (event, product) => {
 
 
 
-        <div className={styles.logoutButtonContainer}>
-          <LogoutButton />
-        </div>
+       
       </div>
 
       {/* Footer */}

@@ -64,7 +64,7 @@ body {
   padding-bottom: 20px;
   padding-left: 60px;
   padding-right: 60px;
-  
+  background-color: #ffffff;
 }
 
 /*MENU bar starts------------------------------------------*/
@@ -82,17 +82,17 @@ body {
   padding: 20px 20px;
 padding-bottom:  20px;
 margin-right: 10px;
-margin-top: 0px;
-margin-bottom:50px;
+margin-top: -30px;
+margin-bottom:70px;
 }
 
 .menubar .leftSection img {
-  width: 220px; /* Adjust as needed */
-  margin-right: 10px; 
+  width: 197px; /* Adjust as needed */
+  margin-right:-10px; 
 }
 
 .menubar .leftSection a {
-  margin-right: 20px;
+  margin-right:-10px;
   color: rgb(27, 6, 6);
   text-decoration: none;
 }
@@ -106,7 +106,7 @@ menuItem {
 }
 
 .menuItem img {
-  width: 30px;
+  width: 20px;
   margin-right: 10px;
 }
 /* Styles for the "Home" button */
@@ -114,18 +114,21 @@ menuItem {
   color: rgb(2, 2, 30); /* Set text color to blue */
   text-decoration: none; /* Remove underline */
   padding: 10px 20px; /* Add padding */
-  font-size: 25px;
+  font-size: 22px;
   font-weight: 500;
+  font-family: "Roboto", sans-serif; /* Use font-family property */
+margin-left: 20px;
 }
 /* Styles for the "Invoice" button */
 .invoiceLink{
   color: rgb(2, 2, 30); /* Set text color to blue */
   text-decoration: none; /* Remove underline */
   padding: 0px -30px; /* Add padding */
-  font-size: 25px;
+  font-size: 22px;
   font-weight: 500;
   margin-right: 300px;
-
+  font-family: "Roboto", sans-serif; /* Use font-family property */
+margin-left: 10px;
 }
 .menuItem span {
   color: white; /* Set the color of the text to green */
@@ -188,9 +191,12 @@ menuItem {
   font-weight: bold;
   color: black;
   margin-left: 10px;
+  margin-right: 35px;
   margin-top: 20px;
   cursor: pointer; /* Add cursor pointer to indicate it's clickable */
   font-size: 30px;
+  font-family: "Roboto", sans-serif; /* Use font-family property */
+
 }
 /*USER PROFILE ---*/
 .popup {
@@ -211,6 +217,8 @@ menuItem {
   display: flex; /* Use flexbox */
   flex-direction: column; /* Arrange content vertically */
   align-items: center; /* Center content horizontally */
+  font-family: "Roboto", sans-serif; /* Use font-family property */
+
 }
 
 .separator {
@@ -237,7 +245,7 @@ menuItem {
   /* Styles for the offer text */
   position: absolute; /* Position the text absolutely */
 
-  top: 49%; /* Adjust top position to vertically center */
+  top: 25%; /* Adjust top position to vertically center */
   left: 27%; /* Align to the left side of the container */
   transform: translate(-50%, -50%); /* Center the text horizontally and vertically */
   width: calc(65% - 300px); /* Set width to fill remaining space beside the offer image */
@@ -274,7 +282,7 @@ menuItem {
   position: absolute; /* Position absolutely relative to the container */
 
   /* Styles for Image1 */
-  top: -370px; /* Adjust top position as needed */
+  top: -375px; /* Adjust top position as needed */
   right: 650px; /* Align to the right side of the container */
   width: 460px; /* Adjust width as needed */
   height: auto; /* Maintain aspect ratio */
@@ -296,9 +304,9 @@ menuItem {
   margin-bottom: 20px;
   padding-left: 70px; /* Adjust the left padding to make space for the icon */
   color:  #666666;
-  font-size: 30px;
+  font-size: 25px;
   font-weight: 400;
-  height: 80px;
+  height: 50px;
 }
 
 .searchIcon {
@@ -306,7 +314,7 @@ menuItem {
   left: 10px; /* Adjust the position of the icon */
   top: 40%; /* Center vertically */
   transform: translateY(-50%); /* Adjust for vertical centering */
-  width: 50px; /* Adjust width as needed */
+  width: 40px; /* Adjust width as needed */
   height: auto; /* Maintain aspect ratio */
   padding-left: 10px;
 }
@@ -346,9 +354,11 @@ menuItem {
 
 /* Styles for the list icon */
 .listIcon {
-  width: 47px; /* Adjust width as needed */
-  height: 47px; /* Adjust height as needed */
+  width: 51px; /* Adjust width as needed */
+  height: 55px; /* Adjust height as needed */
   /* Add any other styles specific to the list icon */
+  margin-left: -23px;
+  
 }
 
 
@@ -370,7 +380,7 @@ menuItem {
   display: flex; /* Set to display flex */
   align-items: center; /* Align items in the same line */
   margin-right: 250px;
-
+margin-left: 50px;
 }
 .featuredSection{
   width: 270px; /* Adjust width for the first dropdown */
@@ -503,6 +513,8 @@ menuItem {
 .feedbackButton img {
   width: 170px; /* Adjust the width of the image */
   height: 170px; /* Adjust the height of the image */
+  margin-right: 40px;
+
 }
 
 .feedbackPopup {
@@ -551,7 +563,6 @@ background-color: #F3F3F3;
   font-weight: 400;
   border-radius: 5px;
   background-color: #F3F3F3;
-
 }
 .popupContent button {
   padding: 10px 20px;
@@ -569,7 +580,13 @@ width: 100px;
   background-color: #2980b9;
 }
 
-
+.errorText{
+margin-top: -14px;
+  color: #FF0000;
+}
+.popupContent .errorBorder {
+  border: 1px solid red;
+}
 /*FEEDBACK button ends-----------------------------------------*/
 
 /*PRODUCT view starts-----------------------------------------*/
@@ -611,6 +628,9 @@ width: 100px;
   padding: 0px; /* Padding for product details */
   font-family: "Roboto", sans-serif;
   margin-bottom: 30px;
+  font-family: "Roboto", sans-serif; /* Use font-family property */
+ margin-left: 20px;
+ width: 400px;
 }
 
 .gridView .productName {
@@ -624,10 +644,15 @@ width: 100px;
 .gridView .productPrice {
   margin: 5px 0; /* Adjust margin as needed */
   font-family: "Roboto", sans-serif;
+  font-size: 20px; /* Adjust font size as needed */
+font-weight: 550;
 }
 
 .gridView .productInfo {
   margin: 0px 0; /* Adjust margin as needed */
+  font-size: 20px; /* Adjust font size as needed */
+  font-weight: 550;
+
 }
 
 .gridView .cartButton {
@@ -638,12 +663,13 @@ width: 100px;
   background: transparent;
   border: none;
   cursor: pointer;
-  z-index: 2; /* Ensure the icon appears above the image */
+  z-index: 0; /* Ensure the icon appears above the image */
 }
 
 .gridView .cartIcon {
   width: 50px; /* Adjust size of the cart icon */
   height: auto; /* Maintain aspect ratio */
+  z-index: 1;
 }
 
 
@@ -752,12 +778,14 @@ font-weight: 500;
   background: transparent;
   border: none;
   cursor: pointer;
-  z-index: 2; /* Ensure the icon appears above the image */
+  z-index: 0; /* Ensure the icon appears above the image */
 }
 
 .listView .cartIcon {
   width: 50px; /* Adjust size of the cart icon */
   height: auto; /* Maintain aspect ratio */
+  z-index: 1;
+
 }
 .detailsButton {
   width: 150px;
