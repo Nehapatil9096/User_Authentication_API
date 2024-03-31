@@ -71,15 +71,16 @@ body::-webkit-scrollbar-thumb:hover {
 
 .smallImages {
   display: flex;
-  justify-content:space-around;
+  justify-content:space-between;
+  align-items: flex-start;
   margin-top: 10px; /* Example margin between main image and small images */
-  width: 400px; /* Example width for the main image */
+  width: 435px; /* Example width for the main image */
 
 }
 
 .smallImage {
-  width: 80px; /* Example width for small images */
-  height: 80px; /* Example height for small images */
+  width: 120px; /* Example width for small images */
+  height: 120px; /* Example height for small images */
   margin-right: 10px; /* Example margin between small images */
   cursor: pointer; /* Change cursor to pointer on hover */
   border: 3px solid #000000; /* Example border */
