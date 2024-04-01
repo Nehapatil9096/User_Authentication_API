@@ -5,6 +5,8 @@ import styles from './InvoiceDetailsPage.module.css'; // Import CSS styles
 import { Link } from 'react-router-dom';
 import phoneCallIcon from "/ph_phone-call-light.png";
 import projectLogo from "/project_logo.png";
+import LogoutButton from "/src/components/LogoutButton";
+
 
 const InvoiceDetails = () => {
   const { invoiceId } = useParams();
@@ -86,6 +88,9 @@ const InvoiceDetails = () => {
         <div className={styles.headerContent}>
           <span>Get 50% off on selected items&nbsp; | &nbsp; Shop Now</span>
         </div>
+        <div className={styles.logoutButton}>
+  <LogoutButton /> 
+  </div>
       </header>
       <div className={styles.home}>
 

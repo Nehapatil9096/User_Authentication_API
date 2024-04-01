@@ -143,7 +143,7 @@ const Checkout = () => {
     <span>Get 50% off on selected items&nbsp; ⏐ &nbsp; Shop Now</span>
   </div>
   <div className={styles.logoutButton}>
-    <button>Logout</button>
+  <LogoutButton /> 
   </div>
 </header>
 

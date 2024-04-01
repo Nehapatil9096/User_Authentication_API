@@ -97,12 +97,26 @@ margin-bottom:70px;
   text-decoration: none;
 }
 
+menuItem1 {
+  display: flex;
+  align-items: center;
+  background-color: #1D7000; /* Set the background color to green */
+  padding: 10px 20px;
+  border-radius: 5px;
+  
+}
+
+.menuItem1 img {
+  width: 20px;
+  margin-right: 10px;
+}
 menuItem {
   display: flex;
   align-items: center;
-  background-color: green; /* Set the background color to green */
+  background-color: #1D7000; /* Set the background color to green */
   padding: 10px 20px;
   border-radius: 5px;
+  
 }
 
 .menuItem img {
@@ -145,8 +159,10 @@ margin-left: 10px;
   background-color: green;
   color: white;
   border: none;
-  padding: 10px 20px; /* Adjust padding as needed */
-  border-radius: 35px;
+  padding-left: 20px;
+  padding-right: 0px;
+  padding-top: 10px;
+  padding-bottom: 10px;  border-radius: 35px;
   cursor: pointer;
   width: 210px;
   height: 50px;
@@ -186,7 +202,7 @@ margin-left: 10px;
   color: black;
   margin-left: 10px;
   margin-right: 35px;
-  margin-top: 20px;
+  margin-top: 5px;
   cursor: pointer; /* Add cursor pointer to indicate it's clickable */
   font-size: 30px;
   font-family: "Roboto", sans-serif; /* Use font-family property */
@@ -195,7 +211,7 @@ margin-left: 10px;
 /*USER PROFILE ---*/
 .popup {
   position: absolute;
-  top: 160px; /* Position the popup below the button */
+  top: 148px; /* Position the popup below the button */
   right: 10px; /* Adjust the horizontal position */
   background-color: white;
   border: 1px solid #ccc;
@@ -203,7 +219,7 @@ margin-left: 10px;
   padding: 20px; /* Increase padding for more space */
   z-index: 1000;
   color: black; /* Adjust as needed */
-  box-shadow: 0 8px 12px rgba(0, 0, 0, 0.1); /* Add shadow */
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.3); /* Increased spread and shadow weight */
   font-size: 18px; /* Make text bigger */
   font-weight: bold; /* Make text bold */
   width: 200px; /* Adjust width as needed */
@@ -223,15 +239,37 @@ margin-left: 10px;
 .menuItem span {
   padding: 5px 10px;
   width: 200px;
-  font-family: "Roboto", sans-serif; /* Use font-family property */
   font-size: 18px; /* Make text bigger */
-  font-weight: bold; /* Make text bold */
-  display: flex; /* Use flexbox */
+  font-weight: 500;
+  font-family: "Roboto", sans-serif; /* Use font-family property */
+    display: flex; /* Use flexbox */
   flex-direction: column; /* Arrange content vertically */
   align-items: center; /* Center content horizontally */
 
 }
+.menuItem1 span {
+  padding: 3px 10px;
+  width: 200px;
+  font-size: 18px; /* Make text bigger */
+  font-weight: 600;
+  font-family: "Roboto", sans-serif; /* Use font-family property */
+    display: flex; /* Use flexbox */
+  flex-direction: column; /* Arrange content vertically */
+  align-items: center; /* Center content horizontally */
 
+}
+.logoutButton span {
+  color: black; /* Override the color to black */
+}
+
+.listout  {
+  background-color: transparent;
+  color: white;
+  border: none;
+  cursor: pointer;
+  font-size: 17px;
+  margin-right: 20px; /* Adjust margin as needed */
+}
 /*USER PROFILE -ENDS--*/
 
 
@@ -825,3 +863,5 @@ text-decoration: none;
 color: #FFFFFF;
 
 }
+
+

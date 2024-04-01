@@ -6,6 +6,8 @@ import projectLogo from "/project_logo.png";
 import { Link } from "react-router-dom";
 import axios from 'axios';
 import styles from './ProductDetailPage.module.css';
+import LogoutButton from "/src/components/LogoutButton";
+
 
 const ProductDetailPage = () => {
   const { productId } = useParams();
@@ -13,7 +15,22 @@ const ProductDetailPage = () => {
   const [addedToCart, setAddedToCart] = useState(false);
   const [selectedImage, setSelectedImage] = useState(0);
   const navigate = useNavigate();
+  const [cartCount, setCartCount] = useState(0); // State for cart count
+  const [username, setUsername] = useState('');
 
+  useEffect(() => {
+    fetchUserData(); // Fetch user data when component mounts
+  }, []);
+
+  // Function to fetch user data including username
+  const fetchUserData = async () => {
+    try {
+      const response = await axios.get('/api/users/profile');
+      setUsername(response.data.username); // Set fetched username to state
+    } catch (error) {
+      console.error('Error fetching user data:', error);
+    }
+  };
   useEffect(() => {
     const fetchProductData = async () => {
       try {
@@ -26,6 +43,21 @@ const ProductDetailPage = () => {
 
     fetchProductData();
   }, [productId]);
+
+   
+     // Function to fetch cart count from the server
+     const fetchCartCount = async () => {
+      try {
+        const response = await axios.get('/api/users/cart/count');
+        setCartCount(response.data.count);
+      } catch (error) {
+        console.error('Error fetching cart count:', error);
+      }
+    };
+
+  useEffect(() => {
+    fetchCartCount(); // Fetch initial cart count
+  }, []);
 
   const renderStarRating = (rating) => {
     const stars = [];
@@ -40,6 +72,10 @@ const ProductDetailPage = () => {
   };
 
   const handleAddToCart = () => {
+    if (!username) {
+      navigate('/login');
+      return;
+    }
     if (product) {
       fetch('/api/users/cart/add', {
         method: 'POST',
@@ -52,6 +88,7 @@ const ProductDetailPage = () => {
           if (response.ok) {
             console.log('Product added to cart:', product);
             setAddedToCart(true);
+            setCartCount(prevCount => prevCount + 1); // Increment cart count
           } else {
             console.error('Failed to add product to cart');
           }
@@ -60,7 +97,12 @@ const ProductDetailPage = () => {
     }
   };
 
+
   const handleBuyNow = () => {
+    if (!username) {
+      navigate('/login');
+      return;
+    }
     if (addedToCart) {
       navigate('/mycart');
     } else {
@@ -68,7 +110,6 @@ const ProductDetailPage = () => {
       navigate('/mycart');
     }
   };
-
   const toggleImageSize = (index) => {
     if (index !== 0) {
       const tempImages = [...product.images];
@@ -84,10 +125,20 @@ const ProductDetailPage = () => {
   if (!product) {
     return <div>Loading...</div>;
   }
+  const handleViewCart = () => {
+    if (!username) {
+      navigate('/login');
+      return;
+    }
+    navigate('/mycart');
+  };
+
+
+
 
   return (
     <div className={styles.container}>
-            <header className={styles.header}>
+  <header className={styles.header}>
   <div className={styles.leftSection}>
     <img src={phoneCallIcon} alt="Phone call" />
     <span>912121131313</span>
@@ -96,8 +147,8 @@ const ProductDetailPage = () => {
     <span>Get 50% off on selected items&nbsp; ⏐ &nbsp; Shop Now</span>
   </div>
   <div className={styles.logoutButton}>
-    <button>Logout</button>
-  </div>
+      <LogoutButton /> 
+    </div>
 </header>
       <div className={styles.home}>
         <div className={styles.menubar}>
@@ -105,24 +156,27 @@ const ProductDetailPage = () => {
             <div className={styles.menuItem}>
               <img src={projectLogo} alt="Project Logo" />
             </div>
-            <div className={styles.menuItem}>
-              <Link to="/home"className={styles.homeLink}>Home/{product.name}</Link>
+            <div className={styles.menuItem2}>
+              <Link to="/home"className={styles.homeLink}>Home/ {product.name}</Link>
             </div>
             <div className={styles.menuItem}>
               <Link to="/invoices" className={styles.invoiceLink}></Link>
             </div>
           </div>
           <div className={styles.rightSection}>
-            <div className={styles.menuItem}>
-              <button className={styles.button}>
-                <img src="/cart_menu.png" alt="Cart_Menu" />
-                <span>View Cart</span>
-              </button>
-            </div>
+
+          <div className={styles.menuItem}>
+                {/* View Cart button */}
+                <button className={styles.button} onClick={handleViewCart}>
+                  <img src="/cart_menu.png" alt="Cart_Menu" />
+                  <span>View Cart &nbsp;  {cartCount}</span>
+                </button>
+              </div>
+            
           </div>
         </div>
         <div className={styles.menuItem}>
-          <Link to="/home" className={styles.backToProducts}>Back to Products</Link>
+          <Link to="/" className={styles.backToProducts}>Back to Products</Link>
         </div>
         <div className={styles.productShortInfo}>
           <p>{product.shortinfo}</p>

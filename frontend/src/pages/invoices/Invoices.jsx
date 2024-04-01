@@ -4,10 +4,14 @@ import styles from "/src/pages/invoices/Invoice.module.css";
 import invoiceImage from "/Invoice.png"; // Import the image
 import phoneCallIcon from "/ph_phone-call-light.png";
 import projectLogo from "/project_logo.png";
+import LogoutButton from "/src/components/LogoutButton";
+import { useParams, useNavigate } from 'react-router-dom';
+
 
 const Invoice = () => {
   const [invoices, setInvoices] = useState([]);
   const [username, setUsername] = useState('');
+  const navigate = useNavigate();
 
   useEffect(() => {
     fetchInvoices(); // Call fetchInvoices when the component mounts
@@ -35,6 +39,11 @@ const Invoice = () => {
     }
   };
 
+  const handleViewCart= () => {
+    navigate('/mycart');
+};
+
+
   return (
     <div className={styles.container}>
          <header className={styles.header}>
@@ -46,7 +55,7 @@ const Invoice = () => {
     <span>Get 50% off on selected items&nbsp; ⏐ &nbsp; Shop Now</span>
   </div>
   <div className={styles.logoutButton}>
-    <button>Logout</button>
+  <LogoutButton /> 
   </div>
 </header>
       <div className={styles.home}>
@@ -65,11 +74,12 @@ const Invoice = () => {
         </div>
         <div className={styles.rightSection}>
           <div className={styles.menuItem}>
-            <button className={styles.button}>
-              <img src="/cart_menu.png" alt="Cart_Menu" />
-              <span>View Cart</span>
-            </button>
-          </div>
+                {/* View Cart button */}
+                <button className={styles.button} onClick={handleViewCart}>
+                  <img src="/cart_menu.png" alt="Cart_Menu" />
+                  <span>View Cart </span>
+                </button>
+              </div>
          
         </div>
       </div>

@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import styles from './MyCart.module.css';
 import phoneCallIcon from "/ph_phone-call-light.png";
 import projectLogo from "/project_logo.png";
+import LogoutButton from "/src/components/LogoutButton";
 
 const MyCart = () => {
   const [cart, setCart] = useState([]);
@@ -103,6 +104,9 @@ const MyCart = () => {
         <div className={styles.headerContent}>
           <span>Get 50% off on selected items&nbsp; | &nbsp; Shop Now</span>
         </div>
+        <div className={styles.logoutButton}>
+      <LogoutButton /> 
+    </div>
       </header>
 
       {/* Navigation */}

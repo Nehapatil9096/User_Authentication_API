@@ -223,7 +223,9 @@ const handleAddToCart = (event, product) => {
         .catch(error => console.error('Error adding product to cart:', error));
       }
     };
-
+    const buttonStyle = {
+      color: 'red' // Override the color to red
+    };
   return (
     <div className={styles.container}>
       {/* Header */}
@@ -242,7 +244,15 @@ const handleAddToCart = (event, product) => {
             <span> &nbsp; | &nbsp;</span>
             <Link to="/signup" className={styles.signupLink}>Signup</Link>
           </div>
+          
         )}
+        
+        {!listView && ( 
+          <div className={styles.rightSection}>
+          <div className={styles.listout}>
+            <LogoutButton />
+         </div>    
+         </div>)}      
       </header>
 
       {/* HOME content */}
@@ -260,7 +270,7 @@ const handleAddToCart = (event, product) => {
           </div>
 
             {/* Remove Invoice link if the user is not logged in */}
-            {username && (
+            {username && listView && (
               <div className={styles.menuItem}>
                 <Link to="/invoices" className={styles.invoiceLink}>Invoice</Link>
               </div>
@@ -275,7 +285,8 @@ const handleAddToCart = (event, product) => {
                   <span>View Cart &nbsp;  {cartCount}</span>
                 </button>
               </div>
-              <div className={styles.menuItem}>
+              { listView && (
+              <div className={styles.menuItem1}>
                 {/* User Circle */}
                 <div className={styles.userCircle} onClick={togglePopup}>
                   {username ? username.split(' ').map(word => word.charAt(0).toUpperCase()).join('') : 'U'}
@@ -285,13 +296,13 @@ const handleAddToCart = (event, product) => {
              <div ref={popupRef} className={styles.popup}>
              <div>{username ? username.split(' ').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ') : ''}</div>
              <hr className={styles.separator} />
-             <div>
-               <LogoutButton />
+             <div className={styles.logoutButton}>
+             <LogoutButton/>
              </div>
            </div>
            
                 )}
-              </div>
+              </div>)}
             </div>
           )}
         </div>
@@ -397,7 +408,7 @@ const handleAddToCart = (event, product) => {
 
         {/* Feedback Popup */}
          {/* Only show the feedback button if the user is logged in */}
-         {username && (
+         {username && listView && (
           <div className={styles.feedbackButton} onClick={() => openFeedbackPopup()}>
             <img src={feedbackIcon} alt="Feedback" />
           </div>

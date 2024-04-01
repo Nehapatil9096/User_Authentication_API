@@ -164,7 +164,7 @@ body {
 menuItem {
   display: flex;
   align-items: center;
-  background-color: green; /* Set the background color to green */
+  background-color: 1D7000; /* Set the background color to green */
   padding: 10px 20px;
   border-radius: 5px;
 }
@@ -177,7 +177,9 @@ menuItem {
 .menuItem span {
   color: white; /* Set the color of the text to green */
   padding: 10px 20px;
-
+  font-weight: 500;
+  font-family: "Roboto", sans-serif; /* Use font-family property */
+  
 }
 
 
@@ -204,10 +206,12 @@ menuItem {
   background-color: green;
   color: white;
   border: none;
-  padding: 10px 20px; /* Adjust padding as needed */
-  border-radius: 35px;
+  padding-left: 20px;
+  padding-right: 0px;
+  padding-top: 10px;
+  padding-bottom: 10px;  border-radius: 35px;
   cursor: pointer;
-  width: 210px;
+  width: 200px;
   height: 50px;
   margin-right: 90px;
   font-weight: 600;

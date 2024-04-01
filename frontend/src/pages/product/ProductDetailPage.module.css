@@ -237,21 +237,24 @@ text-decoration: none;
 menuItem {
 display: flex;
 align-items: center;
-background-color: green; /* Set the background color to green */
+background-color:#1D7000; /* Set the background color to green */
 padding: 10px 20px;
 border-radius: 5px;
 }
 
-.menuItem img {
-width: 25px;
-margin-right: -10px;
-}
-
 .menuItem span {
 color: white; /* Set the color of the text to green */
-padding: 10px 20px;
+padding: 10px 5px;
+font-weight: 500;
+font-family: "Roboto", sans-serif; /* Use font-family property */
 
 }
+
+.menuItem img {
+  width: 20px;
+  margin-right: 10px;
+}
+
 /* Styles for the "Home" button */
 .homeLink {
   color: rgb(2, 2, 30); /* Set text color to blue */
@@ -259,6 +262,8 @@ padding: 10px 20px;
   padding: 10px 20px; /* Add padding */
   font-size: 15px;
   font-weight: 500;
+  width:200px;
+
   
 }
 .invoiceLink{
@@ -286,24 +291,8 @@ padding: 10px 20px;
 .menubar .menuItem {
   flex: 1 1 100%;
 }
-menuItem {
-  
-  display: flex;
-  align-items: center;
-  background-color: green; /* Set the background color to green */
-  padding: 10px 20px;
-  border-radius: 5px;
-}
-
-.menuItem img {
-  width: 30px;
-  margin-right: 10px;
-}
-
-.menuItem span {
-  color: white; /* Set the color of the text to green */
-  padding: 10px 20px;
-
+.menubar .menuItem2 {
+  flex: 1 1 200%;
 }
 
 .menubar .rightSection {
@@ -320,18 +309,23 @@ menuItem {
   background-color: green;
   color: white;
   border: none;
-  padding: 10px 10px; /* Adjust padding as needed */
+  padding-left: 20px;
+  padding-right: 0px;
+  padding-top: 10px;
+  padding-bottom: 10px;
   border-radius: 35px;
   cursor: pointer;
-  width: 180px;
-  height: 37px;
+  width: 200px;
+  height: 50px;
   margin-right: 90px;
-  font-weight: 6400;
-  font-size: 16px;
-  margin-right: 100px;
+  font-weight: 600;
+  font-size: 19px;
+  margin-right: 10px;
   margin-top: 50px;
 
 }
+
+
 
 .button img {
   width: 21px;
