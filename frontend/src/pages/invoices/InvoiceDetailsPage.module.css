@@ -1,337 +1,337 @@
 /* InivoiceDetailsPage.module.css */
 
 .checkoutContainer {
-  display: flex;
-  flex-direction: column;
-  font-family: Arial, sans-serif;
-  height: 100vh;
-  width:100vw;
-  box-sizing: border-box;
-}
-
-.home {
-  max-width: 100%; /* Adjust to fit the screen */
-  margin: 0 auto;
-  padding: 70px;
-  
-}
-  .header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between; /* Align left and right sections */
-  
-    background-color: #2e0052;
-    color: white;
-    height: 55px; /* Adjust height as needed */
-    padding: 0 50px; /* Add padding to the header */
-      margin-bottom: 20px; /* Add margin bottom to match the spacing */
-  
-  }
-  .headerContent {
-    margin: 0 auto; /* Center horizontally */
-  }
-  .leftSection {
-    display: flex;
-    align-items: center;
-    margin-right: 20px; /* Add margin between phone call icon/number and other content */
-  }
-  
-  .leftSection img {
-    margin-right: 5px;  /* Add some spacing between the icon and the number */
-  }
-  .menubar {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: 100%;
-    color: white;
-    padding: 0px 75px;
-  padding-top: -100px;
-  margin-top: -70px;
-  }
-  
-.menubar .leftSection {
-  display: flex;
-  align-items: center;
-}
-.menubar .leftSection img {
-  width: 220px; /* Adjust as needed */
-  margin-right: 10px;
-  margin-left: -100px;
-}
-
-.menubar .leftSection a {
-  margin-right: 20px;
-  color: rgb(27, 6, 6);
-  text-decoration: none;
-}
-menuItem {
-  display: flex;
-  align-items: center;
-  background-color: green; /* Set the background color to green */
-  padding: 10px 20px;
-  border-radius: 5px;
-}
-
-.menuItem img {
-  width: 30px;
-  margin-right: 10px;
-}
-
-.menuItem span {
-  color: white; /* Set the color of the text to green */
-  padding: 10px 20px;
-
-}
-.backToCartButton{
-  color: #ffffff;
-  background-color: #2E0052;
-  width:200px;
-  height: 40px;
-  border-radius: 15px;
-  font-size: 18px;
-  margin-top: 20px;
-}
-  .navbar {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 10px;
-    background-color: #fff; /* Set a white background */
-    border-bottom: 1px solid #ddd; /* Add a bottom border */
-  }
-  
-  .pageTitle {
-    margin-top: 20px; /* Add spacing above the title */
-    color: #333; /* Set text color */
-  }
-  
-  .checkoutHeader {
-    margin-top: 10px; /* Add spacing above the header */
-    display: flex;
-    justify-content: center; /* Horizontally center the content */
-    align-items: center; /* Vertically center the content */
-    text-decoration: underline; /* Add underline */
-    font-family: 'Roboto', sans-serif; /* Set font family to Roboto */
-    font-weight: normal;
-    font-size: 26px;
-    margin-bottom: 50px;
-  }
-  
-  
-  .checkoutSections {
-    display: flex;
-    justify-content: space-between;
-    margin-top: 20px;
-  }
-  
-  .leftColumn {
-    flex: 1;
-    margin-right: 20px;
-  }
-  
-  .rightColumn {
-    flex: 1;
     display: flex;
     flex-direction: column;
-    align-items: center;
+    font-family: Arial, sans-serif;
+    height: 100vh;
+    width:100vw;
+    box-sizing: border-box;
   }
   
-  .orderSummaryBox {
-    border: 1px solid #ddd; /* Add a border */
-    border-radius: 8px; /* Add rounded corners */
-    padding: 20px; /* Add padding */
-    background-color: #fff; /* Set a white background */
-    width: 320px;
-    margin-left: 30px;
-    height: 310px;
-  }
- 
-  .placeOrderButton1{
-    background-color: #f0c14b; /* Set a yellow background color */
-    color: #111; /* Set text color */
-    border: none;
-    border-radius: 5px;
-    padding: 10px 20px;
-    margin-bottom: 10px;
-    cursor: pointer;
-    height: 40px;
-    width: 150px; 
-    margin-top: 10px;
-    margin-left: 10px;
-    font-size: 14px;
-  }
-  .placeOrderButton{
-    background-color: #f0c14b; /* Set a yellow background color */
-    color: #111; /* Set text color */
-    border: none;
-    border-radius: 8px;
-    padding: 10px 20px;
-    margin-bottom: 10px;
-    cursor: pointer;
-    height: 50px;
-    width: 320px; 
-    margin-top: -10px;
-    margin-left: 0px;
-    font-size: 18px;
-  }
-  .placeOrderText{
-    font-size: 14px;
-    margin-top: 0;
-  }
-  .orderSummaryHorizontal {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-top: 20px;
-    background-color: #fff; /* Set a white background */
-    padding: 10px; /* Add padding */
-    border-radius: 8px; /* Add rounded corners */
-    border-top: 1px solid #ddd; /* Add a top border */
-    border:1px solid #ddd ;
-    width: 800px;
-    height: 35px;
-  }
-  
-  .orderTotal {
-    font-weight:500; /* Make the text bold */
-    margin-bottom: -10px;
-    color: #B52B00;
-  }
-  
-  .agreeText {
-    color: #666; /* Set text color to gray */
-  }
-  
-  .cartItem img {
-    width: 90px; /* Adjust the width as needed */
-    height: 90px; /* Adjust the height as needed */
-  }
-  .productImages {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr); /* Display three products in a row */
-    margin-bottom: 2rem;
-    padding: 20px;
-    row-gap: 15px;  
-    column-gap: 13px;
-    margin-left: -20px;
-}
-  
-  .productImage {
-    width: 102px; /* Set fixed width for all product images */
-    height: 102px; /* Set fixed height for all product images */
-    object-fit: contain; /* Maintain aspect ratio without cutting */
-    border: 1px solid #2E0052;/* Add border to each product image */
-    cursor: pointer;
-    border-radius: 10px;
-  }
-.username{
-  color:#797979 ;
-}
-  .deliveryAddress {
-    display: flex;
-    align-items: center;
-    margin-bottom: 2rem;
-    flex-wrap: wrap;
-    border: none;
-
+  .home {
+    max-width: 100%; /* Adjust to fit the screen */
+    margin: 0 auto;
+    padding: 70px;
     
   }
-  .deliveryInputContainer {
+    .header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between; /* Align left and right sections */
+    
+      background-color: #2e0052;
+      color: white;
+      height: 55px; /* Adjust height as needed */
+      padding: 0 50px; /* Add padding to the header */
+        margin-bottom: 20px; /* Add margin bottom to match the spacing */
+    
+    }
+    .headerContent {
+      margin: 0 auto; /* Center horizontally */
+    }
+    .leftSection {
+      display: flex;
+      align-items: center;
+      margin-right: 20px; /* Add margin between phone call icon/number and other content */
+    }
+    
+    .leftSection img {
+      margin-right: 5px;  /* Add some spacing between the icon and the number */
+    }
+    .menubar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      width: 100%;
+      color: white;
+      padding: 0px 75px;
+    padding-top: -100px;
+    margin-top: -70px;
+    }
+    
+  .menubar .leftSection {
     display: flex;
     align-items: center;
-    margin-left: 0rem;
-    padding: 0rem;
-    width: 90%;
-    margin-top: 10px;
   }
-  .deliveryInput {
-    border: none;
-    width: 900vw;
-    height: 50px;
-    color:#797979 ;
-
+  .menubar .leftSection img {
+    width: 220px; /* Adjust as needed */
+    margin-right: 10px;
+    margin-left: -100px;
   }
   
-  select {
-    border: 1px solid ;
-    border-color: #919191;
-    padding: 0.5rem;
-    font-size: 1rem;
-    color:#797979 ;
-    margin-bottom: 1rem;
-    width: 91%;
-    height: 50px;
-    margin-top: 10px;
+  .menubar .leftSection a {
+    margin-right: 20px;
+    color: rgb(27, 6, 6);
+    text-decoration: none;
   }
-
-  .estimatedDelivery {
-    margin-bottom: 2rem;
-  }
-
-  .selectedProductDetails {
-    margin-top: -50px; /* Add margin to separate from the products */
-    padding: 10px; /* Add padding for better spacing */
-    margin-left: -10px;
-
-  }
-  
-  .selectedProductDetails h4 {
-    margin-bottom: 0px; /* Add margin below the heading */
-  }
-  
-  .selectedProductDetails p {
-    margin-bottom: 0; /* Remove default bottom margin */
-  }
-.deliveryColor{
-  color: #797979;
-  margin-top: 10px;
-  margin-bottom: 10px;
-}
-
-.row {
-  display: flex;
-  flex-direction: row;
-  margin-bottom: 1rem; /* Adjust margin between rows */
-}
-
-.column {
-  display: flex;
-  flex-direction: column; /* Arrange children in a column */
-  flex: 1;
-  padding: 0 0rem; /* Adjust padding between columns */
-  width:100px;
-}
-.col1 {
-  color: #B52B00; /* Set text color to red */
-  font-size: 20px;
-}
-.line {
-  height: 1px;
-  background-color: #ccc;
-  margin: 1rem 0; /* Adjust vertical margin to create space between rows */
-  margin-left: 0px;
-  width: 800px;
-  color: #E1E1E1;
-}
-.flexContainer {
-margin-right: 0px;}
-
- 
-  .footer {
-    background-color: #2e0052;
-    color: white; /* Set text color to white */
+  menuItem {
     display: flex;
-    align-items: center; /* Center vertically */
-    height: 190px; /* Adjust height as needed */
-    width: 100%; /* Ensure footer spans entire viewport width */
+    align-items: center;
+    background-color: green; /* Set the background color to green */
+    padding: 10px 20px;
+    border-radius: 5px;
+  }
+  
+  .menuItem img {
+    width: 30px;
+    margin-right: 10px;
+  }
+  
+  .menuItem span {
+    color: white; /* Set the color of the text to green */
+    padding: 10px 20px;
   
   }
-  .footerContent {
-    margin: 0 auto; /* Center horizontally */
-    font-size: 23px;
-    font-weight: 500;
+  .backToCartButton{
+    color: #ffffff;
+    background-color: #2E0052;
+    width:200px;
+    height: 40px;
+    border-radius: 15px;
+    font-size: 18px;
+    margin-top: 20px;
   }
-
-
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px;
+      background-color: #fff; /* Set a white background */
+      border-bottom: 1px solid #ddd; /* Add a bottom border */
+    }
+    
+    .pageTitle {
+      margin-top: 20px; /* Add spacing above the title */
+      color: #333; /* Set text color */
+    }
+    
+    .checkoutHeader {
+      margin-top: 10px; /* Add spacing above the header */
+      display: flex;
+      justify-content: center; /* Horizontally center the content */
+      align-items: center; /* Vertically center the content */
+      text-decoration: underline; /* Add underline */
+      font-family: 'Roboto', sans-serif; /* Set font family to Roboto */
+      font-weight: normal;
+      font-size: 26px;
+      margin-bottom: 50px;
+    }
+    
+    
+    .checkoutSections {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 20px;
+    }
+    
+    .leftColumn {
+      flex: 1;
+      margin-right: 20px;
+    }
+    
+    .rightColumn {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    
+    .orderSummaryBox {
+      border: 1px solid #ddd; /* Add a border */
+      border-radius: 8px; /* Add rounded corners */
+      padding: 20px; /* Add padding */
+      background-color: #fff; /* Set a white background */
+      width: 320px;
+      margin-left: 30px;
+      height: 310px;
+    }
+   
+    .placeOrderButton1{
+      background-color: #f0c14b; /* Set a yellow background color */
+      color: #111; /* Set text color */
+      border: none;
+      border-radius: 5px;
+      padding: 10px 20px;
+      margin-bottom: 10px;
+      cursor: pointer;
+      height: 40px;
+      width: 150px; 
+      margin-top: 10px;
+      margin-left: 10px;
+      font-size: 14px;
+    }
+    .placeOrderButton{
+      background-color: #f0c14b; /* Set a yellow background color */
+      color: #111; /* Set text color */
+      border: none;
+      border-radius: 8px;
+      padding: 10px 20px;
+      margin-bottom: 10px;
+      cursor: pointer;
+      height: 50px;
+      width: 320px; 
+      margin-top: -10px;
+      margin-left: 0px;
+      font-size: 18px;
+    }
+    .placeOrderText{
+      font-size: 14px;
+      margin-top: 0;
+    }
+    .orderSummaryHorizontal {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 20px;
+      background-color: #fff; /* Set a white background */
+      padding: 10px; /* Add padding */
+      border-radius: 8px; /* Add rounded corners */
+      border-top: 1px solid #ddd; /* Add a top border */
+      border:1px solid #ddd ;
+      width: 800px;
+      height: 35px;
+    }
+    
+    .orderTotal {
+      font-weight:500; /* Make the text bold */
+      margin-bottom: -10px;
+      color: #B52B00;
+    }
+    
+    .agreeText {
+      color: #666; /* Set text color to gray */
+    }
+    
+    .cartItem img {
+      width: 90px; /* Adjust the width as needed */
+      height: 90px; /* Adjust the height as needed */
+    }
+    .productImages {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr); /* Display three products in a row */
+      margin-bottom: 2rem;
+      padding: 20px;
+      row-gap: 15px;  
+      column-gap: 13px;
+      margin-left: -20px;
+  }
+    
+    .productImage {
+      width: 102px; /* Set fixed width for all product images */
+      height: 102px; /* Set fixed height for all product images */
+      object-fit: contain; /* Maintain aspect ratio without cutting */
+      border: 1px solid #2E0052;/* Add border to each product image */
+      cursor: pointer;
+      border-radius: 10px;
+    }
+  .username{
+    color:#797979 ;
+  }
+    .deliveryAddress {
+      display: flex;
+      align-items: center;
+      margin-bottom: 2rem;
+      flex-wrap: wrap;
+      border: none;
   
+      
+    }
+    .deliveryInputContainer {
+      display: flex;
+      align-items: center;
+      margin-left: 0rem;
+      padding: 0rem;
+      width: 90%;
+      margin-top: 10px;
+    }
+    .deliveryInput {
+      border: none;
+      width: 900vw;
+      height: 50px;
+      color:#797979 ;
+  
+    }
+    
+    select {
+      border: 1px solid ;
+      border-color: #919191;
+      padding: 0.5rem;
+      font-size: 1rem;
+      color:#797979 ;
+      margin-bottom: 1rem;
+      width: 91%;
+      height: 50px;
+      margin-top: 10px;
+    }
+  
+    .estimatedDelivery {
+      margin-bottom: 2rem;
+    }
+  
+    .selectedProductDetails {
+      margin-top: -50px; /* Add margin to separate from the products */
+      padding: 10px; /* Add padding for better spacing */
+      margin-left: -10px;
+  
+    }
+    
+    .selectedProductDetails h4 {
+      margin-bottom: 0px; /* Add margin below the heading */
+    }
+    
+    .selectedProductDetails p {
+      margin-bottom: 0; /* Remove default bottom margin */
+    }
+  .deliveryColor{
+    color: #797979;
+    margin-top: 10px;
+    margin-bottom: 10px;
+  }
+  
+  .row {
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 1rem; /* Adjust margin between rows */
+  }
+  
+  .column {
+    display: flex;
+    flex-direction: column; /* Arrange children in a column */
+    flex: 1;
+    padding: 0 0rem; /* Adjust padding between columns */
+    width:100px;
+  }
+  .col1 {
+    color: #B52B00; /* Set text color to red */
+    font-size: 20px;
+  }
+  .line {
+    height: 1px;
+    background-color: #ccc;
+    margin: 1rem 0; /* Adjust vertical margin to create space between rows */
+    margin-left: 0px;
+    width: 800px;
+    color: #E1E1E1;
+  }
+  .flexContainer {
+  margin-right: 0px;}
+  
+   
+    .footer {
+      background-color: #2e0052;
+      color: white; /* Set text color to white */
+      display: flex;
+      align-items: center; /* Center vertically */
+      height: 190px; /* Adjust height as needed */
+      width: 100%; /* Ensure footer spans entire viewport width */
+    
+    }
+    .footerContent {
+      margin: 0 auto; /* Center horizontally */
+      font-size: 23px;
+      font-weight: 500;
+    }
+  
+  
+    

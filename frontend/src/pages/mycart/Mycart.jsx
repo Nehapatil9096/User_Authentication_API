@@ -224,7 +224,7 @@ const MyCart = () => {
         {/* Total product items and total MRP */}
         <div className={styles.totalItemsMRP}>
           <p>
-            {cart.length} Items 
+           <span className={styles.items}> {cart.length} Items </span>
             <span>₹{totalAmount.toFixed(2)}</span>
           </p>
         </div>
@@ -283,7 +283,7 @@ const CartItem = ({ item, fetchProductDetails, onQuantityChange }) => {
           <div className={styles.cartItemColumn}>
             <p>Quantity </p>
             <p>
-              <select value={selectedQuantity} onChange={handleQuantitySelect} style={{ width: '40%' }}>
+              <select value={selectedQuantity} onChange={handleQuantitySelect} style={{ width: '60%',height: '30px',fontSize: '12px' }}>
                 {[...Array(8)].map((_, index) => (
                   <option key={index + 1} value={index + 1}>{index + 1}</option>
                 ))}

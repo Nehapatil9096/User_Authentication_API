@@ -1,0 +1,1131 @@
+/* Home.module.css */
+.container {
+    height: 100vh; /* Set height to full viewport height */
+    overflow-y: auto; /* Enable vertical scrolling */
+    background-color: #ffffff;
+    overflow-x: hidden; /* Prevent horizontal scrolling */
+    width: 100vw;
+  }
+  /* Prevent horizontal scrolling */
+  body {
+    overflow-x: hidden;
+  }
+  /*HEADER bar starts------------------------------------------*/
+  
+  .header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between; /* Align left and right sections */
+    background-color: #2e0052;
+    color: white;
+    height: 55px; /* Adjust height as needed */
+    padding: 0 50px; /* Add padding to the header */
+    margin-bottom: 20px; /* Add margin bottom to match the spacing */
+  }
+  
+  .headerContent {
+    margin: 0 auto; /* Center horizontally */
+  }
+  .leftSection {
+    display: flex;
+    align-items: center;
+    margin-right: 20px; /* Add margin between phone call icon/number and other content */
+  }
+  
+  .leftSection img {
+    margin-right: 5px;  /* Add some spacing between the icon and the number */
+  }
+  /*HEADER bar ends-------------------------------------------*/
+  
+  
+  
+  /*FOOTER bar starts------------------------------------------*/
+  .footerContent {
+    margin: 0 auto; /* Center horizontally */
+    font-size: 23px;
+    font-weight: 500;
+  }
+  
+  .footer {
+    background-color: #2e0052;
+    color: white; /* Set text color to white */
+    display: flex;
+    align-items: center; /* Center vertically */
+    height: 77px; /* Adjust height as needed */
+    width: 100%; /* Ensure footer spans entire viewport width */
+  }
+  /*FOOTER bar ends-------------------------------------------*/
+  
+  
+  .home {
+    max-width: 100%; /* Adjust to fit the screen */
+    margin: 20 auto;
+    padding-top: 0px;
+    padding-bottom: 20px;
+    padding-left: 60px;
+    padding-right: 60px;
+    background-color: #ffffff;
+  }
+  
+  /*MENU bar starts------------------------------------------*/
+  .menubar .leftSection {
+    display: flex;
+    align-items: center;
+  }
+  
+  .menubar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    color: white;
+    padding: 20px 20px;
+  padding-bottom:  20px;
+  margin-right: 10px;
+  margin-top: -30px;
+  margin-bottom:70px;
+  }
+  
+  .menubar .leftSection img {
+    width: 197px; /* Adjust as needed */
+    margin-right:-10px; 
+  }
+  
+  .menubar .leftSection a {
+    margin-right:-10px;
+    color: rgb(27, 6, 6);
+    text-decoration: none;
+  }
+  /*-----------------------------------------------------BOTTOM MENU BAR----------------------------------BEGINS--------------------------*/
+  .bottomMenu {
+    background-color: white;
+    display: flex;
+    justify-content:space-between;
+    position: fixed;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-top: 1px;
+    padding-bottom: 0px;
+    bottom: 0;
+    width: 96%;
+    z-index: 1000; /* Ensure it's above other content */
+    border-top: #666666 solid 0.5px;
+    border-bottom: white solid 5px;
+  }
+
+  .mbmenuItem {
+    display: flex;
+    align-items: center;
+  }
+  
+  .menuIcon {
+    width: 24px; /* Adjust icon size */
+    margin-right: 1px;
+  }
+  
+  .menuItem img {
+    width: 30px;
+    margin-right: 10px;
+  }
+
+.mblogoutbutton{
+  border:none;
+  color:white;
+  background-color: white;
+}
+    /*-----------------------------------------------------BOTTOM MENU BAR------------------------------------ENDS------------------------*/
+
+  /* Styles for the "Home" button */
+  .homeLink {
+    color: rgb(2, 2, 30); /* Set text color to blue */
+    text-decoration: none; /* Remove underline */
+    padding: 10px 20px; /* Add padding */
+    font-size: 22px;
+    font-weight: 500;
+    font-family: "Roboto", sans-serif; /* Use font-family property */
+  margin-left: 20px;
+  }
+  /* Styles for the "Invoice" button */
+  .invoiceLink{
+    color: rgb(2, 2, 30); /* Set text color to blue */
+    text-decoration: none; /* Remove underline */
+    padding: 0px -30px; /* Add padding */
+    font-size: 22px;
+    font-weight: 500;
+    margin-right: 300px;
+    font-family: "Roboto", sans-serif; /* Use font-family property */
+  margin-left: 10px;
+  }
+  
+  
+  .rightSection {
+    display: flex;
+    align-items: center;
+  }
+  
+  
+  .button {
+    display: flex; /* Ensure the button behaves as a flex container */
+    align-items: center; /* Center items vertically */
+    justify-content: center; /* Center items horizontally */
+    background-color: green;
+    color: white;
+    border: none;
+    padding: 10px 20px; /* Adjust padding as needed */
+    border-radius: 35px;
+    cursor: pointer;
+    width: 210px;
+    height: 50px;
+    margin-right: 90px;
+    font-weight: 600;
+    font-size: 19px;
+    margin-right: 10px;
+  }
+  
+  .button img {
+    width: 30px;
+    margin-right: -10px; /* Adjust margin for spacing between image and text */
+  }
+  .button span {
+    display: flex; /* Make the text appear in a column */
+    flex-direction: column; /* Align text vertically */
+    align-items: center; /* Align text horizontally */
+  }
+  
+  
+  .rightSection span {
+    margin-right: 0px;
+  }
+  
+  .userCircle {
+    width: 70px;
+    height: 70px;
+    background-color: #ffffff;
+    border-color: #2E0052; /* Updated border color */
+    border-width: 1px; /* Optional: you can adjust the border width */
+    border-style: solid; /* Ensure a solid border */
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+    color: black;
+    margin-left: 10px;
+    margin-right: 35px;
+    margin-top: 20px;
+    cursor: pointer; /* Add cursor pointer to indicate it's clickable */
+    font-size: 30px;
+    font-family: "Roboto", sans-serif; /* Use font-family property */
+  
+  }
+  /*USER PROFILE ---*/
+  .popup {
+    position: absolute;
+    top: 160px; /* Position the popup below the button */
+    right: 10px; /* Adjust the horizontal position */
+    background-color: white;
+    border: 1px solid #ccc;
+    border-radius: 20px; /* Add rounded corners */
+    padding: 20px; /* Increase padding for more space */
+    z-index: 1000;
+    color: black; /* Adjust as needed */
+    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.1); /* Add shadow */
+    font-size: 18px; /* Make text bigger */
+    font-weight: bold; /* Make text bold */
+    width: 200px; /* Adjust width as needed */
+    font-family: 'Roboto', sans-serif; /* Use Roboto font */
+    display: flex; /* Use flexbox */
+    flex-direction: column; /* Arrange content vertically */
+    align-items: center; /* Center content horizontally */
+    height: 60px;
+  
+  }
+  
+  .separator {
+    margin: 10px 0; /* Adjust margin as needed */
+    border-top: 1px solid #ccc; /* Separator line color and thickness */
+    width:237px;
+  }
+  .menuItem span {
+    padding: 5px 10px;
+    width: 200px;
+    font-family: "Roboto", sans-serif; /* Use font-family property */
+    font-size: 18px; /* Make text bigger */
+    font-weight: bold; /* Make text bold */
+    display: flex; /* Use flexbox */
+    flex-direction: column; /* Arrange content vertically */
+    align-items: center; /* Center content horizontally */
+  
+  }
+  
+  /*USER PROFILE -ENDS--*/
+  
+  
+  /*MENU bar ends-------------------------------------------*/
+  /*OFFER Container starts-----------------------------------------*/
+  
+  .offerContainer {
+    top: 20px;
+    left: 10px;
+    z-index: 999;
+  }
+  
+    /* Home.module.css */
+  .offerText {
+    /* Styles for the offer text */
+    position: absolute; /* Position the text absolutely */
+  
+    top: 25%; /* Adjust top position to vertically center */
+    left: 27%; /* Align to the left side of the container */
+    transform: translate(-50%, -50%); /* Center the text horizontally and vertically */
+    width: calc(65% - 300px); /* Set width to fill remaining space beside the offer image */
+    font-size: 61px; /* Adjust text size as needed */
+    color: #2E0052; /* Adjust text color as needed */
+    font-weight: 640;
+    font-family: "Roboto", sans-serif; /* Use font-family property */
+  
+  }
+  
+  
+  .offerContainer{
+    position: relative; /* Position the container relative */
+    text-align: right; /* Align image to the right */
+    padding-right: 20px; /* Adjust as needed */
+    
+  }
+  .offerImageContainer {
+    top: 0;
+    right: 0;
+    transform: translate(50%, -50%);
+    position: relative; /* Ensure relative positioning */
+  
+  }
+  
+  .offerImage {
+    /* Styles for the offer image */
+    width: 100%; /* Adjust width as needed */
+    height: 270px; /* Maintain aspect ratio */
+    margin-bottom: 55px;
+    margin-top: -87px;
+  }
+  .image {
+    position: absolute; /* Position absolutely relative to the container */
+  
+    /* Styles for Image1 */
+    top: -375px; /* Adjust top position as needed */
+    right: 650px; /* Align to the right side of the container */
+    width: 460px; /* Adjust width as needed */
+    height: auto; /* Maintain aspect ratio */
+  }
+  
+  /*OFFER Container ends-----------------------------------------*/
+  
+  
+  /*SEARCHbar starts-----------------------------------------*/
+  
+  .searchBar {
+    position: relative;
+  }
+  .searchBar input[type="text"] {
+    width: 93%;
+    padding: 10px;
+    border: 3.5px solid #ccc;
+    border-radius: 45px;
+    margin-bottom: 20px;
+    padding-left: 70px; /* Adjust the left padding to make space for the icon */
+    color:  #666666;
+    font-size: 25px;
+    font-weight: 400;
+    height: 50px;
+  }
+  
+  .searchIcon {
+    position: absolute;
+    left: 10px; /* Adjust the position of the icon */
+    top: 40%; /* Center vertically */
+    transform: translateY(-50%); /* Adjust for vertical centering */
+    width: 40px; /* Adjust width as needed */
+    height: auto; /* Maintain aspect ratio */
+    padding-left: 10px;
+  }
+  /*SEARCHbar ends-----------------------------------------*/
+  
+  /*SORTING bar starts-----------------------------------------*/
+  
+  .listViewToggle {
+    display: flex;
+    align-items: center;
+    margin-top: -40px;
+  }
+  
+  .listViewToggle button {
+    background: none;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .listViewToggle button:focus {
+    outline: none;
+  }
+  
+  /* Adjust the margin as needed */
+  .listViewToggle button + button {
+    margin-left: 10px;
+  }
+  
+  
+  /* Styles for the grid icon */
+  .gridIcon {
+    width: 47px; /* Adjust width as needed */
+    height: 47px; /* Adjust height as needed */
+    /* Add any other styles specific to the grid icon */
+    
+  }
+  
+  /* Styles for the list icon */
+  .listIcon {
+    width: 51px; /* Adjust width as needed */
+    height: 55px; /* Adjust height as needed */
+    /* Add any other styles specific to the list icon */
+    margin-left: -23px;
+    
+  }
+  
+  
+  .sortingBar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 70px;
+    margin-top: 30px;
+    margin-right:10px ;
+  }
+  
+  .sortingBar .leftSection span {
+    margin-right: 30px;
+    cursor: pointer;
+  }
+  
+  .sortingBar .dropdowns {
+    display: flex; /* Set to display flex */
+    align-items: center; /* Align items in the same line */
+    margin-right: 250px;
+  margin-left: 50px;
+  }
+  .featuredSection{
+    width: 270px; /* Adjust width for the first dropdown */
+    height: 49px;
+    text-align: center;
+    font-size: 20px;  
+    border: 2px  solid #D9D9D9;
+    border-radius: 25px;
+    font-weight: 620;
+    padding: 0px;
+  
+  }
+  .sortingBar .dropdowns select {
+    margin-right: 13px;
+    padding: 5px;
+    border-radius: 25px;
+    appearance: none; /* Remove default arrow */
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="black" width="18px" height="18px"><path d="M7 10l5 5 5-5z" /><path d="M0 0h24v24H0z" fill="none" /></svg>'); /* Custom arrow */
+    background-repeat: no-repeat;
+    background-position: right 5px center;
+    background-color: #D9D9D9;
+    font-weight: 620;
+    width: auto;
+    height: auto;
+    font-size: 20px;
+  }
+  
+  /* Adjust width for each dropdown button separately */
+  .dropdowns .dropdown:nth-child(1) select {
+    width: 220px; /* Adjust width for the first dropdown */
+    height: 49px;
+    text-align: center;
+  }
+  
+  .dropdowns .dropdown:nth-child(2) select {
+    width: 160px; /* Adjust width for the second dropdown */
+    height: 45px;
+    text-align: center;
+  
+  }
+  
+  .dropdowns .dropdown:nth-child(3) select {
+    width: 115px; /* Adjust width for the fourth dropdown */
+    height: 45px;
+    text-align: center;
+  
+  }
+  
+  .dropdowns .dropdown:nth-child(4) select {
+    width: 115px; /* Adjust width for the fourth dropdown */
+    height: 45px;
+    text-align: center;
+  
+  }
+  
+  .dropdown {
+    margin-bottom: 10px;
+  }
+  
+  .dropdown select {
+    appearance: none;
+    border: 1px solid #ccc;
+    padding: 8px 16px;
+    border-radius: 4px;
+    background-color: #fff;
+    cursor: pointer;
+    width: 200px; /* Adjust width as needed */
+  }
+  
+  .dropdown select::-ms-expand {
+    display: none; 
+  }
+  
+  /* Add arrow icon */
+  .dropdown select {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M7 10l5 5 5-5z'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 8px center;
+  }
+  
+  /* Style selected option */
+  .dropdown select option:checked {
+    color: white;
+  }
+  
+  /* Style placeholder option */
+  .dropdown select option[disabled] {
+    color: #999;
+  }
+  
+  .sortingBar .dropdowns select:focus {
+    outline: none;
+  }
+  
+  .sortingBar .dropdowns select option {
+    background-color: #fff;
+  }
+  
+  .sortingBar .dropdowns select:hover {
+    background-color: #f0f0f0;
+  }
+  
+  /* Highlight the selected option */
+  .sortingBar .dropdowns select option:checked {
+    background-color:#0066FF; /* Highlight color */
+  }
+  
+  /* Dropdown heading style */
+  .sortingBar .dropdowns span {
+    margin-right: 10px;
+  }
+  
+  /* Highlight the selected heading */
+  .sortingBar .dropdowns span:hover {
+    color: #0066FF; /* Highlight color */
+  }
+  
+  /*SORTING bar ends-----------------------------------------*/
+  
+  
+  /*FEEDBACK button starts-----------------------------------------*/
+  
+  .feedbackButton {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    cursor: pointer;
+    z-index: 1;
+  }
+  .feedbackButton img {
+    width: 170px; /* Adjust the width of the image */
+    height: 170px; /* Adjust the height of the image */
+    margin-right: 40px;
+  
+  }
+  
+  .feedbackPopup {
+    position: fixed;
+    bottom: 170px; /* Adjust this value to move the popup up or down */
+    right: 20px;
+    width: 300px; /* Adjust the width of the popup as needed */
+    height: 300px; /* Adjust the height of the popup as needed */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+  }
+  
+  .popupContent {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 5px;
+    z-index: 1;
+    height: 250px;
+    box-shadow: 0px 0px 20px 0px #0000005E;
+  border-radius: 15px;
+  font-family: 'Inter', sans-serif;
+  font-weight: 400;
+  
+  }
+  
+  .popupContent select{
+    width: 100%;
+    margin-bottom: 15px;
+    border: 1px solid #919191;
+    font-family: 'Inter', sans-serif;
+    border-radius: 5px;
+    color: 
+    #919191;
+    height: 48px;
+  font-size: 13px;
+  background-color: #F3F3F3;
+  }
+  .popupContent textarea{
+    width: 100%;
+    height: 100px;
+    margin-bottom: 10px;
+    border: 1px solid #919191;
+    font-family: 'Inter', sans-serif;
+    font-weight: 400;
+    border-radius: 5px;
+    background-color: #F3F3F3;
+  }
+  .popupContent button {
+    padding: 10px 20px;
+    background-color:  #2E0052;
+    color: #fff;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+  margin-left: 100px;
+  margin-top: -6px;
+  width: 100px;
+  }
+  
+  .popupContent button:hover {
+    background-color: #2980b9;
+  }
+  
+  .errorText{
+  margin-top: -14px;
+    color: #FF0000;
+  }
+  .popupContent .errorBorder {
+    border: 1px solid red;
+  }
+  /*FEEDBACK button ends-----------------------------------------*/
+  
+  /* PRODUCT view starts-----------------------------------------*/
+/* Grid View Styles */
+.gridView {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr)); /* Two containers per row for mobile */
+    gap: 0px; /* Gap between product containers */
+    margin-top: -25px;
+  }
+  
+  .gridView .productRow {
+    text-decoration: none; /* Remove default link styling */
+    color: inherit; /* Inherit text color */
+  }
+  
+  .gridView .productContainer {
+    position: relative;
+    display: flex;
+    align-items: flex-start;
+    justify-content:center;
+    flex-direction: column; /* Display contents in a column layout */
+    max-width: 98%;
+    max-height: 100%;
+    margin-top: 5px;
+
+  }
+  
+  .gridView .productImageContainer {
+    display: flex;
+    align-items: center;
+    justify-content:center;
+    width: 90%;
+    padding: 0; /* Padding for the image container */
+    margin-bottom: 0; /* Remove margin-bottom */
+    margin-left: 9px;
+  }
+  
+  .gridView .productImage {
+    width: 100%;
+    height: 100%; /* Auto height for responsive image */
+    height: 140px; /* Limit maximum height of the image */
+    width: 131px;
+    object-fit: contain; /* Maintain aspect ratio and fit the image inside */
+    border: 20px solid #D4E5FF; /* Blue border for the image */
+  }
+  
+  .gridView .productDetails {
+    padding: 0; /* Padding for product details */
+    font-family: "Roboto", sans-serif;
+    margin-bottom: 10px; /* Reduce margin-bottom */
+    width: 180px; /* Auto width for mobile */
+    text-align: left; /* Center align text */
+  }
+  
+  .gridView .productName {
+    margin: 0; /* Remove default margin */
+    font-size: 12px; /* Adjust font size for mobile */
+    white-space: nowrap; /* Prevent wrapping */
+    text-overflow: ellipsis; /* Show ellipsis for overflow text */
+    font-weight: 600;
+  }
+  
+  .gridView .productPrice,
+  .gridView .productInfo {
+    margin: 5px 0; /* Adjust margin as needed */
+    font-family: "Roboto", sans-serif;
+    font-size: 12px; /* Adjust font size for mobile */
+    font-weight: 550;
+  }
+  
+  .gridView .cartButton {
+    bottom: 0; /* Align cart button to the bottom */
+    right: 0px;
+    left: 125px;
+    top:58px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    z-index: 0; /* Ensure the icon appears above the image */
+    margin-top: 10px; /* Add some space between button and product info */
+  }
+  
+  .gridView .cartIcon {
+    width: 30px; /* Adjust size of the cart icon for mobile */
+    height: auto; /* Maintain aspect ratio */
+    z-index: 1;
+  }
+  
+  /* Media query for mobile devices */
+  @media screen and (max-width: 768px) {
+    .gridView .productDetails {
+      margin-left: 10px; /* Remove left margin for mobile */
+    }
+  }
+  
+  
+  
+  
+  /*PRODUCT view ends-----------------------------------------*/
+  
+  .detailsButton {
+    width: 150px;
+    height: 40px;
+    font-family: "Roboto", sans-serif;
+    font-size: 25px;
+    background-color: #2E0052;
+    color: white;
+    border-radius: 20px;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+    text-decoration: none; /* Remove default underline for anchor tag */
+  }
+  
+  .detailsButton:hover {
+    background-color: #4a0072;
+  }
+  
+  .loginLink{
+    font-family: "Roboto", sans-serif;
+    font-size: 20px;
+  font-weight: 500;
+  text-decoration: none;
+  color: #FFFFFF;
+  }
+  
+  .signupLink{
+    font-family: "Roboto", sans-serif;
+    font-size: 20px;
+  font-weight: 500;
+  text-decoration: none;
+  color: #FFFFFF;
+  
+  }
+  @media only screen and (max-width: 768px) {
+    .container {
+      padding: 0 20px; /* Adjust padding as needed */
+    }
+   /* Grid View Styles for smaller screens */
+
+
+  
+    
+    
+    .header {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 10px 0;
+    }
+  
+    .searchBar {
+      position: relative;
+      margin-top: 20px;
+      margin-left: 30px;
+    }
+    .searchBar {
+      display: flex;
+      align-items: center;
+      width: 100%;
+      margin-bottom: 20px;
+      border-radius: 5px;
+      overflow: hidden;
+      height: 40px;
+    }
+  
+    .searchIcon {
+      position: absolute;
+      left: 5px; /* Adjust the position of the icon */
+      top: 50%; /* Center vertically */
+      transform: translateY(-50%); /* Adjust for vertical centering */
+      width: 25px; /* Adjust width as needed */
+      height: auto; /* Maintain aspect ratio */
+      padding-left: 10px;
+  
+    }
+   input.inputText {
+      width: 100%; /* Full width */
+      padding: 10px; /* Padding around the text */
+      border: 2px solid #ccc; /* Border color */
+      border-radius: 0px; /* Rounded corners */
+      font-size: 10px; /* Font size */
+      outline: none; /* Remove default focus outline */
+    }
+    .searchInput {
+      flex: 1;
+      padding: 10px;
+      border: none;
+      outline: none;
+      font-size: 10px;
+      background-color: transparent;
+    }
+    .searchBar input[type="text"] {
+      width: 73%;
+      padding: 10px;
+      border: 3.5px solid #ccc;
+      border-radius: 5px;
+      margin-bottom: 20px;
+      padding-left: 40px; /* Adjust the left padding to make space for the icon */
+      color:  #666666;
+      font-size: 15px;
+      font-weight: 400;
+      height: 50px;  
+      margin-top: 20px;
+    }
+    .home {
+      padding: 0 0px; /* Adjust padding as needed */
+    }
+  
+    .offerImage1 {
+      width: 100%;
+      height: auto;
+      border-radius: 5px;
+      margin-top: 0%;
+      height: 120px;
+    }
+    
+    .offerImageContainer {
+      margin-bottom: 0px;
+    
+    }
+    .image {
+      position: absolute; /* Position absolutely relative to the container */
+    
+      /* Styles for Image1 */
+      top: -140.9px; /* Adjust top position as needed */
+      right: 50px; /* Align to the right side of the container */
+      width: 200px; /* Adjust width as needed */
+      height: auto; /* Maintain aspect ratio */
+      left: -10px;
+    }
+    
+    .offerText {
+      display: block;
+      text-align: center;
+      margin-top: 10px;
+    }
+    
+    .offerText img {
+      width: 200px; /* Adjust image size as needed */
+      height: auto;
+      margin-left: -90px;
+  margin-bottom: 0px;
+  margin-top: -150px;
+    }  
+  .button{
+    width: 100px;
+    height: 30px;
+    margin-left: -80px;
+    margin-top: -10px;
+    font-size: 12px;
+    background-color:#2e0052 ;
+  }
+    .sortingBar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 20px;
+      overflow-x: auto; /* Add scrollbar for overflow */
+      white-space: nowrap;
+    }
+  
+    .sortingBar .leftSection {
+      display: flex;
+      align-items: center;
+      width:220px;
+    }
+    .sortingBar .dropdowns {
+      display: flex; /* Set to display flex */
+      align-items: center; /* Align items in the same line */
+      margin-right: 250px;
+    margin-left: 50px;
+    }
+    .dropdowns {
+      display: flex;
+      flex-wrap: nowrap;
+      margin-top: 0px;
+     border-bottom: 2px solid #D9D9D9;
+    }
+  
+    .dropdown {
+      margin-right: 10px;
+    }
+  
+    .featuredSection{
+      width: 100px; /* Adjust width for the first dropdown */
+      height: 49px;
+      text-align: center;
+      font-size: 10px;  
+      border: 2px  solid #D9D9D9;
+      border-radius: 15px;
+      font-weight: 620;
+      padding: 0px;
+    
+    }
+  
+    .sortingBar .dropdowns select {
+      margin-right: 13px;
+      padding: 5px;
+      border-radius: 25px;
+      appearance: none; /* Remove default arrow */
+      background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="black" width="18px" height="18px"><path d="M7 10l5 5 5-5z" /><path d="M0 0h24v24H0z" fill="none" /></svg>'); /* Custom arrow */
+      background-repeat: no-repeat;
+      background-position: right 5px center;
+      background-color: #ffffff;
+      font-weight: 620;
+      width: auto;
+      height: auto;
+      font-size: 20px;
+    }
+    
+    /* Adjust width for each dropdown button separately */
+    .dropdowns .dropdown:nth-child(1) select {
+      width: 150px; /* Adjust width for the first dropdown */
+      height: 32px;
+      text-align: center;
+      font-weight: 600;
+      font-family: "Roboto", sans-serif;
+      font-size: 13px;
+      border-radius: 7px;
+      margin-left: -40px;
+      color: black;
+      background-color: #ffffff;
+    }
+    
+    .dropdowns .dropdown:nth-child(2) select {
+      width: 170px; /* Adjust width for the second dropdown */
+      height: 32px;
+      text-align: center;
+      font-size: 13px;
+      border-radius: 7px;
+      background-color: #D9D9D9;
+      margin-left: -10px;
+      font-weight: 600;
+      font-family: "Roboto", sans-serif;
+      color: black;
+    }
+    
+    .dropdowns .dropdown:nth-child(3) select {
+      width: 110px; /* Adjust width for the second dropdown */
+      height: 32px;
+      text-align: center;
+      font-size: 14px;
+      border-radius: 7px;
+      background-color: #D9D9D9;
+      margin-left: -10px;
+      font-weight: 600;
+      font-family: "Roboto", sans-serif;
+      color: black;
+  
+    }
+    
+    .dropdowns .dropdown:nth-child(4) select {
+      width: 100px; /* Adjust width for the second dropdown */
+      height: 32px;
+      text-align: center;
+      font-size: 14px;
+      background-color: #D9D9D9;
+      border-radius: 7px;
+      font-weight: 600;
+      font-family: "Roboto", sans-serif;
+      color: black;
+  
+    }
+     
+    .dropdowns .dropdown:nth-child(5) select {
+      width: 150px; /* Adjust width for the second dropdown */
+      height: 32px;
+      text-align: center;
+      font-size: 14px;
+      background-color: #D9D9D9;
+      border-radius: 7px;
+      font-weight: 600;
+      font-family: "Roboto", sans-serif;
+      color: black;
+  
+    }
+    .dropdown {
+      margin-bottom: 10px;
+    }
+    
+    .dropdown select {
+      appearance: none;
+      border: 1px solid #ccc;
+      padding: 8px 16px;
+      border-radius: 4px;
+      background-color: #fff;
+      cursor: pointer;
+      width: 200px; /* Adjust width as needed */
+    }
+    
+    .dropdown select::-ms-expand {
+      display: none; 
+    }
+    
+    /* Add arrow icon */
+    .dropdown select {
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M7 10l5 5 5-5z'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 8px center;
+    }
+    
+    /* Style selected option */
+    .dropdown select option:checked {
+      color: white;
+    }
+    
+    /* Style placeholder option */
+    .dropdown select option[disabled] {
+      color: #999;
+    }
+    
+    .sortingBar .dropdowns select:focus {
+      outline: none;
+    }
+    
+    .sortingBar .dropdowns select option {
+      background-color: #fff;
+    }
+    
+    .sortingBar .dropdowns select:hover {
+      background-color: #f0f0f0;
+    }
+    
+    /* Highlight the selected option */
+    .sortingBar .dropdowns select option:checked {
+      background-color: #0066FF; /* Highlight color */
+    }
+    
+    /* Dropdown heading style */
+    .sortingBar .dropdowns span {
+      margin-right: 10px;
+    }
+    
+    /* Highlight the selected heading */
+    .sortingBar .dropdowns span:hover {
+      color: #3498db; /* Highlight color */
+    }
+    .productList {
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); /* Adjust column width for smaller screens */
+        grid-gap: 10px; /* Reduce grid gap for smaller screens */
+        margin-bottom: 20px;
+      }
+  
+  
+  .productPrice,
+  .productInfo {
+    font-size: 14px; /* Reduce font size for product price and info */
+  }
+  
+    .productContainer {
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      padding: 0px;
+    }
+  
+
+  
+    .productDetails {
+      text-align: left;
+    }
+  
+    .cartButton {
+      position: absolute;
+      top: -50px;
+      right: 10px;
+      background: none;
+      border: none;
+      cursor: pointer;
+    }
+  
+    .feedbackButton {
+      position: absolute;
+      bottom: 10px;
+      right: 10px;
+      background: none;
+      border: none;
+      cursor: pointer;
+    }
+  
+    .fixedButtons {
+      position: fixed;
+      bottom: 10px;
+      left: 10px;
+      display: flex;
+    }
+  
+    .cartButtonMobile {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: purple;
+      color: white;
+      padding: 10px;
+      border-radius: 5px;
+      cursor: pointer;
+      margin-right: 10px;
+    }
+  
+    .feedbackButtonMobile {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: purple;
+      color: white;
+      padding: 10px;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+  }
+  

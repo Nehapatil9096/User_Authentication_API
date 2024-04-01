@@ -1,0 +1,238 @@
+import React, { useEffect, useState } from 'react';
+import { useParams, useNavigate } from 'react-router-dom';
+import { FaStar, FaRegStar } from 'react-icons/fa';
+import phoneCallIcon from "/ph_phone-call-light.png";
+import projectLogo from "/project_logo.png";
+import { Link } from "react-router-dom";
+import axios from 'axios';
+import styles from './ProductDetailPageMobile.module.css';
+import LogoutButton from "/src/components/LogoutButton";
+
+
+const ProductDetailPage = () => {
+  const { productId } = useParams();
+  const [product, setProduct] = useState(null);
+  const [addedToCart, setAddedToCart] = useState(false);
+  const [selectedImage, setSelectedImage] = useState(0);
+  const navigate = useNavigate();
+  const [cartCount, setCartCount] = useState(0); // State for cart count
+  const [username, setUsername] = useState('');
+
+  useEffect(() => {
+    fetchUserData(); // Fetch user data when component mounts
+  }, []);
+
+  // Function to fetch user data including username
+  const fetchUserData = async () => {
+    try {
+      const response = await axios.get('/api/users/profile');
+      setUsername(response.data.username); // Set fetched username to state
+    } catch (error) {
+      console.error('Error fetching user data:', error);
+    }
+  };
+  useEffect(() => {
+    const fetchProductData = async () => {
+      try {
+        const response = await axios.get(`/api/users/products/${productId}`);
+        setProduct(response.data);
+      } catch (error) {
+        console.error('Error fetching product data:', error);
+      }
+    };
+
+    fetchProductData();
+  }, [productId]);
+
+   
+     // Function to fetch cart count from the server
+     const fetchCartCount = async () => {
+      try {
+        const response = await axios.get('/api/users/cart/count');
+        setCartCount(response.data.count);
+      } catch (error) {
+        console.error('Error fetching cart count:', error);
+      }
+    };
+
+  useEffect(() => {
+    fetchCartCount(); // Fetch initial cart count
+  }, []);
+
+  const renderStarRating = (rating) => {
+    const stars = [];
+    for (let i = 0; i < 5; i++) {
+      if (i < rating) {
+        stars.push(<FaStar key={i} color="#ffc107" />);
+      } else {
+        stars.push(<FaRegStar key={i} color="#e4e5e9" />);
+      }
+    }
+    return stars;
+  };
+
+  const handleAddToCart = () => {
+    if (!username) {
+      navigate('/login');
+      return;
+    }
+    if (product) {
+      fetch('/api/users/cart/add', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ productId: product._id, quantity: 1 }), // Adding 1 quantity by default
+      })
+        .then(response => {
+          if (response.ok) {
+            console.log('Product added to cart:', product);
+            setAddedToCart(true);
+            setCartCount(prevCount => prevCount + 1); // Increment cart count
+          } else {
+            console.error('Failed to add product to cart');
+          }
+        })
+        .catch(error => console.error('Error adding product to cart:', error));
+    }
+  };
+
+
+  const handleBuyNow = () => {
+    if (!username) {
+      navigate('/login');
+      return;
+    }
+    if (addedToCart) {
+      navigate('/mycart');
+    } else {
+      handleAddToCart();
+      navigate('/mycart');
+    }
+  };
+  const toggleImageSize = (index) => {
+    if (index !== 0) {
+      const tempImages = [...product.images];
+      const tempImage = tempImages[0];
+      tempImages[0] = tempImages[index];
+      tempImages[index] = tempImage;
+      setProduct({ ...product, images: tempImages });
+      setSelectedImage(0);
+    }
+  };
+  
+
+  if (!product) {
+    return <div>Loading...</div>;
+  }
+  const handleViewCart = () => {
+    if (!username) {
+      navigate('/login');
+      return;
+    }
+    navigate('/mycart');
+  };
+
+
+
+
+  return (
+    <div className={styles.container}>
+  <header className={styles.header}>
+  <div className={styles.leftSection}>
+    <img src={phoneCallIcon} alt="Phone call" />
+    <span>912121131313</span>
+  </div>
+  <div className={styles.headerContent}>
+  </div>
+  <div className={styles.logoutButton}>
+      <LogoutButton /> 
+    </div>
+</header>
+      <div className={styles.home}>
+        <div className={styles.menubar}>
+          <div className={styles.leftSection}>
+            <div className={styles.menuItem}>
+              <img src={projectLogo} alt="Project Logo" />
+            </div>
+            <div className={styles.menuItem2}>
+              <Link to="/home"className={styles.homeLink}>Home/ {product.name}</Link>
+            </div>
+            <div className={styles.menuItem}>
+              <Link to="/invoices" className={styles.invoiceLink}></Link>
+            </div>
+          </div>
+          <div className={styles.rightSection}>
+
+          <div className={styles.menuItem}>
+                {/* View Cart button */}
+                <button className={styles.button} onClick={handleViewCart}>
+                  <img src="/cart_menu.png" alt="Cart_Menu" />
+                  <span>View Cart &nbsp;  {cartCount}</span>
+                </button>
+              </div>
+            
+          </div>
+        </div>
+        <div className={styles.menuItem}>
+          <Link to="/" className={styles.backToProducts}>Back to Products</Link>
+        </div>
+        <div className={styles.productShortInfo}>
+          <p>{product.shortinfo}</p>
+        </div>
+        <div className={styles.contentWrapper}>
+          <div className={styles.imagesContainer}>
+            <div className={styles.mainImage}>
+              <img
+                src={product.images[selectedImage]}
+                alt={`Product ${selectedImage + 1}`}
+                style={{ width: '100%', height: '100%' }}
+                onClick={() => toggleImageSize(selectedImage)}
+              />
+            </div>
+            <div className={styles.smallImages}>
+              {product.images.slice(1, 4).map((image, index) => (
+                <img
+                  key={index + 1}
+                  src={image}
+                  alt={`Product ${index + 2}`}
+                  className={`${styles.smallImage} ${selectedImage === index + 1 ? styles.active : ''}`}
+                  onClick={() => toggleImageSize(index + 1)}
+                />
+              ))}
+            </div>
+          </div>
+          <div className={styles.productDetailsContainer}>
+            <div className={styles.productDetails}>
+              <h2 className={styles.name}>{product.name}</h2>
+              <p>{renderStarRating(product.rating)} (50 Customer reviews)</p>
+              <p className={styles.price}>Price: {product.price}</p>
+              <p className={styles.color}> {product.color} <span>|</span> {product.type}</p>
+              <p>About this item</p>
+              <ul className={styles.aboutList}>
+                {product.about.split('.').filter(Boolean).map((phrase, index) => (
+                  <li key={index}>{phrase.trim()}</li>
+                ))}
+              </ul>
+              <p className={styles.available}><strong>Available</strong> - In stock</p>
+              <p className={styles.company}><strong>Brand</strong>- {product.brand}</p>
+              <div className={styles.buttons}>
+                <div className={styles.buttonsContainer}>
+                  <button onClick={handleAddToCart} className={styles.cartButton}>Add to Cart</button>
+                  <button onClick={handleBuyNow} className={styles.buyNowButton}>Buy Now</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <footer className={styles.footer}>
+        <div className={styles.footerContent}>
+          <span>Musicart | All rights reserved</span>
+        </div>
+      </footer>
+    </div>
+  );
+};
+
+export default ProductDetailPage;

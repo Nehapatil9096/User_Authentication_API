@@ -71,9 +71,9 @@
   align-items: center;
 }
 .menubar .leftSection img {
-  width: 220px; /* Adjust as needed */
-  margin-right: 10px;
+  width: 190px; /* Adjust as needed */
   margin-left: -100px;
+  padding-left: 25px;
 }
 
 .menubar .leftSection a {

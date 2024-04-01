@@ -251,7 +251,7 @@ font-family: "Roboto", sans-serif; /* Use font-family property */
 }
 
 .menuItem img {
-  width: 20px;
+  width: 30px;
   margin-right: 10px;
 }
 
@@ -277,8 +277,8 @@ font-family: "Roboto", sans-serif; /* Use font-family property */
 }
 
 .menubar .leftSection img {
-  width: 100%;
-  margin-right: 10px;
+  width: 110%;
+  margin-right: 170px;
   
 }
 
@@ -286,6 +286,7 @@ font-family: "Roboto", sans-serif; /* Use font-family property */
   margin-right: 20px;
   color: rgb(27, 6, 6);
   text-decoration: none;
+  margin-left: 10px;
 }
 
 .menubar .menuItem {
@@ -430,42 +431,3 @@ font-family: "Roboto", sans-serif; /* Use font-family property */
 
 
 /* Add this to your existing ProductDetailPage.module.css */
-
-@media screen and (max-width: 768px) {
-  .imagesContainer {
-    flex: 1 1 100%;
-  }
-
-  .header {
-    flex-basis: 100%;
-  }
-  .menubar .menuItem {
-    flex: 1 1 30%;
-  }
-
-  .menubar .leftSection img {
-    width: 80%;
-  }
-
-  .button {
-    width: 40%;
-  }
-
-  .backToProducts {
-    margin: 10px 0;
-  }
-  .contentWrapper {
-    flex-direction: column; /* Stack items vertically on smaller screens */
-    align-items: center; /* Center items horizontally */
-  }
-
-  .imagesContainer {
-    max-width: 100%; /* Ensure image container takes full width */
-    margin-bottom: 20px; /* Add some spacing between image and details */
-  }
-
-  .productDetailsContainer {
-    max-width: 100%; /* Ensure product details container takes full width */
-    padding: 0 20px; /* Add padding to the sides */
-  }
-}
