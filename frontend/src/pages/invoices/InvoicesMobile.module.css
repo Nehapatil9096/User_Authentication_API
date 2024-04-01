@@ -74,9 +74,9 @@
     
     .heading {
       text-align: center;
-      margin-bottom: 20px;
-      margin-top: 20px;
-      font-size: 17px; /* Set the font size of the username */
+      margin-bottom: 10px;
+      margin-top: 10px;
+      font-size: 12px; /* Set the font size of the username */
     font-family: 'Roboto', sans-serif; 
       
     }
@@ -112,10 +112,11 @@
       background-color: #2E0052;
       color: #fff;
       border: none;
-      padding: 10px 30px;
+      padding: 0px 10px;
       border-radius: 25px;
       cursor: pointer;
-      font-size: 18px;
+      font-size: 10px;
+      max-width: 300px;
     }
     .invoiceItem {
       display: flex;
@@ -260,6 +261,48 @@
       width: 100%; /* Ensure footer spans entire viewport width */
     
     }
+
+    
+ /*-----------------------------------------------------BOTTOM MENU BAR----------------------------------BEGINS--------------------------*/
+ .bottomMenu {
+  background-color: white;
+  display: flex;
+  justify-content:space-between;
+  position: fixed;
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-top: 1px;
+  padding-bottom: 0px;
+  bottom: 0;
+  width: 96%;
+  z-index: 1000; /* Ensure it's above other content */
+  border-top: #666666 solid 0.5px;
+  border-bottom: white solid 5px;
+}
+
+.mbmenuItem {
+  display: flex;
+  align-items: center;
+}
+
+.menuIcon {
+  width: 24px; /* Adjust icon size */
+  margin-right: 1px;
+}
+
+.menuItem img {
+  width: 30px;
+  margin-right: 10px;
+}
+
+.mblogoutbutton{
+border:none;
+color:white;
+background-color: white;
+}
+  /*-----------------------------------------------------BOTTOM MENU BAR------------------------------------ENDS------------------------*/
+
+
     
     /* For screens up to 768px (standard tablet portrait) */
   @media (max-width: 768px) {
@@ -279,12 +322,11 @@
     .invoiceItem {
       flex-direction:row; /* Stack items vertically on smaller screens */
       align-items: flex-start; /* Align items to the start on smaller screens */
-      
-  
+      justify-content: center;
     }
   
     .left, .right , .top{
-      margin: 20px 0 0px 0px; /* Add margin between left and right sections on smaller screens */
+      margin: 10px 0 0px 0px; /* Add margin between left and right sections on smaller screens */
       
     }
   
@@ -298,9 +340,12 @@
     margin-bottom: -6px;
   }
     .invoiceButton {
+      display: flex;
+      align-items: center;
+      position: relative;
       padding: 10px 20px; /* Adjust padding for smaller screens */
       margin-top: 60px; /* Add margin-top for spacing */
-      width: auto; /* Allow button to expand to fit content */
+      width: 100px; /* Allow button to expand to fit content */
     }
     
     .menu-item {
@@ -308,7 +353,7 @@
     }
   
     .homeButton {
-      padding: 12px 30px; /* Adjust padding for smaller screens */
+      padding: 12px 10px; /* Adjust padding for smaller screens */
       margin-top: 60px;
       margin-right: -20px;
     }

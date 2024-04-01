@@ -1,15 +1,59 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect,useRef } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 import styles from './MycartMobile.module.css';
 import phoneCallIcon from "/ph_phone-call-light.png";
-import projectLogo from "/project_logo.png";
+import projectLogo from "/Mlogo.png";
 import LogoutButton from "/src/components/LogoutButton";
+import useLogout from "/src/hooks/useLogout";
+import { useParams, useNavigate } from 'react-router-dom';
 
 const MyCart = () => {
   const [cart, setCart] = useState([]);
   const [loading, setLoading] = useState(true);
   const [totalAmount, setTotalAmount] = useState(0);
+  const [username, setUsername] = useState('');
+  const navigate = useNavigate();
+
+  //logout------------------------------
+  const logoutButtonRef = useRef(null);
+ 
+  
+  const fetchUserData = async () => {
+    try {
+      const response = await axios.get('/api/users/profile');
+      setUsername(response.data.username);
+    } catch (error) {
+      console.error('Error fetching user data:', error);
+    }
+  };
+  useEffect(() => {
+    fetchUserData();
+  }, []);
+
+  useEffect(() => {
+    if (logoutButtonRef.current) {
+      logoutButtonRef.current.addEventListener('click', handleLogout);
+    }
+  
+    return () => {
+      if (logoutButtonRef.current) {
+        logoutButtonRef.current.removeEventListener('click', handleLogout);
+      }
+    };
+  }, [username]); // Reconnect listener on username changes
+  const { logout } = useLogout(); // Destructure logout from useLogout
+
+  const handleLogout = () => {
+    // Implement your logout logic here (potentially calling methods from LogoutButton)
+    console.log('Logout initiated');
+    logout();
+
+  };
+
+
+
+  //----------------------------------------
 
   const parsePrice = (priceString) => {
     const numericValue = priceString.replace(/[^\d.]/g, '');
@@ -97,48 +141,23 @@ const MyCart = () => {
     <div className={styles.mycartContainer}>
       {/* Header */}
       <header className={styles.header}>
-        <div className={styles.leftSection}>
-          <img src={phoneCallIcon} alt="Phone call" />
-          <span>912121131313</span>
-        </div>
-        <div className={styles.headerContent}>
-          <span>Get 50% off on selected items&nbsp; | &nbsp; Shop Now</span>
-        </div>
-        <div className={styles.logoutButton}>
-      <LogoutButton /> 
-    </div>
-      </header>
+  <div className={styles.leftSection}>
+  <img src={projectLogo} alt="Project Logo" />
+  </div>
+  
+</header>
 
       {/* Navigation */}
       <div className={styles.home}>
-        <div className={styles.menubar}>
-          <div className={styles.leftSection}>
-            <div className={styles.menuItem}>
-              <img src={projectLogo} alt="Project Logo" />
-            </div>
-            <div className={styles.menuItem}>
-              <Link to="/home" className={styles.homeLink}>Home/   View Cart</Link>
-            </div>
-            <div className={styles.menuItem}>
-              <Link to="/invoices" className={styles.invoiceLink}></Link>
-            </div>
-          </div>
-          <div className={styles.rightSection}>
-            <div className={styles.menuItem}>
-              <button className={styles.button}>
-                <img src="/cart_menu.png" alt="Cart_Menu" />
-                <span>View Cart</span>
-              </button>
-            </div>
-          </div>
-        </div>
-        <Link to="/productdetails" className={styles.homeButton}>Back to Products</Link>
-        {/* Back to Home button */}
+
+      <Link to="/productdetails" >
+        <img src="/Mback.png" alt="Back to Home" className={styles.homeButtonImage} />
+</Link>
+
 
         {/* Cart Header */}
         <div className={styles.cartHeader}>
-          <img src="/mycart.png" alt="mycart" className={styles.cartImage} />
-          <h2 className={styles.cartTitle}>My Cart</h2>
+          <h2 className={styles.cartTitle}></h2>
         </div>
 
         {/* Cart Content */}
@@ -221,12 +240,33 @@ const MyCart = () => {
           </div>
         </div>
 
-        {/* Total product items and total MRP */}
-        <div className={styles.totalItemsMRP}>
-          <p>
-           <span className={styles.items}> {cart.length} Items </span>
-            <span>₹{totalAmount.toFixed(2)}</span>
-          </p>
+      </div>
+
+      {/* Bottom menu bar */}
+<div className={styles.bottomMenu}>
+        <Link to="/" className={styles.mbmenuItem}>
+          <img src="/mbhome.png" alt="Home" className={styles.menuIcon} />
+          <div className={styles.menuLine}></div>
+        </Link>
+
+        <div className={styles.mbmenuItem} >
+          <img src="/Mbcart.png" alt="View Cart" className={styles.menuIcon} />
+          <div className={styles.menuLine}></div>
+        </div>
+
+      
+
+        <div className={styles.mbmenuItem}>
+          {username ? (
+        <button ref={logoutButtonRef} type="button" className={styles.mblogoutbutton}>
+        <img src="/mblogout.png" alt="Logout" className={styles.menuIcon} />
+        </button>          
+        ) : (
+            <Link to="/login" className={styles.mbmenuItem}>
+              <img src="/mblogin.png" alt="Login" className={styles.menuIcon} />
+              <div className={styles.menuLine}></div>
+            </Link>
+          )}
         </div>
       </div>
     </div>
@@ -275,35 +315,14 @@ const CartItem = ({ item, fetchProductDetails, onQuantityChange }) => {
             <p>{product.name}</p>
             <p>Color {product.color}</p>
             <p>In Stock</p>
-          </div>
-          <div className={styles.cartItemColumn}>
-            <p>Price </p>
             <p>{product.price}</p>
           </div>
-          <div className={styles.cartItemColumn}>
-            <p>Quantity </p>
-            <p>
-              <select value={selectedQuantity} onChange={handleQuantitySelect} style={{ width: '60%',height: '30px',fontSize: '12px' }}>
-                {[...Array(8)].map((_, index) => (
-                  <option key={index + 1} value={index + 1}>{index + 1}</option>
-                ))}
-              </select>
-            </p>
-          </div>
-          <div className={styles.cartItemColumn}>
-            <p>Total</p>
-            <div className={styles.cartItemColumn}>
-              <p className={styles.priceParagraph}>₹{(parsePrice(product.price) * selectedQuantity).toFixed(2)}</p>
-            </div>
-          </div>
+            
+         
+            
         </>
       )}
-      {/* Footer */}
-      <footer className={styles.footer}>
-        <div className={styles.footerContent}>
-          <span>Musicart | All rights reserved</span>
-        </div>
-      </footer>
+
     </div>
   );
 };

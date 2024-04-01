@@ -645,7 +645,8 @@ margin-top: -14px;
 
 /*PRODUCT view starts-----------------------------------------*/
 /* Grid View Styles */
- .gridView {
+ /* Add this to your CSS file */
+.gridView {
   display: grid;
   grid-template-columns: repeat(4, minmax(250px, 1fr)); /* Four containers per row */
   margin-top: -25px;
@@ -668,6 +669,7 @@ margin-top: -14px;
   height: 120%;
   padding: 0px; /* Padding for the image container */
   margin-bottom: -40px;
+  position: relative; /* Ensure position relative for absolute positioning */
 }
 
 .gridView .productImage {
@@ -685,6 +687,7 @@ margin-top: -14px;
   font-family: "Roboto", sans-serif; /* Use font-family property */
  margin-left: 20px;
  width: 400px;
+ margin-top: 50px;
 }
 
 .gridView .productName {
@@ -710,10 +713,10 @@ font-weight: 550;
 }
 
 .gridView .cartButton {
-  position: relative;
-  bottom: 65px;
-  right: 0px;
-  left: 240px;
+  position: absolute; /* Change position to absolute */
+  bottom: 10px; /* Adjust position from bottom */
+  right: 0px; /* Adjust position from right */
+  left:240px;
   background: transparent;
   border: none;
   cursor: pointer;
@@ -723,7 +726,7 @@ font-weight: 550;
 .gridView .cartIcon {
   width: 50px; /* Adjust size of the cart icon */
   height: auto; /* Maintain aspect ratio */
-  z-index: 1;
+  z-index: 1; /* Ensure the icon appears above the product image */
 }
 
 
@@ -744,7 +747,6 @@ font-weight: 550;
 
 /*PRODUCT view ends-----------------------------------------*/
 
-/* List View Styles */
 .listView  {
   display: block; /* Change to block layout for list view */
 }
@@ -753,20 +755,19 @@ font-weight: 550;
   text-decoration: none; /* Remove default link styling */
   color: inherit; /* Inherit text color */
 }
+
 .listView .productContainer {
   display: flex; /* Use flexbox to arrange contents side by side */
   width: 100%; /* Ensure each product container takes up the full width */
   margin-bottom: 20px; /* Add spacing between each product */
   text-decoration: none; /* Remove underline */
-
 }
 
-.listView  .productImageContainer {
-  margin-right: 0px;
-  
+.listView .productImageContainer {
+  margin-right: 20px; /* Add margin to create space between image and details */
 }
 
-.listView  .productImage {
+.listView .productImage {
   width: 200px;
   height: 200px; /* Maintain aspect ratio */
   max-height: 200px; /* Limit maximum height of the image */
@@ -782,26 +783,20 @@ font-weight: 550;
   text-decoration: none; /* Remove default link styling */
   word-wrap: break-word; /* Add text wrapping */
   width: 200px; /* Set a fixed width for the box */
-  margin-left: -40px;
-  text-decoration: none; /* Remove underline */
-
+  margin-left: 0px;
 }
-
 
 .listView .productName {
   margin: 0; /* Remove default margin */
   font-size: 25px; /* Adjust font size as needed */
   font-family: "Roboto", sans-serif;
-  text-decoration: none; /* Remove underline */
   font-weight: 600;
-
 }
 
 .listView .productPrice {
   margin: 5px 0; /* Adjust margin as needed */
   font-size: 20px; /* Adjust font size as needed */
   font-weight: 500;
-
   font-family: "Roboto", sans-serif;
 }
 
@@ -810,10 +805,9 @@ font-weight: 550;
   font-size: 20px; /* Adjust font size as needed */
   font-weight: 500;
   font-family: "Roboto", sans-serif;
-
-
 }
-.listView .shortinfo{
+
+.listView .shortinfo {
   margin: 0px 0; /* Adjust margin as needed */
   font-size: 20px; /* Adjust font size as needed */
   color: black;
@@ -821,14 +815,13 @@ font-weight: 550;
   text-decoration: none;
   line-height: 1.5; /* Add line height to create space between lines */
   font-family: "Roboto", sans-serif;
-font-weight: 500;
+  font-weight: 500;
 }
 
 .listView .cartButton {
-  position: relative;
-  bottom: 10px;
-  right: 0px;
-  left: -70px;
+  position: relative; /* Change position to absolute */
+  bottom: 10px; /* Adjust position from bottom */
+  right: 70px; /* Adjust position from right */
   background: transparent;
   border: none;
   cursor: pointer;
@@ -838,9 +831,10 @@ font-weight: 500;
 .listView .cartIcon {
   width: 50px; /* Adjust size of the cart icon */
   height: auto; /* Maintain aspect ratio */
-  z-index: 1;
-
+  z-index: 1; /* Ensure the icon appears above the product image */
 }
+
+
 .detailsButton {
   width: 150px;
   height: 40px;

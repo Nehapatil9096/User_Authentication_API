@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect,useRef } from "react";
 import { Link } from "react-router-dom";
 import styles from "./InvoicesMobile.module.css";
 import invoiceImage from "/Invoice.png"; // Import the image
@@ -8,13 +8,38 @@ import phoneCallIcon from "/ph_phone-call-light.png";
 import projectLogo from "/Mlogo.png";
 import LogoutButton from "/src/components/LogoutButton";
 import { useParams, useNavigate } from 'react-router-dom';
+import useLogout from "/src/hooks/useLogout";
 
 
 const Invoice = () => {
   const [invoices, setInvoices] = useState([]);
   const [username, setUsername] = useState('');
   const navigate = useNavigate();
+  //logout------------------------------
+  const logoutButtonRef = useRef(null);
 
+  useEffect(() => {
+    if (logoutButtonRef.current) {
+      logoutButtonRef.current.addEventListener('click', handleLogout);
+    }
+  
+    return () => {
+      if (logoutButtonRef.current) {
+        logoutButtonRef.current.removeEventListener('click', handleLogout);
+      }
+    };
+  }, [username]); // Reconnect listener on username changes
+  const { logout } = useLogout(); // Destructure logout from useLogout
+
+  const handleLogout = () => {
+    // Implement your logout logic here (potentially calling methods from LogoutButton)
+    console.log('Logout initiated');
+    logout();
+
+  };
+
+
+  //----------------------------------------
   useEffect(() => {
     fetchInvoices(); // Call fetchInvoices when the component mounts
   }, []); // Empty dependency array to ensure fetchInvoices is only called once
@@ -96,6 +121,38 @@ My Invoices</h1>
           ))}
       </div>
       </div>
+
+{/* Bottom menu bar */}
+<div className={styles.bottomMenu}>
+        <Link to="/" className={styles.mbmenuItem}>
+          <img src="/mbhome.png" alt="Home" className={styles.menuIcon} />
+          <div className={styles.menuLine}></div>
+        </Link>
+
+        <div className={styles.mbmenuItem} onClick={handleViewCart}>
+          <img src="/Mbcart.png" alt="View Cart" className={styles.menuIcon} />
+          <div className={styles.menuLine}></div>
+        </div>
+
+        <Link to="/invoices" className={styles.mbmenuItem}>
+          <img src="/mbinvoice.png" alt="Invoice" className={styles.menuIcon} />
+          <div className={styles.menuLine}></div>
+        </Link>
+
+        <div className={styles.mbmenuItem}>
+          {username ? (
+        <button ref={logoutButtonRef} type="button" className={styles.mblogoutbutton}>
+        <img src="/mblogout.png" alt="Logout" className={styles.menuIcon} />
+        </button>          
+        ) : (
+            <Link to="/login" className={styles.mbmenuItem}>
+              <img src="/mblogin.png" alt="Login" className={styles.menuIcon} />
+              <div className={styles.menuLine}></div>
+            </Link>
+          )}
+        </div>
+      </div>
+
       <footer className={styles.footer}>
         <div className={styles.footerContent}>
           <span>Musicart | All rights reserved</span>

@@ -13,6 +13,7 @@
     max-width: 100%; /* Adjust to fit the screen */
     margin: 0 auto;
     padding: 70px;
+    margin-bottom: 100px;
     
   }
   /* Add this to Checkout.module.css */
@@ -56,8 +57,8 @@
   .cartHeader {
     display: flex; /* Use flexbox to align items in a row */
     align-items: center; /* Align items vertically */
-    margin-top: -35px;
-    margin-bottom: 45px;
+    margin-top: 5px;
+    margin-bottom: 5px;
     font-family: 'Roboto', sans-serif; 
   
   }
@@ -72,7 +73,7 @@
   
   .cartTitle {
     text-align: center; /* Center the cart title */
-    margin-bottom: 270px; /* Add margin at the bottom */
+    margin-bottom: 200px; /* Add margin at the bottom */
     font-family: 'Roboto', sans-serif; 
   
   }
@@ -99,7 +100,6 @@
     padding: 20px; /* Add some padding */
     font-family: 'Roboto', sans-serif; 
     min-height: 600px;
-    border-left:1px solid black ;
     min-height: auto; /* Adjust height */
   
   align-items: flex-start;
@@ -147,11 +147,13 @@
   
   .cartItem {
     display: flex;
+    flex-direction: row;
     align-items: flex-start; /* Align items to the start of the cross axis */
     border-top: 0px solid #ddd; /* Add border to the top */
     padding-right: 10px; /* Add padding to the right */  padding: 10px 0; /* Add padding top and bottom */
     font-family: 'Roboto', sans-serif; 
   border-bottom: 0px;
+  margin-top: -10px;
   }
   .priceParagraph {
     border-right: 1px solid #ddd; /* Add right border */
@@ -172,7 +174,7 @@
     margin-right: 10px; /* Add some spacing to the right */
     border: 1px solid #2e0052 ;
     object-fit: contain; /* Maintain aspect ratio without cutting */
-  
+  background-color: white;
   }
   
   
@@ -338,7 +340,7 @@
     color: #111; /* Set text color */
     border: none;
     border-radius: 10px;
-    padding: 10px 100px;
+    padding: 10px 80px;
     margin-bottom: 10px;
     cursor: pointer;
     font-size: 16px;
@@ -398,3 +400,84 @@
     font-family: "Roboto", sans-serif;
   
   }
+
+
+  
+
+ /*-----------------------------------------------------BOTTOM MENU BAR----------------------------------BEGINS--------------------------*/
+ .bottomMenu {
+  background-color: white;
+  display: flex;
+  justify-content:space-between;
+  position: fixed;
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-top: 1px;
+  padding-bottom: 0px;
+  bottom: 0;
+  width: 96%;
+  z-index: 1000; /* Ensure it's above other content */
+  border-top: #666666 solid 0.5px;
+  border-bottom: white solid 5px;
+}
+
+.mbmenuItem {
+  display: flex;
+  align-items: center;
+}
+
+.menuIcon {
+  width: 24px; /* Adjust icon size */
+  margin-right: 1px;
+}
+
+.menuItem img {
+  width: 30px;
+  margin-right: 10px;
+}
+
+.mblogoutbutton{
+border:none;
+color:white;
+background-color: white;
+}
+  /*-----------------------------------------------------BOTTOM MENU BAR------------------------------------ENDS------------------------*/
+
+
+
+
+
+  @media only screen and (max-width: 768px) {
+    .home {
+      padding: 20px; /* Adjust padding for smaller screens */
+    }
+  
+    .cartContent {
+      flex-direction: column; /* Stack cart content in a column on smaller screens */
+      margin-top: -220px; /* Adjust margin for smaller screens */
+    }
+  
+    .priceDetails {
+      flex-basis: auto; /* Allow price details to grow based on content */
+      margin-top: 20px; /* Adjust margin for smaller screens */
+    }
+  
+    .priceAmount {
+      margin-top: 20px; /* Adjust margin for smaller screens */
+    }
+  
+    .cartItem {
+      flex-direction: row; /* Stack cart items in a column on smaller screens */
+      padding: 20px 0; /* Adjust padding for smaller screens */
+      background-color: #DBDBDB;
+    }
+  
+    .cartItemColumn {
+      text-align: center; /* Center align content on smaller screens */
+    }
+  
+    .footer {
+      font-size: 18px; /* Decrease font size for smaller screens */
+    }
+  }
+  

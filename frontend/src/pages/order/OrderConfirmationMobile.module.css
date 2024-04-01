@@ -3,7 +3,30 @@
 body {
     overflow-y: hidden;
   }
+  .header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between; /* Align left and right sections */
+    background-color: #2e0052;
+    color: white;
+    height: 50px; /* Adjust height as needed */
+    padding: 0 50px; /* Add padding to the header */
+    margin-bottom: 20px; /* Add margin bottom to match the spacing */
+    width: 300px;
+    padding-top: 10px;
+
+  }
+  .headerContent {
+padding-top: 40px;
+    font-family: "Roboto", sans-serif; /* Use font-family property */
+    align-items: center;
+  }
   
+  .leftSection {
+    display: flex;
+    align-items: center;
+    margin-right: 20px; /* Add margin between phone call icon/number and other content */
+  }
   .centerContent {
     display: flex;
     flex-direction: column;
@@ -45,6 +68,7 @@ body {
     width: 100vw;
     height: 100vh;
     background-color: #FFFFFF;
+    font-size: 11px;
     font-family: "Roboto", sans-serif; /* Use font-family property */
   
   }
@@ -53,6 +77,7 @@ body {
     height: 100%;
     display: flex;
     flex-direction: column;
+    justify-content: center;
     align-items: center; /* Align items to the start (left side) */
   }
   
@@ -67,11 +92,12 @@ body {
     border: 2px solid #E3E3E3; /* Add a border to the inner container */
     border-radius: 10px; /* Increase border radius */
     padding: 20px; /* Add padding to the inner container */
-    width: 700px; /* Set maximum width for the inner container */
+    width: 300px; /* Set maximum width for the inner container */
     justify-content: center;
+    align-content: center;
     height: 350px;
     margin-left: 0px;
-    margin-top: 70px;
+    margin-top: 0px;
     display: flex; /* Use flexbox */
     flex-direction: column; /* Arrange items vertically */
     align-items: center; /* Center items horizontally */
@@ -90,17 +116,7 @@ body {
   margin-top: -800px;
   }
   
-  .footer {
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    background-color: #2e0052;
-    color: white;
-    display: flex;
-    align-items: center;
-    height: 60px;
-  }
+ 
   
   .button {
   background-color:  #2e0052;
@@ -108,11 +124,11 @@ body {
   color: white; /* White text color */
   border: none; /* No border */
   padding: 10px 20px; /* Add padding */
-  font-size: 20px; /* Font size */
+  font-size: 10px; /* Font size */
   cursor: pointer; /* Cursor style */
   border-radius: 10px; /* Rounded corners */
   margin-top: 20px; /* Add some top margin */
-  width: 300px;
+  width: 230px;
   }
   
   
@@ -123,3 +139,65 @@ body {
   font-weight: 500;
   }
   
+
+    
+ /*-----------------------------------------------------BOTTOM MENU BAR----------------------------------BEGINS--------------------------*/
+ .bottomMenu {
+  background-color: white;
+  display: flex;
+  justify-content:space-between;
+  position: fixed;
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-top: 1px;
+  padding-bottom: 0px;
+  bottom: 0;
+  width: 96%;
+  z-index: 1000; /* Ensure it's above other content */
+  border-top: #666666 solid 0.5px;
+  border-bottom: white solid 5px;
+}
+
+.mbmenuItem {
+  display: flex;
+  align-items: center;
+}
+
+.menuIcon {
+  width: 24px; /* Adjust icon size */
+  margin-right: 1px;
+}
+
+.menuItem img {
+  width: 30px;
+  margin-right: 10px;
+}
+
+.mblogoutbutton{
+border:none;
+color:white;
+background-color: white;
+}
+  /*-----------------------------------------------------BOTTOM MENU BAR------------------------------------ENDS------------------------*/
+
+
+
+/* Media Query for Mobile Devices */
+@media screen and (max-width: 600px) {
+  .innerContainer {
+    
+    padding: 10px; /* Adjust padding for smaller devices */
+  }
+
+  .logo {
+    width: 120px; /* Adjust size for smaller devices */
+  }
+
+  .button {
+    font-size: 14px; /* Adjust font size for smaller devices */
+  }
+
+  .footerContent {
+    font-size: 12px; /* Adjust font size for smaller devices */
+  }
+}

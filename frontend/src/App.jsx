@@ -20,7 +20,8 @@ import CheckoutMobile from './pages/checkout/CheckoutMobile';
 import OrderConfirmationMobile from "./pages/order/OrderConfirmationMobile";
 import InvoicesMobile from './pages/invoices/InvoicesMobile';
 import InvoiceDetailsMobile from './pages/invoices/InvoiceDetailsMobile';
-
+import LoginMobile from "./pages/login/loginMobile";
+import SignUpMobile from "./pages/signup/SignUpMobile";
 function App() {
   const { authUser } = useAuthContext();
   const [isMobile, setIsMobile] = useState(false);
@@ -55,13 +56,15 @@ function App() {
             path="/home"
             element={authUser ? (isMobile ? <HomeMobile /> : <Home />) : <Navigate to="/login" />}
           />
-          <Route
+
+          
+         <Route
             path="/login"
-            element={authUser ? <Navigate to="/" /> : <Login />}
+            element={authUser ? <Navigate to="/" /> :isMobile ? <LoginMobile/> : <Login />}
           />
           <Route
             path="/signup"
-            element={authUser ? <Navigate to="/" /> : <SignUp />}
+            element={authUser ? <Navigate to="/" /> :isMobile ? <SignUpMobile/> : <SignUp />}
           />
           <Route
             path="/product/ProductDetails/:productId"

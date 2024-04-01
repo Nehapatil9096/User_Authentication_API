@@ -1,12 +1,13 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect,useRef } from 'react';
 import { Link } from 'react-router-dom';
 import LogoutButton from '/src/components/LogoutButton';
 import styles from './CheckoutMobile.module.css';
 import axios from 'axios'; // Import axios
 import { useParams, useNavigate } from 'react-router-dom';
 import phoneCallIcon from "/ph_phone-call-light.png";
-import projectLogo from "/project_logo.png";
+import projectLogo from "/Mlogo.png";
 import image from "/image.png"; // Update the path accordingly
+import useLogout from "/src/hooks/useLogout";
 
 const Checkout = () => {
   const [cart, setCart] = useState([]);
@@ -18,6 +19,34 @@ const Checkout = () => {
   const [selectedProduct, setSelectedProduct] = useState(null); // State to track selected product
   const navigate = useNavigate();
 
+  //logout------------------------------
+  const logoutButtonRef = useRef(null);
+
+  useEffect(() => {
+    if (logoutButtonRef.current) {
+      logoutButtonRef.current.addEventListener('click', handleLogout);
+    }
+  
+    return () => {
+      if (logoutButtonRef.current) {
+        logoutButtonRef.current.removeEventListener('click', handleLogout);
+      }
+    };
+  }, [username]); // Reconnect listener on username changes
+  const { logout } = useLogout(); // Destructure logout from useLogout
+
+  const handleLogout = () => {
+    // Implement your logout logic here (potentially calling methods from LogoutButton)
+    console.log('Logout initiated');
+    logout();
+
+  };
+
+  const handleViewCart= () => {
+    navigate('/mycart');
+};
+
+  //----------------------------------------
   const fetchUserData = async () => {
     try {
       const response = await axios.get('/api/users/profile');
@@ -136,40 +165,18 @@ const Checkout = () => {
       {/* Header */}
       <header className={styles.header}>
   <div className={styles.leftSection}>
-    <img src={phoneCallIcon} alt="Phone call" />
-    <span>912121131313</span>
+  <img src={projectLogo} alt="Project Logo" />
   </div>
-  <div className={styles.headerContent}>
-    <span>Get 50% off on selected items&nbsp; ⏐ &nbsp; Shop Now</span>
-  </div>
-  <div className={styles.logoutButton}>
-  <LogoutButton /> 
-  </div>
+  
 </header>
 
       <div className={styles.home}>
 
-           {/* Menu Bar */}
-           <div className={styles.menubar}>
-      <div className={styles.leftSection}>
-
-          <div className={styles.menuItem}>
-            <img src={projectLogo} alt="Project Logo" />
-          </div>
-          <div className={styles.menuItem}>
-            <Link to="/home"className={styles.homeLink}>Home/ Checkout</Link>
-          </div>
-          <div className={styles.menuItem}>
-          <Link to="/invoices" className={styles.invoiceLink}></Link>
-          </div>
-        </div>
-      <div className={styles.rightSection}>    
-        </div>
-        </div>
+      <Link to="/mycart" className={styles.homeButton}>
+        <img src="/Mback.png" alt="Back to Home" className={styles.homeButtonImage} />
+</Link>
      
-        <div className={styles.menuItem}>
-          <Link to="/mycart"><button className={styles.backToCartButton}>Back to Cart</button></Link>
-    </div>
+
 
       <h1 className={styles.checkoutHeader}>Checkout</h1>
 
@@ -247,30 +254,11 @@ const Checkout = () => {
       )}
     </div>   
   </div>
-  <div className={styles.line}></div> {/* Line between rows */}
 
 </div>
 
 
-        <div className={styles.rightColumn}>
-
-          <div className={styles.orderSummaryBox}>
-            <button className={styles.placeOrderButton} onClick={placeOrder}>Place Your Order</button>
-            <p className={styles.placeOrderText}>By placing your order you agree to musicart privacy</p>
-             <p className={styles.placeOrderText}>notice and conditions of use</p>
-
-            <hr />
-
-            <h3>Order Summary</h3>
-            <div className={styles.totalAmount}>
-  <p className={styles.greyText}>Items Total: ₹{totalAmount.toFixed(2)}</p>
-  <p className={styles.greyText}>Delivery Amount: ₹45</p>
-</div>
-
-            <hr />
-            <h3 className={styles.orderTotal}>Order Total: ₹{(totalAmount + 45).toFixed(2)}</h3>
-          </div>
-        </div>
+    
       </div>
 
 
@@ -283,7 +271,9 @@ const Checkout = () => {
   </div>
   <div className={styles.leftSection}>
   <div className={styles.flexContainer}>
+  <p className={styles.greyText}>Items Total: ₹{totalAmount.toFixed(2)}</p>
 
+  <p className={styles.greyText}>Delivery Amount: ₹45</p>
   <p className={styles.orderTotal}>
       Order Total: ₹{(totalAmount + 45).toFixed(2)}
     </p>
@@ -295,12 +285,33 @@ const Checkout = () => {
   </div>
 </div>
 </div>
-      {/* Footer */}
-      <footer className={styles.footer}>
-        <div className={styles.footerContent}>
-          <span>Musicart | All rights reserved</span>
+{/* Bottom menu bar */}
+<div className={styles.bottomMenu}>
+        <Link to="/" className={styles.mbmenuItem}>
+          <img src="/mbhome.png" alt="Home" className={styles.menuIcon} />
+          <div className={styles.menuLine}></div>
+        </Link>
+
+        <div className={styles.mbmenuItem} onClick={handleViewCart}>
+          <img src="/Mbcart.png" alt="View Cart" className={styles.menuIcon} />
+          <div className={styles.menuLine}></div>
         </div>
-      </footer>
+
+      
+
+        <div className={styles.mbmenuItem}>
+          {username ? (
+        <button ref={logoutButtonRef} type="button" className={styles.mblogoutbutton}>
+        <img src="/mblogout.png" alt="Logout" className={styles.menuIcon} />
+        </button>          
+        ) : (
+            <Link to="/login" className={styles.mbmenuItem}>
+              <img src="/mblogin.png" alt="Login" className={styles.menuIcon} />
+              <div className={styles.menuLine}></div>
+            </Link>
+          )}
+        </div>
+      </div>
     </div>
   );
 };

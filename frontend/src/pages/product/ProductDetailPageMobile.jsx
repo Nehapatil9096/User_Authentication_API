@@ -1,12 +1,13 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { FaStar, FaRegStar } from 'react-icons/fa';
 import phoneCallIcon from "/ph_phone-call-light.png";
-import projectLogo from "/project_logo.png";
+import projectLogo from "/Mlogo.png";
 import { Link } from "react-router-dom";
 import axios from 'axios';
 import styles from './ProductDetailPageMobile.module.css';
 import LogoutButton from "/src/components/LogoutButton";
+import useLogout from "/src/hooks/useLogout";
 
 
 const ProductDetailPage = () => {
@@ -18,6 +19,35 @@ const ProductDetailPage = () => {
   const [cartCount, setCartCount] = useState(0); // State for cart count
   const [username, setUsername] = useState('');
 
+  //logout------------------------------
+  const logoutButtonRef = useRef(null);
+ 
+  
+
+
+  useEffect(() => {
+    if (logoutButtonRef.current) {
+      logoutButtonRef.current.addEventListener('click', handleLogout);
+    }
+  
+    return () => {
+      if (logoutButtonRef.current) {
+        logoutButtonRef.current.removeEventListener('click', handleLogout);
+      }
+    };
+  }, [username]); // Reconnect listener on username changes
+  const { logout } = useLogout(); // Destructure logout from useLogout
+
+  const handleLogout = () => {
+    // Implement your logout logic here (potentially calling methods from LogoutButton)
+    console.log('Logout initiated');
+    logout();
+
+  };
+
+
+
+  //----------------------------------------
   useEffect(() => {
     fetchUserData(); // Fetch user data when component mounts
   }, []);
@@ -138,48 +168,23 @@ const ProductDetailPage = () => {
 
   return (
     <div className={styles.container}>
-  <header className={styles.header}>
+    <header className={styles.header}>
   <div className={styles.leftSection}>
-    <img src={phoneCallIcon} alt="Phone call" />
-    <span>912121131313</span>
+  <img src={projectLogo} alt="Project Logo" />
   </div>
-  <div className={styles.headerContent}>
-  </div>
-  <div className={styles.logoutButton}>
-      <LogoutButton /> 
-    </div>
+  
 </header>
       <div className={styles.home}>
-        <div className={styles.menubar}>
-          <div className={styles.leftSection}>
-            <div className={styles.menuItem}>
-              <img src={projectLogo} alt="Project Logo" />
-            </div>
-            <div className={styles.menuItem2}>
-              <Link to="/home"className={styles.homeLink}>Home/ {product.name}</Link>
-            </div>
-            <div className={styles.menuItem}>
-              <Link to="/invoices" className={styles.invoiceLink}></Link>
-            </div>
-          </div>
-          <div className={styles.rightSection}>
+      <Link to="/productdetails" >
+        <img src="/Mback.png" alt="Back to Home" className={styles.homeButtonImage} />
+</Link>
+ 
+        <button onClick={handleBuyNow} className={styles.buyNowButton1}>Buy Now</button>
 
-          <div className={styles.menuItem}>
-                {/* View Cart button */}
-                <button className={styles.button} onClick={handleViewCart}>
-                  <img src="/cart_menu.png" alt="Cart_Menu" />
-                  <span>View Cart &nbsp;  {cartCount}</span>
-                </button>
-              </div>
-            
-          </div>
-        </div>
         <div className={styles.menuItem}>
-          <Link to="/" className={styles.backToProducts}>Back to Products</Link>
         </div>
-        <div className={styles.productShortInfo}>
-          <p>{product.shortinfo}</p>
-        </div>
+      
+
         <div className={styles.contentWrapper}>
           <div className={styles.imagesContainer}>
             <div className={styles.mainImage}>
@@ -226,11 +231,33 @@ const ProductDetailPage = () => {
           </div>
         </div>
       </div>
-      <footer className={styles.footer}>
-        <div className={styles.footerContent}>
-          <span>Musicart | All rights reserved</span>
+      {/* Bottom menu bar */}
+      <div className={styles.bottomMenu}>
+        <Link to="/" className={styles.mbmenuItem}>
+          <img src="/mbhome.png" alt="Home" className={styles.menuIcon} />
+          <div className={styles.menuLine}></div>
+        </Link>
+
+        <div className={styles.mbmenuItem} >
+          <img src="/Mbcart.png" alt="View Cart" className={styles.menuIcon} />
+          <div className={styles.menuLine}></div>
         </div>
-      </footer>
+
+      
+
+        <div className={styles.mbmenuItem}>
+          {username ? (
+        <button ref={logoutButtonRef} type="button" className={styles.mblogoutbutton}>
+        <img src="/mblogout.png" alt="Logout" className={styles.menuIcon} />
+        </button>          
+        ) : (
+            <Link to="/login" className={styles.mbmenuItem}>
+              <img src="/mblogin.png" alt="Login" className={styles.menuIcon} />
+              <div className={styles.menuLine}></div>
+            </Link>
+          )}
+        </div>
+      </div>
     </div>
   );
 };

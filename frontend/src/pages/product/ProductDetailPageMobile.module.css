@@ -55,19 +55,20 @@ body::-webkit-scrollbar-thumb:hover {
   flex-direction: column; /* Display small images below the main image */
   align-items:flex-start;
   width: 100%; /* Ensure image container takes full width */
-  max-width: 300px; /* Adjust maximum width as needed */
+  max-width: 100px; /* Adjust maximum width as needed */
   margin-right: 100px;
   padding-right: 10px;
 }
 
 
 .mainImage {
-  width: 400px; /* Example width for the main image */
-  height: 400px; /* Example height for the main image */
+  width: 300px; /* Example width for the main image */
+  height: 300px; /* Example height for the main image */
   border: 3px solid #522177; /* Example border */
   border-radius: 15px; /* Example border radius */
   object-fit: contain; /* Ensure the image fits within the container while preserving aspect ratio */
   padding: 10px;
+  margin-top: 70px;
 }
 
 .smallImages {
@@ -100,7 +101,7 @@ body::-webkit-scrollbar-thumb:hover {
 
 .productDetailsContainer {
   flex: 1;
-  max-width: 50%;
+  width: 100vw;
   display: flex;
   padding-left: 60px;
 }
@@ -151,7 +152,7 @@ body::-webkit-scrollbar-thumb:hover {
 }
 
 .productDetails h2 {
-  font-size: 2.5rem;
+  font-size: 25px;
   margin-bottom: 1rem;
 }
 
@@ -184,18 +185,42 @@ body::-webkit-scrollbar-thumb:hover {
   text-wrap: nowrap;
   justify-content: center;
 }
-
+.buyNowButton1 {
+  width: 100%; /* Make buttons take full width of their container */
+  padding: 10px; /* Add padding to buttons for better touch/click target */
+  font-size: 16px; /* Adjust font size if needed */
+  color: black; /* Example text color */
+  border: none;
+  border-radius: 25px;
+  cursor: pointer;
+  text-wrap: nowrap;
+  justify-content: center;
+}
 
 .cartButton{
   background-color: #FFD600; /* Example background color for "Buy Now" button */
   margin-top: 5px; /* Add margin to separate "Buy Now" button from "Add to Cart" button */
-  width: 180%; /* Ensure buttons container takes full width */
+  width: 200%; /* Ensure buttons container takes full width */
+  margin-left: -30px;
+  border-radius: 5px;
+
 }
 .buyNowButton {
   background-color: #FFB800; /* Example background color for "Buy Now" button */
   margin-top: 5px; /* Add margin to separate "Buy Now" button from "Add to Cart" button */
-  width: 180%; /* Ensure buttons container takes full width */
-
+  width: 200%; /* Ensure buttons container takes full width */
+margin-left: -30px;
+border-radius: 5px;
+height: 50px;
+margin-bottom: -20px;
+}
+.buyNowButton1 {
+  background-color: #FFB800; /* Example background color for "Buy Now" button */
+  margin-top: 30px; /* Add margin to separate "Buy Now" button from "Add to Cart" button */
+  width: 120%; /* Ensure buttons container takes full width */
+margin-left: -30px;
+border-radius: 5px;
+margin-right: 100px;
 }
 .buttons button:hover {
   background-color: #e0b13b;
@@ -392,6 +417,34 @@ font-family: "Roboto", sans-serif; /* Use font-family property */
   margin-top: 0; /* Adjust this value as needed */
   padding-left: 0; /* Adjust this value as needed */
 }
+/* Add these styles to your existing CSS file */
+
+/* Slider container */
+.slick-slider {
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Small image container */
+.smallImages {
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 0 10px; /* Adjust padding as needed */
+}
+
+/* Small image */
+.smallImage img {
+  width: 100%; /* Ensure images fill the container */
+  height: auto; /* Maintain aspect ratio */
+  border-radius: 5px; /* Optional: Add border-radius for rounded corners */
+}
+
+/* Active small image */
+.smallImage.active img {
+  border: 2px solid #2e0052; /* Optional: Highlight active image */
+}
 
 /* ProductDetailPage.module.css */
 .name {
@@ -429,11 +482,51 @@ font-family: "Roboto", sans-serif; /* Use font-family property */
 }
 
 
+ /*-----------------------------------------------------BOTTOM MENU BAR----------------------------------BEGINS--------------------------*/
+ .bottomMenu {
+  background-color: white;
+  display: flex;
+  justify-content:space-between;
+  position: fixed;
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-top: 1px;
+  padding-bottom: 0px;
+  bottom: 0;
+  width: 96%;
+  z-index: 1000; /* Ensure it's above other content */
+  border-top: #666666 solid 0.5px;
+  border-bottom: white solid 5px;
+}
+
+.mbmenuItem {
+  display: flex;
+  align-items: center;
+}
+
+.menuIcon {
+  width: 24px; /* Adjust icon size */
+  margin-right: 1px;
+}
+
+.menuItem img {
+  width: 30px;
+  margin-right: 10px;
+}
+
+.mblogoutbutton{
+border:none;
+color:white;
+background-color: white;
+}
+  /*-----------------------------------------------------BOTTOM MENU BAR------------------------------------ENDS------------------------*/
+
+
 /* Add this to your existing ProductDetailPage.module.css */
 
 @media screen and (max-width: 768px) {
   .imagesContainer {
-    flex: 1 1 100%;
+    flex: 1 1 80%;
   }
 
   .header {
@@ -466,6 +559,6 @@ font-family: "Roboto", sans-serif; /* Use font-family property */
 
   .productDetailsContainer {
     max-width: 100%; /* Ensure product details container takes full width */
-    padding: 0 20px; /* Add padding to the sides */
+    margin-left: -130px;
   }
 }
