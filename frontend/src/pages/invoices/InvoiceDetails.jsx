@@ -196,7 +196,7 @@ const InvoiceDetails = () => {
       </div>
       </div>
       {/* Footer */}
-      <footer className={styles.footer}>
+      <footer className={styles.footer1}>
         <div className={styles.footerContent}>
           <span>Musicart | All rights reserved</span>
         </div>

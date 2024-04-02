@@ -1,23 +1,19 @@
-/* InivoiceDetailsPage.module.css */
-
 .checkoutContainer {
-    display: flex;
-    flex-direction: column;
-    font-family: Arial, sans-serif;
-    height: 100vh;
-    width:100vw;
-    box-sizing: border-box;
-    overflow-y: auto; /* Enable vertical scrolling */
+  height: 100vh; /* Set height to full viewport height */
+  overflow-y: auto; /* Enable vertical scrolling */
+  background-color: #ffffff;
+  overflow-x: hidden; /* Prevent horizontal scrolling */
+  width: 100vw;
+  font-family: "Roboto", sans-serif; /* Use font-family property */
 
-  }
+}
+
+.home {
+  max-width: 100%; /* Adjust to fit the screen */
+  margin: 0 auto;
+  padding: 70px;
+}
   
-  .home {
-    max-width: 100%; /* Adjust to fit the screen */
-    margin: 0 auto;
-    padding: 70px;
-    overflow-y: auto; /* Enable vertical scrolling */
-
-  }
     .header {
       display: flex;
       align-items: center;
@@ -50,7 +46,7 @@
       color: white;
       padding: 0px 75px;
     padding-top: -100px;
-    margin-top: -70px;
+    margin-top: -50px;
     }
     
   .menubar .leftSection {
@@ -60,7 +56,7 @@
   .menubar .leftSection img {
     width: 220px; /* Adjust as needed */
     margin-right: 10px;
-    margin-left: -100px;
+    margin-left: -70px;
   }
   
   .menubar .leftSection a {
@@ -337,12 +333,12 @@
   margin-right: 0px;}
   
    
-    .footer {
+    .footer1 {
       background-color: #2e0052;
       color: white; /* Set text color to white */
       display: flex;
       align-items: center; /* Center vertically */
-      height: 190px; /* Adjust height as needed */
+      height: 67px; /* Adjust height as needed */
       width: 100%; /* Ensure footer spans entire viewport width */
     
     }
