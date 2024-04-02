@@ -153,11 +153,7 @@ My Invoices</h1>
         </div>
       </div>
 
-      <footer className={styles.footer}>
-        <div className={styles.footerContent}>
-          <span>Musicart | All rights reserved</span>
-        </div>
-      </footer>
+      
     </div>
   );
 };

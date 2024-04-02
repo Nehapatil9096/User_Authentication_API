@@ -1,5 +1,7 @@
 import React, { useEffect, useState, useRef } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
+import { Carousel } from 'react-responsive-carousel';
+import 'react-responsive-carousel/lib/styles/carousel.min.css';
 import { FaStar, FaRegStar } from 'react-icons/fa';
 import phoneCallIcon from "/ph_phone-call-light.png";
 import projectLogo from "/Mlogo.png";
@@ -23,7 +25,10 @@ const ProductDetailPage = () => {
   const logoutButtonRef = useRef(null);
  
   
-
+  
+    const toggleImageSize = (index) => {
+      setSelectedImage(index);
+    };
 
   useEffect(() => {
     if (logoutButtonRef.current) {
@@ -140,16 +145,7 @@ const ProductDetailPage = () => {
       navigate('/mycart');
     }
   };
-  const toggleImageSize = (index) => {
-    if (index !== 0) {
-      const tempImages = [...product.images];
-      const tempImage = tempImages[0];
-      tempImages[0] = tempImages[index];
-      tempImages[index] = tempImage;
-      setProduct({ ...product, images: tempImages });
-      setSelectedImage(0);
-    }
-  };
+
   
 
   if (!product) {
@@ -186,27 +182,35 @@ const ProductDetailPage = () => {
       
 
         <div className={styles.contentWrapper}>
-          <div className={styles.imagesContainer}>
-            <div className={styles.mainImage}>
-              <img
-                src={product.images[selectedImage]}
-                alt={`Product ${selectedImage + 1}`}
-                style={{ width: '100%', height: '100%' }}
-                onClick={() => toggleImageSize(selectedImage)}
-              />
-            </div>
-            <div className={styles.smallImages}>
-              {product.images.slice(1, 4).map((image, index) => (
-                <img
-                  key={index + 1}
-                  src={image}
-                  alt={`Product ${index + 2}`}
-                  className={`${styles.smallImage} ${selectedImage === index + 1 ? styles.active : ''}`}
-                  onClick={() => toggleImageSize(index + 1)}
-                />
-              ))}
-            </div>
+ 
+ 
+
+        <div className={styles.carouselContainer}>
+      <Carousel
+        showArrows={false}
+        selectedItem={selectedImage}
+        onChange={(index) => setSelectedImage(index)}
+        showStatus={false}
+        showThumbs={true} // Enable thumbs (dots) below the carousel images
+        thumbWidth={50} // Set width of thumb (dot)
+        swipeable={true}
+        emulateTouch={true}
+        dynamicHeight={false} // Ensure consistent height for images
+      >
+        {product.images.map((image, index) => (
+          <div key={index}>
+            <img
+              src={image}
+              alt={`Product ${index + 1}`}
+              className={styles.carouselImage}
+              onClick={() => toggleImageSize(index)}
+            />
           </div>
+        ))}
+      </Carousel>
+    </div>
+
+
           <div className={styles.productDetailsContainer}>
             <div className={styles.productDetails}>
               <h2 className={styles.name}>{product.name}</h2>

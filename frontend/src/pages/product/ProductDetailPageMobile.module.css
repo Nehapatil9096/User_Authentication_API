@@ -195,12 +195,14 @@ body::-webkit-scrollbar-thumb:hover {
   cursor: pointer;
   text-wrap: nowrap;
   justify-content: center;
+  margin-top: -2000px;
+  margin-bottom: 300px;
 }
 
 .cartButton{
   background-color: #FFD600; /* Example background color for "Buy Now" button */
   margin-top: 5px; /* Add margin to separate "Buy Now" button from "Add to Cart" button */
-  width: 200%; /* Ensure buttons container takes full width */
+  width: 275%; /* Ensure buttons container takes full width */
   margin-left: -30px;
   border-radius: 5px;
 
@@ -208,15 +210,15 @@ body::-webkit-scrollbar-thumb:hover {
 .buyNowButton {
   background-color: #FFB800; /* Example background color for "Buy Now" button */
   margin-top: 5px; /* Add margin to separate "Buy Now" button from "Add to Cart" button */
-  width: 200%; /* Ensure buttons container takes full width */
+  width: 275%; /* Ensure buttons container takes full width */
 margin-left: -30px;
 border-radius: 5px;
-height: 50px;
-margin-bottom: -20px;
+height: 40px;
+margin-bottom: -20px; 
 }
 .buyNowButton1 {
   background-color: #FFB800; /* Example background color for "Buy Now" button */
-  margin-top: 30px; /* Add margin to separate "Buy Now" button from "Add to Cart" button */
+  margin-top: -80px; /* Add margin to separate "Buy Now" button from "Add to Cart" button */
   width: 120%; /* Ensure buttons container takes full width */
 margin-left: -30px;
 border-radius: 5px;
@@ -522,8 +524,48 @@ background-color: white;
   /*-----------------------------------------------------BOTTOM MENU BAR------------------------------------ENDS------------------------*/
 
 
-/* Add this to your existing ProductDetailPage.module.css */
-
+  .carouselContainer {
+    width: 100%;
+    max-width: 600px; /* Adjust the maximum width as needed */
+    margin: 0 auto;
+  }
+  
+  .carouselImage {
+    width: 100%;
+    height: auto;
+    cursor: pointer;
+  }
+  
+  /* Styles for the dot indicators */
+  .carousel .thumbs-wrapper {
+    margin-top: 10px; /* Adjust the margin as needed */
+  }
+  
+  .carousel .thumbs {
+    display: flex;
+    justify-content: center;
+  }
+  
+  .carousel .thumb {
+    width: 10px; /* Adjust the width of each dot as needed */
+    height: 10px; /* Adjust the height of each dot as needed */
+    background-color: #ccc; /* Adjust the color of the dots */
+    border-radius: 50%; /* Ensure dots are circular */
+    margin: 0 5px; /* Adjust the margin between dots as needed */
+    display: none;
+  }
+  
+  .carousel .thumb.selected {
+    background-color: #333; /* Adjust the color of the selected dot */
+  }
+  .carouselContainer{
+    margin-top: -250px;
+  }
+  .homeButtonImage{
+    margin-top: -150px;
+    margin-bottom: 40px;
+    margin-left: -60px;
+  }
 @media screen and (max-width: 768px) {
   .imagesContainer {
     flex: 1 1 80%;

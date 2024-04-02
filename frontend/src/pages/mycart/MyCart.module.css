@@ -7,12 +7,16 @@
   overflow-x: hidden; /* Prevent horizontal scrolling */
   width: 100vw;
   font-family: 'Roboto', sans-serif; 
+  overflow-y: auto; /* Enable vertical scrolling */
+
 
 }
 .home {
   max-width: 100%; /* Adjust to fit the screen */
   margin: 0 auto;
   padding: 70px;
+  overflow-y: auto; /* Enable vertical scrolling */
+
   
 }
 /* Add this to Checkout.module.css */
@@ -198,6 +202,7 @@ border-bottom: 0px;
 .totalItemsMRP {
   /* Add margin to the left and right of the content */
   margin: 0 10px; /* Adjust the value as needed */
+  
 }
 
 
@@ -376,7 +381,7 @@ color: #797979;
 }
 
 .totalItemsMRP p span {
-  margin-left: 50px; /* Adjust the spacing as needed */
+  margin-left: -85px; /* Adjust the spacing as needed */
   margin-right: 0px;
 }
 

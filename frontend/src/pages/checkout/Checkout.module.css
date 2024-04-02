@@ -265,7 +265,7 @@ menuItem {
     margin-left: 0rem;
     padding: 0rem;
     border-radius: 3px;
-    width: 90%;
+    width: 100%;
 margin-top: 10px;
   }
   .deliveryInput {
@@ -286,6 +286,7 @@ margin-top: 10px;
     width: 91%;
     height: 50px;
     margin-top: 10px;
+    
   }
 
   .estimatedDelivery {

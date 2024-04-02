@@ -249,9 +249,7 @@ const handleAddToCart = (event, product) => {
         
         {!listView && ( 
           <div className={styles.rightSection}>
-          <div className={styles.listout}>
-            <LogoutButton />
-         </div>    
+             
          </div>)}      
       </header>
 
