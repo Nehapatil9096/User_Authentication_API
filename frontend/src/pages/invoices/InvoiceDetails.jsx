@@ -142,7 +142,7 @@ const InvoiceDetails = () => {
               <span>2. Payment Method</span>
             </div>
             <div className={styles.column}>
-              <select value={paymentMethod} disabled>
+            <select className={styles.paymentMethodSelect} value={paymentMethod} disabled>
                 <option value="payOnDelivery">Pay on Delivery</option>
                 <option value="upi">UPI</option>
                 <option value="card">Card</option>
