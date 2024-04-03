@@ -392,6 +392,8 @@ const HomeMobile = () => {
         <div className={styles.mbmenuItem} onClick={handleViewCart}>
           <img src="./Mbcart.png" alt="View Cart" className={styles.menuIcon} />
           <div className={styles.menuLine}></div>
+          {cartCount > 0 && <span className={styles.cartCount}>{cartCount}</span>}
+
         </div>
 
         <Link to="/invoices" className={styles.mbmenuItem}>
