@@ -2,6 +2,7 @@ import React, { useEffect, useState, useRef } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { Carousel } from 'react-responsive-carousel';
 import 'react-responsive-carousel/lib/styles/carousel.min.css';
+
 import { FaStar, FaRegStar } from 'react-icons/fa';
 import phoneCallIcon from "/ph_phone-call-light.png";
 import projectLogo from "/Mlogo.png";
@@ -186,25 +187,15 @@ const ProductDetailPage = () => {
  
 
         <div className={styles.carouselContainer}>
-      <Carousel
-        showArrows={false}
+        <Carousel
+        showArrows={true}
+        showIndicators={true}
         selectedItem={selectedImage}
         onChange={(index) => setSelectedImage(index)}
-        showStatus={false}
-        showThumbs={true} // Enable thumbs (dots) below the carousel images
-        thumbWidth={50} // Set width of thumb (dot)
-        swipeable={true}
-        emulateTouch={true}
-        dynamicHeight={false} // Ensure consistent height for images
       >
         {product.images.map((image, index) => (
           <div key={index}>
-            <img
-              src={image}
-              alt={`Product ${index + 1}`}
-              className={styles.carouselImage}
-              onClick={() => toggleImageSize(index)}
-            />
+            <img src={image} alt={`Product ${index + 1}`} onClick={() => toggleImageSize(index)} />
           </div>
         ))}
       </Carousel>
