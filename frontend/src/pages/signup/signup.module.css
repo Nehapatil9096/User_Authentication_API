@@ -158,7 +158,7 @@ font-family: "Roboto", sans-serif; /* Use font-family property */
   color: white; /* Set text color to white */
   display: flex;
   align-items: center; /* Center vertically */
-  height: 60px; /* Adjust height as needed */
+  height: 40px; /* Adjust height as needed */
   width: 100%; /* Ensure footer spans entire viewport width */
 
 }
