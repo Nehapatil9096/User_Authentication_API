@@ -190,12 +190,15 @@ const ProductDetailPage = () => {
         <Carousel
         showArrows={true}
         showIndicators={true}
+        showThumbs={false} // Set this to false to hide the thumbnails
         selectedItem={selectedImage}
         onChange={(index) => setSelectedImage(index)}
       >
         {product.images.map((image, index) => (
           <div key={index}>
-            <img src={image} alt={`Product ${index + 1}`} onClick={() => toggleImageSize(index)} />
+            <img src={image} alt={`Product ${index + 1}`} onClick={() => toggleImageSize(index)} 
+                    className="carouselImage" 
+                    />
           </div>
         ))}
       </Carousel>
@@ -233,11 +236,18 @@ const ProductDetailPage = () => {
           <div className={styles.menuLine}></div>
         </Link>
 
-        <div className={styles.mbmenuItem} >
-          <img src="/Mbcart.png" alt="View Cart" className={styles.menuIcon} />
-          <div className={styles.menuLine}></div>
-        </div>
-
+        {username ? (
+    <div className={styles.mbmenuItem} onClick={handleViewCart}>
+      <img src="/Mbcart.png" alt="View Cart" className={styles.menuIcon} />
+      <div className={styles.menuLine}></div>
+      {cartCount >= 0 && <span className={styles.cartCount}>{cartCount}</span>}
+    </div>
+  ) : (
+    <Link to="/login" className={styles.mbmenuItem}>
+      <img src="/Mbcart.png" alt="View Cart" className={styles.menuIcon} />
+      <div className={styles.menuLine}></div>
+    </Link>
+  )}
       
 
         <div className={styles.mbmenuItem}>

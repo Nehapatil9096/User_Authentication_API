@@ -13,8 +13,18 @@ const OrderConfirmation = () => {
   //logout------------------------------
   const logoutButtonRef = useRef(null);
   const [username, setUsername] = useState('');
-
-
+  const [cartCount, setCartCount] = useState(0);
+  useEffect(() => {
+    fetchCartCount();
+  }, []);
+  const fetchCartCount = async () => {
+    try {
+      const response = await axios.get('/api/users/cart/count');
+      setCartCount(response.data.count);
+    } catch (error) {
+      console.error('Error fetching cart count:', error);
+    }
+  };
   useEffect(() => {
     if (logoutButtonRef.current) {
       logoutButtonRef.current.addEventListener('click', handleLogout);
@@ -66,10 +76,11 @@ const OrderConfirmation = () => {
           <img src="/mbhome.png" alt="Home" className={styles.menuIcon} />
           <div className={styles.menuLine}></div>
         </Link>
-
+    
         <div className={styles.mbmenuItem} onClick={handleViewCart}>
           <img src="/Mbcart.png" alt="View Cart" className={styles.menuIcon} />
           <div className={styles.menuLine}></div>
+          {cartCount >= 0 && <span className={styles.cartCount}>{cartCount}</span>}
         </div>
 
         <Link to="/invoices" className={styles.mbmenuItem}>

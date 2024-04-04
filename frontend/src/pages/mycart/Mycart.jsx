@@ -212,7 +212,7 @@ const MyCart = () => {
           </div>
           <div className={styles.priceRow1}>
             <p className={styles.priceLabel1}>Total Amount:</p>
-            <p className={styles.priceValue1}>₹{(totalAmount + 45).toFixed(2)}</p>
+            <p className={styles.priceValue1}>₹{(totalAmount ).toFixed(2)}</p>
           </div>
                   </>
                 )}

@@ -18,6 +18,7 @@ const Checkout = () => {
   const [username, setUsername] = useState('');
   const [selectedProduct, setSelectedProduct] = useState(null); // State to track selected product
   const navigate = useNavigate();
+  const [cartCount, setCartCount] = useState(0);
 
   //logout------------------------------
   const logoutButtonRef = useRef(null);
@@ -136,8 +137,39 @@ const Checkout = () => {
   useEffect(() => {
     fetchCartData();
     fetchUserData();
-  }, []);
+    fetchCartCount();
 
+  }, []);
+  const fetchCartCount = async () => {
+    try {
+      const response = await axios.get('/api/users/cart/count');
+      setCartCount(response.data.count);
+    } catch (error) {
+      console.error('Error fetching cart count:', error);
+    }
+  };
+  const handleAddToCart = (event, product) => {
+    event.stopPropagation();
+
+    if (product) {
+      fetch('/api/users/cart/add', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ productId: product._id, quantity: 1 }),
+      })
+      .then(response => {
+        if (response.ok) {
+          console.log('Product added to cart:', product);
+          setCartCount(prevCount => prevCount + 1);
+        } else {
+          console.error('Failed to add product to cart');
+        }
+      })
+      .catch(error => console.error('Error adding product to cart:', error));
+    }
+  };
   useEffect(() => {
     if (!loading) {
       calculateTotalAmount(cart).then(total => {
@@ -231,15 +263,18 @@ const Checkout = () => {
     <div className={styles.column}>
       <div className={styles.productImages}>
         
-        {cart.map((item, index) => (
-          <img
-            key={index}
-            src={item.product.images[0]}
-            alt={item.product.name}
-            className={styles.productImage}
-            onClick={() => handleProductClick(item.product._id)}
-          />
-        ))}
+      {cart.map((item, index) => (
+  item.product && item.product.images && item.product.images.length > 0 && (
+    <img
+      key={index}
+      src={item.product.images[0]}
+      alt={item.product.name}
+      className={styles.productImage}
+      onClick={() => handleProductClick(item.product._id)}
+    />
+  )
+))}
+
       </div>
       {selectedProduct && (
         <div className={styles.selectedProductDetails}>
@@ -292,10 +327,18 @@ const Checkout = () => {
           <div className={styles.menuLine}></div>
         </Link>
 
-        <div className={styles.mbmenuItem} onClick={handleViewCart}>
-          <img src="/Mbcart.png" alt="View Cart" className={styles.menuIcon} />
-          <div className={styles.menuLine}></div>
-        </div>
+        {username ? (
+    <div className={styles.mbmenuItem} onClick={handleViewCart}>
+      <img src="./Mbcart.png" alt="View Cart" className={styles.menuIcon} />
+      <div className={styles.menuLine}></div>
+      {cartCount >= 0 && <span className={styles.cartCount}>{cartCount}</span>}
+    </div>
+  ) : (
+    <Link to="/login" className={styles.mbmenuItem}>
+      <img src="./Mbcart.png" alt="View Cart" className={styles.menuIcon} />
+      <div className={styles.menuLine}></div>
+    </Link>
+  )}
 
       
 

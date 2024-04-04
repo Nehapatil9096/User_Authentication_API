@@ -389,17 +389,30 @@ const HomeMobile = () => {
           <div className={styles.menuLine}></div>
         </Link>
 
-        <div className={styles.mbmenuItem} onClick={handleViewCart}>
-          <img src="./Mbcart.png" alt="View Cart" className={styles.menuIcon} />
-          <div className={styles.menuLine}></div>
-          {cartCount > 0 && <span className={styles.cartCount}>{cartCount}</span>}
+        {username ? (
+    <div className={styles.mbmenuItem} onClick={handleViewCart}>
+      <img src="./Mbcart.png" alt="View Cart" className={styles.menuIcon} />
+      <div className={styles.menuLine}></div>
+      {cartCount >= 0 && <span className={styles.cartCount}>{cartCount}</span>}
+    </div>
+  ) : (
+    <Link to="/login" className={styles.mbmenuItem}>
+      <img src="./Mbcart.png" alt="View Cart" className={styles.menuIcon} />
+      <div className={styles.menuLine}></div>
+    </Link>
+  )}
 
-        </div>
-
-        <Link to="/invoices" className={styles.mbmenuItem}>
-          <img src="/mbinvoice.png" alt="Invoice" className={styles.menuIcon} />
-          <div className={styles.menuLine}></div>
-        </Link>
+{username ? (
+    <Link to="/invoices" className={styles.mbmenuItem}>
+      <img src="/mbinvoice.png" alt="Invoice" className={styles.menuIcon} />
+      <div className={styles.menuLine}></div>
+    </Link>
+  ) : (
+    <Link to="/login" className={styles.mbmenuItem}>
+      <img src="/mbinvoice.png" alt="Invoice" className={styles.menuIcon} />
+      <div className={styles.menuLine}></div>
+    </Link>
+  )}
 
         <div className={styles.mbmenuItem}>
           {username ? (

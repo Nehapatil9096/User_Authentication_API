@@ -14,11 +14,14 @@ const MyCart = () => {
   const [totalAmount, setTotalAmount] = useState(0);
   const [username, setUsername] = useState('');
   const navigate = useNavigate();
+  const [cartCount, setCartCount] = useState(0);
 
   //logout------------------------------
   const logoutButtonRef = useRef(null);
  
-  
+  const handleViewCart= () => {
+    navigate('/mycart');
+};
   const fetchUserData = async () => {
     try {
       const response = await axios.get('/api/users/profile');
@@ -29,6 +32,8 @@ const MyCart = () => {
   };
   useEffect(() => {
     fetchUserData();
+    fetchCartCount();
+
   }, []);
 
   useEffect(() => {
@@ -51,7 +56,14 @@ const MyCart = () => {
 
   };
 
-
+  const fetchCartCount = async () => {
+    try {
+      const response = await axios.get('/api/users/cart/count');
+      setCartCount(response.data.count);
+    } catch (error) {
+      console.error('Error fetching cart count:', error);
+    }
+  };
 
   //----------------------------------------
 
@@ -70,6 +82,29 @@ const MyCart = () => {
       setLoading(false);
     }
   };
+  const handleAddToCart = (event, product) => {
+    event.stopPropagation();
+
+    if (product) {
+      fetch('/api/users/cart/add', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ productId: product._id, quantity: 1 }),
+      })
+      .then(response => {
+        if (response.ok) {
+          console.log('Product added to cart:', product);
+          setCartCount(prevCount => prevCount + 1);
+        } else {
+          console.error('Failed to add product to cart');
+        }
+      })
+      .catch(error => console.error('Error adding product to cart:', error));
+    }
+  };
+
 
   const fetchProductDetails = async (productId) => {
     try {
@@ -231,7 +266,7 @@ const MyCart = () => {
           </div>
           <div className={styles.priceRow1}>
             <p className={styles.priceLabel1}>Total Amount:</p>
-            <p className={styles.priceValue1}>₹{(totalAmount + 45).toFixed(2)}</p>
+            <p className={styles.priceValue1}>₹{(totalAmount ).toFixed(2)}</p>
           </div>
                   </>
                 )}
@@ -240,6 +275,13 @@ const MyCart = () => {
           </div>
         </div>
 
+        {/* Total product items and total MRP */}
+        <div className={styles.totalItemsMRP}>
+          <p>
+           <span className={styles.items}> {cart.length} Items </span>
+            <span>₹{totalAmount.toFixed(2)}</span>
+          </p>
+        </div>
       </div>
 
       {/* Bottom menu bar */}
@@ -249,10 +291,18 @@ const MyCart = () => {
           <div className={styles.menuLine}></div>
         </Link>
 
-        <div className={styles.mbmenuItem} >
-          <img src="/Mbcart.png" alt="View Cart" className={styles.menuIcon} />
-          <div className={styles.menuLine}></div>
-        </div>
+        {username ? (
+    <div className={styles.mbmenuItem} onClick={handleViewCart}>
+      <img src="./Mbcart.png" alt="View Cart" className={styles.menuIcon} />
+      <div className={styles.menuLine}></div>
+      {cartCount >= 0 && <span className={styles.cartCount}>{cartCount}</span>}
+    </div>
+  ) : (
+    <Link to="/login" className={styles.mbmenuItem}>
+      <img src="./Mbcart.png" alt="View Cart" className={styles.menuIcon} />
+      <div className={styles.menuLine}></div>
+    </Link>
+  )}
 
       
 

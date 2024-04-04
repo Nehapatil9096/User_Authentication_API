@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import styles from "./InvoicesMobile.module.css";
 import invoiceImage from "/Invoice.png"; // Import the image
 import invoiceImage1 from "/Minvoice.png"; // Import the image
-
+import axios from 'axios';
 import phoneCallIcon from "/ph_phone-call-light.png";
 import projectLogo from "/Mlogo.png";
 import LogoutButton from "/src/components/LogoutButton";
@@ -15,6 +15,8 @@ const Invoice = () => {
   const [invoices, setInvoices] = useState([]);
   const [username, setUsername] = useState('');
   const navigate = useNavigate();
+  const [cartCount, setCartCount] = useState(0);
+
   //logout------------------------------
   const logoutButtonRef = useRef(null);
 
@@ -38,7 +40,18 @@ const Invoice = () => {
 
   };
 
+  useEffect(() => {
+    fetchCartCount();
+  }, []);
 
+  const fetchCartCount = async () => {
+    try {
+      const response = await axios.get('/api/users/cart/count');
+      setCartCount(response.data.count);
+    } catch (error) {
+      console.error('Error fetching cart count:', error);
+    }
+  };  
   //----------------------------------------
   useEffect(() => {
     fetchInvoices(); // Call fetchInvoices when the component mounts
@@ -132,6 +145,7 @@ My Invoices</h1>
         <div className={styles.mbmenuItem} onClick={handleViewCart}>
           <img src="/Mbcart.png" alt="View Cart" className={styles.menuIcon} />
           <div className={styles.menuLine}></div>
+          {cartCount >= 0 && <span className={styles.cartCount}>{cartCount}</span>}
         </div>
 
         <Link to="/invoices" className={styles.mbmenuItem}>
