@@ -17,12 +17,14 @@ body {
   margin-top: -150px; /* Adjust the top margin */
 }
 
-.logo{
+.logo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   margin-left: 450px;
-width: 150px;
-margin-top: -15px;
-margin-bottom: 25px;
-
+  width: 150px;
+  margin-top: -15px;
+  margin-bottom: 25px;
 }
 .group1 {
   display: flex;
@@ -48,14 +50,14 @@ padding-left: 15px;
 padding-right: 15px;
   }
 
-.registerLink {
-  display: flex;
-  justify-content: center; /* Align content to the right */
-  align-items: center;
-  margin-top: -5px; /* Adjust margin-top as needed */
-  margin-left: 0px;
-  margin-bottom: -7px;
-}
+  .registerLink {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: -5px;
+    margin-left: 0px;
+    margin-bottom: -7px;
+  }
 .groups {
   display: flex;
   flex-direction: column;
