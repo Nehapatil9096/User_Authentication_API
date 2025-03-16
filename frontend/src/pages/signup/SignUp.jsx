@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import useSignup from '../../hooks/useSignup';
 import styles from './signup.module.css';
-const projectLogo = "/assets/project_logo.png";
+import projectLogo from '/project_logo.png';
 
 const SignUp = () => {
   const [inputs, setInputs] = useState({
