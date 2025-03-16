@@ -14,7 +14,7 @@ export default defineConfig({
     },
   },
   build: {
-    outDir: "public", // Change default build directory from dist/ to public/
+    outDir: "dist", 
   },
   css: {
     postcss: {
