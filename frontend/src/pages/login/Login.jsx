@@ -46,14 +46,14 @@ const Login = () => {
                 Sign in <span className={styles.alreadyCustomerText}>Already a user?</span>
               </h1>
               
-              <p className={styles.inputLabel}>Enter your email or mobile number</p>
+              <p className={styles.inputLabel}>Enter your email</p>
               <div className={styles.inputContainer}>
                 <input
                   type="text"
                   className={`${styles.input} ${styles.inputBordered}`}
                   value={identifier}
                   onChange={(e) => setIdentifier(e.target.value)}
-                  placeholder="Email or mobile number"
+                  placeholder="Email"
                 />
               </div>
               
@@ -101,11 +101,6 @@ const Login = () => {
         </div>
       </div>
       
-      <footer className={styles.footer}>
-        <div className={styles.footerContent}>
-          {/* Footer content if needed */}
-        </div>
-      </footer>
     </div>
   );
 };
