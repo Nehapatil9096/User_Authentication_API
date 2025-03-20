@@ -1,28 +1,43 @@
-// AuthContext.jsx
-import { createContext, useContext, useState } from "react";
+import { createContext, useContext, useState, useEffect } from "react";
 
 export const AuthContext = createContext();
 
 export const useAuthContext = () => {
   return useContext(AuthContext);
 };
+
 export const AuthContextProvider = ({ children }) => {
-  const [authUser, setAuthUser] = useState(JSON.parse(localStorage.getItem("user")) || null);
+  const [authUser, setAuthUser] = useState(
+    JSON.parse(localStorage.getItem("user")) || null
+  );
+  const [role, setRole] = useState(authUser?.role || null);
 
-  // Ensure setAuthUser is passed as part of the context value
-  const contextValue = {
-    authUser,
-    setAuthUser,
-    setAuthUserData: (userData) => {
-      console.log("Incoming userData:", userData);
+  useEffect(() => {
+    if (authUser) {
+      localStorage.setItem("user", JSON.stringify(authUser));
+      setRole(authUser.role);
+    }
+  }, [authUser]);
 
-      // Update authUser state and localStorage
-      const updatedUser = { ...authUser, cards: mergedCards, ...userData };
-      setAuthUser(updatedUser);
-      localStorage.setItem("user", JSON.stringify(updatedUser));
-      console.log("Updated authUser:", updatedUser);
-    },
+  const setAuthUserData = (userData) => {
+
+    // Update authUser state with new data including role
+    const updatedUser = { ...authUser, ...userData, role: userData.role || "user" };
+    setAuthUser(updatedUser);
+    setRole(updatedUser.role);
+    localStorage.setItem("user", JSON.stringify(updatedUser));
+
   };
 
-  return <AuthContext.Provider value={contextValue}>{children}</AuthContext.Provider>;
+  const logout = () => {
+    setAuthUser(null);
+    setRole(null);
+    localStorage.removeItem("user");
+  };
+
+  return (
+    <AuthContext.Provider value={{ authUser, role, setAuthUser, setAuthUserData, logout }}>
+      {children}
+    </AuthContext.Provider>
+  );
 };

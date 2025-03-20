@@ -1,292 +1,256 @@
-body {
+/* Main container styles */
+.mainContainer {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
   min-height: 100vh;
-  background-color: #fff; /* Set the background color of the entire page to white */
-
-}
-
-.main-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center; /* Center content horizontally */
-  justify-content: center; /* Center content vertically */
-  background-color: white;
-  min-height: 100vh;
-}
-.home {
-  padding-top: 15px;
-  padding-bottom: 15px;
-  padding-left: 15px;
-  padding-right: 15px; 
-}
-
-.logo{
-margin-left: 165px;
-width: 150px;
-margin-top: 0px;
-margin-bottom: 100px;
-padding-top: 30px;
-}
-.lineContainer{
-  margin-top: -50px;
-}
-.inputLabel {
-  margin-bottom: 5px; /* Reduce the margin between input labels */
-  font-family: "Roboto", sans-serif;
-  font-weight: 500;
-  
-  }
-.noAccountText{
-  font-size: 12.5px;
-font-family: "Roboto", sans-serif;
-font-weight: 400;
-}
-
-
-.groups,
-.btnBlock1 {
-  margin: 0 auto; /* Center horizontally */
-  display: flex;
-  flex-direction: column;
   justify-content: center;
   align-items: center;
+  background-color: #f8f9fa;
+  padding: 2rem 1rem;
 }
 
+/* Logo styling */
+.logoContainer {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 2rem;
+}
+
+/* Mobile heading (hidden by default) */
+.headingmob {
+  display: none;
+}
+
+/* Form container styling */
 .groups {
+  width: 100%;
+  max-width: 480px;
+}
+
+/* Form styling */
+.form {
+  background-color: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+  padding: 2.5rem;
+  margin-bottom: 2rem;
+  width: 100%;
+}
+
+/* Form content container */
+.home {
   display: flex;
   flex-direction: column;
-  justify-content: center; /* Center content vertically */
-  align-items: center; /* Center content horizontally */
-  width: 78%;
-  margin-top: -40px; /* Adjust margin as needed */
-  border: 2px solid #D9D9D9; /* Add border style */
-  padding: 10px; /* Add padding for spacing inside the border */
-  border-radius: 15px;
-  margin-left: 40px;
-  margin-bottom: 0px;
-
-}
-.btnBlock1{
-  width: 82%; /* Adjust width as needed */
-  height: 40px; /* Adjust height as needed */
-  background-color: #ffffff; /* Set background color */
-  color: white; /* Set text color */
-  border: 2px solid #D9D9D9; /* Add border style */
-  border-radius: 8px; /* Add border radius for rounded corners */
-  font-size: 16px; /* Adjust font size as needed */
-  cursor: pointer; /* Change cursor to pointer on hover */
-  transition: background-color 0.3s; /* Add smooth transition */
-  margin-left: 40px;
-  color:black;
-margin-top: 20px;
-font-family: "Roboto", sans-serif;
-font-weight: 400;
-margin-bottom: 100px;
-}
-.newToMusicartContainer {
-  position: relative; /* Required for absolute positioning of pseudo-elements */
-  text-align: center; /* Center text horizontally */
-  
 }
 
-.input-container {
-  width: 100%; /* Adjust width as needed */
-  margin-bottom: -100px; /* Add margin bottom for spacing */
+/* Main heading */
+.heading {
+  font-size: 1.75rem;
+  font-weight: 600;
+  color: #333333;
+  margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
 }
-.heading{
-  font-family: "Roboto", sans-serif;
-  font-size: 35px;
-  margin-top: 10px;
-  font-weight: 400;
 
+/* "Already a user" text */
+.alreadyCustomerText {
+  font-size: 0.9rem;
+  font-weight: normal;
+  color: #6b7280;
+  margin-left: 0.75rem;
 }
+
+/* Input labels */
+.inputLabel {
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: #4b5563;
+  margin-bottom: 0.5rem;
+  margin-top: 1.25rem;
+}
+
+/* Input container */
+.inputContainer {
+  margin-bottom: 1rem;
+  width: 100%;
+}
+
+/* Input fields */
 .input {
-  width: 100%; /* Adjust width as needed */
-  height: 35.5px; /* Adjust height as needed */
-  padding: 10px; /* Add padding for spacing inside the input */
-  font-size: 18px; /* Adjust font size as needed */
-  border-radius: 5px; /* Add border radius for rounded corners */
-  border: 2px solid #ccc; /* Add border style */
-  box-sizing: border-box; /* Ensure padding and border are included in the width */
-  font-family: "Roboto", sans-serif;
-
+  width: 90%;
+  padding: 0.9rem 1rem;
+  background-color: #f0f4ff;
+  border-radius: 6px;
+  font-size: 1rem;
+  transition: all 0.2s ease;
 }
 
-/* login.module.css */
+.inputBordered {
+  border: 1px solid transparent;
+}
 
+.input:focus {
+  outline: none;
+  border-color: #6366f1;
+  box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1);
+}
+
+/* Button container */
+.buttonStack {
+  margin-top: 1.75rem;
+  width: 100%;
+}
+
+/* Primary button */
 .btnBlock {
-  width: 100%; /* Adjust width as needed */
-  height: 35px; /* Adjust height as needed */
-  background-color: #2e0052; /* Set background color */
-  color: white; /* Set text color */
-  border: none; /* Remove border */
-  border-radius: 5px; /* Add border radius for rounded corners */
-  font-size: 16px; /* Adjust font size as needed */
-  cursor: pointer; /* Change cursor to pointer on hover */
-  transition: background-color 0.3s; /* Add smooth transition */
-  margin-top: 20px;
+  width: 100%;
+  padding: 0.9rem;
+  background-color: #a4adc6;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-weight: 500;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.2s ease, transform 0.1s ease;
 }
 
 .btnBlock:hover {
-  background-color: #2e0052; /* Change background color on hover */
+  background-color: #8c93a8;
 }
 
+.btnBlock:active {
+  transform: translateY(1px);
+}
+
+.btnBlock:disabled {
+  background-color: #9ca3af;
+  cursor: not-allowed;
+}
+
+/* Loading spinner */
+.loading {
+  display: inline-block;
+  width: 1.2rem;
+  height: 1.2rem;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  border-top-color: white;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.loadingSpinner {
+  margin-right: 0.5rem;
+}
+
+/* Divider with text */
 .lineContainer {
   display: flex;
   align-items: center;
-  margin-top: 0px; /* Adjust as needed */
-  margin-left: 30px;
-  margin-bottom: 0px;
-  padding-top: 20px;
-
+  justify-content: center;
+  margin: 2rem 0;
+  padding: 0 1rem;
+  max-width: 480px;
+  width: 100%;
 }
 
 .lineImage1 {
-  width: 135px; /* Adjust the width of the line image */
-  height: 2px; /* Maintain aspect ratio */
-  margin: 0 10px; /* Adjust the margin around the line image */
+  flex-grow: 1;
+  height: 1px;
+  background-color: #e2e8f0;
 }
 
 .newToMusicart {
-  font-size: 13px; /* Adjust as needed */
-  font-weight: bold; /* Adjust as needed */
-  font-family: "Roboto", sans-serif;
-  padding: 0 10px; /* Add padding around the text */
-  font-weight: 400;
-  font-family: "Roboto", sans-serif;
-}
-.Link1
-{  text-decoration: none;
+  padding: 0 1.5rem;
+  font-size: 0.95rem;
+  color: #6b7280;
+  white-space: nowrap;
 }
 
+/* Registration link container */
+.registerLink {
+  display: flex;
+  justify-content: center;
+  max-width: 480px;
+  width: 100%;
+}
+
+.Link1 {
+  text-decoration: none;
+  width: 100%;
+}
+
+/* Secondary button */
+.btnBlock1 {
+  width: 125%;
+  padding: 0.9rem;
+  background-color: transparent;
+  color: #6c63ff;
+  border: 1px solid #6c63ff;
+  border-radius: 6px;
+  font-weight: 500;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.btnBlock1:hover {
+  background-color: rgba(108, 99, 255, 0.05);
+  border-color: #5a52d5;
+  color: #5a52d5;
+}
+
+.btnBlock1:active {
+  transform: translateY(1px);
+}
+
+/* Footer */
+.footer {
+  margin-top: auto;
+  padding: 1.5rem 0;
+  width: 100%;
+  text-align: center;
+}
 
 .footerContent {
-  margin: 0 auto; /* Center horizontally */
-  font-size: 22px;
-font-weight: 400;
-font-family: "Roboto", sans-serif; /* Use font-family property */
-
+  color: #6b7280;
+  font-size: 0.875rem;
 }
-.footer {
-  position: fixed; /* Fixed positioning */
-  bottom: 0; /* Align to the bottom of the viewport */
-  left: 0; /* Align to the left of the viewport */
-  background-color: #2e0052;
-  color: white; /* Set text color to white */
-  display: flex;
-  align-items: center; /* Center vertically */
-  height: 60px; /* Adjust height as needed */
-  width: 100%; /* Ensure footer spans entire viewport width */
 
+/* Responsive styles */
+@media (max-width: 768px) {
+  .form {
+    padding: 2rem;
+  }
 }
-/* Define styles for desktop view */
-@media (min-width: 1024px) {
+
+@media (max-width: 640px) {
+  .mainContainer {
+    padding: 1rem 0.5rem;
+  }
+  
+  .form {
+    padding: 1.75rem;
+    box-shadow: 0 1px 5px rgba(0, 0, 0, 0.05);
+  }
+  
   .headingmob {
-    display: none; /* Hide the heading in desktop view */
-  }
-
-  .alreadyCustomerText {
-    display: none; /* Hide the already customer text in desktop view */
-  }
-}
-
-/* For smaller screens */
-@media only screen and (max-width: 768px) {
-  /* Update body */
-  body {
-      padding: 10px;
-  }
-  
-  /* Update .main-container */
-  .main-container {
-      width: 90%;
-      margin-left: auto;
-      margin-right: auto;
-  }
-  
-  /* Update .logo */
-  .logo {
-      margin-left: 0;
-      margin-top: 0;
-      width: 60%; /* Adjust width for smaller screens */
-  }
-  
-  /* Update .inputLabel */
-  .inputLabel {
-      font-size: 14px; /* Adjust font size for smaller screens */
-  }
-  
-  /* Update .noAccountText */
-  .noAccountText {
-      font-size: 14px; /* Adjust font size for smaller screens */
-      font-weight: 400;
-      font-family: "Roboto", sans-serif;
-    }
-  
-  .headingmob{
-font-family: sans-serif ;
-font-size: 50px;
-margin-bottom: 50px;
-font-style: normal;
-font-weight: normal;
-color: #2e0052;
-  }
-  .alreadyCustomerText{
-    font-style: normal;
-    font-weight: normal;
-    font-size: 15px;
-  }
-  /* Update .groups */
-  .groups {
-      width: 90%;
-      margin-left: auto;
-      margin-right: auto;
-  }
-  
-  /* Update .input-container */
-  .input-container {
-      margin-bottom: 20px; /* Adjust margin bottom for smaller screens */
+    display: block;
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #333333;
+    margin-bottom: 1rem;
+    text-align: center;
   }
   
   .heading {
-      font-size: 24px; /* Adjust font size for smaller screens */
-      margin-top: 20px; /* Adjust margin top for smaller screens */
-      font-weight: 400;
-  }
-  
-  /* Update .input */
-  .input {
-      font-size: 16px; /* Adjust font size for smaller screens */
-      height: 30px; /* Adjust height for smaller screens */
-  }
-  
-  /* Update .btnBlock */
-  .btnBlock {
-      font-size: 16px; /* Adjust font size for smaller screens */
-      margin-top: 20px; /* Adjust margin top for smaller screens */
-  }
-  
-  /* Update .btnBlock1 */
-  .btnBlock1 {
-      width: 95%; /* Adjust width for smaller screens */
-      font-size: 16px; /* Adjust font size for smaller screens */
-      margin-top: 20px; /* Adjust margin top for smaller screens */
-      margin-left: 10px;
-
-    }
-  
-  /* Update .lineContainer */
-  .lineContainer {
-      margin-left: 0; /* Adjust margin left for smaller screens */
-  }
-  
-  /* Update .footerContent */
-  .footerContent {
-      font-size: 16px; /* Adjust font size for smaller screens */
-      margin-left: 100px; /* Adjust margin left for smaller screens */
+    font-size: 1.5rem;
   }
 }
-

@@ -30,7 +30,9 @@ app.get("*", (req, res) => {
 	res.sendFile(path.join(__dirname, "frontend", "dist", "index.html"));
 });
 
-app.listen(PORT, () => {
-	connectToMongoDB();
-	console.log(`Server Running on port ${PORT}`);
-});
+const startServer = async () => {
+	await connectToMongoDB();
+	app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+  };
+  startServer();
+  
