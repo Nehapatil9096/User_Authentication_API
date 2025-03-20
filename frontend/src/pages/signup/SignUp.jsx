@@ -27,12 +27,17 @@ const SignUp = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     await signup(inputs);
-    if (authUser?.role === "admin") {
-      navigate("/admin");
-    } else {
-      navigate("/home");
-    }
+  
+    setTimeout(() => {
+      const user = JSON.parse(localStorage.getItem("user"));
+      if (user?.role === "admin") {
+        navigate("/admin");
+      } else {
+        navigate("/home");
+      }
+    }, 1000); //  Ensures authentication is set before redirecting
   };
+  
 
   return (
     <div className={styles.mainContainer}>

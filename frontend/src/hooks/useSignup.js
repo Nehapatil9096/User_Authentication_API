@@ -53,7 +53,7 @@ const useSignup = () => {
 
   //  Check if all fields are valid
   const isFormValid = Object.values(errors).every((err) => err === "") &&
-                      Object.values(errors).length > 0;
+    Object.values(errors).length > 0;
 
   const signup = async ({ username, email, password, mobileNumber, role = "user" }) => {
     if (!isFormValid) {
@@ -63,13 +63,11 @@ const useSignup = () => {
 
     setLoading(true);
     try {
-      console.log(username, email, password, mobileNumber, role);
-
       const res = await fetch("/api/auth/signup", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ username, email, password, mobileNumber, role }),
-        credentials: "include",
+        credentials: "include", // Ensures JWT cookie is set
       });
 
       const data = await res.json();
@@ -77,17 +75,26 @@ const useSignup = () => {
         throw new Error(data.error);
       }
 
-      // Store role in localStorage and update context
+      //  Store user details in local storage
       localStorage.setItem("user", JSON.stringify(data));
+
+      //  Immediately update authUser state
       setAuthUser(data);
 
       toast.success(`Account created! Welcome, ${data.username}! Role: ${data.role}`);
+
+      //  Force page reload to ensure authentication and token sync
+      setTimeout(() => {
+        window.location.reload();
+      }, 500);
+
     } catch (error) {
       toast.error(error.message);
     } finally {
       setLoading(false);
     }
   };
+
 
   return { loading, signup, errors, validateInputs, isFormValid };
 };

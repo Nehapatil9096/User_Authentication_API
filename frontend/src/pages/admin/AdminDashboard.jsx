@@ -19,11 +19,12 @@ const AdminDashboard = () => {
   }
 
   useEffect(() => {
-    fetchUsers();
-    if (authUser) {
+    if (authUser && authUser.role === "admin") {
+      fetchUsers();
       setUsername(authUser.username);
     }
-  }, [authUser]);
+  }, [authUser]); //  Ensures API call happens only when authUser is set
+  
 
   const fetchUsers = async () => {
     try {
