@@ -33,7 +33,7 @@ Installation and Setup:
 
 1. Clone the Repository  
 Run the following commands:  
-git clone https://github.com/your-username/your-repo.git  
+git clone [https://github.com/your-username/your-repo.git ](https://github.com/Nehapatil9096/User_Authentication_API.git) 
 cd your-repo  
 
 2. Setup Backend  
@@ -61,8 +61,7 @@ cd ../frontend
 npm install  
 
 Start Frontend:  
-npm run dev  
-The frontend will start at http://localhost:5173  
+npm run dev   
 
 API Endpoints:  
 
@@ -97,4 +96,4 @@ frontend/
   - utils/ for Utility Functions  
   - api/ for API Calls  
   
-Developed by:Neha Patil - GitHub: https://github.com/your-username  
+Developed by: Neha Patil  
